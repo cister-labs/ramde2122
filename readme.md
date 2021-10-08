@@ -34,7 +34,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 <ul>
   <li><a href="" class="hide">
     Introduction to MDE and Requirement engineering; Structural diagrams (Lecture 1)
-  </a></li><li><a class="hide"href="">
+  </a></li><li><a class="hide" href="">
     Logics for states: Modelling requirements and using SMT solvers (Lecture 1-2)
   </a></li><li><a class="hide" href="slides/process-algebra-1.pdf">
     Behaviour diagrams; LTS and Process Algebra (Lecture 3-4)
