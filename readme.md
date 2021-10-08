@@ -122,12 +122,12 @@ __Group assignments__ have the following deadlines, that may still suffer change
 
 ### Lecturers
 
+- [_Alexandre Bragança_](https://www.dei.isep.ipp.pt/~alex/),
+  `atb arroba isep ponto ipp ponto pt`
 - [_David Pereira_](http://www.cister.isep.ipp.pt/people/david_pereira/),
   `drp arroba isep ponto ipp ponto pt`
-- [_José Proença_](http://jose.proenca.org),
+- [_José Proença_](https://jose.proenca.org),
   `pro arroba isep ponto ipp ponto pt`
-- [_Alexandre Bragança_](https://www.dei.isep.ipp.pt/~alex/),
-- `atb arroba isep ponto ipp ponto pt`
 
 We will use a team in Microsoft Teams where all questions regarding this course unit should be placed, and where we can schedule virtual meetings if needed.
 
