@@ -1,0 +1,69 @@
+\documentclass{beamer}
+
+\input{macros/beamerconf}
+\input{macros/preamble}
+\input{macros/macros}
+
+
+\setLecture{1}{RAMDE -- Requirements and Model-driven Engineering}
+
+% \title{
+% 	RAMDE -- Requirements and Model-driven Engineering 
+% 	}
+% \author{David Pereira \and Jos\'{e} Proen\c{c}a}
+% \institute{CISTER -- ISEP \\ Porto, Portugal}
+% \date{MScCCSE 2020/21}
+
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+
+\section{Tips on how to write slides}
+
+
+\begin{slide}{How to create slides}
+\small
+
+\begin{itemize}
+	\item \alert{\texttt{$\backslash$begin\{slide\}\{my title\} my content $\backslash$end\{slide\}}}
+	\item \alert{\texttt{$\backslash$begin\{frame\} $\backslash$frametitle\{my title\} my content $\backslash$end\{frame\}}}
+	\item \alert{\texttt{$\backslash$frame\{ $\backslash$frametitle\{my title\} my content \}}}
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Some handy macros and tips}
+  \begin{itemize}
+    \item Use beamer's macros \alert{\texttt{$\backslash$alert}} and \structure{\texttt{$\backslash$structure}} to color/highlight words.
+
+    \item{Set the title of the lecture as in this file (using \alert{\texttt{$\backslash$setLecture}} with the lecture number) -- the number is used in the macros for exercises.}
+
+		\item Make 1st title with \alert{\texttt{$\backslash$frame[plain]\{$\backslash$titlepage\}}}
+
+		\item Use sections to separate topics.
+
+    \item Use \alert{\texttt{$\backslash$frsplit\{left part\}\{right part\}}} to quickly start a 2 columns slide.
+  \end{itemize}
+\end{slide}
+
+\begin{slide}{Macros for blocks and exercises}
+	\begin{itemize}
+    \item Use environment \alert{\texttt{$\backslash$begin\{block\}\{some title\}}} to have a gray block with a title.
+
+    \item Use environment \alert{\texttt{$\backslash$begin\{exampleblock\}\{some title\}}} to present an example.
+
+    \item Use macro \alert{\texttt{$\backslash$doExercise\{My title\}\{Exercise description\}}}.
+    E.g.
+    \doExercise{My title}{Exercise description}
+
+    \item Use macro \alert{\texttt{$\backslash$exercise}} to start a numbered exercise inline.
+    E.g.: \exercise Draw a diagram. \exercise Draw another one.
+
+  \end{itemize}
+  
+\end{slide}
+
+
+\end{document}
