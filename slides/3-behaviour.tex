@@ -22,44 +22,165 @@
 
 %\frame{\frametitle{title} content}
 
-\begin{slide}{Overview}
-  ~\\
-  \begin{columns}
-    \col[0.45]{\begin{itemize}
-      \item UML behaviour diagrams
-      \item Automata \& languages
-      \item Process algebra
-      \item Relation between them
-      \item Equivalent models
-    \end{itemize}}
-    %
-    \col[0.27]{
-      \includegraphics[width=\textwidth]{images/cm-flowchart.png}
-    }
-    \col[0.27]{
-      \includegraphics[width=\textwidth]{images/LTS-1.pdf}
-      \\[10mm]
-      \begin{minipage}{\textwidth}
-      \scriptsize
-% \begin{lstlisting}
-CM = €.coffee'.CM;\\
-CS = pub'.€'.coffee.CS;\
-CMCS = CM || CS;
-% \end{lstlisting}       
-      \end{minipage}
-    }
-    % \begin{tikzpicture}[aut,inner sep=3pt]
-    %   \node[st,initial]  (s0) {$s_0$};
-    %   \node[st] (s1) [right of=s0]  {$s_1$};
-    %   \node[st,final] (s2) [right of=s1]  {$s_2$}; 
-    %   \path[->] (s0) edge  node {a}  (s1)
-    %             (s1) edge[bend left]  node {b}  (s2)
-    %             (s2) edge[bend left]  node {b}  (s1);
-    %             % (s_2) edge  [loop above]  node {b}  ();
-    % \end{tikzpicture}
-  \end{columns}
+% \begin{slide}{Overview}
+%   ~\\
+%   \begin{columns}
+%     \col[0.45]{\begin{itemize}
+%       \item UML behaviour diagrams
+%       \item Automata \& languages
+%       \item Process algebra
+%       \item Relation between them
+%       \item Equivalent models
+%     \end{itemize}}
+%     %
+%     \col[0.27]{
+%       \includegraphics[width=\textwidth]{images/cm-flowchart.png}
+%     }
+%     \col[0.27]{
+%       \includegraphics[width=\textwidth]{images/LTS-1.pdf}
+%       \\[10mm]
+%       \begin{minipage}{\textwidth}
+%       \scriptsize
+% % \begin{lstlisting}
+% CM = €.coffee'.CM;\\
+% CS = pub'.€'.coffee.CS;\
+% CMCS = CM || CS;
+% % \end{lstlisting}       
+%       \end{minipage}
+%     }
+%     % \begin{tikzpicture}[aut,inner sep=3pt]
+%     %   \node[st,initial]  (s0) {$s_0$};
+%     %   \node[st] (s1) [right of=s0]  {$s_1$};
+%     %   \node[st,final] (s2) [right of=s1]  {$s_2$}; 
+%     %   \path[->] (s0) edge  node {a}  (s1)
+%     %             (s1) edge[bend left]  node {b}  (s2)
+%     %             (s2) edge[bend left]  node {b}  (s1);
+%     %             % (s_2) edge  [loop above]  node {b}  ();
+%     % \end{tikzpicture}
+%   \end{columns}
   
+% \end{slide}
+
+
+\begin{slide}{Overview}
+\begin{block}{So far}
+\begin{itemize}
+  \item Class diagrams, boolean and 1st order logic, ...
+\end{itemize}
+\end{block}
+
+\begin{block}{Next}
+\begin{itemize}
+  % \item What do they mean - \alert{precisely}?
+  % \item Introduction to \alert{formal methods}
+  \item Look at UML \alert{behaviour} diagrams
+  \item Use a domain with a \alert{precise semantics}
+  \begin{itemize}
+    \item Non-deterministic finite \structure{automata} (NFA)
+    \item Simple language for \structure{processes}
+    \item Encode processes $\to$ NFA
+    \item Equivalence of processes
+  \end{itemize}
+\end{itemize}
+\end{block}
+
+\wrap{\includegraphics[width=0.7\textwidth]{images/diagrams/coffee-flow.png}}
+~~
+\wrap{\begin{tikzpicture}[aut,node distance=1cm,font=\footnotesize]
+  \node[st,initial]  (s_0)                 {$s_0$};
+  \node[st,final]                    (s_2) [right of=s_0]  {$s_1$};
+% 
+  \path[->]
+  (s_0) edge                node {a}  (s_2)
+  (s_2) edge  [loop above]  node {b}  ();
+\end{tikzpicture}}
+
 \end{slide}
+
+
+\begin{slide}{What are formal methods?}
+  \centering
+
+  \begin{minipage}{0.7\textwidth}
+  \Large
+  \begin{block}{}
+    \centering
+    Formal methods are \structure{techniques} to
+    \\
+    model \alert{complex systems} using
+    \\
+    \alert{rigorous mathematical models}
+
+  \end{block}
+  \end{minipage}
+  \\[10mm]
+
+  \begin{minipage}{0.32\textwidth}
+  \begin{alertblock}{Specification}
+    Define part of the system using a modelling language
+  \end{alertblock}
+  \end{minipage}
+~~
+  \begin{minipage}{0.3\textwidth}
+  \begin{alertblock}{Verification}
+    Prove properties.\\Show correctness.\\Find bugs.
+  \end{alertblock}
+  \end{minipage}
+~~
+  \begin{minipage}{0.28\textwidth}
+  \begin{exampleblock}{Implementation}
+    Generate correct code.\\
+  \end{exampleblock}
+  \end{minipage}
+
+\end{slide}
+
+\begin{frame}
+  \huge\centering
+  All formal models are \alert{wrong}
+  \pause
+  \\[5mm]
+  ... but some of them are \structure{usefull}!
+\end{frame}
+
+
+% \begin{slide}{Many success cases}
+%   \huge\centering
+
+%   Cryptographic protocols
+%   \\[5mm]
+%   Distributed systems do not get stuck
+%   \\[5mm]
+%   Safety in railway systems
+%   \\[5mm]
+%   Type systems
+%   \\[5mm]
+%   \faded{\emph{[Tests: Validation (not Verification)]}}
+
+% \end{slide}
+
+
+\begin{slide}{Syllabus}
+  \begin{block}{}
+    TODO
+  \end{block}
+  \begin{itemize}
+    \faded{
+    \item \structure{Introduction to MDE: Visual Paradigm \& SysML}
+    \item \structure{SysML: Structural and Behavioural Diagrams I}
+    }
+    \item {\Large \textbf{\alert{Formalisation: Sequential process algebra}}}
+    \faded{
+    \item \structure{SysML: Behaviour Diagrams II}
+    \item \alert{Formalisation: Concurrent process algebra}
+    \item \alert{Formalisation: Modelling with mCRL2}
+    \item \structure{SysML: Requirements Diagram}
+    \item \alert{Formalisation: Dynamic Logic \& Verification}
+    \item \structure{Standards and use cases in critical systems}
+    }
+  \end{itemize}
+\end{slide}
+
 
 \section{UML behaviour diagrams}
 %----------------------------------------------------------------------------------
@@ -125,10 +246,10 @@ evolving \structure{concurrently}
 \end{slide}
 
 %----------------------------------------------------------------------------------
-\begin{slide}{Non-Deterministic Finite Automata}
+\begin{slide}{Non-Deterministic Finite Automata (NFA)}
 \small
 \begin{block}{Definition}
-A NDFA over a set $\Act$ of names is a tuple
+A NFA over a set $\Act$ of names is a tuple
 $\pair{S, I, \downarrow, \Act,  \rra}$ where
 \begin{itemize}
 \item $S = \enset{s_0, s_1, s_2, ...}$ is a set of states
@@ -144,6 +265,55 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 \end{itemize}
 \end{block}
 \end{slide}
+
+
+\begin{slide}{Example}
+  \begin{block}{Example of an automaton}
+  \centering
+  \wrap{
+  \begin{tikzpicture}[aut]
+    \node[st,initial]  (s_0)                 {$s_0$};
+    \node[st,final]  (s_1) [right of=s_0]  {$s_1$};
+  % 
+    \path[->]
+    (s_0) edge[bend left] node {a}  (s_1)
+    (s_1) edge[bend left] node {b}  (s_0);
+  \end{tikzpicture}
+  }
+  ~~~~
+  \wrap{$s_0$ is an initial state\\$s_1$ is a final state}
+    
+  \end{block}
+
+
+\doExercise{Formalise these automata as $\pair{S,I,\dda,\Act,\rra}$}{
+\centering
+\begin{tikzpicture}[aut]
+  \node[st] (s_0) {};
+  \node[st,initial,right of=s_0] (s_1) {};
+  % \node[st] (s_2) [right of=s_1]  {};
+  \node[st,final] (s_2) [right of=s_1]  {};
+% 
+  \path[->]
+  (s_1) edge[bend left] node {set} (s_2)
+  (s_1) edge[bend left] node{set} (s_0)
+  (s_2) edge  [loop above]  node {alarm} () edge[bend left] node{reset} (s_1);
+\end{tikzpicture}
+~~~~~~~~~~
+\begin{tikzpicture}[aut]
+  \node[st,initial] (s_1) {};
+  \node[st,final] (s_2) [right of=s_1]  {};
+% 
+  \path[->]
+  (s_1) edge[bend left] node {set} (s_2)
+  (s_2) edge  [loop above]  node {alarm} () edge[bend left] node{reset} (s_1);
+\end{tikzpicture}
+
+}
+  
+\end{slide}
+
+
 
 %----------------------------------------------------------------------------------
 % \begin{slide}{Labelled Transition System}
@@ -170,7 +340,7 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 % % and $\downarrow$.
 % \end{block}
 
-More generally, a NDFA $\pair{S,I,\dda,\Act,\rra}$ is a \structure{labelled transition system} (LTS) $\pair{S,\Act,\rra}$, where each state $s \in S$ determines a \structure{system} over all states reachable from $s$ and the corresponding restriction of $\rra$.
+More generally, a NFA $\pair{S,I,\dda,\Act,\rra}$ is a \structure{labelled transition system} (LTS) $\pair{S,\Act,\rra}$, where each state $s \in S$ determines a \structure{system} over all states reachable from $s$ and the corresponding restriction of $\rra$.
 
 \begin{block}{LTS classification}
 \begin{itemize}
@@ -190,7 +360,7 @@ More generally, a NDFA $\pair{S,I,\dda,\Act,\rra}$ is a \structure{labelled tran
 % \begin{slide}{Language of an Automaton}
 % \small
 
-% Let $A = \pair{S, I, \dda, \Act,  \rra}$ be a NDFA.
+% Let $A = \pair{S, I, \dda, \Act,  \rra}$ be a NFA.
 
 % \begin{block}{Transitive closure $\rra^{*}$}
 % Let $N^{*}$ denote the set of all \structure{words} $a_1a_2\ldots a_n$, where $a_i \in N$ and $n \geq 0$. 
@@ -208,34 +378,69 @@ More generally, a NDFA $\pair{S,I,\dda,\Act,\rra}$ is a \structure{labelled tran
 % \end{align*}
 
 
+%----------------------------------------------------------------------------------
+\begin{slide}{Reachability}
+\small
+\begin{block}{Definition}
+The \structure{reachability relation}, ${\rra^*} \subseteq S \times \Act^* \times S$, is defined inductively
+\begin{itemize}
+\item $s \reach{\!\!\!\!\!\epsilon} s$ for each $s \in S$, where $\epsilon \in \Act^*$ denotes the empty \alert{word};
+\item if  $s \rtran{a} s''$  and $s'' \reach{\!\!\!\!\!\sigma} s'$ then $s \reach{\!\!\!\!\!a \sigma} s'$, for $a \in \Act, \sigma \in \Act^*$
+\end{itemize}
+\end{block}
+
+\begin{block}{Reachable state}
+$t \in S$ is \structure{reachable} from $s \in S$ iff there is a \alert{word} $\sigma \in \Act^*$ st $s \reach{\!\!\!\!\!\sigma} t$
+\end{block}
+
+\end{slide}
+
 \begin{slide}{Language of an Automaton}
 \small
 
-Let $A = \pair{S, I, \dda, \Act,  \rra}$ be a NDFA.
+% Let $A = \pair{S, I, \dda, \Act,  \rra}$ be a NFA.
 
-\begin{block}{Transitive closure $\rra^{*}$}
-Define ${\rra^{*}} \subseteq S \times N^{*} \times S$ to be the \structure{transitive closure} of $\rra$ defined as the minimal set such that:
-\begin{align*}
-\text{\alert{(1)}}\; \;  & 
-  s\in S \;\imp\; (s,\epsilon,s) \in {\rra^{*}}\\  
-\text{\alert{(2)}}\; \;  &
-  (s,w,s') \in {\rra^{*}} ~\land~ s' \rtran{wa} s'' ~~\imp~~  (s,\epsilon,s'') \in {\rra^{*}}
-\end{align*}
-\end{block}
+% \begin{block}{Transitive closure $\rra^{*}$}
+% Define ${\rra^{*}} \subseteq S \times N^{*} \times S$ to be the \structure{transitive closure} of $\rra$ defined as the minimal set such that:
+% \begin{align*}
+% \text{\alert{(1)}}\; \;  & 
+%   s\in S \;\imp\; (s,\epsilon,s) \in {\rra^{*}}\\  
+% \text{\alert{(2)}}\; \;  &
+%   (s,w,s') \in {\rra^{*}} ~\land~ s' \rtran{wa} s'' ~~\imp~~  (s,\epsilon,s'') \in {\rra^{*}}
+% \end{align*}
+% \end{block}
 
-Notation: $s\rtrant{w}s' \; \equiv\; (s,w,s') \in {\rra^{*}}$
+% Notation: $s\rtrant{w}s' \; \equiv\; (s,w,s') \in {\rra^{*}}$
 
 \begin{block}{Language}
-  The \structure{language $L_A$} of $A$ is the smallest set such that:
-  \begin{align*}
-    s \in I ~\land~ s'\dda ~\land~ s\rtrant{w} s' ~~\imp~~ w \in L_A
-  \end{align*}
+  \centering
+  % The \structure{language $L_A$} of $A$ is the smallest set such that:
+  % \begin{align*}
+  %   s \in I ~\land~ s'\dda ~\land~ s\rtrant{w} s' ~~\imp~~ w \in L_A
+  % \end{align*}
+  A word $\sigma$ is in the \structure{language $L_A$} of an automata $A = \pair{S,I,\dda,N,\rra}$
+  \\iff\\
+  there are states $s\in I$, $s' \in \dda$ such that $s\rtrant{\sigma}s'$.
 \end{block}
 \end{slide}
 
 
 
 \begin{slide}{Exercises}
+\doExercise{What is the language of this automata?}{
+\centering
+\begin{tikzpicture}[aut]
+  \node[st,initial,final]  (s_0)                 {$s_0$};
+  \node[st,final]                    (s_1) [right of=s_0]  {$s_1$};
+  \node[st,final]                    (s_2) [right of=s_1]  {$s_2$};
+% 
+  \path[->]
+  (s_0) edge                node {a}  (s_1)
+  (s_1) edge                node {b}  (s_2);
+
+\end{tikzpicture}
+}
+
 \doExercise{What is the language of this automata?}{
 \centering
 \begin{tikzpicture}[aut]
@@ -267,22 +472,7 @@ Notation: $s\rtrant{w}s' \; \equiv\; (s,w,s') \in {\rra^{*}}$
 \end{slide}
 
 
-%----------------------------------------------------------------------------------
-\begin{slide}{Reachability}
-\small
-\begin{block}{Definition}
-The reachability relation, $\rra^* \subseteq S \times \Act^* \times S$, is defined inductively
-\begin{itemize}
-\item $s \reach{\!\!\!\!\!\epsilon} s$ for each $s \in S$, where $\epsilon \in \Act^*$ denotes the empty word;
-\item if  $s \rtran{a} s''$  and $s'' \reach{\!\!\!\!\!\sigma} s'$ then $s \reach{\!\!\!\!\!a \sigma} s'$, for $a \in \Act, \sigma \in \Act^*$
-\end{itemize}
-\end{block}
 
-\begin{block}{Reachable state}
-$t \in S$ is \structure{reachable} from $s \in S$ iff there is a word $\sigma \in \Act^*$ st $s \reach{\!\!\!\!\!\sigma} t$
-\end{block}
-
-\end{slide}
 
 %----------------------------------------------------------------------------------
 %\begin{slide}{An alternative characterisation}
