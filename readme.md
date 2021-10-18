@@ -10,14 +10,40 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 # Syllabus
 
-1. Fundamental concepts and principles of MDE, and its specificities when applied to critical systems.
+<!-- 1. Fundamental concepts and principles of MDE, and its specificities when applied to critical systems.
 2. Fundamentals of requirement engineering.
 3. UML as software and system modelling languages for enabling critical systems MDE.
 4. Formal specification and model checking of critical systems: principles and tools.
 5. Software development standards for critical systems.
 6. Case studies.
-
+ -->
 <!-- 6. Fundamentals of testing and fault analysis, and its usage in MDE -->
+
+
+- High-level overview or requirements and associated processes
+
+- Mathematical Preliminaries
+  + Basic mathematical notations
+  + Set theory
+  + PropositionalLogic
+    * Syntax, semantics, and reasoning
+  + First Order Logic
+    * Syntax, semantics, and reasoning
+  + The Z3 automatic theorem prover
+    * Rise4fun interface: get acquainted with the tool
+    * Python API: automating search for solutions
+
+- Behavioural modelling
+  + Single component
+    * State diagrams and Flow charts
+    * Formal modelling: Automata, Process Algebra and equivalences
+  + Manycomponents
+    * Communication diagrams and Sequence
+  diagrams
+    * Formal modelling: Process algebra with interactions, Realisability
+    * Verification of requirements
+    * Formal modelling: modal logics
+  + Tools: model checking with mCRL2
 
 
 # Material
