@@ -1,5 +1,5 @@
 %\documentclass[handout]{beamer}
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{etex} % fixes new-dimension error
 
 \input{macros/beamerconf}
@@ -192,7 +192,7 @@
 
   \begin{itemize}
     \item \alert{State Diagram} focus on states
-    \item \alert{Flow Chart} focus on actions (also known as \emph{activity diagrams})
+    \item \alert{Flowchart} focus on actions (also known as \emph{activity diagrams})
   \end{itemize}
 \end{slide}
 
@@ -203,8 +203,8 @@
   % \end{block}
 \end{slide}
 
-\begin{slide}{Coffee Flow Chart}
-  % \begin{block}{Flow Chart}
+\begin{slide}{Coffee Flowchart}
+  % \begin{block}{Flowchart}
     \includegraphics[width=1.0\textwidth]{images/diagrams/coffee-flow.png}
   % \end{block}
   \\[6mm]
@@ -235,7 +235,7 @@ evolving \structure{concurrently}
 
 \bigskip
 
-\frsplitt{\alert{This module}}{\alert{The next module}}
+\frsplitt{\centering\alert{This module}}{\centering\alert{The next module}}
 
 
 % \begin{block}{Reactive system}
@@ -258,7 +258,7 @@ evolving \structure{concurrently}
 A NFA over a set $\Act$ of names is a tuple
 $\pair{S, I, \downarrow, \Act,  \rra}$ where
 \begin{itemize}
-\item $S = \enset{s_0, s_1, s_2, ...}$ is a set of states
+\item $S = \enset{s_0, s_1, s_2, ...}$ is a set of \structure{states}
 \item $I \subseteq S$ is the set of \structure{initial} states
 \item  $\downarrow \subseteq S$ is the set of \structure{terminating} or final states
 \begin{equation*}
@@ -290,11 +290,11 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
   \wrap{$s_0$ is an initial state\\$s_1$ is a final state} 
   \end{block}
   %
-  ~\\[0mm]
+  ~\\[-3mm]
   %
   \begin{block}{}
     \faded{(Formalise this automata)}
-      \\[0.25\textheight]
+      \\[0.30\textheight]
   \end{block}
 
 \end{slide}
@@ -337,11 +337,11 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 
   \vspace{-1mm}
   \includegraphics[width=1.0\textwidth]{images/diagrams/coffee-state.png}
-  \vspace{-1mm}
+  \vspace{-7mm}
 
   \doExercise{Draw LTS}{
       \faded{(suggestion: by hand on a paper, and take a photo of it.)}
-      \\[0.30\textheight]
+      \\[0.20\textheight]
   }
 \end{slide}
 
@@ -521,6 +521,37 @@ $t \in S$ is \structure{reachable} from $s \in S$ iff there is a \alert{word} $\
 \end{slide}
 
 
+\begin{slide}{Extra: Regular Expressions}
+
+\begin{columns}[t]
+  \colb[0.48]{Regular Expressions -- syntax}{
+    \begin{itemize}
+      \item \structure{$w_1w_2$}: word $w_1$ followed by word $w_2$
+      \item \structure{$w_1+w_2$}: word $w_1$ or word $w_2$
+      \item \structure{$a^{*}$}: 0 or more $a$'s
+      \item \structure{$a^{+}$}: 1 or more $a$'s
+      \item \structure{$\epsilon$}: empty word
+    \end{itemize}
+  }
+  \col[0.48]{
+    \begin{exampleblock}{Examples}
+      \begin{itemize}
+        \item \alert{$ab + c$}: ($a$ followed by $b$) or $c$
+        \item \alert{$(ab)^{*}b$}: $b$ or $abb$ or $ababb$ or $\ldots$
+        \item \alert{$c((ab)^{*}b)^{+}$}: $cb$ or $cabb$ or $cababb$ or $\ldots$
+      \end{itemize}
+    \end{exampleblock}
+  }
+\end{columns}
+
+~\\\pause
+
+\begin{block}{NFA vs. Reg. Expr.}
+  \centering
+  Word $w$ expressible by a NFA ~~$\Leftrightarrow$~~ $w$ expressible by a Reg. Expr.
+\end{block}
+  
+\end{slide}
 
 
 %----------------------------------------------------------------------------------
@@ -598,22 +629,26 @@ $t \in S$ is \structure{reachable} from $s \in S$ iff there is a \alert{word} $\
 \begin{slide}{Process algebras}
 \small
 
-\begin{block}{CCS - Syntax}
+\begin{block}{Sequential CCS - Syntax}
 \begin{equation*}
-\mathcal{P} ~\ni~ P,Q\; ::=\; K ~~|~~ \alpha.P ~~|~~ \sum_{i\in I} P_i
-        ~~|~~ \crn P f \transp{~~|~~ P|Q ~~|~~ P\backslash L}
+% \mathcal{P} ~\ni~ P,Q\; ::=\; K ~~|~~ \alpha.P ~~|~~ \sum_{i\in I} P_i
+%         ~~|~~ \crn P f \faded{~~|~~ P|Q ~~|~~ P\backslash L}
+\mathcal{P} ~\ni~ P,Q\; ::=\; K ~~|~~ \alpha.P ~~|~~ P + Q ~~|~~ \cnil
+        ~~|~~ \crn P f  ~~|~~ P\backslash L \faded{~~|~~ P|Q}
 \end{equation*}
 %
 where
-\\- $\alpha \in \Act \transp{\cup \overline\Act \cup \set{\tau}} $~ is an action
-\\- $K$ s a collection of process names or process contants
+\\- $\alpha \in \Act %\faded{\cup \overline\Act \cup \set{\tau}}
+    \cup \set{\tau}$~ is an \structure{action}
+\\- $K$ s a collection of \structure{process} names or process constants
 \\- $I$ is an indexing set
-\\- $L \subseteq \Act \transp{\cup \overline{\Act}}$ is a set of labels
-\\- $f$ is a function that renames actions s.t. $f(\tau) = \tau$ and $f(\overline{a}) = \overline{f(a)}$
-\\- notation:
-\\~~~~~$\cnil = \sum_{i\in\emptyset}P_i$
-\\~~~~~$P_1+P_2 = \sum_{i\in\set{1,2}}P_i$
-\\~~~~~$[f] = [b_1/a_1,\ldots,b_n/a_n]$
+\\- $L \subseteq \Act %\faded{\cup \overline{\Act}}
+    $ is a set of \structure{labels}
+\\- $f$ is a function that \structure{renames} actions s.t. $f(\tau) = \tau$ % and $f(\overline{a}) = \overline{f(a)}$
+\\- \alert{notation:}
+% \\~~~~~$\cnil = \sum_{i\in\emptyset}P_i$
+% \\~~~~~$P_1+P_2 = \sum_{i\in\set{1,2}}P_i$
+\\~~~~~$[f] = [a_1\mapsto b_1,\ldots,a_n \mapsto b_n]$
 \end{block}
 \end{slide}
 
@@ -624,140 +659,131 @@ where
 
 \begin{block}{Syntax}
 \begin{equation*}
-\mathcal{P} ~\ni~ P,Q\; ::=\; K ~~|~~ \alpha.P ~~|~~ \sum_{i\in I} P_i
-    ~~|~~ \crn P f \transp{~~|~~ P|Q ~~|~~ P\backslash L}
+% \mathcal{P} ~\ni~ P,Q\; ::=\; K ~~|~~ \alpha.P ~~|~~ \sum_{i\in I} P_i
+%         ~~|~~ \crn P f \faded{~~|~~ P|Q ~~|~~ P\backslash L}
+\mathcal{P} ~\ni~ P,Q\; ::=\; K ~~|~~ \alpha.P ~~|~~ P + Q ~~|~~ \cnil
+        ~~|~~ \crn P f  ~~|~~ P\backslash L \faded{~~|~~ P|Q}
 \end{equation*}
 \end{block}
 
 %\setcounter{equation}{0}
-\begin{exampleblock}{Exercise: Which are syntactically correct?}
-\frsplit[.40]{
-\begin{align}
-  & a.b.A+B\\&
-  (a.\cnil + \ainv a.A) \backslash \set{a,b}\\&
-  (a.\cnil + \ainv a.A) \backslash \set{a,\tau}\\& % no
-  a.B+[a/b]\\& % no
-  \tau.\tau.B + \cnil\\&
-  (a.B + b.B)[a/a,b/\tau]
-\end{align}
-}{\begin{align} &
-  (a.B + \tau.B)[a/b,a/a]\\& % no
-  (a.b.A + \ainv a.\cnil)|B\\&
-  (a.b.A + \ainv a.\cnil).B\\&
-  (a.b.A + \ainv a.\cnil)+B\\&
-  (\cnil | \cnil) + \cnil
-\end{align}
-}
+\begin{exampleblock}{\exercise Which are NOT syntactically correct? Why?}
+\begin{columns}
+  \column{0.38\textwidth}
+  \begin{align}
+    & a.b.A+B\\&
+    (a.\cnil + b.A) \backslash \set{a,b,c}\\&
+    (a.\cnil + b.A) \backslash \set{a,\tau}\\& % no
+    a.B+[b\mapsto a]\\& % no
+    \tau.\tau.B + \cnil
+  \end{align}
+
+  \column{0.45\textwidth}
+  \begin{align} &
+    a.(a + b).A\\&
+    (a.B + b.B)[a\mapsto a,\tau\mapsto b]\\&
+    (a.B + \tau.B)[b\mapsto a,a\mapsto a]\\& % no
+    % (a.b.A + \ainv a.\cnil)|B\\&
+    (a.b.A + b.\cnil).B\\&
+    (a.b.A + b.\cnil)+B
+    % \\&
+    % (\cnil | \cnil) + \cnil
+  \end{align}
+\end{columns}
 \end{exampleblock}
 
 \end{slide}
 
 %-------------------------------------------------------------------------------
 
-\begin{slide}{CCS semantics - building an LTS}
+\begin{slide}{CCS semantics - building a NFA}
 \small 
 \centering
 \newcommand{\msep}{~~~~~~}
 
 \typerule{act}{\shrk}{\alpha.P \trans\alpha P}
 \msep
-\typerule{sum-j}{P_j \trans\alpha P'_j}{\sum_{i\in I}P_i \trans\alpha P'_j} $\transp{j\in I}$
-\\[3mm]
-\typerule{com1}{P\trans\alpha P'}{P|Q\trans\alpha P'|Q}
+\typerule{sum-1}{P_1 \trans\alpha P'_1}{P_1 + P_2 \trans\alpha P'_1} %$\faded{j\in I}$
 \msep
-\typerule{com2}{Q\trans\alpha Q'}{P|Q\trans\alpha P|Q'}
-\msep
-\typerule{com3}{P\trans a P' \quad Q\trans{\ainv{a}} Q'}{P|Q\trans\tau P'|Q'}
+\typerule{sum-2}{P_2 \trans\alpha P'_2}{P_1 + P_2 \trans\alpha P'_2} %$\faded{j\in I}$
 \\[3mm]
-\typerule{res}{P\trans\alpha P'}{\crt P L\trans\alpha \crt{P'}L}~$\transp{\alpha,\ainv{\alpha} \notin L}$
+\typerule{res}{P\trans\alpha P'}{\crt P L\trans\alpha \crt{P'}L}~$\faded{\alpha%,\ainv{\alpha}
+                                                                  \notin L}$
 \msep
 \typerule{rel}{P\trans\alpha P'}{\crn P f\trans{f(\alpha)} \crn{P'} f}
-\\[2mm]
+% \\[3mm]
+% \typerule{com1}{P\trans\alpha P'}{P|Q\trans\alpha P'|Q}
+% \msep
+% \typerule{com2}{Q\trans\alpha Q'}{P|Q\trans\alpha P|Q'}
+% \msep
+% \typerule{com3}{P\trans a P' \quad Q\trans{\ainv{a}} Q'}{P|Q\trans\tau P'|Q'}
+\\[6mm]
+
+\only<1>{
+  \begin{itemize}
+    \item \structure{Initial states:} the process being translated
+    \item \structure{Final states:} all states are final
+    \item \alert{Language:} possible sequence of actions of a process
+  \end{itemize}
+}
 \pause
 
-\begin{exampleblock}{Exercise: Draw the LTS's}
-  \vspace*{-4mm}
+\begin{exampleblock}{\exercise Draw the LTS's}
+  % \vspace*{-4mm}
   \begin{align*}
-    CM &= \mathsf{coin.\ainv{coffee}}.CM
+    CM &= \mathsf{coin.coffee}.CM
     \\
-    CS &= \mathsf{\ainv{pub}.\ainv{coin}.coffee}.CS
-    \\
-    SmUni &= \crt{(CM|CS)}{\mathsf{\set{coin,coffee}}}
+    CS &= \mathsf{pub.(coin.coffee.CS + coin.tea.CS)}
+    % CM &= \mathsf{coin.\ainv{coffee}}.CM
+    % \\
+    % CS &= \mathsf{\ainv{pub}.\ainv{coin}.coffee}.CS
+    % \\
+    % SmUni &= \crt{(CM|CS)}{\mathsf{\set{coin,coffee}}}
   \end{align*}
 \end{exampleblock}
 
 \end{slide}
 
-%-------------------------------------------------------------------------------
-\begin{slide}{mCRL2}
-\small
-\myblock{\url{http://mcrl2.org}}
-  
-\begin{itemize}
-  \item {Formal \structure{specification language} with an associated toolset}
-  
-  \item {Used for \structure{modelling}, \structure{validating} and \structure{verifying} concurrent systems and protocols}
-\end{itemize}
-  
-\end{slide}
 
-%-------------------------------------------------------------------------------
-\begin{frame}[fragile]{mCRL2}
-  
-\begin{block}{Syntax (by example)}
-\begin{align*}
-  a.P &\to \mcode{a.P}
-  \\
-  P_1 + P_2 &\to \mcode{P1 + P2}
-  \\
-  P\backslash L &\to \mcode{block(L,P)}
- \\
- \crn{P}{f} &\to \mcode{rename(f,P)}
-  \\
-  a.P|\ainv a.Q &\to \mcode{hide(\{a\},}\mcode{comm(\{a1|a2->a\}, }\mcode{a1.P}\mcode{||a2.P))}
-  \\
-  a.P|\ainv a.Q \backslash \{a\}  &\to \mcode{hide(\{a\},}\mcode{block(\{a1,a2\},}\mcode{comm(\{a1|a2->a\}, }
-  \\&~~~~~
-  \mcode{a1.P}\mcode{||a2.Q)))}
-\end{align*}
-\end{block}
-\end{frame}
 
-%-------------------------------------------------------------------------------
-\begin{frame}[fragile]{mCRL2}
-\small
-%  \myblock{\url{http://mcrl2.org}}
-  
-%  \begin{block}{Syntax (by example)}
-
-\begin{lstlisting}
-act
-  coin, coin', coinCom,
-  coffee, coffee', coffeeCom, pub';
-
-proc
-  CM = coin.coffee'.CM;
-  CS = pub'.coin'.coffee.CS;
-  CMCS = CM || CS;
-  SmUni = hide({coffeeCom,coinCom},
-          block({coffee,coffee',coin,coin'},
-          comm({coffee|coffee' -> coffeeCom,
-                coin|coin'     -> coinCom},
-          CMCS )));
-init
-  SmUni;
-\end{lstlisting}
-%  \end{block}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-\begin{slide}{mCRL2 toolset overview}
+\begin{slide}{Exercise}
   \centering
-  
-  \includegraphics[width=\textwidth]{images/mcrl2-toolset.png}
 
-  -- mCRL2 tutorial: Modelling part --
+  \includegraphics[width=1.0\textwidth]{images/diagrams/coffee-flow.png}
+
+  \doExercise{Write the process of the flowchart above}{
+        $P ~~=~ \mf{powerOn} . Q$\\
+        $Q ~~=~ \mf{selMocha}.\mf{addChocolate}.Mk + \mf{selLatte}.Mk + \ldots $\\
+        $Mk ~=~ \mf{addMilk}\ldots$  
+      ~\\[0.35\textheight]
+  }
+
 \end{slide}
+
+
+% \begin{slide}{Exercise}
+%   \centering
+
+%   \vspace*{-2mm}
+%   \begin{columns}
+%     \column{0.40\textwidth}\centering
+%     \begin{block}{Flowchart}
+%       \centering
+%       \includegraphics[height=0.85\textheight]{images/cm-flowchart.png}
+%     \end{block}
+%     \column{0.56\textwidth}\centering
+%     \begin{exampleblock}{\exercise Write the processes}
+%       \begin{align*}
+%         P ~=~& \mf{powerOn} . Q\\
+%         Q ~=~& \mf{selLatte}.L + \mf{selMocca}.M + \ldots \\
+%         L ~=~& \ldots  
+%       \end{align*}
+%       ~\\[43mm]
+%     \end{exampleblock}
+%   \end{columns}
+% \end{slide}
+% %----------------------------------------------------------------------------------
+
 
 %-------------------------------------------------------------------------------
 \section{Behavioural equivalences}
@@ -767,11 +793,11 @@ init
 \small
 
 
-Two LTS should be \structure{equivalent} if they cannot be distinguished by interacting with them.
+Two LTS should be \alert{equivalent} if they cannot be distinguished by interacting with them.
 
 
 \begin{block}{Equality of functional behaviour}
-is not preserved by \alert{parallel} composition: non \alert{compositional} semantics, cf,
+is not preserved by \structure{parallel} composition: non \structure{compositional} semantics, cf,
 \begin{center}
 \texttt{x:=4; x:=x+1} ~and~ \texttt{x:=5}
 \end{center}
@@ -790,10 +816,10 @@ is too strong (why?)
 \small
 
 \begin{block}{Definition}
-Let $T = \pair{S, \Act,  \rra}$ be a labelled transition system. The set of \structure{traces} $\Tr{s}$, for $s \in S$ is the minimal set  satisfying
+Let $T = \pair{S, \Act,  \rra}$ be a labelled transition system. The set of \alert{traces} $\Tr{s}$, for $s \in S$ is the minimal set  satisfying
 \begin{align*}
-\text{\alert{(1)}}\; \;  &  \epsilon \in \Tr{s}\\
-\text{\alert{(2)}}\; \;  &  a \sigma \in \Tr{s}\; \imp\; \rcb{\exists}{s'}{s' \in S}{s \rtran{a} s'\, \e\, \sigma \in \Tr{s'}}
+\text{\structure{(1)}}\; \;  &  \epsilon \in \Tr{s}\\
+\text{\structure{(2)}}\; \;  &  a \cdot \sigma \in \Tr{s}\; \imp\; \rcb{\exists}{s'}{s' \in S}{s \rtran{a} s'\, \e\, \sigma \in \Tr{s'}}
 \end{align*}
 \end{block}
 
@@ -805,7 +831,7 @@ Let $T = \pair{S, \Act,  \rra}$ be a labelled transition system. The set of \str
 \small
 
 \begin{block}{Definition}
-Two states $s, r$ are \structure{trace equivalent} iff  $ \Tr{s} =  \Tr{r}$\\
+Two states $s, r$ are \alert{trace equivalent} iff  $ \Tr{s} =  \Tr{r}$\\
 (i.e. if they can perform the same finite sequences of transitions)
 \end{block}
 ~\\
@@ -821,23 +847,40 @@ Two states $s, r$ are \structure{trace equivalent} iff  $ \Tr{s} =  \Tr{r}$\\
 \end{slide}
 
 
+\begin{slide}{Exercise}
+  \centering
+  \doExercise{Consider the system}{
+  \centering
+  \begin{tikzpicture}
+      \node(p){$p$}; \node[right=of p](p1){$p_1$}; \node[right=of p1](p2){$p_2$};
+      \draw[->] (p)edge[bend right] node[below]{a} (p1)
+                (p1)edge[bend right] node[above]{b}(p)
+                (p2)edge node[above]{d} (p1)edge[loop right] node[right]{c}(p1) ;
+  \end{tikzpicture}
+  \begin{enumerate}
+    \item Formalise the system as a tuple $(S,Act,\to)$
+    \item List 4 different traces from state (p2).
+  \end{enumerate}
+  }
+\end{slide}
+
 
 \section{Similarity}
 
 %----------------------------------------------------------------------------------
 \begin{slide}{Simulation}
 \begin{flushright}
-the quest for a \structure{behavioural equality}:\\
-able to identify states that cannot be distinguished by any \structure{realistic} form of  observation
+the quest for a \alert{behavioural equality}:\\
+able to identify states that cannot be distinguished by any \alert{realistic} form of  observation
 \end{flushright}
 ~\\
 
 \small
 \begin{block}{Simulation}
-\caixa{A state $q$ \structure{simulates} another state $p$
-\structure{if}\\
+\caixa{A state $q$ \alert{simulates} another state $p$
+\alert{if}\\
 every transition from $q$ is corresponded by a transition from $p$
-\structure{and}\\
+\alert{and}\\
 this capacity is kept along the whole life of the system to which state space $q$ belongs to.}
 \end{block}
 \end{slide}
@@ -853,8 +896,8 @@ relation \structure{$R \subseteq S_1 \times S_2$} is a \structure{simulation} if
 for all $\pair{p,q} \in \structure{R}$ and $a \in \Act$,
 
 \begin{align*}
-%\text{\alert{(1)}}\; \;  & p \downarrow_1 \;  \imp\; q \downarrow_2\\ &\\
-\text{\alert{(1)}}\; \;  & p \rtran{a}_1 p'\;  \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, \pair{p',q'} \in \structure{R}}   
+%\text{\gold{(1)}}\; \;  & p \downarrow_1 \;  \imp\; q \downarrow_2\\ &\\
+\text{\gold{(1)}}\; \;  & p \rtran{a}_1 p'\;  \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, \pair{p',q'} \in \structure{R}}   
 \end{align*}
 \vspace{6mm}
 
@@ -872,7 +915,7 @@ p'           &   &           &                                   & p'\hspace{-2.
 %----------------------------------------------------------------------------------
 \begin{slide}{Example}
 
-\begin{exampleblock}{Find simulations}
+\begin{exampleblock}{\exercise Find simulations}
 \begin{equation*}
 \xymatrix{
 & q_1  \ar[r]^{d} & q_2 &       &        &                              p_2\\
@@ -883,11 +926,13 @@ q_0 \ar[ru]^{a} \ar[rd]_{a} &  & & p_0 \ar[r]^{a} & p_1 \ar[ru]^{d} \ar[rd]_{e} 
 \end{exampleblock}
 
 \vspace{0.2cm}
-\visible<2->{\begin{equation*}
+\visible<2->{\exerciseBack\begin{equation*}
 q_0 \lesssim p_0 \text{\hspace{0.5cm} cf. \hspace{0.3cm}} 
-\enset{\pair{q_0,p_0}, \pair{q_1,p_1},\pair{q_4,p_1},\pair{q_2,p_2},\pair{q_3,p_3}}
+\enset{\pair{q_0,p_0}, \pair{q_1,p_1},\pair{q_4,p_1},\alert{\ldots}} %\pair{q_2,p_2},\pair{q_3,p_3}}
 \end{equation*}}
 \end{slide}
+
+\exerciseAdd
 
 %----------------------------------------------------------------------------------
 \begin{slide}{Similarity}
@@ -897,11 +942,11 @@ q_0 \lesssim p_0 \text{\hspace{0.5cm} cf. \hspace{0.3cm}}
 \centering
 \[p \lesssim q\; \equiv\; \rcb{\exists}{R}{}{R\; \text{is a simulation and}\; \pair{p,q} \in R} 
 \]
-\emph{We say \structure{$q$ simulates $p$}.}
+\emph{We say \alert{$p$ is simulated by $q$}.}
 \end{block}
 \begin{block}{Lemma}
 The similarity relation is a preorder\\
-\transp{(ie, reflexive and transitive)}
+\faded{(ie, reflexive and transitive)}
 \end{block}
 \end{slide}
 
@@ -920,9 +965,9 @@ I.e.,
 whenever $\pair{p,q} \in R$ and $a \in \Act$,
 
 \begin{align*}
-%\text{\alert{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
-\text{\alert{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, \pair{p',q'} \in R}   \\
-\text{\alert{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\; \rcb{\exists}{p'}{p' \in S_1}{p \rtran{a}_1 p'\, \e\, \pair{p',q'} \in R}   
+%\text{\gold{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
+\text{\gold{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, \pair{p',q'} \in R}   \\
+\text{\gold{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\; \rcb{\exists}{p'}{p' \in S_1}{p \rtran{a}_1 p'\, \e\, \pair{p',q'} \in R}   
 \end{align*}
 
 %\begin{equation*}
@@ -967,7 +1012,7 @@ whenever $\pair{p,q} \in R$ and $a \in \Act$,
 %----------------------------------------------------------------------------------
 \begin{slide}{Examples}
 
-\begin{exampleblock}{Find bisimulations}
+\begin{exampleblock}{\exercise Find bisimulations}
 \begin{equation*}
 \xymatrix{
 & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & m \ar[d]_{a}\\
@@ -991,7 +1036,7 @@ q_1 \ar[r]^{a} & q_2  \ar[r]^{a}  & q_3  \ar[r]^{a} & \cdots & & h\ar@(ur,dr)[]^
 %----------------------------------------------------------------------------------
 \begin{slide}{Examples}
 
-\begin{exampleblock}{Find bisimulations}
+\begin{exampleblock}{\exercise Find bisimulations}
 \vspace*{-2mm}
 \begin{equation*}
 \xymatrix{
@@ -999,159 +1044,163 @@ q_1 \ar[r]^{a} & q_2  \ar[r]^{a}  & q_3  \ar[r]^{a} & \cdots & & h\ar@(ur,dr)[]^
 q_2 \ar[d]^{c}  && q_3  \ar[d]^{c}  & && p_2  \ar[ld]_{c}  \ar[rd]^{c} & \\
 q_4 & & q_5 & &p_4 & & p_5\\
 & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & p_1  \ar[d]^{a} \\
-q_2 \ar[d]^{c}  && q_3  \ar[d]^{\rdb{b}}  & && p_2  \ar[ld]_{c}  \ar[rd]^{\rdb{b}} & \\
+q_2 \ar[d]^{\rdb{b}}  && q_3  \ar[d]^{c}  & && p_2  \ar[ld]_{\rdb{b}}  \ar[rd]^{c} & \\
 q_4 & & q_5 & &p_4 & & p_5
 }
 \end{equation*}
 \end{exampleblock}
 \end{slide}
 
-%----------------------------------------------------------------------------------
-\begin{slide}{After thoughts}
-\small
-
-
-\begin{itemize}
-\item Follows a \alert{$\forall, \exists$ pattern}: $p$ in all its transitions challenge $q$ which is called to find a match to each of those (and conversely)
-\item Tighter correspondence with transitions
-\item Based on the information that the transitions convey, rather than on the shape of the LTS
-\item \alert{Local} checks on states
-\item \alert{Lack of hierarchy}  on the pairs of the bisimulation (no temporal order on the checks is required)
-\end{itemize}
-which means \alert{bisimilarity can be used to reason about infinite or circular behaviours}.
-\end{slide}
-
-%----------------------------------------------------------------------------------
-\begin{slide}{After thoughts}
-\small
-~\\
-
-\noindent
-Compare the definition of bisimilarity with 
-~\\
-~\\
-
-
-$p == q$ if, for all $a  \in \Act$
-\begin{align*}
-%\text{\alert{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
-\text{\alert{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, p' == q'}   \\
-\text{\alert{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\; \rcb{\exists}{p'}{p' \in S_1}{p \rtran{a}_1 p'\, \e\, p' == q'}    
-\end{align*}
-
-\end{slide}
-
-%----------------------------------------------------------------------------------
-\begin{slide}{After thoughts}
-\small
-~\\
-
-
-$p == q$ if, for all $a  \in \Act$
-\begin{align*}
-%\text{\alert{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
-\text{\alert{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, p' == q'}   \\
-\text{\alert{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\; \rcb{\exists}{p'}{p' \in S_1}{p \rtran{a}_1 p'\, \e\, p' == q'}    
-\end{align*}
-
-\gry{
-\begin{itemize}
-\item The meaning of $==$ on the pair $\pair{p,q}$ requires having already established the meaning of $==$ on the derivatives
-\item ... therefore the definition is \alert{ill-founded} if the state space reachable from $\pair{p,q}$ is infinite or contain loops
-\item ... this is a \alert{local} but \alert{inherently inductive} definition (to revisit later)
-\end{itemize}
-}
-\end{slide}
-
 
 
 %----------------------------------------------------------------------------------
-\begin{slide}{After thoughts}
-\small
-
-\begin{block}{Proof method}
-
-To prove that two behaviours are bisimilar, find a bisimulation containing them ...
+% \begin{slide}{After thoughts}
+% \small
 
 
+% \begin{itemize}
+% \item Follows a \gold{$\forall, \exists$ pattern}: $p$ in all its transitions challenge $q$ which is called to find a match to each of those (and conversely)
+% \item Tighter correspondence with transitions
+% \item Based on the information that the transitions convey, rather than on the shape of the LTS
+% \item \gold{Local} checks on states
+% \item \gold{Lack of hierarchy}  on the pairs of the bisimulation (no temporal order on the checks is required)
+% \end{itemize}
+% which means \gold{bisimilarity can be used to reason about infinite or circular behaviours}.
+% \end{slide}
 
-\begin{itemize}
-\item
-... \alert{impredicative} character
-\item \alert{coinductive} vs \alert{inductive} definition
-\end{itemize}
-\end{block}
-\end{slide}
+% %----------------------------------------------------------------------------------
+% \begin{slide}{After thoughts}
+% \small
+% ~\\
 
-%----------------------------------------------------------------------------------
-\begin{slide}{Properties}
-\small
-
-\begin{block}{Definition}
-\[p \sim q\; \equiv\; \rcb{\exists}{R}{}{R\; \text{is a bisimulation and}\; \pair{p,q} \in R} 
-\]
-\end{block}
-\begin{block}{Lemma}
-\begin{enumerate}
-\item The identity relation $\id$ is a bisimulation
-\item The empty relation $\bot$ is a bisimulation
-\item The converse $\aconv{R}$ of a bisimulation is a bisimulation
-\item The composition $S \comp R$ of two bisimulations $S$ and $R$ is a bisimulation
-\item The $\bigcup_{i \in I} R_i$ of a family of bisimulations
- $\setdef{R_i}{i \in I}$ is a bisimulation
-\end{enumerate}
-\end{block}
-\end{slide}
-
-%----------------------------------------------------------------------------------
-\begin{slide}{Properties}
-
-\small
+% \noindent
+% Compare the definition of bisimilarity with 
+% ~\\
+% ~\\
 
 
-\begin{block}{Lemma}
-The bisimilarity relation is an equivalence relation\\
-\gry{(ie, reflexive, symmetric and transitive)}
-\end{block}
+% $p == q$ if, for all $a  \in \Act$
+% \begin{align*}
+% %\text{\gold{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
+% \text{\gold{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, p' == q'}   \\
+% \text{\gold{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\; \rcb{\exists}{p'}{p' \in S_1}{p \rtran{a}_1 p'\, \e\, p' == q'}    
+% \end{align*}
 
-\begin{block}{Lemma}
-The class of all bisimulations between two LTS has the structure of a 
-\structure{complete lattice}, ordered by set inclusion, whose top is the  \structure{bisimilarity} relation $\sim$.
-\end{block}
-\end{slide}
+% \end{slide}
 
-%----------------------------------------------------------------------------------
-\begin{slide}{Properties}
-
-\small
+% %----------------------------------------------------------------------------------
+% \begin{slide}{After thoughts}
+% \small
+% ~\\
 
 
-\begin{block}{Lemma}
-In a \alert{deterministic} labelled transition system, two states are bisimilar iff they are trace equivalent, i.e.,
-$$
-s \obs s'\; \; \dimp\;\; \Tr{s} = \Tr{s'}
-$$
-~\\
+% $p == q$ if, for all $a  \in \Act$
+% \begin{align*}
+% %\text{\gold{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
+% \text{\gold{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, p' == q'}   \\
+% \text{\gold{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\; \rcb{\exists}{p'}{p' \in S_1}{p \rtran{a}_1 p'\, \e\, p' == q'}    
+% \end{align*}
 
-\gry{Hint: define a relation $R$ as 
-$$\pair{x,y} \in R \; \dimp\;  \Tr{x} = \Tr{y}$$
- and show $R$ is a bisimulation.}
-\end{block}
+% \gry{
+% \begin{itemize}
+% \item The meaning of $==$ on the pair $\pair{p,q}$ requires having already established the meaning of $==$ on the derivatives
+% \item ... therefore the definition is \gold{ill-founded} if the state space reachable from $\pair{p,q}$ is infinite or contain loops
+% \item ... this is a \gold{local} but \gold{inherently inductive} definition (to revisit later)
+% \end{itemize}
+% }
+% \end{slide}
 
 
-\end{slide}
+
+% %----------------------------------------------------------------------------------
+% \begin{slide}{After thoughts}
+% \small
+
+% \begin{block}{Proof method}
+
+% To prove that two behaviours are bisimilar, find a bisimulation containing them ...
+
+
+
+% \begin{itemize}
+% \item
+% ... \gold{impredicative} character
+% \item \gold{coinductive} vs \gold{inductive} definition
+% \end{itemize}
+% \end{block}
+% \end{slide}
+
+% %----------------------------------------------------------------------------------
+% \begin{slide}{Properties}
+% \small
+
+% \begin{block}{Definition}
+% \[p \sim q\; \equiv\; \rcb{\exists}{R}{}{R\; \text{is a bisimulation and}\; \pair{p,q} \in R} 
+% \]
+% \end{block}
+% \begin{block}{Lemma}
+% \begin{enumerate}
+% \item The identity relation $\id$ is a bisimulation
+% \item The empty relation $\bot$ is a bisimulation
+% \item The converse $\aconv{R}$ of a bisimulation is a bisimulation
+% \item The composition $S \comp R$ of two bisimulations $S$ and $R$ is a bisimulation
+% \item The $\bigcup_{i \in I} R_i$ of a family of bisimulations
+%  $\setdef{R_i}{i \in I}$ is a bisimulation
+% \end{enumerate}
+% \end{block}
+% \end{slide}
+
+% %----------------------------------------------------------------------------------
+% \begin{slide}{Properties}
+
+% \small
+
+
+% \begin{block}{Lemma}
+% The bisimilarity relation is an equivalence relation\\
+% \gry{(ie, reflexive, symmetric and transitive)}
+% \end{block}
+
+% \begin{block}{Lemma}
+% The class of all bisimulations between two LTS has the structure of a 
+% \structure{complete lattice}, ordered by set inclusion, whose top is the  \structure{bisimilarity} relation $\sim$.
+% \end{block}
+% \end{slide}
+
+% %----------------------------------------------------------------------------------
+% \begin{slide}{Properties}
+
+% \small
+
+
+% \begin{block}{Lemma}
+% In a \gold{deterministic} labelled transition system, two states are bisimilar iff they are trace equivalent, i.e.,
+% $$
+% s \obs s'\; \; \dimp\;\; \Tr{s} = \Tr{s'}
+% $$
+% ~\\
+
+% \gry{Hint: define a relation $R$ as 
+% $$\pair{x,y} \in R \; \dimp\;  \Tr{x} = \Tr{y}$$
+%  and show $R$ is a bisimulation.}
+% \end{block}
+
+
+% \end{slide}
 
 %----------------------------------------------------------------------------------
 \begin{slide}{Properties}
 \centering
 \begin{alertblock}{Warning}
 \centering
-\fbox{The bisimilarity relation \structure{$\sim$} \rdb{is not} the \structure{symmetric closure of $\lesssim$}}
+% \fbox{The bisimilarity relation \structure{$\sim$} \rdb{is not} the \structure{symmetric closure of $\lesssim$}}
+\fbox{$\Big[p\lesssim q$ and $q\lesssim p\Big]$ does \rdb{not} imply
+  $\Big[p \sim q\Big]$}
 \end{alertblock}
 
-~\\[5mm]
-i.e., $\Big[p\lesssim q$ and $q\lesssim p\Big]$ does \structure{not} imply
-  $\Big[p \sim q\Big]$
+% ~\\[5mm]
+% i.e., $\Big[p\lesssim q$ and $q\lesssim p\Big]$ does \rdb{not} imply
+%   $\Big[p \sim q\Big]$
 \end{slide}
 
 
@@ -1162,7 +1211,9 @@ i.e., $\Big[p\lesssim q$ and $q\lesssim p\Big]$ does \structure{not} imply
 
 \begin{alertblock}{Warning}
 \centering
-\fbox{The bisimilarity relation \structure{$\sim$} \rdb{is not} the \structure{symmetric closure of $\lesssim$}}
+$\Big[p\lesssim q$ and $q\lesssim p\Big]$ does \rdb{not} imply
+  $\Big[p \sim q\Big]$
+% \fbox{The bisimilarity relation \structure{$\sim$} \rdb{is not} the \structure{symmetric closure of $\lesssim$}}
 \end{alertblock}
 
 \begin{example}
@@ -1197,8 +1248,8 @@ q_0 \ar[ru]^{a} \ar[rd]^{a} &  & & p_0 \ar[r]^{a} & p_1 \ar[r]^{b} & p_3\\
 \end{equation*}
 \end{block}
 %\begin{flushright}
-%cf \alert{relational} translation of definitions\\
-%$\structure{\lesssim}$ and $\structure{\sim}$ as \alert{greatest fix points} (Tarski's theorem)
+%cf \gold{relational} translation of definitions\\
+%$\structure{\lesssim}$ and $\structure{\sim}$ as \gold{greatest fix points} (Tarski's theorem)
 %\end{flushright}
 \end{slide}
 
@@ -1206,32 +1257,41 @@ q_0 \ar[ru]^{a} \ar[rd]^{a} &  & & p_0 \ar[r]^{a} & p_1 \ar[r]^{b} & p_3\\
 
 \begin{slide}{Exercises}
 \frsplit{
-\begin{exampleblock}{P,Q Bisimilar?}
+\begin{exampleblock}{\exercise P,Q Bisimilar?}
  \vspace*{-4mm}
  \begin{align*}
-  P&=a.P_1\\
+  \mathbf{P}&=a.P_1\\
   P_1&=b.P + c.P\\[3mm]
-  Q&=a.Q_1\\
+  \mathbf{Q}&=a.Q_1\\
   Q_1&=b.Q_2+c.Q\\
   Q_2&=a.Q_3\\
   Q_3&=b.Q+c.Q_2
  \end{align*} 
 \end{exampleblock}
 }{
-\begin{exampleblock}{P,Q Bisimilar?}
+\begin{exampleblock}{\exercise P,Q Bisimilar?}
  \vspace*{-4mm}
  \begin{align*}
-  P&=a.(b.\cnil+c.\cnil)\\[3mm]
-  Q&=a.b.\cnil + a.c.\cnil
+  \mathbf{P}&=a.(b.\cnil+\cnil)\\[3mm]
+  \mathbf{Q}&=a.b.\cnil
+ \end{align*}  
+\end{exampleblock}
+
+\begin{exampleblock}{\exercise P,Q Bisimilar?}
+ \vspace*{-4mm}
+ \begin{align*}
+  \mathbf{P}&=a.(b.\cnil+c.\cnil)\\[3mm]
+  \mathbf{Q}&=a.b.\cnil + a.c.\cnil
  \end{align*}  
 \end{exampleblock}
 }
+Draw their LTS. If bisimilar, find the bisimulation.
 \end{slide}
 
 %-------------------------------------------------------------------------------
 
 \begin{slide}{Exercises}
-\begin{exampleblock}{Find a bisimulation}
+\begin{exampleblock}{\exercise Find a bisimulation}
 %\vspace*{-3mm}
 \frsplit{\centering
   \includegraphics{images/LTS-1}
@@ -1240,100 +1300,100 @@ q_0 \ar[ru]^{a} \ar[rd]^{a} &  & & p_0 \ar[r]^{a} & p_1 \ar[r]^{b} & p_3\\
 }
 \end{exampleblock}
 \end{slide}
-%Rania Khalaf (IBM T.J. Watson Research Center, USA) - rkhalaf@us.ibm.com	
+%Rania Khalaf (IBM T.J. Watson Research Center, USA) - rkhalaf@us.ibm.com 
 
 %-------------------------------------------------------------------------------
-\begin{slide}{More bisimulations}
-\small
+% \begin{slide}{More bisimulations}
+% \small
 
-\myblock{Considering $\tau$-transitions}
+% \myblock{Considering $\tau$-transitions}
 
-\begin{block}{Weak transition}
-\begin{align*}
-  p \Trans{\alpha} q ~~~&\text{iff}~~~
-  p \,(\rtran{\tau})^{*}\, q_1\rtran{a} q_2 \,(\rtran{\tau})^{*}\, q
-  \\
-  p \Trans{\tau} q ~~~&\text{iff}~~~
-  p \,(\rtran{\tau})^{*}\, q
-\end{align*}  
-where $\alpha \neq \tau$ and $(\rtran{\tau})^{*}$ is the reflexive and transitive closure of $\rtran{\tau}$.
-\end{block}
+% \begin{block}{Weak transition}
+% \begin{align*}
+%   p \Trans{\alpha} q ~~~&\text{iff}~~~
+%   p \,(\rtran{\tau})^{*}\, q_1\rtran{a} q_2 \,(\rtran{\tau})^{*}\, q
+%   \\
+%   p \Trans{\tau} q ~~~&\text{iff}~~~
+%   p \,(\rtran{\tau})^{*}\, q
+% \end{align*}  
+% where $\alpha \neq \tau$ and $(\rtran{\tau})^{*}$ is the reflexive and transitive closure of $\rtran{\tau}$.
+% \end{block}
 
-\begin{block}{Weak bisimulation (vs. strong)}
-Given  $\pair{S_1, \Act,  \rra_1}$  and $\pair{S_2, \Act, \rra_2}$ over $\Act$,
-relation $R \subseteq S_1 \times S_2$ is a \structure{bisimulation} iff for all $\pair{p,q} \in R$ and $a \in \Act\,\rdb{\cup \set{\tau}}$,
-%
-\begin{align*}
-%\text{\alert{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
-\text{\alert{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\;
-  \rcb{\exists}{q'}{q' \in S_2}{\rdb{q \Trans{a}_2  q'}\, \e\,
-  \pair{p',q'} \in R}   \\
-\text{\alert{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\;
-  \rcb{\exists}{p'}{p' \in S_1}{\rdb{p \Trans{a}_1 p'}\, \e\,
-  \pair{p',q'} \in R}   
-\end{align*}
-%\centering
-%\begin{tikzpicture}[%
-%    every edge/.style={draw, thick,-latex',shorten >= 2pt}]
-%  \tikzstyle{l} = [auto,inner sep=1pt]
-%  % the square
-%  \node(p){$p$};\node[right=2.3 of p](q2){$q$};
-%  \node[below=1 of p](p'){$p'$};\node(q')at(p'-|q2){$q'$};
-%  % the R parts
-%  \node[right=0 of p](R1){$R$};\node[right=0 of R1](q){$q$};
-%  \node[left=0 of q'](R2){$R$};\node[left=0 of R2](p'2){$p'$};
-%  % the arrows
-%  \draw[->] (p)edge node[l]{$a$}(p') (q2)edge node[l]{$a$}(q');
-%  \node at ($(p)!.5!(q')$){{\Large $\Rightarrow$}};
-%  %%%%%%%
-%  % the square
-%  \node[right=2.3 of q2](pp){$p$};\node[right=2.3 of pp](q2){$q$};
-%  \node[below=1 of pp](p'){$p'$};\node(q')at(p'-|q2){$q'$};
-%  % the R parts
-%  \node[right=0 of p'](R1){$R$};\node[right=0 of R1](q){$q'$};
-%  \node[left=0 of q2](R2){$R$};\node[left=0 of R2](p'2){$p$};
-%  % the arrows
-%  \draw[->] (pp)edge node[l]{$a$}(p') (q2)edge node[l]{$a$}(q');
-%  \node at ($(pp)!.5!(q')$){{\Large $\Leftarrow$}};
-%\end{tikzpicture}
-\end{block}
-\end{slide}
-
-
-
-\begin{slide}{More bisimulations}
-\small
-\myblock{Considering $\tau$-transitions}
+% \begin{block}{Weak bisimulation (vs. strong)}
+% Given  $\pair{S_1, \Act,  \rra_1}$  and $\pair{S_2, \Act, \rra_2}$ over $\Act$,
+% relation $R \subseteq S_1 \times S_2$ is a \structure{bisimulation} iff for all $\pair{p,q} \in R$ and $a \in \Act\,\rdb{\cup \set{\tau}}$,
+% %
+% \begin{align*}
+% %\text{\gold{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
+% \text{\gold{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\;
+%   \rcb{\exists}{q'}{q' \in S_2}{\rdb{q \Trans{a}_2  q'}\, \e\,
+%   \pair{p',q'} \in R}   \\
+% \text{\gold{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\;
+%   \rcb{\exists}{p'}{p' \in S_1}{\rdb{p \Trans{a}_1 p'}\, \e\,
+%   \pair{p',q'} \in R}   
+% \end{align*}
+% %\centering
+% %\begin{tikzpicture}[%
+% %    every edge/.style={draw, thick,-latex',shorten >= 2pt}]
+% %  \tikzstyle{l} = [auto,inner sep=1pt]
+% %  % the square
+% %  \node(p){$p$};\node[right=2.3 of p](q2){$q$};
+% %  \node[below=1 of p](p'){$p'$};\node(q')at(p'-|q2){$q'$};
+% %  % the R parts
+% %  \node[right=0 of p](R1){$R$};\node[right=0 of R1](q){$q$};
+% %  \node[left=0 of q'](R2){$R$};\node[left=0 of R2](p'2){$p'$};
+% %  % the arrows
+% %  \draw[->] (p)edge node[l]{$a$}(p') (q2)edge node[l]{$a$}(q');
+% %  \node at ($(p)!.5!(q')$){{\Large $\Rightarrow$}};
+% %  %%%%%%%
+% %  % the square
+% %  \node[right=2.3 of q2](pp){$p$};\node[right=2.3 of pp](q2){$q$};
+% %  \node[below=1 of pp](p'){$p'$};\node(q')at(p'-|q2){$q'$};
+% %  % the R parts
+% %  \node[right=0 of p'](R1){$R$};\node[right=0 of R1](q){$q'$};
+% %  \node[left=0 of q2](R2){$R$};\node[left=0 of R2](p'2){$p$};
+% %  % the arrows
+% %  \draw[->] (pp)edge node[l]{$a$}(p') (q2)edge node[l]{$a$}(q');
+% %  \node at ($(pp)!.5!(q')$){{\Large $\Leftarrow$}};
+% %\end{tikzpicture}
+% \end{block}
+% \end{slide}
 
 
-\begin{block}{Branching bisimulation}
-Given  $\pair{S_1, \Act,  \rra_1}$  and $\pair{S_2, \Act, \rra_2}$ over $\Act$,
-relation $R \subseteq S_1 \times S_2$ is a \structure{bisimulation} iff for all $\pair{p,q} \in R$ and $a \in \Act\,\rdb{\cup\set{\tau}}$,
-%
-\begin{align*}
-%\text{\alert{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
-&\text{\alert{(1)} if}\; \;   p \rtran{a}_1 p'\; \text{then either}
-  \\&~~
-  \text{\alert{(1.1)}~} a=\tau \text{~and~}\pair{p',q}\in R \text{~~or}
-  \\&~~
-  \text{\alert{(1.2)}~}
-    \rcb{\exists}{q',q'' \in S_2}{}{\rdb{q \,(\trans{\tau}_2)^{*}\,q' \tran{a}_2  q''}\, \e\,
-    \pair{p,q'} \in R \e\,
-    \pair{p',q''} \in R} \\[3mm]
-%&\text{\alert{(2)} if}\; \;   q \rtran{a}_2 q'\; \imp\;
-%  \rcb{\exists}{p'}{p' \in S_1}{\rdb{p \Trans{a}_1 p'}\, \e\,
-%  \pair{p',q'} \in R}   
-&\text{\alert{(2)} if}\; \;   q \rtran{a}_2 q'\; \text{then either}
-  \\&~~
-  \text{\alert{(2.1)}~} a=\tau \text{~and~}\pair{p',q'}\in R \text{~~or}
-  \\&~~
-  \text{\alert{(2.2)}~}
-    \rcb{\exists}{p',p'' \in S_1}{}{\rdb{p \,(\trans{\tau}_1)^{*}\,p' \tran{a}_1  p''}\, \e\,
-    \pair{p',q} \in R \e\,
-    \pair{p'',q'} \in R}
-\end{align*}
-\end{block}
-\end{slide}
+
+% \begin{slide}{More bisimulations}
+% \small
+% \myblock{Considering $\tau$-transitions}
+
+
+% \begin{block}{Branching bisimulation}
+% Given  $\pair{S_1, \Act,  \rra_1}$  and $\pair{S_2, \Act, \rra_2}$ over $\Act$,
+% relation $R \subseteq S_1 \times S_2$ is a \structure{bisimulation} iff for all $\pair{p,q} \in R$ and $a \in \Act\,\rdb{\cup\set{\tau}}$,
+% %
+% \begin{align*}
+% %\text{\gold{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
+% &\text{\gold{(1)} if}\; \;   p \rtran{a}_1 p'\; \text{then either}
+%   \\&~~
+%   \text{\gold{(1.1)}~} a=\tau \text{~and~}\pair{p',q}\in R \text{~~or}
+%   \\&~~
+%   \text{\gold{(1.2)}~}
+%     \rcb{\exists}{q',q'' \in S_2}{}{\rdb{q \,(\trans{\tau}_2)^{*}\,q' \tran{a}_2  q''}\, \e\,
+%     \pair{p,q'} \in R \e\,
+%     \pair{p',q''} \in R} \\[3mm]
+% %&\text{\gold{(2)} if}\; \;   q \rtran{a}_2 q'\; \imp\;
+% %  \rcb{\exists}{p'}{p' \in S_1}{\rdb{p \Trans{a}_1 p'}\, \e\,
+% %  \pair{p',q'} \in R}   
+% &\text{\gold{(2)} if}\; \;   q \rtran{a}_2 q'\; \text{then either}
+%   \\&~~
+%   \text{\gold{(2.1)}~} a=\tau \text{~and~}\pair{p',q'}\in R \text{~~or}
+%   \\&~~
+%   \text{\gold{(2.2)}~}
+%     \rcb{\exists}{p',p'' \in S_1}{}{\rdb{p \,(\trans{\tau}_1)^{*}\,p' \tran{a}_1  p''}\, \e\,
+%     \pair{p',q} \in R \e\,
+%     \pair{p'',q'} \in R}
+% \end{align*}
+% \end{block}
+% \end{slide}
 
 %-------------------------------------------------------------------------------
 %
@@ -1357,6 +1417,5 @@ relation $R \subseteq S_1 \times S_2$ is a \structure{bisimulation} iff for all 
 %\end{slide}
 %
 %-------------------------------------------------------------------------------
-
 \end{document}
 

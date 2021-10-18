@@ -737,6 +737,7 @@
   \begin{column}{#1\textwidth} #3 \end{column} \end{columns}
 }
 \newcommand{\col}[2][.48]{\begin{column}{#1\textwidth} #2 \end{column}}
+\newcommand{\colb}[3][.48]{\begin{column}{#1\textwidth} \begin{block}{#2} #3 \end{block} \end{column}}
 % rules
 \newcommand{\typerule}[4][]{\ensuremath{\begin{array}[#1]{c}\textsf{\scriptsize ({#2})} \\#3 \\\hline\raisebox{-3pt}{\ensuremath{#4}}\end{array}}}
 \newcommand{\styperule}[3][]{\ensuremath{\begin{array}[#1]{c} #2 \\[0.5mm]\hline\raisebox{-4pt}{\ensuremath{#3}}\end{array}}}
