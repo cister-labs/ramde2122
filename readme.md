@@ -68,9 +68,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Communication diagrams: Concurrent Process Algebra; Realisability (Lecture 5-6)
   </a></li><li><a class="hide" href="slides/modal-logic.pdf">
     Logics for behaviour: Modal logics; Model-Checking (Lecture 7-8)
-<!--   </a></li><li><a class="hide" href="">
+   </a></li>
+   <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
   </a></li> -->
+
 </ul>
 
 
