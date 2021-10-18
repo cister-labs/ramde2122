@@ -68,9 +68,9 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Communication diagrams: Concurrent Process Algebra; Realisability (Lecture 5-6)
   </a></li><li><a class="hide" href="slides/modal-logic.pdf">
     Logics for behaviour: Modal logics; Model-Checking (Lecture 7-8)
-  </a></li><li><a class="hide" href="">
+<!--   </a></li><li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
-  </a></li>
+  </a></li> -->
 </ul>
 
 
@@ -108,19 +108,20 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 # Pragmatics
 
-### Remote and physical lectures
+<!-- ### Remote and physical lectures
 
 [To be confirmed:] This course unit consists of 11 weeks, each with 2h of theoretical and 3h of practical lectures. Due to the current pandemics, this course unit will have both remote and physical lectures:
  - all _theoretical lectures_ will be remote, via a video-conference tool (e.g., Teams or Zoom) ; and
  - every 2nd week the _practical lectures_ will alternate between being remote and physical, and in the last week there will be a 1.5h practical physical lecture.
+ -->
 
 ### Evaluation
 
  * __Final mark__ = Individual Exercises (10%) + Group Assignments (60%) + Literature Review (30%)
 
-__Individual Exercises__ are to be developed individually, submitted to a dedicated `git` repository. These exercises are included in the lecture slides. Marks will reflect mainly the effort, and the feedback will be provided during the practical lessons.
+__Individual Exercises__ are to be developed individually. These exercises are included in the lecture slides. Marks will reflect mainly the effort, and the feedback will be provided during the practical lessons.
 
-__Group Assignments__ are to be developed by teams of 4 students, each submitted together with a LaTeX report using a different dedicated `git` repository. There will be 5 assignments that cover different parts of this unit. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
+__Group Assignments__ are to be developed by teams of 4 students, each submitted together with a LaTeX report using a different dedicated `git` repository. There will be 2 assignments that cover different parts of this unit. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
 
 __Literature Review__ is to be developed by the same groups of 4 students, and consists of a written _critical_ review of maximum 4 pages using a LaTeX template that will be made available.
 The review will be presented in an oral presentation, and the review will be partial evaluated by peers.
@@ -136,7 +137,8 @@ __Literature Review__ is developed by the same team, and consists of a written _
 Both the project and the review will be presented in an oral presentation, and the review will be partial evaluated by peers.
  -->
 
-### Deadlines
+
+<!-- ### Deadlines
 
 __Individual exercises__ must be submitted until Sunday @ 23:59 of the following week of being presented. For example, a set of exercises presented in the working week 2 Nov - 6 Nov must be submitted until Sunday 15 Nov.
 
@@ -144,9 +146,10 @@ __Group assignments__ have the following deadlines, that may still suffer change
 
   - __A1:__ tbd
   - __A2:__ tbd
+ -->
 
 
-### Lecturers
+<!-- ### Lecturers
 
 - [_Alexandre Bragança_](https://www.dei.isep.ipp.pt/~alex/),
   `atb arroba isep ponto ipp ponto pt`
@@ -155,5 +158,7 @@ __Group assignments__ have the following deadlines, that may still suffer change
 - [_José Proença_](https://jose.proenca.org),
   `pro arroba isep ponto ipp ponto pt`
 
-We will use a team in Microsoft Teams where all questions regarding this course unit should be placed, and where we can schedule virtual meetings if needed.
+ -->
+
+ We will use a team in Microsoft Teams where all questions regarding this course unit should be placed, and where we can schedule virtual meetings if needed.
 
