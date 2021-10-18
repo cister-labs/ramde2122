@@ -696,6 +696,7 @@ where
 
 %-------------------------------------------------------------------------------
 
+\exerciseBack
 \begin{slide}{CCS semantics - building a NFA}
 \small 
 \centering
@@ -707,7 +708,7 @@ where
 \msep
 \typerule{sum-2}{P_2 \trans\alpha P'_2}{P_1 + P_2 \trans\alpha P'_2} %$\faded{j\in I}$
 \\[3mm]
-\typerule{res}{P\trans\alpha P'}{\crt P L\trans\alpha \crt{P'}L}~$\faded{\alpha%,\ainv{\alpha}
+\typerule{res}{P\trans\alpha P'}{\crt P L\trans\alpha \crt{P'}L}~${\alpha%,\ainv{\alpha}
                                                                   \notin L}$
 \msep
 \typerule{rel}{P\trans\alpha P'}{\crn P f\trans{f(\alpha)} \crn{P'} f}
@@ -744,6 +745,17 @@ where
 
 \end{slide}
 
+\begin{slide}{Exercise}
+\doExercise{What is the language of this process?}{
+\centering
+  \vspace*{-5mm}
+  \begin{align*}
+    A &= \mathsf{goLeft.A + goRight.B}
+    \\
+    B &= \mathsf{rest.\cnil}
+  \end{align*}
+}
+\end{slide}
 
 
 \begin{slide}{Exercise}
@@ -793,7 +805,7 @@ where
 \small
 
 
-Two LTS should be \alert{equivalent} if they cannot be distinguished by interacting with them.
+Two automata (or LTS) should be \alert{equivalent} if they cannot be distinguished by interacting with them.
 
 
 \begin{block}{Equality of functional behaviour}
@@ -812,26 +824,26 @@ is too strong (why?)
 
 
 %----------------------------------------------------------------------------------
-\begin{slide}{Trace}
-\small
+% \begin{slide}{Trace}
+% \small
 
-\begin{block}{Definition}
-Let $T = \pair{S, \Act,  \rra}$ be a labelled transition system. The set of \alert{traces} $\Tr{s}$, for $s \in S$ is the minimal set  satisfying
-\begin{align*}
-\text{\structure{(1)}}\; \;  &  \epsilon \in \Tr{s}\\
-\text{\structure{(2)}}\; \;  &  a \cdot \sigma \in \Tr{s}\; \imp\; \rcb{\exists}{s'}{s' \in S}{s \rtran{a} s'\, \e\, \sigma \in \Tr{s'}}
-\end{align*}
-\end{block}
+% \begin{block}{Definition}
+% Let $T = \pair{S, \Act,  \rra}$ be a labelled transition system. The set of \alert{traces} $\Tr{s}$, for $s \in S$ is the minimal set  satisfying
+% \begin{align*}
+% \text{\structure{(1)}}\; \;  &  \epsilon \in \Tr{s}\\
+% \text{\structure{(2)}}\; \;  &  a \cdot \sigma \in \Tr{s}\; \imp\; \rcb{\exists}{s'}{s' \in S}{s \rtran{a} s'\, \e\, \sigma \in \Tr{s'}}
+% \end{align*}
+% \end{block}
 
 
-\end{slide}
+% \end{slide}
 
 %----------------------------------------------------------------------------------
-\begin{slide}{Trace  equivalence}
+\begin{slide}{Language  equivalence}
 \small
 
 \begin{block}{Definition}
-Two states $s, r$ are \alert{trace equivalent} iff  $ \Tr{s} =  \Tr{r}$\\
+Two automata $A, B$ are \alert{language equivalent} iff  $ L_A =  L_B$\\
 (i.e. if they can perform the same finite sequences of transitions)
 \end{block}
 ~\\
@@ -843,24 +855,77 @@ Two states $s, r$ are \alert{trace equivalent} iff  $ \Tr{s} =  \Tr{r}$\\
 \end{example}
 
 
-\alert{Trace equivalence} applies  when one can neither interact with a system, nor distinguish a slow system from one that has come to a stand still.
+\alert{Language equivalence} applies  when one can neither interact with a system, nor distinguish a slow system from one that has come to a stand still.
 \end{slide}
+
+
+% \begin{slide}{Exercise}
+%   \centering
+%   \doExercise{Consider the system}{
+%   \centering
+%   \begin{tikzpicture}
+%       \node(p){$p$}; \node[right=of p](p1){$p_1$}; \node[right=of p1](p2){$p_2$};
+%       \draw[->] (p)edge[bend right] node[below]{a} (p1)
+%                 (p1)edge[bend right] node[above]{b}(p)
+%                 (p2)edge node[above]{d} (p1)edge[loop right] node[right]{c}(p1) ;
+%   \end{tikzpicture}
+%   \begin{enumerate}
+%     \item Formalise the system as a tuple $(S,Act,\to)$
+%     \item List 4 different traces from state (p2).
+%   \end{enumerate}
+%   }
+% \end{slide}
 
 
 \begin{slide}{Exercise}
   \centering
-  \doExercise{Consider the system}{
-  \centering
-  \begin{tikzpicture}
-      \node(p){$p$}; \node[right=of p](p1){$p_1$}; \node[right=of p1](p2){$p_2$};
-      \draw[->] (p)edge[bend right] node[below]{a} (p1)
-                (p1)edge[bend right] node[above]{b}(p)
-                (p2)edge node[above]{d} (p1)edge[loop right] node[right]{c}(p1) ;
-  \end{tikzpicture}
-  \begin{enumerate}
-    \item Formalise the system as a tuple $(S,Act,\to)$
-    \item List 4 different traces from state (p2).
-  \end{enumerate}
+  \doExercise{Find pairs of automata with the same language}{
+    \centering 
+    \wrap{\begin{tikzpicture}[aut]
+      \node[st,initial above,final]  (s_0) {$A_0$};
+      \node[st] (s_1) [right of=s_0] {$A_1$};
+      \path[->]
+        (s_0) edge  node {a}  (s_1)
+        (s_0) edge[loop left] node {a}  ()
+        (s_1) edge[loop right] node {b}  (s_0);
+    \end{tikzpicture}}
+    ~~~~~~~~~~
+    \wrap{\begin{tikzpicture}[aut]
+      \node[st,initial above,final]  (s_0) {$B_0$};
+      \node[st,final] (s_1) [right of=s_0] {$B_1$};
+      \path[->]
+        (s_0) edge  node {a}  (s_1)
+        (s_0) edge[loop left] node {a}  ()
+        (s_1) edge[loop right] node {a}  (s_0);
+    \end{tikzpicture}}
+    ~~~~~~~~~
+    \wrap{\begin{tikzpicture}[aut]
+      \node[st,initial above]  (s_0) {$C_0$};
+      \node[st,final] (s_1) [right of=s_0] {$C_1$};
+      \path[->]
+        (s_0) edge  node {a}  (s_1)
+        (s_0) edge[loop left] node {a}  ()
+        (s_1) edge[loop right] node {b}  (s_0);
+    \end{tikzpicture}}
+    ~~~~~~~~~
+    \wrap{\begin{tikzpicture}[aut]
+      \node[st,initial above]  (s_0) {$D_0$};
+      \node[st,final] (s_1) [right of=s_0] {$D_1$};
+      \path[->]
+        (s_0) edge  node {a}  (s_1)
+        (s_0) edge[loop left] node {a}  ()
+        (s_1) edge[loop right] node {a}  (s_0);
+    \end{tikzpicture}}
+    ~~~~~~~~~
+    \wrap{\begin{tikzpicture}[aut]
+      \node[st,initial above]  (s_0) {$E_0$};
+      \node[st,final] (s_1) [right of=s_0] {$E_1$};
+      \path[->]
+        (s_0) edge[bend left]  node {a}  (s_1)
+        (s_1) edge[bend left]  node {a}  (s_0)
+        (s_1) edge[loop right] node {a}  (s_0);
+    \end{tikzpicture}}
+
   }
 \end{slide}
 
@@ -891,7 +956,7 @@ this capacity is kept along the whole life of the system to which state space $q
 
 \begin{block}{Definition}
 Given  $\pair{S_1, \Act, \rra_1}$  and $\pair{S_2, \Act, \rra_2}$
- over $\Act$,
+ over $\Act$, ignoring initial and final states,
 relation \structure{$R \subseteq S_1 \times S_2$} is a \structure{simulation} iff,
 for all $\pair{p,q} \in \structure{R}$ and $a \in \Act$,
 
