@@ -207,6 +207,12 @@
   % \begin{block}{Flow Chart}
     \includegraphics[width=1.0\textwidth]{images/diagrams/coffee-flow.png}
   % \end{block}
+  \\[6mm]
+  \frsplitt{
+  \structure{Used symbols}: \emph{processes}, \emph{decisions}, and \emph{start/end}
+  }{
+  \structure{Other symbols} include: data (or input/output), documents, connectors, comments
+  }
 \end{slide}
 
 
@@ -281,11 +287,20 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
   \end{tikzpicture}
   }
   ~~~~
-  \wrap{$s_0$ is an initial state\\$s_1$ is a final state}
-    
+  \wrap{$s_0$ is an initial state\\$s_1$ is a final state} 
+  \end{block}
+  %
+  ~\\[0mm]
+  %
+  \begin{block}{}
+    \faded{(Formalise this automata)}
+      \\[0.25\textheight]
   \end{block}
 
+\end{slide}
 
+
+\begin{slide}{Exercise}
 \doExercise{Formalise these automata as $\pair{S,I,\dda,\Act,\rra}$}{
 \centering
 \begin{tikzpicture}[aut]
@@ -314,6 +329,40 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 \end{slide}
 
 
+
+    % \includegraphics[width=1.0\textwidth]{images/diagrams/coffee-state.png}
+
+\begin{slide}{Exercise}
+  \centering
+
+  \vspace{-1mm}
+  \includegraphics[width=1.0\textwidth]{images/diagrams/coffee-state.png}
+  \vspace{-1mm}
+
+  \doExercise{Draw LTS}{
+      \faded{(suggestion: by hand on a paper, and take a photo of it.)}
+      \\[0.30\textheight]
+  }
+\end{slide}
+
+
+% \begin{slide}{Exercise}
+%   \centering
+
+%   \vspace*{-2mm}
+%   \begin{columns}
+%     \column{0.40\textwidth}\centering
+%     \begin{block}{Flowchart}
+%       \centering
+%       \includegraphics[height=0.85\textheight]{images/cm-flowchart.png}
+%     \end{block}
+%     \column{0.56\textwidth}\centering
+%     \doExercise{Draw LTS}{
+%       \faded{(suggestion: by hand on a paper, and take a photo of it.)}
+%       \\[0.75\textheight]
+%     }
+%   \end{columns}
+% \end{slide}
 
 %----------------------------------------------------------------------------------
 % \begin{slide}{Labelled Transition System}
