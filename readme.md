@@ -65,9 +65,9 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
   </a></li><li><a class="hide" href="">
     Logics for states: Modelling requirements and using SMT solvers (Week 2-3)
   </a></li><li><a class="hide" href="slides/...pdf">
-    Behaviour diagrams; LTS and Process Algebra (Week 4-5)
+    Modelling behaviour; Automata and Process Algebra (Week 4-5)
   </a></li><li><a class="hide" href="slides/...pdf">
-    Communication diagrams: Concurrent Process Algebra; Realisability (Week 6-7)
+    Analysing behaviour: Equivalence of systems; Realisability (Week 6-7)
   </a></li><li><a class="hide" href="slides/....pdf">
     Logics for behaviour: Modal logics; Model-Checking (Week 8-9)
   </a></li><li><a class="hide" href="slides/...pdf">
