@@ -61,15 +61,18 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 <ul>
   <li><a href="" class="hide">
-    Introduction to MDE and Requirement engineering; Structural diagrams (Lecture 1)
+    Introduction to MDE and Requirement engineering; Structural diagrams (Week 1)
   </a></li><li><a class="hide" href="">
-    Logics for states: Modelling requirements and using SMT solvers (Lecture 1-2)
-  </a></li><li><a class="hide" href="slides/process-algebra-1.pdf">
-    Behaviour diagrams; LTS and Process Algebra (Lecture 3-4)
-  </a></li><li><a class="hide" href="slides/process-algebra-2.pdf">
-    Communication diagrams: Concurrent Process Algebra; Realisability (Lecture 5-6)
-  </a></li><li><a class="hide" href="slides/modal-logic.pdf">
-    Logics for behaviour: Modal logics; Model-Checking (Lecture 7-8)
+    Logics for states: Modelling requirements and using SMT solvers (Week 2-3)
+  </a></li><li><a class="hide" href="slides/...pdf">
+    Behaviour diagrams; LTS and Process Algebra (Week 4-5)
+  </a></li><li><a class="hide" href="slides/...pdf">
+    Communication diagrams: Concurrent Process Algebra; Realisability (Week 6-7)
+  </a></li><li><a class="hide" href="slides/....pdf">
+    Logics for behaviour: Modal logics; Model-Checking (Week 8-9)
+   </a></li>
+  </a></li><li><a class="hide" href="slides/...pdf">
+    Modelling and verification in mCRL2 (Week 2-9)
    </a></li>
    <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
@@ -81,27 +84,24 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Assignments
 <ul>
-  <li><a href="" class="hide">A1: Modelling structure</a></li>
-  <li><a href="" class="hide">A2: Modelling behaviour</a></li>
-<!--   <li><a href="mcrl2-tutorial/modelling.pdf" class="hide">
-    A3: Modelling with mCRL2</a></li>
-  <li><a href="" class="hide">A4: Modelling requirements in SysML</a></li>
-  <li><a href="mcrl2-tutorial/verification.pdf" class="hide">
-    A5: Verification with mCRL2</a></li> -->
+  <li><a href="" class="hide">A1: Modelling Requirements</a></li>
+  <li><a href="" class="hide">A2: Modelling Behaviour</a></li>
+  <li><a href="" class="hide">A3: Analysing Behaviour</a></li>
 </ul>
 
 
 ### Useful links
 
-- [Visual Paradigm](https://www.visual-paradigm.com)
+<!-- - [Visual Paradigm](https://www.visual-paradigm.com) -->
 - [mCRL2](https://www.mcrl2.org)
 - [Z3 in Python](https://ericpony.github.io/z3py-tutorial/guide-examples.htm)
 
 
 ### Bibliography
-- [__SysML Distilled: A Brief Guide (2013)__](https://www.amazon.com/SysML-Distilled-Systems-Modeling-Language/dp/0321927869),
+<!-- - [__SysML Distilled: A Brief Guide (2013)__](https://www.amazon.com/SysML-Distilled-Systems-Modeling-Language/dp/0321927869),
   by Lenny Delligatti
   [![link to pdf](assets/img/PDF.png)](https://app.ute.edu.ec/content/4915-114-4-1-6-19/SysML%20Distilled_%20A%20Brief%20Guide%20-%20Lenny%20Delligatti.pdf)
+ -->
 
 - [__Reactive Systems: Modelling, Specification and Verification (2007)__](http://www.cambridge.org/us/academic/subjects/computer-science/programming-languages-and-applied-logic/reactive-systems-modelling-specification-and-verification"),
   by Luca Aceto et al.
@@ -123,11 +123,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Evaluation
 
- * __Final mark__ = Individual Exercises (10%) + Group Assignments (60%) + Literature Review (30%)
+ * __Final mark__ = Individual Exercises (10%) + Assignments (60%) + Literature Review (30%)
 
-__Individual Exercises__ are to be developed individually. These exercises are included in the lecture slides. Marks will reflect mainly the effort, and the feedback will be provided during the practical lessons.
+__Individual Exercises__ are to be developed individually. These exercises are included in the lecture slides, some of which will be done during lessons. Marks will reflect mainly the effort, and the feedback will be provided during the practical lessons.
 
-__Group Assignments__ are to be developed by teams of 4 students, each submitted together with a LaTeX report using a different dedicated `git` repository. There will be 2 assignments that cover different parts of this unit. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
+__Assignments__ are either individual (A1) or to be developed by teams of 4 students (A2 and A3). Each team has a dedicated `git` repository that will contain the software artefacts and a report for each assignment. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
 
 __Literature Review__ is to be developed by the same groups of 4 students, and consists of a written _critical_ review of maximum 4 pages using a LaTeX template that will be made available.
 The review will be presented in an oral presentation, and the review will be partial evaluated by peers.
@@ -144,27 +144,26 @@ Both the project and the review will be presented in an oral presentation, and t
  -->
 
 
-<!-- ### Deadlines
+### Deadlines
 
-__Individual exercises__ must be submitted until Sunday @ 23:59 of the following week of being presented. For example, a set of exercises presented in the working week 2 Nov - 6 Nov must be submitted until Sunday 15 Nov.
+__Individual exercises__ must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
 
-__Group assignments__ have the following deadlines, that may still suffer changes.
+__Assignments__ have the following deadlines, that may still suffer changes.
 
   - __A1:__ tbd
   - __A2:__ tbd
- -->
+  - __A3:__ tbd
 
 
-<!-- ### Lecturers
 
-- [_Alexandre Bragança_](https://www.dei.isep.ipp.pt/~alex/),
-  `atb arroba isep ponto ipp ponto pt`
+### Lecturers
+
 - [_David Pereira_](http://www.cister.isep.ipp.pt/people/david_pereira/),
   `drp arroba isep ponto ipp ponto pt`
 - [_José Proença_](https://jose.proenca.org),
   `pro arroba isep ponto ipp ponto pt`
 
- -->
+
 
  We will use a team in Microsoft Teams where all questions regarding this course unit should be placed, and where we can schedule virtual meetings if needed.
 

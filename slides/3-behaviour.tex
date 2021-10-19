@@ -194,7 +194,7 @@
       \item Single component
       \begin{itemize}
         \item State diagrams and Flow charts
-        \item Formal modelling: Automata, Process Algebra
+        \item Formal modelling: Automata, Process Algebra in mCRL2
       \end{itemize}
       \item Many components
       \begin{itemize}
@@ -342,14 +342,14 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 \doExercise{Formalise these automata as $\pair{S,I,\dda,\Act,\rra}$}{
 \centering
 \begin{tikzpicture}[aut]
-  \node[st] (s_0) {};
-  \node[st,initial,right of=s_0] (s_1) {};
+  \node[st,final] (s_0) {};
+  \node[st,initial above,right of=s_0] (s_1) {};
   % \node[st] (s_2) [right of=s_1]  {};
   \node[st,final] (s_2) [right of=s_1]  {};
 % 
   \path[->]
   (s_1) edge[bend left] node {set} (s_2)
-  (s_1) edge[bend left] node{set} (s_0)
+  (s_1) edge node{set} (s_0)
   (s_2) edge  [loop above]  node {alarm} () edge[bend left] node{reset} (s_1);
 \end{tikzpicture}
 ~~~~~~~~~~
@@ -363,6 +363,13 @@ s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 \end{tikzpicture}
 
 }
+
+\medskip
+
+\begin{block}{}
+  \small
+  \emph{Homework deadline: Exercises from this week should be submitted in a single PDF file until Sunday next week.}
+\end{block}
   
 \end{slide}
 
@@ -845,6 +852,34 @@ where
 
 
 \section{Concurrent Process algebra}
+
+
+\begin{slide}{Overview}
+
+\begin{block}{Recall}
+\begin{enumerate}
+  \item Non-deterministic Finite Automata:
+  \wrap{\small\begin{tikzpicture}[aut]
+  \node[st,initial]  (q1) {$q_1$};
+  \node[st,final] (q2) [right of=q1]  {$q_2$};
+  \path[->] (q1) edge node {a} (q2) (q2) edge[loop right] node {b} ();
+\end{tikzpicture}}
+  \item (Sequential) Process algebra:
+    $P = a.Q ~~~~ Q=b.Q$
+
+  \item Meaning of \structure{(2)} using \structure{(1)}
+\end{enumerate}  
+\end{block}
+
+\begin{block}{Still missing}
+\begin{itemize}
+  \item \alert{\textbf{Interaction}} between processes
+  \item \emph{Interaction \alert{diagrams}} vs. \emph{interacting \alert{processes}}
+  \item Enrich \structure{(2)} and \structure{(3)}
+\end{itemize}
+\end{block}
+
+\end{slide}
 
 %-------------------------------------------------------------------------------
 \begin{slide}{Process algebras}

@@ -18,35 +18,95 @@
 
 % \section{Introduction}
 
-\begin{slide}{Overview - TO UPDATE}
+\begin{slide}{Overview}
 
 \begin{block}{Recall}
 \begin{enumerate}
-  \item Labelled Transition Systems:
-    $\xymatrix{
-      q_1 \ar[r]^{a}  & q_2 \ar@(ur,dr)[]^{b} 
-    }$
+  \item Non-deterministic Finite Automata:
+  \wrap{\small\begin{tikzpicture}[aut]
+  \node[st,initial]  (q1) {$q_1$};
+  \node[st,final] (q2) [right of=q1]  {$q_2$};
+  \path[->] (q1) edge node {a} (q2) (q2) edge[loop right] node {b} ();
+\end{tikzpicture}}
+  \item Process algebra:
+    $P = a.Q ~~~~ Q=b.Q ~~~~ P|Q$
 
-  \item (Sequential) Process algebra:
-    $P = a.Q ~~~~ Q=b.Q$
+  \item Interaction between processes
+  
+  \item Meaning of PA using NFA
 
-  \item Meaning of \structure{(2)} using \structure{(1)}
-
-  \item Equivalence relations ((bi)simulations)
+  % \item Equivalence relations ((bi)simulations)
 \end{enumerate}  
 \end{block}
 
 \begin{block}{Still missing}
 \begin{itemize}
-  \item \alert{\textbf{Interaction}} between processes
-  \item \emph{Interaction \alert{diagrams}} vs. \emph{interacting \alert{processes}}
-  \item Enrich \structure{(2)} and \structure{(3)}; expand \structure{(4)}
+  \item When is a process $P$ \alert{equivalent} to a process $Q$?
+  \item When can a process $P$ be \alert{safely replaced} by a process $Q$?
+  \item When can a sequence of interactions be \alert{safely implemented} as interacting components?
 \end{itemize}
 \end{block}
 
 \end{slide}
 
 
+\begin{slide}{Syllabus}
+  \frsplitt{
+  \begin{itemize}
+    \item High-level overview or requirements and associated processes
+    \\[5mm]
+    \item Mathematical Preliminaries
+    \begin{itemize}
+      \item Basic mathematical notations
+      \item Set theory
+      \item PropositionalLogic
+      % \begin{itemize}
+      %   \item Syntax, semantics, and reasoning
+      % \end{itemize}
+      \item First Order Logic
+      % \begin{itemize}
+      %   \item Syntax, semantics, and reasoning
+      % \end{itemize}
+      \item The Z3 automatic theorem prover
+      % \begin{itemize}
+      %   \item Rise4fun interface: get acquainted with the tool
+      %   \item Python API: automating search for solutions
+      % \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  }{
+  \begin{itemize}
+    \item Behavioural modelling
+    \begin{itemize}
+      \item Single component
+      % \begin{itemize}
+      %   \item State diagrams and Flow charts
+      %   \item Formal modelling: Automata, Process Algebra in mCRL2
+      % \end{itemize}
+      \item Many components
+  %     \begin{itemize}
+  %       \item Communication diagrams and Sequence
+  % diagrams
+  %       \item Formal modelling: Process algebra with interactions
+  %     \end{itemize}
+      \alert{
+      \item Equivalences
+      \begin{itemize}
+        \item Language Equivalence
+        \item (Bi)similarity
+        \item Realisability
+      \end{itemize}
+      }
+      \item Verification
+      % \begin{itemize}
+      %   \item Verification of requirements
+      %   \item Formal modelling: modal logics
+      %   \item Tools: model checking with mCRL2
+      % \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  }
+\end{slide}
 
 \begin{slide}{Behavioural Equivalences -- Intuition}
 \small
