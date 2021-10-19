@@ -767,7 +767,19 @@ where
 }
 \pause
 
-\begin{exampleblock}{\exercise Draw the LTS's}
+\begin{exampleblock}{\exercise Build a derivation tree to prove the transitions below}
+  % \vspace*{-4mm}
+  \begin{enumerate}
+    \item $(a.A + b.B) ~\trans{b}~ B$
+    \item $(a.b.A + (b.a.B + c.a.C)) ~\trans{b}~ a.B$
+    \item $((a.B + b.A)[a \mapsto c])\backslash\{a,b\} ~\trans{c}~ B$
+  \end{enumerate}
+\end{exampleblock}
+
+\end{slide}
+
+\begin{slide}{Exercise}
+  \begin{exampleblock}{\exercise Draw the automata}
   % \vspace*{-4mm}
   \begin{align*}
     CM &= \mathsf{coin.coffee}.CM
@@ -781,9 +793,6 @@ where
   \end{align*}
 \end{exampleblock}
 
-\end{slide}
-
-\begin{slide}{Exercise}
 \doExercise{What is the language of this process?}{
 \centering
   \vspace*{-5mm}
