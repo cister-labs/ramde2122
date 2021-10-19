@@ -70,7 +70,6 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Communication diagrams: Concurrent Process Algebra; Realisability (Week 6-7)
   </a></li><li><a class="hide" href="slides/....pdf">
     Logics for behaviour: Modal logics; Model-Checking (Week 8-9)
-   </a></li>
   </a></li><li><a class="hide" href="slides/...pdf">
     Modelling and verification in mCRL2 (Week 2-9)
    </a></li>
