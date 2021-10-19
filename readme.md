@@ -21,7 +21,6 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 
 - High-level overview or requirements and associated processes
-
 - Mathematical Preliminaries
   + Basic mathematical notations
   + Set theory
@@ -32,18 +31,21 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
   + The Z3 automatic theorem prover
     * Rise4fun interface: get acquainted with the tool
     * Python API: automating search for solutions
-
 - Behavioural modelling
   + Single component
     * State diagrams and Flow charts
-    * Formal modelling: Automata, Process Algebra and equivalences
-  + Manycomponents
+    * Formal modelling: Automata, Process Algebra
+  + Many components
     * Communication diagrams and Sequence
   diagrams
-    * Formal modelling: Process algebra with interactions, Realisability
+    * Formal modelling: Process algebra with interactions
+  + Equivalences
+    * (Bi)similarity
+    * Realisability
+  + Verification
     * Verification of requirements
     * Formal modelling: modal logics
-  + Tools: model checking with mCRL2
+    * Tools: model checking with mCRL2
 
 
 # Material
