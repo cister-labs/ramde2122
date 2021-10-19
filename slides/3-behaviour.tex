@@ -129,7 +129,7 @@
 ~~
   \begin{minipage}{0.28\textwidth}
   \begin{exampleblock}{Implementation}
-    Generate correct code.\\
+    Generate correct code.\\~\\
   \end{exampleblock}
   \end{minipage}
 
@@ -273,7 +273,7 @@ evolving \structure{concurrently}
 
 \bigskip
 
-\frsplitt{\centering\alert{This module}}{\centering\alert{The next module}}
+\frsplitt{\centering\alert{We start here$\ldots$}}{\centering\alert{then we go reactive}}
 
 
 % \begin{block}{Reactive system}
@@ -293,16 +293,16 @@ evolving \structure{concurrently}
 \begin{slide}{Non-Deterministic Finite Automata (NFA)}
 \small
 \begin{block}{Definition}
-A NFA over a set $\Act$ of names is a tuple
+A NFA over a set $\Act$ of \structure{names} is a tuple
 $\pair{S, I, \downarrow, \Act,  \rra}$ where
 \begin{itemize}
 \item $S = \enset{s_0, s_1, s_2, ...}$ is a set of \structure{states}
 \item $I \subseteq S$ is the set of \structure{initial} states
-\item  $\downarrow \subseteq S$ is the set of \structure{terminating} or final states
+\item  ${\dda} \subseteq S$ is the set of {terminating} or \structure{final} states
 \begin{equation*}
-\downarrow s \; \equiv\; s \in \downarrow
+\dda s \; \equiv\; s \in \dda
 \end{equation*}
-\item  $\rra \,\,\subseteq\, S \times \Act \times S$ is the \structure{transition} relation, often given as an $\Act$-indexed family of binary relations 
+\item  ${\rra} \,\,\subseteq\, S \times \Act \times S$ is the \structure{transition} relation, often given as an $\Act$-indexed family of binary relations 
 \begin{equation*}
 s \rtran{a} s'\; \equiv\; \pair{s,a,s'} \in \rra
 \end{equation*}
