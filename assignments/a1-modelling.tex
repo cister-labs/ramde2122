@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+
+\input{macros}
+\date{RAMDE -- 2021/2022}
+
+\usepackage[latin1]{inputenc} % pt characters
+
+\usepackage{draftwatermark}
+\SetWatermarkText{Draft}
+\SetWatermarkScale{1.4}
+
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{A1: Modelling behaviour\\
+{\Large Crossing the river -- Part 1}}
+
+\author{David Pereira \& Jos\'{e} Proen\c{c}a} 
+
+
+\maketitle
+
+\vspace*{-3mm}
+\myparagraph{To do:} Produce a report as a PDF document including the answers to the exercises below.
+
+\myparagraph{To submit:} The report in PDF to your group's git repository. ALL students should push commits.
+
+\myparagraph{Deadline:} TBD %6 Dec 2021 @ 23:59 (Monday)
+
+\myparagraph{Auxiliary files:} \url{https://cister-labs.github.io/ramde2122/assignment/farmer.zip}
+
+
+\section*{Modelling the farmer-fox-goose-beans problem}
+
+A \textbf{farmer} wants to transport a \textbf{fox}, a \textbf{goose}, and some \textbf{beans} across a river (from the \textbf{left} margin to the \textbf{right} margin).
+Unfortunately, he can only carry one at a time. Furthermore, if the farmer is not present, the fox will eat the goose and the goose will eat the beans. The problem is solved if the farmer can carry all animals across the river.
+
+
+\lstinputlisting{farmer1.mcrl2}
+
+\begin{myExercise} \label{ex:ba1}
+We will encode the same problem using mCRL2's process algebra.
+Start by downloading the auxiliary files for this assignment at \url{https://cister-labs.github.io/ramde2122/assignment/farmer.zip}, where you will find the \bash{farmer1.mcrl2} file above.
+This is a simplified (but incomplete) specification of our farmer-fox-goose-beans problem.
+
+
+The specification is split into three sections:
+\code{act}, a declaration of 24 actions,
+\code{proc}, the definition of 4 processes, and
+\code{init}, the initialisation of the system.
+
+
+\subex{
+Create a new project \bash{farmer1} using \bash{mcrl2ide}, and add the resulting project folder to your git repository.
+Produce the labelled transition system (LTS) of this mCRL2 specification and
+\textbf{show a screenshot of the LTS (make sure it is understandable).}
+}
+
+\subex{
+% \textbf{FIX: if invariant is in properties (as now), then it is complete. OR USE INVARIANTS!}
+This specification is not complete yet, i.e., it does model the puzzle completely.
+\textbf{Explain informally why this specification is not complete}, by explaining what is being modelled and what is still missing.
+}
+
+\subex{If you replace the \code{init} block by only \code{Fox || Goose || Beans || Farmer} (i.e., without the restrictio0ns \code{allow} and \code{comm}) \textbf{would you obtain more or less states} than with the original specification? \textbf{Why?}
+}
+
+\end{myExercise}
+
+~\\[-6mm]
+
+%----------------------------------------------
+\begin{myExercise} \label{ex:ba2}
+We present below a new specification for the same problem consisting of a single process \code{State} that keeps the state information, found in the provided auxiliary file \bash{farmer2.mcrl2}.
+This new specification includes more advanced features of mCRL2, including:
+a \emph{data structure}, actions with \emph{data parameters}, processes with \emph{data parameters}, and user defined \emph{functions} \code[morekeywords={inv}]{inv} and \code[morekeywords={ok}]{ok}.
+
+% \clearpage
+
+
+\lstinputlisting{farmer2.mcrl2}
+
+
+\subex{This new specification has a hole in the definition of \code[morekeywords={ok}]{ok}, marked with \code{\%\% (1) \%\%}.
+Extend the given mCRL2 definition by replacing this hole with the code that describes the desired state invariant and save the resulting specification in a new project named \bash{farmer2}.
+\textbf{Show your new definition of the function \code[morekeywords={ok}]{ok}.}
+}
+
+\subex{\label{ex:ba3}
+Without modifying the process \code{State}, adapt the specification by adding a new process \code{Counter(n:Nat)} that runs in parallel with \code{State(left,left,left,left)} and counts the number of traversals made by the boat. Save the resulting specification in a new project \bash{farmer3} and \textbf{show your new specification}. (hint: it could be useful to use a bound for the \code{Counter)}, i.e., do not allow $n$ to be bigger than a certain number.)
+}
+\end{myExercise}
+
+
+\section*{Requirements}
+\begin{myExercise} 
+  Some requirements-related question, ideal open question (e.g., identify the requirement domain and formulate informally 2-3 requirements for this problem; later formulate them using 1st order logic, assuming the predicates \code{isPassanger}, \code{isFarmer}, \code{isBeans}, \code{isGoose}, \code{isFox}, \code{isLeft}, and \code{isRight}.)
+\end{myExercise}
+
+
+\section*{Self-peer-evaluation}
+\begin{myExercise}
+  In a scale from 0-5, where 5 is better than 0, give a mark to you and each of your team groups for each of the following criteria:
+  \begin{itemize}
+    \item \textbf{Effort} (time spent)
+    \item \textbf{Quality} (of the work produced)
+    \item \textbf{Collaboration} (how easy it was to meet and interact)
+  \end{itemize}
+\end{myExercise}
+
+
+% % --------------------------------------------------------------
+% \section*{LTS Equivalence}
+
+
+% \begin{myExercise}  
+% Recall the action-based \bash{farmer1.mcrl2} specification from Exercise~\ref{ex:ba1} and the state-based \bash{farmer2.mcrl2} specification from Exercise~\ref{ex:ba2}.
+
+
+% \subex{Modify the initial process (\code{init}) of both \bash{farmer1.mcrl2} and \bash{farmer2.mcrl2} to {hide all allowed actions except \code{win}} (using \code{hide}), and save them as \bash{farmer1-tau.mcrl2} and \bash{farmer2-tau.mcrl2}, respectively.
+% In \bash{farmer2-taus.mcrl2} {redefine the function \code[morekeywords={ok}]{ok}} by setting it to true, i.e., define \code[morekeywords={ok}]{ok(fm,f,g,b)=true;}.
+% \textbf{Show the resulting \code{init} block from each file.}
+% }
+
+% \subex{
+% Generate the \bash{.lts} files corresponding to \bash{farmer1-tau.mcrl2} and \bash{farmer2-tau.mcrl2}, and compare them using strong bisimulation using the following command.
+% \textbf{What can you conclude?}}
+
+% \begin{lstlisting}[style=bash]
+% $\texttt{\$}$ ltscompare --equivalence=bisim farmer1-taus.lts farmer2-taus.lts
+% \end{lstlisting}
+
+
+% \subex{
+% Using \bash{ltsconvert}, minimise the LTS for \bash{farmer2-taus.mcrl2} with respect to branching bisimulation, using the command below.
+% \textbf{Include a screenshot of the minimised LTS and explain what information can we infer from this LTS.}}
+
+% \begin{lstlisting}[style=bash]
+% $\texttt{\$}$ ltsconvert --equivalence=branching-bisim farmer2-taus.lts
+% \end{lstlisting}
+
+
+% \end{myExercise}
+
+
+
+ 
+\end{document}

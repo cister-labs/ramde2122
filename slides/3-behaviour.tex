@@ -956,15 +956,15 @@ this capacity is kept along the whole life of the system to which state space $q
 
 \begin{block}{Definition}
 Given  $\pair{S_1, \Act, \rra_1}$  and $\pair{S_2, \Act, \rra_2}$
- over $\Act$, ignoring initial and final states,
-relation \structure{$R \subseteq S_1 \times S_2$} is a \structure{simulation} iff,
+ over $\Act$ \faded{(ignoring initial and final states)}
+a relation \structure{$R \subseteq S_1 \times S_2$} is a \structure{simulation} iff,
 for all $\pair{p,q} \in \structure{R}$ and $a \in \Act$,
 
 \begin{align*}
 %\text{\gold{(1)}}\; \;  & p \downarrow_1 \;  \imp\; q \downarrow_2\\ &\\
 \text{\gold{(1)}}\; \;  & p \rtran{a}_1 p'\;  \imp\; \rcb{\exists}{q'}{q' \in S_2}{q \rtran{a}_2 q'\, \e\, \pair{p',q'} \in \structure{R}}   
 \end{align*}
-\vspace{6mm}
+\vspace{0mm}
 
 \begin{equation*}
 \xymatrix{
@@ -999,6 +999,7 @@ q_0 \lesssim p_0 \text{\hspace{0.5cm} cf. \hspace{0.3cm}}
 
 \exerciseAdd
 
+
 %----------------------------------------------------------------------------------
 \begin{slide}{Similarity}
 \small
@@ -1009,6 +1010,12 @@ q_0 \lesssim p_0 \text{\hspace{0.5cm} cf. \hspace{0.3cm}}
 \]
 \emph{We say \alert{$p$ is simulated by $q$}.}
 \end{block}
+
+% \begin{block}{Automata simulation}
+%   \[\pair{S_1,\set{s_1},\dda_1,\rra_1} \lesssim \pair{S_2,\set{s_2},\dda_2,\rra_2}\; \equiv\; s_1 \lesssim s_2 
+% \]
+% \end{block}
+
 \begin{block}{Lemma}
 The similarity relation is a preorder\\
 \faded{(ie, reflexive and transitive)}
@@ -1077,7 +1084,7 @@ whenever $\pair{p,q} \in R$ and $a \in \Act$,
 %----------------------------------------------------------------------------------
 \begin{slide}{Examples}
 
-\begin{exampleblock}{\exercise Find bisimulations}
+\begin{exampleblock}{\exercise Find bisimulations that include $q_1$}
 \begin{equation*}
 \xymatrix{
 & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & m \ar[d]_{a}\\
@@ -1101,7 +1108,7 @@ q_1 \ar[r]^{a} & q_2  \ar[r]^{a}  & q_3  \ar[r]^{a} & \cdots & & h\ar@(ur,dr)[]^
 %----------------------------------------------------------------------------------
 \begin{slide}{Examples}
 
-\begin{exampleblock}{\exercise Find bisimulations}
+\begin{exampleblock}{\exercise Find bisimulations that include $q_1$}
 \vspace*{-2mm}
 \begin{equation*}
 \xymatrix{
@@ -1117,7 +1124,35 @@ q_4 & & q_5 & &p_4 & & p_5
 \end{slide}
 
 
+% Definition
+% p∼q ≡ ⟨∃R :: Risabisimulationand⟨p,q⟩∈R⟩
+%----------------------------------------------------------------------------------
+\begin{slide}{Bisimilarity}
+\small
 
+\begin{block}{Definition}
+\centering
+\[p \sim q\; \equiv\; \rcb{\exists}{R}{}{R\; \text{is a bisimulation and}\; \pair{p,q} \in R} 
+\]
+\emph{We say \alert{$p$ is bisimilar to $q$}.}
+\end{block}
+
+
+\begin{block}{Lemma}
+\centering
+Two processes $P$ and $Q$ are bisimilar if there is a bisimulation that includes $\pair{P,Q}$.
+\end{block}
+
+% \begin{block}{Automata simulation}
+%   \[\pair{S_1,\set{s_1},\dda_1,\rra_1} \lesssim \pair{S_2,\set{s_2},\dda_2,\rra_2}\; \equiv\; s_1 \lesssim s_2 
+% \]
+% \end{block}
+
+% \begin{block}{Lemma}
+% The similarity relation is a preorder\\
+% \faded{(ie, reflexive and transitive)}
+% \end{block}
+\end{slide}
 %----------------------------------------------------------------------------------
 % \begin{slide}{After thoughts}
 % \small
