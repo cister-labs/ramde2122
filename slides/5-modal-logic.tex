@@ -333,7 +333,7 @@ p & \models \nc{K}{\phi} \text{~~~~~~~~~~ \textsf{iff} ~~~}
 \begin{slide}{Example: Hennessy-Milner logic}
 \small
 
-\begin{block}{HM Syntax}
+\begin{block}{Process Logic Syntax}
 \begin{equation*}
 \phi\; ::=\; \true\: \mid\: \false\: \mid\: \neg \phi \: \mid\: \phi_1 \e \phi_2\: \mid\:
            \phi_1 \impp  \phi_2\:   \mid\:
@@ -342,10 +342,10 @@ p & \models \nc{K}{\phi} \text{~~~~~~~~~~ \textsf{iff} ~~~}
 \end{equation*}
 where $\structure{K \subseteq Act}$
 \end{block}
-~\\[-3mm]
+~\\[-5mm]
 
 \begin{columns}
-\column{0.38\textwidth}
+\column{0.32\textwidth}
 \centering
 \begin{tikzpicture}[scale=1.5,%
   every node/.style={auto,inner sep=1pt},%
@@ -576,14 +576,36 @@ I.e., $P=\{0, a, b, c, \ldots\}$,
 \begin{block}{Epistemic logic (J. Hintikka, 1962)}
 \begin{itemize}
 \item $W$ is a set of agents 
-\item $\alpha \models i$ means $i$ is the current knowledge of agent $i$
-\item $\alpha \models \always j$ means the agent knows that $j$ (in the sense that at each alternative epistemic situation information $j$ is known) 
-\item $\alpha \models \eventual j$ means the agent knows that  knowledge $j$ is consistent with what the agent knows (is an epistemically acceptable alternative)
+\item $\alpha \models \nc{K_i}~\phi$ means that agent $i$ always knows that $\phi$ is true.
+\item $\alpha \models \pv{K_i}~\phi$ means that agent $i$ can reach a state where he knows $\phi$.
+\item $\alpha \models (\lnot \nc{K_i}~\phi) \land (\lnot \nc{K_i}~\lnot \phi)$ means that agent $i$ does not know whether $\phi$ is true or not.
+% \item $\alpha \models i$ means $i$ is the current knowledge of agent $i$
+% \item $\alpha \models \always j$ means the agent knows that $j$ (in the sense that at each alternative epistemic situation information $j$ is known) 
+% \item $\alpha \models \eventual j$ means the agent knows that  knowledge $j$ is consistent with what the agent knows (is an epistemically acceptable alternative)
 \end{itemize}
 \end{block}
+
+Many variations exist, modelling \structure{knowledge} and \structure{believes}, knowledge of \structure{who knows what}, \structure{distributed} knowledge, etc.
+
 \end{slide}
 
 
+\begin{slide}{Examples V}\label{s:20}
+\small
+\begin{block}{Deontic logic (G.H. von Wright, 1951)}
+\begin{itemize}
+\item Obligations and permissions: \alert{must} and \structure{can} do.
+\item $\alpha \models \always~\phi$ means $\phi$ is obligatory.
+\item $\alpha \models \eventual~\phi$ means $\phi$ is a possibility.
+% \item $\alpha \models i$ means $i$ is the current knowledge of agent $i$
+% \item $\alpha \models \always j$ means the agent knows that $j$ (in the sense that at each alternative epistemic situation information $j$ is known) 
+% \item $\alpha \models \eventual j$ means the agent knows that  knowledge $j$ is consistent with what the agent knows (is an epistemically acceptable alternative)
+\end{itemize}
+\end{block}
+
+Each logic accepts a different set of \emph{principles} or \emph{rules} (with variations), that makes their interpretation different.
+
+\end{slide}
 
 
 
@@ -721,35 +743,53 @@ I.e., $P=\{0, a, b, c, \ldots\}$,
 %----------------------------------------------------------------------------------
 \begin{slide}{Exercise}\label{s:25}
 \small
-\doExercise{Express the following properties in Process Logic}{
-\exerciseBack
-  ~\\[-5mm]
-\begin{itemize}
-\item \alert{inevitability of $a$}: \only<2->{\structure{$\pv{-}{\true} \e \nc{-a}{\false}$}}
-\item \alert{progress}: %\only<3->{\structure{$\pv{-}{\true}$}}
-\item \alert{deadlock or termination}: %\only<4->{\structure{$\nc{-}{\false}$}}
-% \visible<4->{\item what about
-% \begin{equation*}
-% \structure{\pv{-}{\false}}\; \; \; \text{and}\; \; \;  \structure{\nc{-}{\true}}\; \; \; \text{?}
-% \end{equation*}}
-\end{itemize}
+
+\begin{columns}[T]
+
+\col[0.70]{
+  \doExercise{Express the properties in Process Logic}{
+  \exerciseBack
+    ~\\[-5mm]
+  \begin{itemize}
+  \item \alert{inevitability of $a$}: \only<2->{\structure{$\pv{-}{\true} \e \nc{-a}{\false}$}}
+  \item \alert{progress}: %\only<3->{\structure{$\pv{-}{\true}$}}
+  \item \alert{deadlock or termination}: %\only<4->{\structure{$\nc{-}{\false}$}}
+  % \visible<4->{\item what about
+  % \begin{equation*}
+  % \structure{\pv{-}{\false}}\; \; \; \text{and}\; \; \;  \structure{\nc{-}{\true}}\; \; \; \text{?}
+  % \end{equation*}}
+  \end{itemize}
+  }
+
+  \exerciseAdd
+  \doExercise{What does this mean?}{
+  \exerciseBack
+  \exerciseBack
+    ~\\[-5mm]
+    \begin{enumerate}
+      \item ${\pv{-}{\false}}$
+      \item ${\nc{-}{\true}}$
+    \end{enumerate}
+  }
+
+  ``$-$" stands for $Act$, and ``$-x$'' abbreviates $Act-\enset{x}$
 }
-
-\exerciseAdd
-\doExercise{What does this mean?}{
-\exerciseBack
-\exerciseBack
-  ~\\[-5mm]
-  \begin{enumerate}
-    \item ${\pv{-}{\false}}$
-    \item ${\nc{-}{\true}}$
-  \end{enumerate}
+\col[0.28]{
+    \begin{block}{Recall syntax}
+  \begin{align*}
+  \phi ~::&=~ \true
+          \\&~\,\mid~ \false
+          \\&~\,\mid~ \neg \phi 
+          \\&~\,\mid~ \phi_1 \e \phi_2
+          \\&~\,\mid~ \phi_1 \impp  \phi_2  
+          \\&~\,\mid~ \pv{\structure{K}}{\phi}  
+          \\&~\,\mid~ \nc{\structure{K}}{\phi} 
+  \end{align*}
+  ~\\
+  where $\structure{K \subseteq Act}$
+  \end{block}
 }
-
-``$-$" stands for $Act$, and ``$-x$'' abbreviates $Act-\enset{x}$
-
-
-
+\end{columns}
 \end{slide}
 \exerciseAdd
 \exerciseAdd
@@ -794,6 +834,7 @@ I.e., $P=\{0, a, b, c, \ldots\}$,
 }
 \end{slide}
 
+
 %----------------------------------------------------------------------------------
 % \begin{slide}{Exercise}\label{s:27}
 % \small
@@ -824,6 +865,63 @@ I.e., $P=\{0, a, b, c, \ldots\}$,
 % \end{exampleblock}
 % \end{slide}
 
+
+
+\begin{slide}{Process Logic + regular expressions}
+  
+  \begin{block}{Process Logic Syntax}
+  \begin{equation*}
+  \phi\; ::=\; \true\: \mid\: \false\: \mid\: \neg \phi \: \mid\: \phi_1 \e \phi_2\: \mid\:
+             \phi_1 \impp  \phi_2\:   \mid\:
+             \pv{\alert{E}}{\phi} \:  \mid\:
+             \nc{\alert{E}}{\phi} 
+  \end{equation*}
+  where $\alert{E}$ is a \alert{regular expression over $Act$}
+  \end{block}
+
+  More expressive than Process Logic. Used by mCRL2.
+
+  \begin{exampleblock}{Examples}
+  \begin{itemize}
+    \item ``$\pv{a.b.c}{\true}$'' means ``$\diam{a}\diam{b}\diam{c}\,\true$'' 
+    \item ``$\nc{a.b.c}{\false}$'' means ``$\boxx{a}\boxx{b}\boxx{c}\,\false$'' 
+    \item ``$\pv{a^{*}.b}{\true}$'' means that $b$ can be taken after some number of $a$'s. 
+    \item ``$\pv{-^{*}.a}{\true}$'' means that $a$ can \alert{eventually} be taken
+    \item ``$\boxx{-^{*}}\pv{a+b}{\true}$'' means it is \alert{always}  possible to do $a$ or $b$
+  \end{itemize}
+  \end{exampleblock}
+
+\end{slide}
+
+
+\begin{slide}{Exercises}
+\small
+
+\begin{columns}[T]
+\col[0.34]{\doExercise{What does this mean?}{
+  \vspace*{-8mm}
+  \begin{enumerate}
+    \item $\pv{-}\true$
+    \item $\boxx{-^{*}}\pv{-}\true$
+    \item $\boxx{-^{*}.a}\pv{b}\true$
+    \item $\diam{-^{*}.send}$\\$\pv{(-send)^{*}.recv}\true$
+  \end{enumerate}
+}}
+
+\col[0.65]{\doExercise{Express using logic}{
+  \vspace*{-8mm}
+  \begin{enumerate}
+    \item The user \structure{can only have} \alert{coffee} after the \alert{coffee button} is pressed.
+    \item The used \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
+    \item It is always possible to \alert{turn off} the coffee machine.
+    \item It is always possible to reach a state where the coffee machine can be \alert{turned off}.
+    \item It is never possible to \alert{add chocolate} right after pressing the \emph{latte button}.
+  \end{enumerate}
+}}
+\end{columns}
+
+  
+\end{slide}
 
 
 
@@ -1063,47 +1161,47 @@ Give a modal formula that can be satisfied at point $1$ but not at $3$.
 
 
 %-------------------------------------------------------------------------------
-\begin{slide}{mCRL2 - modal logic}
-\newcommand{\expr}{\mathit{mod}}
-\newcommand{\midd}{\,~|~\,}
-\centering
-\begin{block}{Syntax (simplified)}
-\begin{align*}
-  \phi =&~ \mcode{true} \midd \mcode{false} \midd
-          \mcode{forall x:T.}\phi \midd \mcode{exists x.:T}\phi \\|&~
-          \phi~OP~\phi \midd \mcode{!}\phi \midd
-          \mcode{[$\structure{\expr}$]}\phi \midd \mcode{<$\structure{\expr}$>}\phi \midd \ldots
-\\[3mm]
-\structure{\expr} =&~ \structure{\alpha} \midd \mcode{nil} \midd \expr\mcode{+}\expr \midd
-        \expr\mcode{.}\expr \midd \expr\mcode{*} \midd \expr\mcode{+}
-\\[1mm]
-\structure{\alpha} =&~ \mcode{a(d)} \midd \mcode{a|b|c} \midd
-          \mcode{true} \midd \mcode{false} 
-          \midd
-          \alpha~OP~\alpha \midd \mcode{!}\alpha
-          \\|&~
-          \mcode{forall x:T.}\alpha \midd \mcode{exists x:T.}\alpha 
-          \midd
-          \ldots
-\end{align*}
-\end{block}
-%~\\[2mm]
-where $OP = \set{\mcode{&&},\mcode{||},\mcode{=>}}$ ~~and~~
-$T = \set{Bool, Nat, Int, \ldots}$
+% \begin{slide}{mCRL2 - modal logic}
+% \newcommand{\expr}{\mathit{mod}}
+% \newcommand{\midd}{\,~|~\,}
+% \centering
+% \begin{block}{Syntax (simplified)}
+% \begin{align*}
+%   \phi =&~ \mcode{true} \midd \mcode{false} \midd
+%           \mcode{forall x:T.}\phi \midd \mcode{exists x.:T}\phi \\|&~
+%           \phi~OP~\phi \midd \mcode{!}\phi \midd
+%           \mcode{[$\structure{\expr}$]}\phi \midd \mcode{<$\structure{\expr}$>}\phi \midd \ldots
+% \\[3mm]
+% \structure{\expr} =&~ \structure{\alpha} \midd \mcode{nil} \midd \expr\mcode{+}\expr \midd
+%         \expr\mcode{.}\expr \midd \expr\mcode{*} \midd \expr\mcode{+}
+% \\[1mm]
+% \structure{\alpha} =&~ \mcode{a(d)} \midd \mcode{a|b|c} \midd
+%           \mcode{true} \midd \mcode{false} 
+%           \midd
+%           \alpha~OP~\alpha \midd \mcode{!}\alpha
+%           \\|&~
+%           \mcode{forall x:T.}\alpha \midd \mcode{exists x:T.}\alpha 
+%           \midd
+%           \ldots
+% \end{align*}
+% \end{block}
+% %~\\[2mm]
+% where $OP = \set{\mcode{&&},\mcode{||},\mcode{=>}}$ ~~and~~
+% $T = \set{Bool, Nat, Int, \ldots}$
 
-\begin{exampleblock}{Example}
-``\code{[true*.a]<b>true}'' means \emph{``whenever an \code{a} appears after any number of steps, it must be immediately followed by \code{b}''}. 
-\end{exampleblock}
-\end{slide}
+% \begin{exampleblock}{Example}
+% ``\code{[true*.a]<b>true}'' means \emph{``whenever an \code{a} appears after any number of steps, it must be immediately followed by \code{b}''}. 
+% \end{exampleblock}
+% \end{slide}
 
-%-------------------------------------------------------------------------------
-\begin{slide}{mCRL2 toolset overview}
-  \centering
+% %-------------------------------------------------------------------------------
+% \begin{slide}{mCRL2 toolset overview}
+%   \centering
   
-  \includegraphics[width=\textwidth]{images/mcrl2-toolset.png}
+%   \includegraphics[width=\textwidth]{images/mcrl2-toolset.png}
 
-  -- mCRL2 tutorial: Verification part --
-\end{slide}
+%   -- mCRL2 tutorial: Verification part --
+% \end{slide}
 
 
 
