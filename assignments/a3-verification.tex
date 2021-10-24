@@ -1,0 +1,151 @@
+\documentclass[11pt]{article}
+
+
+\input{macros}
+\date{RAMDE -- 2021/2022}
+
+\usepackage[latin1]{inputenc} % pt characters
+
+\usepackage{draftwatermark}
+\SetWatermarkText{Draft}
+\SetWatermarkScale{1.4}
+
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{A3: Analysing behaviour\\
+{\Large Crossing the river -- Part 2}}
+
+\author{David Pereira \& Jos\'{e} Proen\c{c}a} 
+
+
+\maketitle
+
+\myparagraph{To do:} Produce a report as a PDF document including the answers to the exercises below.
+
+\myparagraph{To submit:} The PDF report, placed in your group's git repository. ALL students should push commits.
+
+\myparagraph{Deadline:} TBD % 14 Dec 2020 @ 23:59 (Monday)
+
+\myparagraph{Auxiliary files:} You will need the 3 files produced in your last assignment: \bash{farmer1.mcrl2}, \bash{farmer2.mcrl2} and \bash{farmer3.mcrl}.
+
+
+% --------------------------------------------------------------
+\section*{Verification of the farmer-fox-goose-beans problem}
+
+Recall the specifications in the \bash{farmer1}, \bash{farmer2}, and \bash{farmer3} projects from the modelling exercises (\url{https://cister-labs.github.io/ramde2122/assignments/a2-modelling.pdf})
+You will now verify properties of these systems.
+In \bash{mcrl2ide}, a property can be written using \bash{Tools>Add Property}.
+There are 2 types of properties: \textbf{Equivalence} and \textbf{Mu-Calculus}, covered by this assignment.
+
+% --------------------------------------------------------------
+\section*{LTS Equivalence}
+
+
+\begin{myExercise}  
+Create variations of the \code{Sys} processes in \bash{farmer1} and \bash{farmer2} and compare them to the originals as follows.
+
+% Recall the action-based \bash{farmer1} specification from Exercise~\ref{ex:ba1} and the state-based \bash{farmer2} specification from Exercise~\ref{ex:ba2}.
+
+
+\subex{Create a new process \code{SysHide} in both \bash{farmer1} and \bash{farmer2} equal to \code{Sys} but {hiding all allowed actions except \code{win}} (using \code{hide}).
+\textbf{Show the resulting \code{SysHide} processes for each file.}
+}
+
+\subex{
+Combine both specifications of \bash{farmer1} and \bash{farmer2} in a single specification.
+Rename \code{Sys} from \bash{farmer1} to \code{Sys1} and \code{SysHide1}, and similarly for \code{Sys} from \bash{farmer2}.
+Redefine the function \code[morekeywords={ok}]{ok} by setting it to true, i.e., define \code[morekeywords={ok}]{ok(fm,f,g,b)=true;}.
+
+Visualise the processes \code{SysHide1} and \code{SysHide2}. Compare them using strong bisimulation by adding a new \textbf{Equivalence} property that compares them. Note that you will have to delete the \code{init} block.
+\textbf{What can you conclude?}}
+
+
+\subex{
+Visualise the minimised LTS for \code{SysHide2} with respect to branching bisimulation, using the tool in \bash{Tools>Show reduced State Space}.
+\textbf{Include a screenshot of the minimised LTS and explain what information can we infer from this LTS.}}
+
+
+\end{myExercise}
+
+
+
+\section*{Verification of properties}
+
+
+\begin{myExercise}
+Answer the questions below on the use of mu-calculus for specifying properties in mCRL2.
+
+\subex{\label{ex:ver1}
+What does the property ``\code{[true*]<ready>true}'' mean? Does it hold in any of these 2 LTSs?}
+
+\subex{\label{ex:ver2}
+Does the property ``\code{[true*.foxr.win]false}'' holds for \bash{farmer1}? Does the equivalent property ``\code{[true*.fox(right).win]false}'' holds for \bash{farmer2}? What can you conclude?}
+
+\subex{\label{ex:ver3}
+Recall that \bash{farmer1} is less complete than \bash{farmer2}, because it fails to include some important invariants.
+Write a \textbf{single property} for \bash{farmer2} to capture that:
+\begin{itemize}
+  \item no bad state is reached, and
+  \item the goal is reached (everyone can cross).
+\end{itemize}
+\textbf{Verify} it using mCRL2 toolset.
+\textbf{Verify} if its equivalent formulation holds for \bash{farmer1}.
+}
+
+\subex{
+Consider now the extended system \bash{farmer3}.
+In this example there is a an extra process called \code{Counter(n:Nat)}.
+\textbf{Define the following two properties} over actions of this counter:
+\begin{enumerate}
+\item It is possible to win after exactly 7 moves.
+\item It is not possible to win in less than 7 moves.
+\end{enumerate}
+}
+\end{myExercise}
+ 
+
+% \section*{SysML project}
+% \begin{myExercise} 
+%   Recall the mCRL2 model that you specified in the last exercise of Part 1 of this assignment.
+%   \subex{\label{ex:s1}
+%     Specify 4 relevant and different properties in mCRL2 of the model that specified in the previous part.
+%     Include an informal description for each property, and obey the following restrictions:
+%     \begin{itemize}
+%       \item all properties should hold in your system
+%       \item at least one starts with \code{<...>}
+%       \item at least one starts with \code{[...]}
+%       \item at least one has a trace that gives evidence of the validity of the formula.
+%     \end{itemize}
+%   }
+
+%   \subex{\label{ex:s2}
+%     Specify 2 \textbf{useful} formulas that your system \textbf{does not} support, including an informal description for each formula.
+%     At least one formula should have a counter-example that proves the formula.
+%   }
+
+%   \subex{Show the evidence of \ref{ex:s1} and the counter-example of \ref{ex:s2}.}
+% \end{myExercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Self-peer-evaluation}
+\begin{myExercise}
+  In a scale from 0-5, where 5 is better than 0, give a mark to you and each of your team groups for each of the following criteria:
+  \begin{itemize}
+    \item \textbf{Effort} (time spent)
+    \item \textbf{Quality} (of the work produced)
+    \item \textbf{Collaboration} (how easy it was to meet and interact)
+  \end{itemize}
+\end{myExercise}
+
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}
