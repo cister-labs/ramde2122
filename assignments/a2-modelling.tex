@@ -96,6 +96,38 @@ Without modifying the process \code{State}, adapt the specification by adding a 
 \end{myExercise}
 
 
+
+\section*{Modelling a vending machine}
+
+\begin{myExercise}
+Specify two interacting processes in mCRL2:
+\begin{itemize}
+  \item a vending machine with 2 products, apples and bananas, costing 1eur and 2eur respectively; and
+  \item a user who can insert 1eur or 2eur coins and request for products.
+\end{itemize}
+Provide two variations of this system, explained below (and try to keep them simple).
+%You have the freedom to select the set of actions and behaviour that you believe to make 
+
+\subex{Specify a system such that the properties below hold.}
+\vspace{-6mm}
+\begin{lstlisting}
+[true*.pay2eur.pay2eur] false
+[true*.pay2eur.pay1eur] false
+[true*.pay2eur]<(!pay1eur && !pay2eur)*.getApple
+<true*.pay2eur.true*.getBanana> true \end{lstlisting}
+\textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
+
+\vspace{2mm}
+\subex{Specify another system such that the properties below hold.}
+\vspace{-6mm}
+\begin{lstlisting}
+<true*.pay2eur.pay2eur> true
+<true*.getApple> true
+<true*>[true*.getApple] false\end{lstlisting}
+\textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
+
+\end{myExercise}
+
 % \section*{Requirements}
 % \begin{myExercise} 
 %   Some requirements-related question, ideal open question (e.g., identify the requirement domain and formulate informally 2-3 requirements for this problem; later formulate them using 1st order logic, assuming the predicates \code{isPassanger}, \code{isFarmer}, \code{isBeans}, \code{isGoose}, \code{isFox}, \code{isLeft}, and \code{isRight}.)
