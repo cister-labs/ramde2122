@@ -64,8 +64,8 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Introduction to MDE and Requirement engineering; Structural diagrams (Week 1)
   </a></li><li><a class="hide" href="">
     Logics for states: Modelling requirements and using SMT solvers (Week 2-3)
-  </a></li><li><a class="hide" href="slides/3-modelling.pdf">
-    Modelling behaviour: Automata and Process Algebra (Week 4-5)
+  </a></li><li class="hide"><a class="hide" href="slides/3-modelling.pdf">
+    <div class="hide">Modelling behaviour: Automata and Process Algebra (Week 4-5)</div>
   </a></li><li><a class="hide" href="slides/4-equivalence.pdf">
     Analysing behaviour: Equivalence of systems; Realisability (Week 6-7)
   </a></li><li><a class="hide" href="slides/5-modal-logic.pdf">
@@ -83,9 +83,9 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Assignments
 <ul>
-  <li><a href="" class="hide">A1: Modelling Requirements</a></li>
-  <li><a href="" class="hide">A2: Modelling Behaviour</a></li>
-  <li><a href="" class="hide">A3: Analysing Behaviour</a></li>
+  <li><a href="" class="hide">A1: Modelling Requirements (individual)</a></li>
+  <li><a href="assignments/a2-modelling.pdf" class="hide">A2: Modelling Behaviour (group)</a></li>
+  <li><a href="assignments/a3-verification.pdf" class="hide">A3: Analysing Behaviour (group)</a></li>
 </ul>
 
 
@@ -146,6 +146,10 @@ Both the project and the review will be presented in an oral presentation, and t
 ### Deadlines
 
 __Individual exercises__ must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+
+  - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf), slides 1 - TBD:__ 28 Nov @ 23:59 (Sunday)
+  - ...
+
 
 __Assignments__ have the following deadlines, that may still suffer changes.
 
