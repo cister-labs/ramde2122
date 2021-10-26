@@ -65,13 +65,13 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
   </a></li><li><a class="hide" href="">
     Logics for states: Modelling requirements and using SMT solvers (Week 2-3)
   </a></li><li><a class="hide" href="slides/3-behaviour.pdf">
-    Modelling behaviour: Automata and Process Algebra (Week 4-5)
+    Modelling behaviour: Automata and Process Algebra (Week 5)
   </a></li><li><a class="hide" href="slides/4-equivalences.pdf">
-    Analysing behaviour: Equivalence of systems; Realisability (Week 6-7)
+    Analysing behaviour: Equivalence of systems; Realisability (Week 6)
   </a></li><li><a class="hide" href="slides/5-modal-logic.pdf">
-    Logics for behaviour: Modal logics; Model-Checking (Week 8-9)
+    Logics for behaviour: Modal logics; Model-Checking (Week 8)
   </a></li><li><a class="hide" href="slides/6-mcrl2.pdf">
-    Modelling and verification in mCRL2 (Week 2-9)
+    Modelling and verification in mCRL2 (Week 5-8)
    </a></li>
    <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
