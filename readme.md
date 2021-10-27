@@ -64,14 +64,14 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Introduction to MDE and Requirement engineering; Structural diagrams (Week 1)
   </a></li><li><a class="hide" href="">
     Logics for states: Modelling requirements and using SMT solvers (Week 2-3)
-  </a></li><li><a class="hide" href="slides/3-modelling.pdf">
-    Modelling behaviour: Automata and Process Algebra (Week 4-5)
-  </a></li><li><a class="hide" href="slides/4-equivalence.pdf">
-    Analysing behaviour: Equivalence of systems; Realisability (Week 6-7)
+  </a></li><li><a class="hide" href="slides/3-behaviour.pdf">
+    Modelling behaviour: Automata and Process Algebra (Week 5)
+  </a></li><li><a class="hide" href="slides/4-equivalences.pdf">
+    Analysing behaviour: Equivalence of systems; Realisability (Week 6)
   </a></li><li><a class="hide" href="slides/5-modal-logic.pdf">
-    Logics for behaviour: Modal logics; Model-Checking (Week 8-9)
+    Logics for behaviour: Modal logics; Model-Checking (Week 8)
   </a></li><li><a class="hide" href="slides/6-mcrl2.pdf">
-    Modelling and verification in mCRL2 (Week 2-9)
+    Modelling and verification in mCRL2 (Week 5-8)
    </a></li>
    <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
@@ -83,9 +83,9 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Assignments
 <ul>
-  <li><a href="" class="hide">A1: Modelling Requirements</a></li>
-  <li><a href="" class="hide">A2: Modelling Behaviour</a></li>
-  <li><a href="" class="hide">A3: Analysing Behaviour</a></li>
+  <li><a href="" class="hide">A1: Modelling Requirements (individual)</a></li>
+  <li><a href="assignments/a2-modelling.pdf" class="hide">A2: Modelling Behaviour (group)</a></li>
+  <li><a href="assignments/a3-verification.pdf" class="hide">A3: Analysing Behaviour (group)</a></li>
 </ul>
 
 
@@ -146,6 +146,10 @@ Both the project and the review will be presented in an oral presentation, and t
 ### Deadlines
 
 __Individual exercises__ must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+
+  - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf), slides 1 - TBD:__ 28 Nov @ 23:59 (Sunday)
+  - ...
+
 
 __Assignments__ have the following deadlines, that may still suffer changes.
 

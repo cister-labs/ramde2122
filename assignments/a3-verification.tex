@@ -26,7 +26,7 @@
 
 \myparagraph{To do:} Produce a report as a PDF document including the answers to the exercises below.
 
-\myparagraph{To submit:} The PDF report, placed in your group's git repository. ALL students should push commits.
+\myparagraph{To submit:} The PDF report and a new \bash{vending.mcrl2} file (for Exercise~\ref{ex:vm}), placed in your group's git repository. ALL students should push commits.
 
 \myparagraph{Deadline:} TBD % 14 Dec 2020 @ 23:59 (Monday)
 
@@ -60,13 +60,13 @@ Combine both specifications of \bash{farmer1} and \bash{farmer2} in a single spe
 Rename \code{Sys} from \bash{farmer1} to \code{Sys1} and \code{SysHide1}, and similarly for \code{Sys} from \bash{farmer2}.
 Redefine the function \code[morekeywords={ok}]{ok} by setting it to true, i.e., define \code[morekeywords={ok}]{ok(fm,f,g,b)=true;}.
 
-Visualise the processes \code{SysHide1} and \code{SysHide2}. Compare them using strong bisimulation by adding a new \textbf{Equivalence} property that compares them. Note that you will have to delete the \code{init} block.
+Visualise the processes \code{SysHide1} and \code{SysHide2}. Compare them using strong bisimulation by adding a new \textbf{Equivalence} property that compares them. %Note that you will have to delete the \code{init} block.
 \textbf{What can you conclude?}}
 
 
-\subex{
-Visualise the minimised LTS for \code{SysHide2} with respect to branching bisimulation, using the tool in \bash{Tools>Show reduced State Space}.
-\textbf{Include a screenshot of the minimised LTS and explain what information can we infer from this LTS.}}
+% \subex{
+% Visualise the minimised LTS for \code{SysHide2} with respect to branching bisimulation, using the tool in \bash{Tools>Show reduced State Space}.
+% \textbf{Include a screenshot of the minimised LTS and explain what information can we infer from this LTS.}}
 
 
 \end{myExercise}
@@ -85,16 +85,16 @@ What does the property ``\code{[true*]<ready>true}'' mean? Does it hold in any o
 \subex{\label{ex:ver2}
 Does the property ``\code{[true*.foxr.win]false}'' holds for \bash{farmer1}? Does the equivalent property ``\code{[true*.fox(right).win]false}'' holds for \bash{farmer2}? What can you conclude?}
 
-\subex{\label{ex:ver3}
-Recall that \bash{farmer1} is less complete than \bash{farmer2}, because it fails to include some important invariants.
-Write a \textbf{single property} for \bash{farmer2} to capture that:
-\begin{itemize}
-  \item no bad state is reached, and
-  \item the goal is reached (everyone can cross).
-\end{itemize}
-\textbf{Verify} it using mCRL2 toolset.
-\textbf{Verify} if its equivalent formulation holds for \bash{farmer1}.
-}
+% \subex{\label{ex:ver3}
+% Recall that \bash{farmer1} is less complete than \bash{farmer2}, because it fails to include some important invariants.
+% Write a \textbf{single property} for \bash{farmer2} to capture that:
+% \begin{itemize}
+%   \item no bad state is reached, and
+%   \item the goal is reached (everyone can cross).
+% \end{itemize}
+% \textbf{Verify} it using mCRL2 toolset.
+% \textbf{Verify} if its equivalent formulation holds for \bash{farmer1}.
+% }
 
 \subex{
 Consider now the extended system \bash{farmer3}.
@@ -107,6 +107,38 @@ In this example there is a an extra process called \code{Counter(n:Nat)}.
 }
 \end{myExercise}
  
+
+\section*{Modelling a vending machine}
+
+\begin{myExercise} \label{ex:vm}
+Specify two interacting processes in mCRL2:
+\begin{itemize}
+  \item \textbf{a vending machine} with 2 products, apples and bananas, costing 1eur and 2eur respectively; and
+  \item \textbf{a user} who can insert 1eur or 2eur coins and request for products.
+\end{itemize}
+Provide two variations of this system and include them in a \bash{vending.mcrl2} file, according to the requirements below. Try to keep the specifications simple. \textbf{Submit this file in your git repository.}
+%You have the freedom to select the set of actions and behaviour that you believe to make 
+
+\subex{Specify a system such that the properties below hold.}
+\vspace{-6mm}
+\begin{lstlisting}
+[true*.pay2eur.pay2eur] false
+[true*.pay2eur.pay1eur] false
+[true*.pay2eur]<(!pay1eur && !pay2eur)*.getApple
+<true*.pay2eur.true*.getBanana> true \end{lstlisting}
+\textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
+
+\vspace{2mm}
+\subex{Specify another system such that the properties below hold.}
+\vspace{-6mm}
+\begin{lstlisting}
+<true*.pay2eur.pay2eur> true
+<true*.getApple> true
+<true*>[true*.getApple] false\end{lstlisting}
+\textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
+
+\end{myExercise}
+
 
 % \section*{SysML project}
 % \begin{myExercise} 
@@ -141,6 +173,7 @@ In this example there is a an extra process called \code{Counter(n:Nat)}.
     \item \textbf{Quality} (of the work produced)
     \item \textbf{Collaboration} (how easy it was to meet and interact)
   \end{itemize}
+  \textbf{Send this information individually} by e-mail or via Teams to David Pereira and Jos\'{e} Proen\c{c}a.
 \end{myExercise}
 
 

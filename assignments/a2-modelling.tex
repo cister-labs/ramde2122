@@ -16,22 +16,23 @@
 %                         Start here
 % --------------------------------------------------------------
  
-\title{A2: Modelling behaviour\\
-{\Large Crossing the river -- Part 1}}
+\title{A2: Modelling behaviour}
+% \\
+% {\Large Crossing the river -- Part 1}}
 
 \author{David Pereira \& Jos\'{e} Proen\c{c}a} 
 
 
 \maketitle
 
-\vspace*{-5mm}
+\vspace*{-2mm}
 \myparagraph{To do:} Produce a report as a PDF document including the answers to the exercises below.
 
 \myparagraph{To submit:} The PDF report and the 3 files requested in the exercises: \bash{farmer1.mcrl2}, \bash{farmer2.mcrl2} and \bash{farmer3.mcrl}. All files should be in your group's git repository. ALL students should push commits.
 
-\myparagraph{Deadline:} TBD %6 Dec 2021 @ 23:59 (Monday)
+\myparagraph{Deadline:} 12 Dec 2021 @ 23:59 (Sunday) %6 Dec 2021 @ 23:59 (Monday)
 
-\myparagraph{Auxiliary files:} \url{https://cister-labs.github.io/ramde2122/assignment/farmer.zip}
+\myparagraph{Auxiliary files:} \url{https://cister-labs.github.io/ramde2122/assignments/farmer.zip}
 
 
 \section*{Modelling the farmer-fox-goose-beans problem}
@@ -44,7 +45,7 @@ Unfortunately, he can only carry one at a time. Furthermore, if the farmer is no
 
 \begin{myExercise} \label{ex:ba1}
 We will encode the same problem using mCRL2's process algebra.
-Start by downloading the auxiliary files for this assignment at \url{https://cister-labs.github.io/ramde2122/assignment/farmer.zip}, where you will find the \bash{farmer1.mcrl2} file above.
+Start by downloading the auxiliary files for this assignment at \url{https://cister-labs.github.io/ramde2122/assignments/farmer.zip}, where you will find the \bash{farmer1.mcrl2} file above.
 This is a simplified (but incomplete) specification of our farmer-fox-goose-beans problem.
 
 
@@ -97,36 +98,36 @@ Without modifying the process \code{State}, adapt the specification by adding a 
 
 
 
-\section*{Modelling a vending machine}
+% \section*{Modelling a vending machine}
 
-\begin{myExercise}
-Specify two interacting processes in mCRL2:
-\begin{itemize}
-  \item a vending machine with 2 products, apples and bananas, costing 1eur and 2eur respectively; and
-  \item a user who can insert 1eur or 2eur coins and request for products.
-\end{itemize}
-Provide two variations of this system, explained below (and try to keep them simple).
-%You have the freedom to select the set of actions and behaviour that you believe to make 
+% \begin{myExercise}
+% Specify two interacting processes in mCRL2:
+% \begin{itemize}
+%   \item a vending machine with 2 products, apples and bananas, costing 1eur and 2eur respectively; and
+%   \item a user who can insert 1eur or 2eur coins and request for products.
+% \end{itemize}
+% Provide two variations of this system, explained below (and try to keep them simple).
+% %You have the freedom to select the set of actions and behaviour that you believe to make 
 
-\subex{Specify a system such that the properties below hold.}
-\vspace{-6mm}
-\begin{lstlisting}
-[true*.pay2eur.pay2eur] false
-[true*.pay2eur.pay1eur] false
-[true*.pay2eur]<(!pay1eur && !pay2eur)*.getApple
-<true*.pay2eur.true*.getBanana> true \end{lstlisting}
-\textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
+% \subex{Specify a system such that the properties below hold.}
+% \vspace{-6mm}
+% \begin{lstlisting}
+% [true*.pay2eur.pay2eur] false
+% [true*.pay2eur.pay1eur] false
+% [true*.pay2eur]<(!pay1eur && !pay2eur)*.getApple
+% <true*.pay2eur.true*.getBanana> true \end{lstlisting}
+% \textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
 
-\vspace{2mm}
-\subex{Specify another system such that the properties below hold.}
-\vspace{-6mm}
-\begin{lstlisting}
-<true*.pay2eur.pay2eur> true
-<true*.getApple> true
-<true*>[true*.getApple] false\end{lstlisting}
-\textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
+% \vspace{2mm}
+% \subex{Specify another system such that the properties below hold.}
+% \vspace{-6mm}
+% \begin{lstlisting}
+% <true*.pay2eur.pay2eur> true
+% <true*.getApple> true
+% <true*>[true*.getApple] false\end{lstlisting}
+% \textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
 
-\end{myExercise}
+% \end{myExercise}
 
 % \section*{Requirements}
 % \begin{myExercise} 
@@ -142,6 +143,7 @@ Provide two variations of this system, explained below (and try to keep them sim
     \item \textbf{Quality} (of the work produced)
     \item \textbf{Collaboration} (how easy it was to meet and interact)
   \end{itemize}
+  \textbf{Send this information individually} by e-mail or via Teams to David Pereira and Jos\'{e} Proen\c{c}a.
 \end{myExercise}
 
 
