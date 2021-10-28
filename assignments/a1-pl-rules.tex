@@ -1,17 +1,40 @@
 \documentclass[11pt]{article}
 
 
-\input{macros}
-\date{RAMDE -- 2021/2022}
+%\input{macros}
+%\date{RAMDE -- 2021/2022}
 
 \usepackage[latin1]{inputenc} % pt characters
 \usepackage{enumitem}
-\usepackage{draftwatermark}
-\SetWatermarkText{Draft}
-\SetWatermarkScale{1.4}
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Draft}
+%\SetWatermarkScale{1.4}
 
 
-\newcommand{\myset}[1]{\{#1\}}
+\usepackage{bussproofs}
+\usepackage{fitch}
+
+\newcommand{\conji}[2]{\ensuremath{\land\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\conjel}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_l(#1)}}
+\newcommand{\conjer}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_r(#1)}}
+
+\newcommand{\disjil}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_l(#1)}}
+\newcommand{\disjir}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_r(#1)}}
+\newcommand{\disje}[3]{\ensuremath{\lor\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+
+\newcommand{\negi}[1]{\ensuremath{\neg\text{\textbf{\textsc{I}}}(#1)}}
+\newcommand{\nege}[1]{\ensuremath{\neg\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\falsei}[2]{\ensuremath{\bot\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\falsee}[1]{\ensuremath{\bot\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\impi}[2]{\ensuremath{{\to}\text{\textbf{\textsc{I}}}(#1{-}#2)}}
+\newcommand{\impe}[2]{\ensuremath{{\to}\text{\textbf{\textsc{E}}}(#1,#2)}}
+
+\usepackage{bm}
+\usepackage{multicol}
+%\usepackage{minipage}
+
 
 \begin{document}
  
@@ -19,7 +42,7 @@
 %                         Start here
 % --------------------------------------------------------------
  
-\title{A1: Set Theory}%\\
+\title{Natural Deduction Rules for Propositional Logic}%\\
 %{\Large Crossing the river -- Part 1}}
 
 \author{David Pereira \& Jos\'{e} Proen\c{c}a} 
@@ -28,193 +51,412 @@
 \maketitle
 
 \vspace*{-5mm}
-\myparagraph{To do:} Produce a a PDF document including the answers to the selected exercises from below. In each question, there are exercises marked with a $\star$ from which you can select. In each question, the precise number of selectable exercises for you to submit, is defined.
 
-\myparagraph{To submit:} The PDF report containing your solutions for the exercises you have selected for each of the questions. 
-
-\myparagraph{Deadline:} TBD %6 Dec 2021 @ 23:59 (Monday)
-
+%\myparagraph{Purpose:} This is a sheet containing all the deduction rules for performing natural deduction in Propositional logic.
 %\myparagraph{Auxiliary files:} \url{https://cister-labs.github.io/ramde2122/assignment/farmer.zip}
 
+\section*{Conjunction}
+The rules:\\
 
-\section*{Recalling the main definitions of set theory}
-Before proceeding with the exercises, lets recall the main definitions of set theory that are necessary to solve them. Essentially, you need to know the following:
-\begin{itemize}
-  
-  \item a set is a collection of elements, and can be finite or infinite. In the case the set is finite, we call its size the cardinality of the set, and we denote it by $|S|$ (or, alternatively, by $\#S$)
-  
-  \item if $x$ is an element of a given set $S$, then we say that "$x$ is in $S$" and we denote this by $x \in S$
-  
-  \item a set can be defined by comprehension, that is, we consider a property $\mathcal{P}$ that determines if a value is part, or not of the set. We denote this by $\myset{x\,|\,\mathcal{P}}$
-  
-  \item if $A$ and $B$ are sets, and all elements of $A$ are also elements of $B$, then we say that "$A$ is a subset of $B$, and denote this relation by $A \subseteq B$
-  
-  \item if $A$ and $B$ are sets, then $A \cup B$ is the union of the elements of each set, i.e., the set formed by all elements that belong to $A$ and all the elements that belong to $B$
-  
-  \item if $A$ and $B$ are sets, then $A \cap B$ is the intersection of the elements of each set (i.e., the values that belong to both sets)
-  
-  \item if $A$ and $B$ are sets, then $A \setminus B$ is the set formed by the elements of $A$ that are not elements of $B$. We call this "set difference".
+\begin{tabular}{ccc}
+\begin{minipage}{0.3\textwidth}
 
-  \item if $A$ is a set, we call the complement of $A$ the set formed by all elements that are not part of $A$. We denote this by $\overline{A}$
-\end{itemize}
+    \begin{prooftree}	    \AxiomC{$\varphi$}		\AxiomC{$\psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{I}}}$}		\BinaryInfC{$\varphi \land \psi$}    \end{prooftree}
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+    \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_l$}		\UnaryInfC{$\varphi$}	\end{prooftree}  
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+    \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_r$}		\UnaryInfC{$\psi$}	\end{prooftree} 
+   
+\end{minipage}
+\end{tabular}
 
-\section*{Set theory: membership, subsets, union, intersection, and difference}
+\vspace{10mm}
+
+\noindent Representation in Fitch's style:
+\vspace{3mm}
+
+\begin{tabular}{ccc}
+\begin{minipage}{0.3\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\
+  \ftag{n}{\fa \varphi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{m}{\fa \psi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{~}{\fa \varphi \land \psi} & \conji{n}{m}  
+\end{fitch}
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\
+  \ftag{n}{\fa \varphi \land \psi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{m}{\fa \varphi} & \conjel{n} \\
+\end{fitch}
+\end{minipage}
+& 
+\begin{minipage}{0.3\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\
+  \ftag{n}{\fa \varphi \land \psi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{m}{\fa \psi} & \conjer{n} \\
+\end{fitch}
+\end{minipage}
+\end{tabular}
+
+%\pagebreak
+
+\section*{Disjunction}
+The rules:\\
+\begin{tabular}{ccc}
+\begin{minipage}{0.3\textwidth}
+    \begin{prooftree}	 	 \AxiomC{$\varphi$}
+	 	 \RightLabel{$\lor\text{\textbf{\textsc{I}}}_l$}		  \UnaryInfC{$\varphi \lor \psi$}    	\end{prooftree}
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+    \begin{prooftree}		  \AxiomC{$\psi$}
+		  \RightLabel{$\lor\text{\textbf{\textsc{I}}}_r$}		  \UnaryInfC{$\varphi \lor \psi$}	   \end{prooftree}
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+  \begin{prooftree}
+      \AxiomC{$\varphi \lor \psi$}
+      \AxiomC{$[\varphi]$}
+      \noLine
+      \UnaryInfC{$\vdots$}
+      \noLine
+      \UnaryInfC{$\theta$}
+      \AxiomC{$[\psi]$}
+      \noLine
+      \UnaryInfC{$\vdots$}
+      \noLine
+      \UnaryInfC{$\theta$}
+      \RightLabel{$\lor\text{\textbf{\textsc{E}}}$}
+      \TrinaryInfC{$\theta$}
+    \end{prooftree}
+  \end{minipage}
+\end{tabular}
+
+\vspace{10mm}
+
+\noindent Representation in Fitch's style:
+
+\vspace{3mm}
+
+\begin{tabular}{ccc}
+\begin{minipage}{0.3\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\
+  \ftag{n}{\fa \varphi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{~}{\fa \varphi \lor \psi} & \disjil{n}  
+\end{fitch}
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\
+  \ftag{n}{\fa \psi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{~}{\fa \varphi \lor \psi} & \disjir{n}
+\end{fitch}
+\end{minipage}
+&
+\begin{minipage}{0.3\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\
+  \ftag{n}{\fa \varphi \lor \psi} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{m_1}{\fa \fj \varphi} \\
+  \ftag{~}{\fa \fa \vdots}  \\
+  \ftag{k_1}{\fa \fa \theta} \\
+  \ftag{~}{\fa \vdots} \\
+  \ftag{m_2}{\fa \fj \psi} \\
+  \ftag{~}{\fa \fa \vdots}  \\
+  \ftag{k_2}{\fa \fa \theta} \\
+  \ftag{~}{\fa \vdots}  \\
+  \ftag{~}{\fa \theta} & \disje{n}{m_1{-}k_1}{m_2{-}k_2}
+
+
+\end{fitch}
+\end{minipage}
+\end{tabular}
+
+\vspace{10mm}
+
+\section*{Negation}
+The rules:\\
+
+\begin{tabular}{cc}
+\begin{minipage}{0.5\textwidth}
+\begin{prooftree}
+      \AxiomC{$[\varphi]$}
+      \noLine
+      \UnaryInfC{$\vdots$}
+      \noLine
+      \UnaryInfC{$\bm{\bot}$}
+      \RightLabel{$\neg\text{\textbf{\textsc{I}}}$}
+      \UnaryInfC{$\neg\varphi$}
+    \end{prooftree}
+\end{minipage}
+&
+\begin{minipage}{0.5\textwidth}
+\begin{prooftree}
+      \AxiomC{$\neg\neg\varphi$}
+      \RightLabel{$\neg\text{\textbf{\textsc{E}}}$}
+      \UnaryInfC{$\varphi$}
+    \end{prooftree}
+\end{minipage}
+\end{tabular}
+
+\vspace{10mm}
+
+\noindent Representation in Fitch's style:
+
+\vspace{3mm}
+
+\begin{tabular}{cc}
+\begin{minipage}{0.5\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\ 
+  \ftag{n}{\fa \fj \varphi} \\ 
+  \ftag{~}{\fa \fa \vdots} \\ 
+  \ftag{m}{\fa \fa \bm{\bot}} \\
+  \ftag{~}{\fa \neg\varphi} & \negi{n{-}m} 
+\end{fitch}
+\end{minipage}
+&
+\begin{minipage}{0.5\textwidth}
+\begin{fitch}
+  \ftag{~}{\fa \vdots} \\ 
+  \ftag{n}{\fa \neg\neg\varphi} \\ 
+  \ftag{~}{\fa \vdots} \\ 
+  \ftag{}{\fa \varphi} & \nege{n}\\
+\end{fitch}
+\end{minipage}
+\end{tabular}
+
+
+
+
+\section*{False}
+The rules:\\
+
+\begin{tabular}{cc}
+\begin{minipage}{0.5\textwidth}
+    \begin{prooftree}
+      \AxiomC{$\varphi$}
+      \noLine
+      \UnaryInfC{$\vdots$}
+      \noLine
+      \UnaryInfC{$\neg\varphi$}
+      \RightLabel{$\bot\text{\textbf{\textsc{I}}}$}
+      \UnaryInfC{$\bm{\bot}$}
+    \end{prooftree}
+\end{minipage}
+&
+\begin{minipage}{0.5\textwidth}
+    \begin{prooftree}
+      \AxiomC{$\bm{\bot}$}
+      \RightLabel{$\bot\text{\textbf{\textsc{E}}}$}
+      \UnaryInfC{$\varphi$}
+    \end{prooftree}
+\end{minipage}
+\end{tabular}
+
+
+\vspace{10mm}
+
+\noindent Representation in Fitch's style:
+
+\vspace{3mm}
+
+\begin{tabular}{cc}
+\begin{minipage}{0.5\textwidth}
+\begin{fitch}
+\ftag{~}{\fa \vdots} \\
+\ftag{n}{\fa \varphi} \\
+\ftag{~}{\fa \vdots} \\
+\ftag{m}{\fa \neg\varphi} \\
+\ftag{~}{\fa \vdots} \\
+\ftag{~}{\fa \bm{\bot}} & \falsei{n}{m}  
+\end{fitch}
+\end{minipage}
+&
+\begin{minipage}{0.5\textwidth}
+\begin{fitch}
+\ftag{~}{\fa \vdots} \\
+\ftag{n}{\fa \bm{\bot}} \\
+\ftag{~}{\fa \vdots} \\
+\ftag{~}{\fa \varphi} & \falsee{n}
+\end{fitch}
+\end{minipage}
+\end{tabular}
+%
+%  \begin{multicols}{2}
+%    \begin{prooftree}
+%      \AxiomC{$\varphi$}
+%      \noLine
+%      \UnaryInfC{$\vdots$}
+%      \noLine
+%      \UnaryInfC{$\neg\varphi$}
+%      \RightLabel{$\bot\text{\textbf{\textsc{I}}}$}
+%      \UnaryInfC{$\bm{\bot}$}
+%    \end{prooftree}
+%    \columnbreak
+%    \begin{prooftree}
+%      \AxiomC{$\bm{\bot}$}
+%      \RightLabel{$\bot\text{\textbf{\textsc{E}}}$}
+%      \UnaryInfC{$\varphi$}
+%    \end{prooftree}
+%  \end{multicols}
+%
+%\vspace{10mm}
+%
+%\noindent Representation in Fitch's style:
+%
+%\vspace{3mm}
+%
+%\begin{tabular}{cc}
+%\begin{minipage}{0.5\textwidth}
+%\begin{fitch}
+%  
+%\end{fitch}
+%
+%\end{minipage}
+%&
+%\begin{minipage}{0.5\textwidth}
+%\begin{fitch}
+%  
+%\end{fitch}
+%\end{minipage}
+%\end{tabular}
+%
+%\end{multicols}
+%
+%
+%
+\section*{Implication}
+
+The rules:\\
+
+\begin{tabular}{cc}
+\begin{minipage}{0.5\textwidth}
+ \begin{prooftree}
+      \AxiomC{$[\varphi]$}
+      \noLine
+      \UnaryInfC{$\vdots$}
+      \noLine
+      \UnaryInfC{$\psi$}
+      \RightLabel{${\to}\text{\textbf{\textsc{I}}}$}
+      \UnaryInfC{$\varphi \to \psi$}
+    \end{prooftree}
+\end{minipage}
+&
+\begin{minipage}{0.5\textwidth}
+ \begin{prooftree}
+      \AxiomC{$\varphi \to \psi$}
+      \AxiomC{$\varphi$}
+      \RightLabel{${\to}\text{\textbf{\textsc{E}}}$}
+      \BinaryInfC{$\psi$}
+    \end{prooftree} 
+\end{minipage}
+\end{tabular}
+
+
+\vspace{10mm}
+
+\noindent Representation in Fitch's style:
+
+\vspace{3mm}
+
+\begin{tabular}{cc}
+\begin{minipage}{0.5\textwidth}
+\begin{fitch}
+\ftag{~}{\fa \vdots} \\
+\ftag{n}{\fa \fj \varphi} \\
+\ftag{~}{\fa \fa \vdots} \\
+\ftag{m}{\fa \fa \psi} \\
+\ftag{~}{\fa \varphi \to \psi} & \impi{n}{m} \\
+\end{fitch}
+\end{minipage}
+&
+\begin{minipage}{0.5\textwidth}
+\begin{fitch}
+\ftag{~}{\fa \vdots} \\
+\ftag{n}{\fa \varphi \to \psi} \\
+\ftag{~}{\fa \vdots} \\
+\ftag{m}{\fa \varphi} \\
+\ftag{~}{\fa \vdots} \\
+\ftag{~}{\fa \psi} & \impe{n}{m}\\
+\end{fitch}
+\end{minipage}
+\end{tabular}
+
+
+
+%\begin{center}Rules\end{center}
+%
+%\begin{tabular}{cc}
+%\begin{minipage}{0.5\textwidth}
+%    \begin{prooftree}
+%      \AxiomC{$[\varphi]$}
+%      \noLine
+%      \UnaryInfC{$\vdots$}
+%      \noLine
+%      \UnaryInfC{$\psi$}
+%      \RightLabel{${\to}\text{\textbf{\textsc{I}}}$}
+%      \UnaryInfC{$\varphi \to \psi$}
+%    \end{prooftree}
+%\end{minipage}
+%&
+%\begin{minipage}{0.5\textwidth}
+% \begin{prooftree}
+%      \AxiomC{$\varphi \to \psi$}
+%      \AxiomC{$\varphi$}
+%      \RightLabel{${\to}\text{\textbf{\textsc{E}}}$}
+%      \BinaryInfC{$\psi$}
+%    \end{prooftree}  
+%\end{minipage}
+%\end{tabular}
+%
+%\end{multicols}
+%
+%
+%\begin{center}Representation in Fitch's style\end{center}
+%
+%\begin{multicols}{2}
+%\begin{fitch}
+%  \ftag{~}{\fa \vdots} \\
+%  \ftag{n}{\fa \varphi} \\
+%  \ftag{~}{\fa \vdots} \\
+%  \ftag{m}{\fa \psi} \\
+%  \ftag{~}{\fa \vdots} \\
+%  \ftag{~}{\fa \varphi \land \psi} & \conji{n}{m}  
+%\end{fitch}
+%\columnbreak
+%\begin{fitch}
+%  \ftag{~}{\fa \vdots} \\
+%  \ftag{n}{\fa \varphi \land \psi} \\
+%  \ftag{~}{\fa \vdots} \\
+%  \ftag{m}{\fa \varphi} & \conjel{n} \\
+%\end{fitch}
+%
+%\end{multicols}
+%
+
 
 %\vspace*{-3mm}
 %\lstinputlisting{farmer1.mcrl2}
-
-\begin{myExercise} \label{ex:ba1}
-
-  Which of the statements are true and which are false?
-  \begin{enumerate}[label=\alph*)]
-    \item $3 \in \myset{1,2,3}$
-    \item $\{3\} \in \{\{1\},\{2\},\{3\}\}$
-    \item $3 \subseteq \{3\}$
-    \item $\emptyset \subseteq \emptyset$
-    \item $\emptyset \in \emptyset$
-    \item $\emptyset \in \myset{\emptyset}$
-  \end{enumerate}
-
-\end{myExercise}
-
-~\\[-6mm]
-
-%----------------------------------------------
-\begin{myExercise} \label{ex:ba2}
-
-  Consider the following sets: $A = \myset{2n\,|\,n \in \mathbb{N}}$, $B = \myset{3n\,|\,n \in \mathbb{N}}$, and $C = \myset{6n\,|\,n \in \mathbb{N}}$.
-  
-  \subex{Which of the following statements are false?
-  \begin{enumerate}[label=\alph*)]
-    \item $B \subseteq C$
-    \item $C \subseteq B$
-    \item $\myset{3,8} \subseteq A \cup B$
-    \item $\myset{3,8} \subseteq A \cap C$
-    \item $A \cap B = \emptyset$
-    \item $???$
-  \end{enumerate}}
-  
-  \subex{Calculate the following sets:
-    \begin{enumerate}[label=\alph*)]
-    \item $A \cap B$
-    \item $B \cup C$
-    \item $A \setminus B$
-    \item $B \setminus C$  
-    \end{enumerate}
-  }
-  
-\end{myExercise}
-
-~\\[-6mm]
-
-\begin{myExercise}
-Consider the following sets: $A = \myset{1,2,3,4,5}$, $B = \myset{1,2,4,8}$, $C = \myset{1,2,3,5,7}$, and $D = \myset{2,4,6,8}$. Calculate the following sets:
-\begin{enumerate}[label=(\alph*)]
-\item $(A \cup B)  \cap C$
-\item $A \cup (B \cap C)$
-\item $(A \cap B) \cup (C \cap D)$
-\item $(A \cup B) \cap (C \cup D)$
-\item $(A \cup B) \setminus C$
-\item $A \cup (B \setminus C)$
-\item $(A \setminus B) \setminus C$
-\item $A \setminus (B \setminus C)$
-\item $(B \setminus C) \setminus D$
-\item $D \setminus (B \setminus C)$
-\end{enumerate}
-
-\end{myExercise}
-
-~\\[-6mm]
-
-\begin{myExercise}
-  
-  Find the sets $A$ and $B$ that satisfy the conditions imposed (each question is independent):
-  
-  \begin{enumerate}[label=(\alph*)]
-    \item $A \setminus B = \myset{1,3,7,11}$, $B \cup A = \myset{1,2,3,5,6,7,11,14}$, and $A \cap B = \myset{2}$  
-    \item $A \setminus B = \myset{1,3,7,11}$, $B \setminus A = \myset{2,6,8}$, and $A \cap B = \myset{4,9}$  
-    \item $A \setminus B = \myset{1,2,4}$, $B \setminus A = \myset{7,8}$, and $A \cup B = \myset{1,2,4,5,7,8,9}$  
-  \end{enumerate}
-
-\end{myExercise}
-
-~\\[-6mm]
-
-\begin{myExercise}
-  For each of the statements presented below, answer if they are true and, when they are false provide a counter-example:
-  \begin{enumerate}[label=(\alph*)]
-  \item if $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$
-  \item if $A \subseteq B$ and $B \not\subseteq C$, then $A \not\subseteq C$
-  \item if $A \subseteq B$ and $B \not\subseteq C$, then $A \subseteq C$
-  \item if $A \cap C = B \cap C$, then $A = B$
-  \item if $A \cup C = B \cup C$, then $A = B$
-  \item if $A \subseteq B$ if, and only if, $A \cap \overline{B} = \emptyset$
-  \end{enumerate}
-
-\end{myExercise}
-
-~\\[-6mm]
-
-\begin{myExercise}
-  Provide an explanation for the following statements that are true, or provide a counter-example for those that are false.
-  
-  \begin{enumerate}[label=(\alph*)]
-    \item $A \cap B = B \cap A$  
-    \item $(A \setminus B) \cap C = (A \cap C) \setminus B$
-    \item $A \setminus (B \cap C) = (A \setminus B) \cap (A \setminus C)$
-    \item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
-    \item if $A \subseteq B$ then $A \cap B = A$
-
-  \end{enumerate}
-
-\end{myExercise}
-
-
-%\section*{Self-peer-evaluation}
-%\begin{myExercise}
-%  In a scale from 0-5, where 5 is better than 0, give a mark to you and each of your team groups for each of the following criteria:
-%  \begin{itemize}
-%    \item \textbf{Effort} (time spent)
-%    \item \textbf{Quality} (of the work produced)
-%    \item \textbf{Collaboration} (how easy it was to meet and interact)
-%  \end{itemize}
-%\end{myExercise}
-
-
-% % --------------------------------------------------------------
-% \section*{LTS Equivalence}
-
-
-% \begin{myExercise}  
-% Recall the action-based \bash{farmer1.mcrl2} specification from Exercise~\ref{ex:ba1} and the state-based \bash{farmer2.mcrl2} specification from Exercise~\ref{ex:ba2}.
-
-
-% \subex{Modify the initial process (\code{init}) of both \bash{farmer1.mcrl2} and \bash{farmer2.mcrl2} to {hide all allowed actions except \code{win}} (using \code{hide}), and save them as \bash{farmer1-tau.mcrl2} and \bash{farmer2-tau.mcrl2}, respectively.
-% In \bash{farmer2-taus.mcrl2} {redefine the function \code[morekeywords={ok}]{ok}} by setting it to true, i.e., define \code[morekeywords={ok}]{ok(fm,f,g,b)=true;}.
-% \textbf{Show the resulting \code{init} block from each file.}
-% }
-
-% \subex{
-% Generate the \bash{.lts} files corresponding to \bash{farmer1-tau.mcrl2} and \bash{farmer2-tau.mcrl2}, and compare them using strong bisimulation using the following command.
-% \textbf{What can you conclude?}}
-
-% \begin{lstlisting}[style=bash]
-% $\texttt{\$}$ ltscompare --equivalence=bisim farmer1-taus.lts farmer2-taus.lts
-% \end{lstlisting}
-
-
-% \subex{
-% Using \bash{ltsconvert}, minimise the LTS for \bash{farmer2-taus.mcrl2} with respect to branching bisimulation, using the command below.
-% \textbf{Include a screenshot of the minimised LTS and explain what information can we infer from this LTS.}}
-
-% \begin{lstlisting}[style=bash]
-% $\texttt{\$}$ ltsconvert --equivalence=branching-bisim farmer2-taus.lts
-% \end{lstlisting}
-
-
-% \end{myExercise}
-
-
-
  
 \end{document}
