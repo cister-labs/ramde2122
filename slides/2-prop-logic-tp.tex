@@ -8,7 +8,26 @@
 
 \newcommand{\fitchr}[2]{\ensuremath{#1\text{\sc #2}}}
 
+\newcommand{\conji}[2]{\ensuremath{\land\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\conjel}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_l(#1)}}
+\newcommand{\conjer}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_r(#1)}}
+
+\newcommand{\disjil}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_l(#1)}}
+\newcommand{\disjir}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_r(#1)}}
+\newcommand{\disje}[3]{\ensuremath{\lor\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+
+\newcommand{\negi}[1]{\ensuremath{\neg\text{\textbf{\textsc{I}}}(#1)}}
+\newcommand{\nege}[1]{\ensuremath{\neg\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\falsei}[2]{\ensuremath{\bot\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\falsee}[1]{\ensuremath{\bot\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\impi}[2]{\ensuremath{{\to}\text{\textbf{\textsc{I}}}(#1{-}#2)}}
+\newcommand{\impe}[2]{\ensuremath{{\to}\text{\textbf{\textsc{E}}}(#1,#2)}}
+
+
 \usepackage{macros/bussproofs}
+\usepackage{bm}
 
 
 \setLecture{1}{RAMDE -- Requirements and Model-driven Engineering}
@@ -58,7 +77,7 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
 \textit{If we know that both $\varphi$ and $\psi$ is hold, then so does their conjunction.}
   \begin{center}
     \begin{prooftree}		\AxiomC{$\varphi$}		\AxiomC{$\psi$}
-		\RightLabel{\fitchr{\land}{I}}		\BinaryInfC{$\varphi \land \psi$}	\end{prooftree}
+		\RightLabel{$\land\text{\textbf{\textsc{I}}}$}		\BinaryInfC{$\varphi \land \psi$}	\end{prooftree}
 	\end{center}
 \end{block}
 
@@ -67,11 +86,11 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
   \begin{columns}
   \begin{column}{0.48\textwidth}
     \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
-		\RightLabel{\fitchr{\land}{El}}		\UnaryInfC{$\varphi$}	\end{prooftree}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_l$}		\UnaryInfC{$\varphi$}	\end{prooftree}
   \end{column}
   \begin{column}{0.48\textwidth}
     \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
-		\RightLabel{\fitchr{\land}{Er}}		\UnaryInfC{$\psi$}	\end{prooftree}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_r$}		\UnaryInfC{$\psi$}	\end{prooftree}
   \end{column}
   \end{columns}  
 \end{block}
@@ -80,13 +99,13 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
 
 \begin{slide}{Quick exercise}
 
-  \doExercise{Commutativity of $\land$}{Prove that if $\varphi \land \psi$ holds, then $\psi \land \varphi$ also holds. That is \color{orange}{$\varphi \land \psi \vdash \psi \land \varphi$}}
+  \doExercise{Commutativity of $\land$}{Prove that if $\varphi \land \psi$ holds, then $\psi \land \varphi$ also holds. That is $\varphi \land \psi \vdash \psi \land \varphi$}
   \begin{center}
     \begin{fitch}
       \fj \varphi \land \psi \\
-      \fa \varphi & \fitchr{\land}{El}(1) \\
-      \fa \psi    & \fitchr{\land}{Er}(1) \\
-      \fa \psi \land \varphi & \fitchr{\land}{I}(2,3)
+      \fa \varphi & \conjel{1} \\
+      \fa \psi    & \conjer{1} \\
+      \fa \psi \land \varphi & \conji{2}{3}
     \end{fitch}
   \end{center}
 
@@ -101,11 +120,11 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
     \begin{columns}
       \begin{column}{0.48\textwidth}
         \begin{prooftree}	 	 \AxiomC{$\varphi$}
-	 	 \RightLabel{\fitchr{\lor}{Il}}		  \UnaryInfC{$\varphi \lor \psi$}    	\end{prooftree}
+	 	 \RightLabel{$\lor\text{\textbf{\textsc{I}}}_l$}		  \UnaryInfC{$\varphi \lor \psi$}    	\end{prooftree}
       \end{column}
       \begin{column}{0.48\textwidth}
         \begin{prooftree}		  \AxiomC{$\psi$}
-		  \RightLabel{\fitchr{\lor}{Ir}}		  \UnaryInfC{$\varphi \lor \psi$}	   \end{prooftree}
+		  \RightLabel{$\lor\text{\textbf{\textsc{I}}}_r$}		  \UnaryInfC{$\varphi \lor \psi$}	   \end{prooftree}
       \end{column}
     \end{columns}
   \end{block}
@@ -124,7 +143,7 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
       \UnaryInfC{$\vdots$}
       \noLine
       \UnaryInfC{$\theta$}
-      \RightLabel{{\fitchr{\lor}{E}}}
+      \RightLabel{$\lor\text{\textbf{\textsc{E}}}$}
       \TrinaryInfC{$\theta$}
     \end{prooftree}
   \end{block}
@@ -138,23 +157,22 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
     \begin{column}{0.40\textwidth}
       \begin{fitch}
       \fj (\varphi \lor \psi) \land \theta \\
-      \fa \varphi \lor \psi & \fitchr{\land}{El}(1) \\
-      \fa \theta    & \fitchr{\land}{Er}(1) \\
+      \fa \varphi \lor \psi & \conjel{1} \\
+      \fa \theta    & \conjer{1} \\
       \fa \fj \varphi \\
-      \fa \fa \varphi \land \theta & \fitchr{\land}{I}(4,3) \\
-      \fa \fa (\varphi \land \theta) \lor (\psi \land \theta) & \fitchr{\lor}{Il}(5)
+      \fa \fa \varphi \land \theta & \conji{4}{3} \\
+      \fa \fa (\varphi \land \theta) \lor (\psi \land \theta) & \disjil{5} \\
+      \ftag{~}{\fa \vdots} \\
       \end{fitch}
     \end{column}
     \begin{column}{0.50\textwidth}
       \begin{fitch}
       \ftag{~}{\fa \vdots} \setcounter{fitchcounter}{6} \\
       \fa \fj \psi \\
-      \fa \fa \psi \land \theta & \fitchr{\land}{I}(8,3) \\
-      \fa \fa (\varphi \land \theta) \lor (\psi \land \theta) & \fitchr{\lor}{Ir}(8)\\
-      \fa (\varphi \land \theta) \lor (\psi \land \theta) & \fitchr{\lor}{E}(2,4-6,7-9)
-      
+      \fa \fa \psi \land \theta & \conji{8}{3} \\
+      \fa \fa (\varphi \land \theta) \lor (\psi \land \theta) & \disjir{8}\\
+      \fa \color{green}{(\varphi \land \theta) \lor (\psi \land \theta)} & \disje{2}{4{-}6}{7{-}9}
       \end{fitch}
-
     \end{column}  
   \end{columns}
 
@@ -170,8 +188,8 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
       \noLine
       \UnaryInfC{$\vdots$}
       \noLine
-      \UnaryInfC{\textsc{F}}
-      \RightLabel{\fitchr{\neg}{I}}
+      \UnaryInfC{$\bm{\bot}$}
+      \RightLabel{$\neg\text{\textbf{\textsc{I}}}$}
       \UnaryInfC{$\neg\varphi$}
     \end{prooftree}
   \end{block}
@@ -179,7 +197,7 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
   \textit{If we know that $\neg\varphi$ is false, then ew can conclude that $\varphi$ holds.}
     \begin{prooftree}
       \AxiomC{$\neg\neg\varphi$}
-      \RightLabel{\fitchr{\neg}{E}}
+      \RightLabel{$\neg\text{\textbf{\textsc{E}}}$}
       \UnaryInfC{$\varphi$}
     \end{prooftree}
   \end{block}
@@ -195,15 +213,15 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
       \UnaryInfC{$\vdots$}
       \noLine
       \UnaryInfC{$\neg\varphi$}
-      \RightLabel{\fitchr{F}{I}}
-      \UnaryInfC{{\sc F}}
+      \RightLabel{$\bot\text{\textbf{\textsc{I}}}$}
+      \UnaryInfC{$\bm{\bot}$}
     \end{prooftree}
   \end{block}
   \begin{block}{Elimination}
   \textit{From false, ew can conclude anything!}
     \begin{prooftree}
-      \AxiomC{{\sc F}}
-      \RightLabel{\fitchr{F}{E}}
+      \AxiomC{$\bm{\bot}$}
+      \RightLabel{$\bot\text{\textbf{\textsc{E}}}$}
       \UnaryInfC{$\varphi$}
     \end{prooftree}
   \end{block}
@@ -213,24 +231,25 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
 
   \doExercise{Negation and disjunction}{
     Prove that if $\neg(\varphi \lor \psi)$ holds, then $\neg\varphi \land \neg\psi$ also holds.}
+  
   \begin{columns}
     \begin{column}{0.40\textwidth}
       \begin{fitch}
       \fj \neg(\varphi \lor \psi) \\
       \ftag{~}{\fa } \setcounter{fitchcounter}{1} \\
-      \fa \fj \varphi & \fitchr{\land}{El}(1) \\
-      \fa \fa \varphi \lor \psi & \fitchr{\lor}{Il}(2) \\
-      \fa \fa \mathsc{F} & \fitchr{F}{I}(1,3) \\
-      \fa \neg\varphi & \fitchr{\neg}{I}(2-4)
+      \fa \fj \varphi & \conjel{1} \\
+      \fa \fa \varphi \lor \psi & \disjil{2} \\
+      \fa \fa \bm{\bot} & \falsei{1}{3} \\
+      \fa \neg\varphi & \negi{2{-}4}
       \end{fitch}
     \end{column}
     \begin{column}{0.50\textwidth}
       \begin{fitch}
-      \ftag{5}{\fj \psi \setcounter{fitchcounter}{5}}\\
-      \fa \fa \varphi \lor \psi & \fitchr{\lor}{Ir}(6) \\
-      \fa \fa \mathsc{F} & \fitchr{F}{I}(1,7) \\
-      \fa \neg\psi & \fitchr{\neg}{I}(6-8)     \\
-      \fa \color{green}{\neg\varphi} \land \neg\psi & \fitchr{\land}{I}(5,8)
+      \ftag{6}{\fj \psi \setcounter{fitchcounter}{6}}\\
+      \fa \fa \varphi \lor \psi & \disjir{6} \\
+      \fa \fa \bm{\bot} & \falsei{1}{7} \\
+      \fa \neg\psi & \negi{6{-}8}     \\
+      \fa \color{green}{\neg\varphi} \land \neg\psi & \conji{5}{8}
       \end{fitch}
     \end{column}  
   \end{columns}
@@ -250,7 +269,7 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
       \UnaryInfC{$\vdots$}
       \noLine
       \UnaryInfC{$\psi$}
-      \RightLabel{$\to$-intro}
+      \RightLabel{${\to}\text{\textbf{\textsc{I}}}$}
       \UnaryInfC{$\varphi \to \psi$}
     \end{prooftree}
   \end{block}
@@ -259,7 +278,7 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
     \begin{prooftree}
       \AxiomC{$\varphi \to \psi$}
       \AxiomC{$\varphi$}
-      \RightLabel{$\to$-elim}
+      \RightLabel{${\to}\text{\textbf{\textsc{E}}}$}
       \BinaryInfC{$\psi$}
     \end{prooftree}
   \end{block}
@@ -277,58 +296,168 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
       \fj \varphi \\
       \ftag{~}{\fa } \setcounter{fitchcounter}{2} \\
       \fa \fj \psi \\
-      \fa \fa \varphi \lor \psi & \fitchr{\lor}{Il}(2) \\
-      \fa \fa \theta & \fitchr{\to}{E}(1,4) \\
-      \fa \color{green}{\psi \to \theta} & \fitchr{\to}{I}(3-5)
+      \fa \fa \varphi \lor \psi & \disjil{2} \\
+      \fa \fa \theta & \impe{1}{4} \\
+      \fa \color{green}{\psi \to \theta} & \impi{3}{5}
       \end{fitch}
 \end{center}
 \end{slide}
 
+\begin{frame}
+  \frametitle{Natural Deduction Rules - Derived rules}
+  \begin{columns}
+      \begin{column}{0.48\textwidth}
+        \begin{prooftree}	 	 \AxiomC{$\varphi \to \psi$}
+	 	 \AxiomC{$\neg\psi$}
+	 	 \RightLabel{MT}		  \BinaryInfC{$\neg\varphi$}    	\end{prooftree}
+      \end{column}
+      \begin{column}{0.48\textwidth}
+        \begin{prooftree}		  \AxiomC{$\varphi$}
+		  \RightLabel{$\neg\neg$-intro}		  \UnaryInfC{$\neg\neg\varphi$}	   \end{prooftree}
+      \end{column}
+    \end{columns}
+    \begin{columns}
+      \begin{column}{0.48\textwidth}
+      \begin{prooftree}
+        \AxiomC{$[\neg\varphi]$}
+        \noLine
+        \UnaryInfC{$\vdots$}
+        \noLine
+        \UnaryInfC{\texttt{ff}}
+        \RightLabel{RA}
+        \UnaryInfC{$\varphi$}
+      \end{prooftree}
+      \end{column}
+      \begin{column}{0.48\textwidth}
+        \begin{prooftree}		  \AxiomC{$$}
+		  \RightLabel{ET}		  \UnaryInfC{$\varphi \lor \neg\varphi$}	   \end{prooftree}
+      \end{column}
+    \end{columns}
+\end{frame}
 
+\begin{slide}{Lets prove the derived rules?}
+  \doExercise{Modus Tolens}{Prove that $\varphi \to \psi, \neg\psi \vdash \neg\varphi$}
+  \begin{fitch} 
+    \fa \varphi \to \psi \\
+    \fj \neg\psi \\
+    \ftag{~}{\fa } \setcounter{fitchcounter}{2} \\
+    \fa \fj \varphi \\
+    \fa \fa \psi & \fitchr{\to}{E}(1,3) \\
+    \fa \fa \mathsc{F} & \fitchr{F}{I}(3,4) \\
+    \fa \color{green}{\neg\varphi} & \fitchr{\neg}{I}(3-5)
+  \end{fitch}
+\end{slide}
 
-\begin{slide}{How to create slides}
-\small
+\begin{slide}{Lets prove the derived rules?}
+  \doExercise{Double Negation Introduction}{Prove that $\varphi \vdash \neg\neg\varphi$}
+  \begin{fitch} 
+    \fj \varphi \\
+    \ftag{~}{\fa } \setcounter{fitchcounter}{1} \\
+    \fa \fj \neg\varphi \\
+    \fa \fa F & \fitchr{F}{I}(1,2) \\
+    \fa \color{green}{\neg\neg\varphi} & \fitchr{\neg}{I}(2-3)
+  \end{fitch}
+\end{slide}
 
-\begin{itemize}
-	\item \alert{\texttt{$\backslash$begin\{slide\}\{my title\} my content $\backslash$end\{slide\}}}
-	\item \alert{\texttt{$\backslash$begin\{frame\} $\backslash$frametitle\{my title\} my content $\backslash$end\{frame\}}}
-	\item \alert{\texttt{$\backslash$frame\{ $\backslash$frametitle\{my title\} my content \}}}
-\end{itemize}
+\begin{slide}{Lets prove the derived rules?}
+  \doExercise{Reductio ad absurdum}{Prove that $\neg\varphi \to F \vdash \varphi$}
+  \begin{fitch} 
+    \fj \neg\varphi \to F \\
+    \ftag{~}{\fa } \setcounter{fitchcounter}{1} \\
+    \fa \fj \neg\varphi \\
+    \fa \fa F & \fitchr{F}{I}(1,2) \\
+    \fa \neg\neg\varphi & \fitchr{\neg}{I}(2-3) \\
+    \fa \color{green}{\varphi} & \fitchr{\neg}{E}(4)
+  \end{fitch}
+\end{slide}
+
+\begin{slide}{Lets prove the derived rules?}
+  \doExercise{Excluded third}{Whatever $\varphi$ we have $\vdash \varphi \lor \neg\varphi$}
+  \begin{columns}
+      \begin{column}{0.48\textwidth}
+      \begin{fitch} 
+        \fa \fj \neg(\varphi \lor \neg\varphi)\\
+        \ftag{~}{\fa \fa} \setcounter{fitchcounter}{1} \\
+        \fa \fa \fj \varphi \\
+        \fa \fa \fa \varphi \lor \neg\varphi & \fitchr{\lor}{Ir}(2)\\
+        \fa \fa \fa F & \fitchr{F}{I}(1,3) \\
+        \fa \fa \neg\varphi & \fitchr{\neg}{I}(2-4) \\
+        \fa \fa \varphi \lor \neg\varphi & \fitchr{\lor}{Il}(5)
+      \end{fitch}
+      \end{column}
+      \begin{column}{0.48\textwidth}
+      \begin{fitch}
+        \ftag{~}{\fa \fa \vdots} \setcounter{fitchcounter}{6} \\
+        \fa \fa F & \fitchr{F}{I}(1,6) \\
+        \fa \neg\neg(\varphi \lor \neg\varphi) & \fitchr{\neg}{I}(1-7) \\
+        \fa \color{green}{\varphi \lor \neg\varphi} & \fitchr{\neg}{E}(8)
+      \end{fitch}
+      \end{column}
+  \end{columns}
 \end{slide}
 
 
-\begin{slide}{Some handy macros and tips}
+\begin{slide}{Lets continue with more exercises}
+
+  \doExercise{A first list of exercises}{Build the derivations for each of the statements below:
   \begin{itemize}
-    \item Use beamer's macros \alert{\texttt{$\backslash$alert}} and \structure{\texttt{$\backslash$structure}} to color/highlight words.
-
-    \item{Set the title of the lecture as in this file (using \alert{\texttt{$\backslash$setLecture}} with the lecture number) -- the number is used in the macros for exercises.}
-
-		\item Make 1st title with \alert{\texttt{$\backslash$frame[plain]\{$\backslash$titlepage\}}}
-
-		\item Use sections to separate topics.
-
-    \item Use \alert{\texttt{$\backslash$frsplit\{left part\}\{right part\}}} to quickly start a 2 columns slide.
+    \item $\vdash (\varphi \land \psi) \to \psi$
+    \item $\vdash \varphi \to (\varphi \lor \psi)$
+    \item $\vdash (\varphi \lor \psi) \to (\psi \lor \varphi)$
+    \item $\theta \to (\varphi \to \psi), \neg\psi, \theta \vdash \neg\varphi$
+    \item $\theta, \neg\varphi \vdash\neg(\theta \to \varphi)$
+    \item $(\psi \land \theta) \to \neg\delta, \varphi \to \delta, \theta, \varphi \vdash \neg\psi$
+    \item $(\psi \to \varphi) \land (\varphi \to \psi) \vdash (\varphi \land \psi) \lor (\neg\varphi \land \neg\psi)$
   \end{itemize}
-\end{slide}
-
-\begin{slide}{Macros for blocks and exercises}
-	\begin{itemize}
-    \item Use environment \alert{\texttt{$\backslash$begin\{block\}\{some title\}}} to have a gray block with a title.
-
-    \item Use environment \alert{\texttt{$\backslash$begin\{exampleblock\}\{some title\}}} to present an example.
-
-    \item Use environment \alert{\texttt{$\backslash$begin\{alertblock\}\{some title\}}} to present an example.
-
-    \item Use macro \alert{\texttt{$\backslash$doExercise\{My title\}\{Exercise description\}}}.
-    E.g.
-    \doExercise{My title}{Exercise description}
-
-    \item Use macro \alert{\texttt{$\backslash$exercise}} to start a numbered exercise inline.
-    E.g.: \exercise Draw a diagram. \exercise Draw another one.
-
-  \end{itemize}
+  }
   
 \end{slide}
+
+
+
+%\begin{slide}{How to create slides}
+%\small
+%
+%\begin{itemize}
+%	\item \alert{\texttt{$\backslash$begin\{slide\}\{my title\} my content $\backslash$end\{slide\}}}
+%	\item \alert{\texttt{$\backslash$begin\{frame\} $\backslash$frametitle\{my title\} my content $\backslash$end\{frame\}}}
+%	\item \alert{\texttt{$\backslash$frame\{ $\backslash$frametitle\{my title\} my content \}}}
+%\end{itemize}
+%\end{slide}
+%
+%
+%\begin{slide}{Some handy macros and tips}
+%  \begin{itemize}
+%    \item Use beamer's macros \alert{\texttt{$\backslash$alert}} and \structure{\texttt{$\backslash$structure}} to color/highlight words.
+%
+%    \item{Set the title of the lecture as in this file (using \alert{\texttt{$\backslash$setLecture}} with the lecture number) -- the number is used in the macros for exercises.}
+%
+%		\item Make 1st title with \alert{\texttt{$\backslash$frame[plain]\{$\backslash$titlepage\}}}
+%
+%		\item Use sections to separate topics.
+%
+%    \item Use \alert{\texttt{$\backslash$frsplit\{left part\}\{right part\}}} to quickly start a 2 columns slide.
+%  \end{itemize}
+%\end{slide}
+%
+%\begin{slide}{Macros for blocks and exercises}
+%	\begin{itemize}
+%    \item Use environment \alert{\texttt{$\backslash$begin\{block\}\{some title\}}} to have a gray block with a title.
+%
+%    \item Use environment \alert{\texttt{$\backslash$begin\{exampleblock\}\{some title\}}} to present an example.
+%
+%    \item Use environment \alert{\texttt{$\backslash$begin\{alertblock\}\{some title\}}} to present an example.
+%
+%    \item Use macro \alert{\texttt{$\backslash$doExercise\{My title\}\{Exercise description\}}}.
+%    E.g.
+%    \doExercise{My title}{Exercise description}
+%
+%    \item Use macro \alert{\texttt{$\backslash$exercise}} to start a numbered exercise inline.
+%    E.g.: \exercise Draw a diagram. \exercise Draw another one.
+%
+%  \end{itemize}
+%  
+%\end{slide}
 
 
 \end{document}
