@@ -45,7 +45,7 @@
 \frame[plain]{\titlepage}
 
 
-\section{First Order Logic}
+\section{First Order Logic and its Syntax}
 
 \begin{slide}{The need for a richer kind of formal logic...}
 \small
@@ -136,9 +136,7 @@ Using truth tables and considering $\varphi$ = "All dogs like running", $\psi$ =
     \end{description}
   \end{block}
   
-  \begin{block}{Closed terms}
-    A FOL term is said to be {\bf closed} if no variables occur in such term.
-  \end{block}
+
 
 
 \end{slide}
@@ -151,6 +149,10 @@ Using truth tables and considering $\varphi$ = "All dogs like running", $\psi$ =
   \item a constant (i.e., a symbol $c \in \mathcal{F}_0$ is also a term;
   \item if $t_0,\ldots,t_n$ are terms and $f \in \mathcal{F}_n$ is a functional symbol, then $f(t_0,\ldots,t_n)$ is a term.  
   \end{itemize}
+  \end{block}
+  
+  \begin{block}{Closed terms}
+    A FOL term is said to be {\bf closed} if no variables occur in such term.
   \end{block}
 
 \end{slide}
@@ -168,6 +170,233 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
 \end{itemize}
 
 \end{slide}
+
+\begin{slide}{First Order Logic - Syntax}
+  \begin{block}{FOL Atoms}  
+  Let $\mathcal{L}$ be a FOL language. An {\bf atom} (from the term atomic formula) is inductively/recursively defined as follows:
+  \begin{itemize}
+  \item if $t_0,\ldots,t_n$ are terms and $R \in \mathcal{R}_n$ is a relational symbol, then $R(t_0,\ldots,t_n)$ is an atom;
+  \item if $\mathcal{L}$ include the equality symbol $=$ and if $t_1$ and $t_2$ are terms, then $t_1 = t_2$ is an atom.  
+  \end{itemize}
+  \end{block}
+  
+  \begin{block}{Some examples...}
+  \begin{columns}
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item $R(b)$
+        \item $R(x,y,z)$
+        \item $G(f(a,b),x)$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item $R(f(a,x),g(y,b),h(c))$
+      \end{itemize}        
+    \end{column}
+  \end{columns}
+  \end{block}
+
+\end{slide}
+
+\begin{slide}{First Order Logic - Syntax}
+  \begin{block}{FOL Formulae}  
+  Let $\mathcal{L}$ be a FOL language. The set of {\bf formulae} is inductively/recursively defined  as follows:
+  \begin{itemize}
+  \item an atom is a formula;
+  \item if $\varphi$ is a formula, then so is $\neg\varphi$;
+  \item if $\varphi$ and $\psi$ are formulas, then so are $\varphi \land \psi$, $\varphi \lor \psi$, and $\varphi \to \psi$;
+  \item if $\varphi$ is a formula and $x$ is a variable, then $\foall x, \varphi$ and $\exists x, \varphi$ are also formulas.
+  \end{itemize}
+  \end{block}
+\end{slide}
+
+\begin{slide}{Some quick examples}
+
+Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\mathcal{F}_2 = \{h\}$, and that $\mathcal{R}_2 = \{R,S\}$, which of the following expressions are formulas?
+
+\begin{itemize}
+\item \color<2->{green}{$R(a,d)$}
+\item \color<2->{red}{$h(x,y)$}
+\item \color<2->{red}{$S(R(f(x),y),z)$}
+\item \color<2->{green}{$R(d,a) \to \exists y, S(d,y)$}
+\item \color<2->{red}{$S(\forall x, R(f(a),d),x)$}
+\item \color<2->{green}{$\forall x, R(f(a),h(a,x))$}
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}{A more serious example}
+  Lets look at a FOL that focus on being able to express formulae about natural numbers, including addition and multiplication. Let $\mathcal{A}$ be a language that includes equality and such that $\mathcal{F}_0 = \{0,1\}$, $\mathcal{F}_2 = \{+,\times\}$, and $\mathcal{R}_2 = \{<\}$.
+  
+  Terms of this language include:
+  \begin{itemize}
+  \item $0$, $1$, $+(1,1)$, $+(1,+(1,1))$, $+(1,+(+(1,1),1))$
+  \item $\times(+(1,0),1)$, $\times(\times(1,1),+(0,1))$  
+  \end{itemize}
+  
+  Formulas of this language include:
+  \begin{itemize}
+  \item $<(\times(1,1),+(1,1))$
+  \item $\forall x, (+(0,x) = x)$
+  \item $\forall x, \exists y, +(x,1) = +(y,1) \to x = y$  
+  \end{itemize}
+
+
+\end{slide}
+
+\begin{slide}{Translating text into FOL formulae}
+\begin{block}{In general, we have the following translation}
+\begin{center}
+\begin{tabular}{c|c}
+Type of text &  FOL formula \\ \hline
+ All $P$ are also $Q$ & $\forall x, (P(x) \to Q(x))$ \\
+ Some $P$ are also $Q$ & $\exists x, (P(x) \land Q(x))$ \\
+ No $P$ is $Q$ & $\forall x, (P(x) \to \neg Q(x))$ \\
+ Not all $P$ are $Q$ & $\exists x, (P(x) \land \neg Q(x))$
+\end{tabular}
+\end{center}
+\end{block}
+\end{slide}
+
+\begin{slide}{Small exercise}
+Find some adequate predicates to express the following statements:
+\begin{itemize}
+\item All even numbers are prime numbers\\
+\onslide<2->{$\forall x, Even(x) \to Prime(x)$}
+\item Not all prime numbers are even numbers\\
+\onslide<3->{$\neg(\forall x, Prime(x) \to Even(x)) $}
+\item Some prime numbers are not even\\
+\onslide<4->{$\exists x, Prime(x) \land \neg Even(x)$}
+\item All prime number is not even or equal to 2\\  
+\onslide<5->{$\forall x, Prime(x) \to (\neg Even(x) \lor x = 2)$}
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Bound and free variables}
+  \begin{block}{Bound Variable}
+  A variable $x$ is said to be {\bf bound} to a formula $\varphi$ if $\varphi$ has a subformula $\psi$ whose schema is $\forall x, \theta$ or $\exists x, \theta$ and $x$ occurs in $\theta$. 
+  \end{block}
+  \begin{block}{Free Variable}
+  A variable $x$ is said to be {\bf free} if it is not bound.  
+  \end{block}
+  \begin{block}{Proposition}
+  A formula is said to be a proposition if it does not contain free variables.  
+  \end{block}
+\end{slide}
+
+\begin{slide}{Small exercises}
+For each of the formulae presented bellow, identify the bound and free variables:
+\begin{itemize}
+\item $\exists x, (P(y,z) \land \forall y, (\neg Q(x,y) \lor P(y,z))$  
+\item $\neg(\forall x, \exists y, P(x,y,z) \to \forall z, P(x,y,z))$
+\item $P(a,g(c,d))$
+\item $\exists x, (P(x) \to \neg Q(x))$
+\end{itemize}
+\end{slide}
+
+\section*{Semantics}
+
+\begin{slide}{How to Evaluate a FOL Formula}
+  \begin{block}{Recalling evaluation of formulae in Propositional Logic}
+  In PL, the evaluation of a formula $\varphi$ is fully determined by the valuation given to each of its propositional variables, and the connectives involved in the formula.  
+  \end{block}
+  
+  \begin{block}{But how is it done in FOL?}
+  In FOL, to evaluate a formula we need to determine the meaning of:
+    \begin{itemize}
+    \item bound and free variables
+    \item quantifiers
+    \item functional symbols
+    \item relational/predicate symbols
+    \end{itemize}
+    This must be done in a concrete {\bf universe}.
+  \end{block}
+\end{slide}
+
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
+%
+%\begin{slide}{}
+%  
+%\end{slide}
 
 
 
