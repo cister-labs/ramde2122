@@ -1,0 +1,175 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{macros/beamerconf}
+\input{macros/preamble}
+\input{macros/macros_drp}
+
+\usepackage{macros/fitch}
+
+\newcommand{\fitchr}[2]{\ensuremath{#1\text{\sc #2}}}
+
+\newcommand{\conji}[2]{\ensuremath{\land\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\conjel}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_l(#1)}}
+\newcommand{\conjer}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_r(#1)}}
+
+\newcommand{\disjil}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_l(#1)}}
+\newcommand{\disjir}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_r(#1)}}
+\newcommand{\disje}[3]{\ensuremath{\lor\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+
+\newcommand{\negi}[1]{\ensuremath{\neg\text{\textbf{\textsc{I}}}(#1)}}
+\newcommand{\nege}[1]{\ensuremath{\neg\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\falsei}[2]{\ensuremath{\bot\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\falsee}[1]{\ensuremath{\bot\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\impi}[2]{\ensuremath{{\to}\text{\textbf{\textsc{I}}}(#1{-}#2)}}
+\newcommand{\impe}[2]{\ensuremath{{\to}\text{\textbf{\textsc{E}}}(#1,#2)}}
+
+
+\usepackage{macros/bussproofs}
+\usepackage{bm}
+
+
+\setLecture{1}{RAMDE -- Requirements and Model-driven Engineering}
+
+% \title{
+% 	RAMDE -- Requirements and Model-driven Engineering 
+% 	}
+% \author{David Pereira \and Jos\'{e} Proen\c{c}a}
+% \institute{CISTER -- ISEP \\ Porto, Portugal}
+% \date{MScCCSE 2020/21}
+
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+
+\section{First Order Logic}
+
+\begin{slide}{The need for a richer kind of formal logic...}
+\small
+
+\begin{block}{The limitations of Propositional Logic}
+ So far, we have been looking into Propositional Logic for reasoning about statements, in a way that can be valuable for the process of Requirement's Engineering. Although usefull, in most cases we need a richer language (and underlying formal system) that allows us to be more precise about the concepts we need to express.
+\end{block}
+
+\begin{block}{During this and next two classes...}
+You will be presented with the concept of First Order Logic, learn about how can we express things using its language, learn how formulas can be evaluated with respect to models (yes, we are going to talk about models), and of course we will dive into performing Natural Deduction using First Order Logic constructions.
+\end{block}
+
+
+\begin{alert}{Warning:}
+Things are going to get a little bit more complicated, considering what has been introduced in terms of Propositional Logic. Once again, bare with me and you will get comfortable with First Order Logic in a glimpse ;-)
+\end{alert}
+
+\end{slide}
+
+
+\begin{slide}{First Order Logic - Syntax}
+
+\begin{block}{Lets look into this simple example}
+\begin{description}
+  \item [Hypothesis 1:] All dogs like running.
+  \item [Hypothesis 2:] Zen is a dog.
+  \item [\color{red}{Conclusion:}] Zen likes to run.
+\end{description}
+\end{block}
+
+\begin{block}{What can we say about the above reasoning?}
+Well, the argument is clearly valid! However, translating it into propositional logic would result in a unique sentence $\varphi \land \psi \to \theta$ which is definitely not a valid formula!
+
+Using truth tables and considering $\varphi$ = "All dogs like running", $\psi$ = "Zen is a dog", and $\theta$ = "Zen likes to run", if $f(\varphi) = {\bf true}$, $f(\psi) = {\bf true}$, and $f(\theta) = {\bf false}$ we would get that $f(\varphi \land \psi \to \theta) = {\bf false}$.
+\end{block}
+\end{slide}
+
+\begin{slide}{First Order Logic - Syntax}
+
+ \begin{block}{Representability of concepts in First Order Logic}
+ In First Order Logic (FOL) we will be able to represent/reason about
+   \begin{itemize}
+     \item Objects
+     \item Properties and relations about objects
+     \item Properties and relations about sets of objects
+   \end{itemize}
+ \end{block}
+ 
+ \begin{block}{Getting back to Zen's example}
+ \begin{itemize}
+   \item $\forall x, {\bf Dog}(x) \to {\bf LikesToRun}(x)$
+   \item ${\bf Dog}({\tt zen})$
+   \item ${\bf LikesToRun}({\tt zen})$
+ \end{itemize}
+  We will see further ahead in this and the following classes that this kind of reasoning is valid in FOL.
+ \end{block}
+\end{slide}
+
+
+\begin{slide}{First Order Logic - Syntax}
+ 
+  \begin{block}{FOL language}  
+    A language of FOL considers the following sets of symbols:
+    \begin{description}
+    \item [logical symbols] of one of the following forms:
+    \begin{itemize}
+      \item a set of variables $S = \{x,y,\ldots,x_0,y_0,\ldots\}$  
+      \item logical connectives $\land, \lor, \neg$, and $\to$
+      \item quantifiers $\forall$ (for all) and $\exists$ (exists)
+      \item parenthesis $($ and $)$
+      \item possibly, the equality symbol $=$
+    \end{itemize}
+    \end{description}
+  \end{block}
+
+\end{slide}
+
+\begin{slide}{First Order Logic - Syntax}  
+
+  \begin{block}{FOL language}  
+    A language of FOL considers the following sets of symbols:
+    \begin{description}
+    \item [Non-logical symbols] of one of the following forms:
+      \begin{itemize}
+      \item a (possibly empty) set of functional symbols for each $n$-arity, represented as $\mathcal{F}_n$ (when referring to constants, we are actually talking about functional symbols with arity $0$). Typically, $f$, $g$, $h$, $\ldots$
+      \item a (possibly empty) set of relation symbols for each $n$-arity, represented as $\mathcal{R}_n$. Typically, $P$, $Q$, $R$, $\ldots$
+      \end{itemize}
+    \end{description}
+  \end{block}
+  
+  \begin{block}{Closed terms}
+    A FOL term is said to be {\bf closed} if no variables occur in such term.
+  \end{block}
+
+
+\end{slide}
+
+\begin{slide}{First Order Logic - Syntax}
+  \begin{block}{FOL Terms}  
+  Let $\mathcal{L}$ be a FOL language. A term is inductively/recursively defined as follows:
+  \begin{itemize}
+  \item a variable $x \in \mathcal{V}$ is a term;
+  \item a constant (i.e., a symbol $c \in \mathcal{F}_0$ is also a term;
+  \item if $t_0,\ldots,t_n$ are terms and $f \in \mathcal{F}_n$ is a functional symbol, then $f(t_0,\ldots,t_n)$ is a term.  
+  \end{itemize}
+  \end{block}
+
+\end{slide}
+
+\begin{slide}{Some quick examples}
+
+Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\mathcal{F}_2 = \{h\}$, and that $\mathcal{F}_3 = \{g\}$
+
+\begin{itemize}
+\item \color<2->{red}{$f(a,g(x,g(a),a))$}
+\item \color<2->{green}{$h(d,h(f(a),x))$}
+\item \color<2->{red}{$x(d,g(y))$}
+\item \color<2->{green}{$h(h(x,x),h(y,y))$}
+\item \color<2->{red}{$f(a(x))$}
+\end{itemize}
+
+\end{slide}
+
+
+
+
+\end{document}
