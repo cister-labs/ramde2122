@@ -30,7 +30,7 @@
 \usepackage{bm}
 
 
-\setLecture{1}{RAMDE -- Requirements and Model-driven Engineering}
+\setLecture{2}{RAMDE -- Requirements and Model-driven Engineering}
 
 % \title{
 % 	RAMDE -- Requirements and Model-driven Engineering 
@@ -163,9 +163,9 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
 
 \begin{itemize}
 \item \color<2->{red}{$f(a,g(x,g(a),a))$}
-\item \color<2->{green}{$h(d,h(f(a),x))$}
+\item \structure<2->{$h(d,h(f(a),x))$}
 \item \color<2->{red}{$x(d,g(y))$}
-\item \color<2->{green}{$h(h(x,x),h(y,y))$}
+\item \structure<2->{$h(h(x,x),h(y,y))$}
 \item \color<2->{red}{$f(a(x))$}
 \end{itemize}
 
@@ -206,7 +206,7 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
   \item an atom is a formula;
   \item if $\varphi$ is a formula, then so is $\neg\varphi$;
   \item if $\varphi$ and $\psi$ are formulas, then so are $\varphi \land \psi$, $\varphi \lor \psi$, and $\varphi \to \psi$;
-  \item if $\varphi$ is a formula and $x$ is a variable, then $\foall x, \varphi$ and $\exists x, \varphi$ are also formulas.
+  \item if $\varphi$ is a formula and $x$ is a variable, then $\forall x, \varphi$ and $\exists x, \varphi$ are also formulas.
   \end{itemize}
   \end{block}
 \end{slide}
@@ -216,12 +216,12 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
 Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\mathcal{F}_2 = \{h\}$, and that $\mathcal{R}_2 = \{R,S\}$, which of the following expressions are formulas?
 
 \begin{itemize}
-\item \color<2->{green}{$R(a,d)$}
+\item \structure<2->{$R(a,d)$}
 \item \color<2->{red}{$h(x,y)$}
 \item \color<2->{red}{$S(R(f(x),y),z)$}
-\item \color<2->{green}{$R(d,a) \to \exists y, S(d,y)$}
+\item \structure<2->{$R(d,a) \to \exists y, S(d,y)$}
 \item \color<2->{red}{$S(\forall x, R(f(a),d),x)$}
-\item \color<2->{green}{$\forall x, R(f(a),h(a,x))$}
+\item \structure<2->{$\forall x, R(f(a),h(a,x))$}
 \end{itemize}
 
 \end{slide}

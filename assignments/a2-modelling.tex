@@ -98,6 +98,28 @@ Without modifying the process \code{State}, adapt the specification by adding a 
 
 
 
+\section*{Modelling a vending machine}
+
+\begin{myExercise} \label{ex:vm}
+Specify two interacting processes in mCRL2:
+\begin{itemize}
+  \item \textbf{a vending machine} with 2 products, apples and bananas, costing 1eur and 2eur respectively; and
+  \item \textbf{a user} who can insert 1eur or 2eur coins and request for products.
+\end{itemize}
+
+Provide a specification of this system and include them in a \bash{vending.mcrl2} file, according to the requirements below. Try to keep the specifications simple. \textbf{Submit this file in your git repository.}
+%You have the freedom to select the set of actions and behaviour that you believe to make 
+
+Requirements:
+\begin{itemize}
+  \item The user must be able to get apples and bananas;
+  \item The machine accepts up to 3eur, and not more than that;
+  \item The machine must give change back when applicable;
+  \item The machine can be powered off and powered on;
+\end{itemize}
+
+\end{myExercise}
+
 % \section*{Modelling a vending machine}
 
 % \begin{myExercise}
