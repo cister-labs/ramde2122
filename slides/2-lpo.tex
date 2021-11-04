@@ -206,7 +206,7 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
   \item an atom is a formula;
   \item if $\varphi$ is a formula, then so is $\neg\varphi$;
   \item if $\varphi$ and $\psi$ are formulas, then so are $\varphi \land \psi$, $\varphi \lor \psi$, and $\varphi \to \psi$;
-  \item if $\varphi$ is a formula and $x$ is a variable, then $\foall x, \varphi$ and $\exists x, \varphi$ are also formulas.
+  \item if $\varphi$ is a formula and $x$ is a variable, then $\forall x, \varphi$ and $\exists x, \varphi$ are also formulas.
   \end{itemize}
   \end{block}
 \end{slide}
@@ -314,9 +314,116 @@ For each of the formulae presented bellow, identify the bound and free variables
   \end{block}
 \end{slide}
 
-%\begin{slide}{}
-%  
-%\end{slide}
+\begin{slide}{Structures and Variable Interpretations}
+
+\begin{block}{Structure}
+The {\bf strucuture} of an LPO language is a pair $\mathcal{S} = \langle S, \cdot^\mathcal{S} \rangle$ where $S$ is a non-empty set know as the \textbf{\textit{domain}} or \textbf{\textit{universe}} and $\cdot^\mathcal{S}$ is a function such that:
+\begin{itemize}
+  \item associates each constant $c$ with a value $c^\mathcal{S} \in S$
+  \item associates each $n$-ary symbol $f \in \mathcal{F}_n$ with a $n$-ary function $f^\mathcal{S}$ from $S^n$ to $A$
+  \item associates each $n$-ary predicate symbol $R \in \mathcal{R}_n$ with a relation $R^\mathcal{S} \subseteq S^n$
+\end{itemize}
+\end{block}
+\end{slide}
+
+\begin{slide}{Example Structure}
+Let $\mathcal{L}$ be a FOL language and $\mathcal{S} = \langle \mathbb{N},\cdot^\mathcal{S} \rangle$ a structure such that $\cdot^\mathcal{S}$ is defined as follows:
+\begin{itemize}
+  \item $0^\mathcal{S} = 0$ and $1^\mathcal{S} = 1$
+  \item $+^\mathcal{S}(n,m) = n + m$
+  \item $\leq^\mathcal{S}(n,m) = \{ (n,m) \,|\, n \leq m \}$
+\end{itemize}
+With the above structure, we can use this language to reason about partial ordering of natural numbers and sums of natural numbers. {\bf Note the importance of the interpretation. If a different interpretation of constants, functional symbols and relations/predicates (possibly under different universe) was given, then we could be expressing completely different concepts using the same language!}
+\end{slide}
+
+
+\begin{slide}{Structures and Variable Interpretations}
+\begin{block}{Variable Interpretation}
+We associate with each language $\mathcal{L}$ and structure $\mathcal{S} = \langle A, \cdot^\mathcal{A} \rangle$ a variable interpretation function $s : \mathcal{V} \to A$ such that
+\begin{itemize}
+  \item for each variable $x \in \mathcal{V}$, the value of $s(x)$ is defined
+  \item if $c$ is a constant, then $s(c) = c^\mathcal{A}$
+  \item if $t_0,\ldots,t_n$ are terms and $f$ is an $n$-ary function symbol, then 
+  $$s(f(t_0,\ldots,t_n)) = f^\mathcal{A}(s(t_0),\ldots,s(t_n))$$
+\end{itemize}
+\end{block}
+\begin{block}{Substitution}
+Let $\mathcal{S} = \langle S, \cdot^\mathcal{S} \rangle$ and let $s$ be a variable interpretation. We define the substitution of a variable $x$ by a value $a$ in $s$ (denoted by $s[a/x]$) as $s[a/x](y) = a$ if $x = y$ and $s[a/x](y) = s(y)$ otherwise.
+\end{block}
+
+
+\end{slide}
+
+\begin{slide}{Satisfiability}
+Let $\mathcal{L}$ be a language of FOL, let $\mathcal{A} = \langle A, \cdot^\mathcal{A} \rangle$, and let $s : \mathcal{V} \to A$. We write $\mathcal{A} \models_s \varphi$ and say that $\varphi$ is \textbf{satisfiable} under interpretation $s$ and structure $\mathcal{A}$, and we define the relation $\models$ inductively/recursively as follows:
+\begin{itemize}
+  \item $\mathcal{A} \models_s t_1 = t_2$ iff $s(t_1) = s(t_2)$
+  \item $\mathcal{A} \models_s R(t_0,\ldots,t_n)$ iff $(s(t_0),\ldots,s(t_n)) \in R^\mathcal{A}$
+  \item $\mathcal{A} \models_s \varphi \land \psi$ iff $\mathcal{A} \models_s \varphi$ and also $\mathcal{A} \models_s \psi$
+  \item $\mathcal{A} \models_s \varphi \lor \psi$ iff $\mathcal{A} \models_s \varphi$ or $\mathcal{A} \models_s \psi$
+  \item $\mathcal{A} \models_s \varphi \to \psi $ iff $\mathcal{A} \not\models_s \varphi$ or $\mathcal{A} \models_s \psi$
+  \item $\mathcal{A} \models_s \forall x, \varphi$ iff for all $a \in A$ it is true that $\mathcal{A} \models_{s[a/x]} \varphi$
+  \item $\mathcal{A} \models_s \exists x, \varphi$ iff exists $a \in A$ such that $\mathcal{A} \models_{s[a/x]} \varphi$
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Example of Satisfiability}
+Let $\mathcal{L}$ be a FOL language and $\mathcal{S} = \langle \mathbb{N},\cdot^\mathcal{S} \rangle$ a structure such that $\cdot^\mathcal{S}$ is defined as follows:
+\begin{itemize}
+  \item $0^\mathcal{S} = 0$ and $1^\mathcal{S} = 1$
+  \item $+^\mathcal{S}(n,m) = n + m$
+  \item $\leq^\mathcal{S}(n,m) = \{ (n,m) \,|\, n \leq m \}$
+\end{itemize}
+Lets try to prove that $\mathcal{S} \models_s \forall x, \leq(x,+(x,1))$.
+\begin{proof}
+By the definition of satisfiability, we know that $\mathcal{S} \models_{s[n/x]} \leq(x,+(x,1))$. Again, by definition of satisfiability, we must show that $(s[n/x](x),s[n/x](x+1)) \in \leq^\mathcal{S}$ which, by the interpretation of $\leq$ in structure $\mathcal{S}$ is the same as stating that $(s[n/x](x),s[n/x](x+1)) \in \{ (n,m) \,|\, n \leq m \}$. Computing the substitution, we get $(n,n+1) \in \{ (n,m) \,|\, n \leq m \}$, which is true!
+\end{proof}
+
+\end{slide}
+
+\begin{slide}{Satisfiability, Validity, and Models}
+\begin{block}{Satisfiability}
+Let $\mathcal{L}$ be a FLO language and $\varphi$ a formula. We say that $\varphi$ is satisfiable if exists a structure $\mathcal{S}$ and interpretation $s$ such that $\mathcal{S} \models_s \varphi$.
+\end{block}
+
+\begin{block}{Validity}
+Let $\mathcal{L}$ be a FLO language and $\varphi$ a formula. We say that $\varphi$ is \textbf{valid} if for all structure $\mathcal{S}$ and interpretation $s$, we have $\mathcal{S} \models_s \varphi$.
+\end{block}
+
+\begin{block}{Propositions and Models}
+Let $\varphi$ be a proposition (i.e., formula without free variables), and let $\mathcal{S}$ be a structure. Then, either $\mathcal{S} \models_s \varphi$ holds for all interpretations $s$, or
+$\mathcal{S} \models_s \varphi$ holds for all interpretations $s$. If $\mathcal{S} \models \varphi$, we say that $\mathcal{S}$ \textbf{is a model} of $\varphi$.
+\end{block}
+\end{slide}
+
+\begin{slide}{Lets build some models}
+\newExercise{bla}{For each formula below, find a structure that is a model of the formula, and a structure which is not.
+\begin{enumerate}
+  \item $\forall x, \forall y, x = y$
+  \item $\forall x, x = a$
+  \item $\forall x, \forall y, (P(x) \to P(y))$
+  \item $\exists x, f(x) = c \to \exists y, f(y) \not= c$
+\end{enumerate}
+}
+\end{slide}
+
+\begin{slide}{Lets build some models}
+\end{slide}
+
+\begin{slide}{Lets build some models}
+\end{slide}
+
+\begin{slide}{Lets build some models}
+\end{slide}
+
+\begin{slide}{Lets build some models}
+\end{slide}
+
+
+
+
+
+
 %
 %\begin{slide}{}
 %  
