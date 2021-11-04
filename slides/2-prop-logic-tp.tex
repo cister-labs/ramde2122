@@ -54,7 +54,7 @@
   On the last class, you were introduced to Propositional Logic:
   \begin{itemize}
     \item its syntax and semantics
-    \item normal forms: negative, disjunctive, and conjuntive
+    \item normal forms: negative, disjunctive, and conjunctive
     \item rules for natural deduction
   \end{itemize}
 \end{block}
@@ -76,8 +76,12 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
 \begin{block}{Introduction}
 \textit{If we know that both $\varphi$ and $\psi$ is hold, then so does their conjunction.}
   \begin{center}
-    \begin{prooftree}		\AxiomC{$\varphi$}		\AxiomC{$\psi$}
-		\RightLabel{$\land\text{\textbf{\textsc{I}}}$}		\BinaryInfC{$\varphi \land \psi$}	\end{prooftree}
+    \begin{prooftree}
+		\AxiomC{$\varphi$}
+		\AxiomC{$\psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{I}}}$}
+		\BinaryInfC{$\varphi \land \psi$}
+	\end{prooftree}
 	\end{center}
 \end{block}
 
@@ -85,12 +89,18 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
 \textit{If know that $\varphi \land \psi$, then we can conclude that either of them also holds in isolation.}
   \begin{columns}
   \begin{column}{0.48\textwidth}
-    \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
-		\RightLabel{$\land\text{\textbf{\textsc{E}}}_l$}		\UnaryInfC{$\varphi$}	\end{prooftree}
+    \begin{prooftree}
+		\AxiomC{$\varphi \land \psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_l$}
+		\UnaryInfC{$\varphi$}
+	\end{prooftree}
   \end{column}
   \begin{column}{0.48\textwidth}
-    \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
-		\RightLabel{$\land\text{\textbf{\textsc{E}}}_r$}		\UnaryInfC{$\psi$}	\end{prooftree}
+    \begin{prooftree}
+		\AxiomC{$\varphi \land \psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_r$}
+		\UnaryInfC{$\psi$}
+	\end{prooftree}
   \end{column}
   \end{columns}  
 \end{block}
@@ -119,12 +129,18 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
     {\it We can construct a new disjunction $\varphi \lor \psi$ if we know that either $\varphi$ or $\psi$ hold.}
     \begin{columns}
       \begin{column}{0.48\textwidth}
-        \begin{prooftree}	 	 \AxiomC{$\varphi$}
-	 	 \RightLabel{$\lor\text{\textbf{\textsc{I}}}_l$}		  \UnaryInfC{$\varphi \lor \psi$}    	\end{prooftree}
+        \begin{prooftree}
+	 	 \AxiomC{$\varphi$}
+	 	 \RightLabel{$\lor\text{\textbf{\textsc{I}}}_l$}
+		  \UnaryInfC{$\varphi \lor \psi$}
+    	\end{prooftree}
       \end{column}
       \begin{column}{0.48\textwidth}
-        \begin{prooftree}		  \AxiomC{$\psi$}
-		  \RightLabel{$\lor\text{\textbf{\textsc{I}}}_r$}		  \UnaryInfC{$\varphi \lor \psi$}	   \end{prooftree}
+        \begin{prooftree}
+		  \AxiomC{$\psi$}
+		  \RightLabel{$\lor\text{\textbf{\textsc{I}}}_r$}
+		  \UnaryInfC{$\varphi \lor \psi$}
+	   \end{prooftree}
       \end{column}
     \end{columns}
   \end{block}
@@ -307,13 +323,19 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
   \frametitle{Natural Deduction Rules - Derived rules}
   \begin{columns}
       \begin{column}{0.48\textwidth}
-        \begin{prooftree}	 	 \AxiomC{$\varphi \to \psi$}
+        \begin{prooftree}
+	 	 \AxiomC{$\varphi \to \psi$}
 	 	 \AxiomC{$\neg\psi$}
-	 	 \RightLabel{\textbf{\textsc{MT}}}		  \BinaryInfC{$\neg\varphi$}    	\end{prooftree}
+	 	 \RightLabel{\textbf{\textsc{MT}}}
+		  \BinaryInfC{$\neg\varphi$}
+    	\end{prooftree}
       \end{column}
       \begin{column}{0.48\textwidth}
-        \begin{prooftree}		  \AxiomC{$\varphi$}
-		  \RightLabel{$\neg\neg$\textbf{\textsc{I}}}		  \UnaryInfC{$\neg\neg\varphi$}	   \end{prooftree}
+        \begin{prooftree}
+		  \AxiomC{$\varphi$}
+		  \RightLabel{$\neg\neg$\textbf{\textsc{I}}}
+		  \UnaryInfC{$\neg\neg\varphi$}
+	   \end{prooftree}
       \end{column}
     \end{columns}
     \begin{columns}
@@ -329,8 +351,11 @@ Becoming comfortable with this type of mathematics is not an easy task! Bare wit
       \end{prooftree}
       \end{column}
       \begin{column}{0.48\textwidth}
-        \begin{prooftree}		  \AxiomC{$$}
-		  \RightLabel{\textbf{\textsc{ET}}}		  \UnaryInfC{$\varphi \lor \neg\varphi$}	   \end{prooftree}
+        \begin{prooftree}
+		  \AxiomC{$$}
+		  \RightLabel{\textbf{\textsc{ET}}}
+		  \UnaryInfC{$\varphi \lor \neg\varphi$}
+	   \end{prooftree}
       \end{column}
     \end{columns}
 \end{frame}
