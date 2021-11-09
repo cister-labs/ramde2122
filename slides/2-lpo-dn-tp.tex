@@ -1,0 +1,391 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{macros/beamerconf}
+\input{macros/preamble}
+\input{macros/macros_drp}
+
+\usepackage{macros/fitch}
+
+\newcommand{\fitchr}[2]{\ensuremath{#1\text{\sc #2}}}
+
+\newcommand{\conji}[2]{\ensuremath{\land\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\conjel}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_l(#1)}}
+\newcommand{\conjer}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_r(#1)}}
+
+\newcommand{\disjil}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_l(#1)}}
+\newcommand{\disjir}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_r(#1)}}
+\newcommand{\disje}[3]{\ensuremath{\lor\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+
+\newcommand{\negi}[1]{\ensuremath{\neg\text{\textbf{\textsc{I}}}(#1)}}
+\newcommand{\nege}[1]{\ensuremath{\neg\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\falsei}[2]{\ensuremath{\bot\text{\textbf{\textsc{I}}}(#1,#2)}}
+\newcommand{\falsee}[1]{\ensuremath{\bot\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\impi}[2]{\ensuremath{{\to}\text{\textbf{\textsc{I}}}(#1{-}#2)}}
+\newcommand{\impe}[2]{\ensuremath{{\to}\text{\textbf{\textsc{E}}}(#1,#2)}}
+
+\newcommand{\eqi}{\ensuremath{{=}\text{\textbf{\textsc{I}}}}}
+\newcommand{\eqe}[3]{\ensuremath{{=}\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+
+\newcommand{\foralli}[2]{\ensuremath{{\forall}\text{\textbf{\textsc{I}}}}(#1{-}#2)}
+\newcommand{\foralle}[1]{\ensuremath{{\forall}\text{\textbf{\textsc{E}}}(#1)}}
+
+\newcommand{\exi}[1]{\ensuremath{{\exists}\text{\textbf{\textsc{I}}}}(#1)}
+\newcommand{\exe}[2]{\ensuremath{{\exists}\text{\textbf{\textsc{E}}}(#1{-}#2)}}
+
+\newcommand{\fas}{\;\,\,\,\fa}
+\newcommand{\fal}[1]{{#1}\,\,\fa}
+
+
+\usepackage{macros/bussproofs}
+\usepackage{bm}
+
+
+\setLecture{2}{RAMDE -- Requirements and Model-driven Engineering}
+
+% \title{
+% 	RAMDE -- Requirements and Model-driven Engineering 
+% 	}
+% \author{David Pereira \and Jos\'{e} Proen\c{c}a}
+% \institute{CISTER -- ISEP \\ Porto, Portugal}
+% \date{MScCCSE 2020/21}
+
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+
+\section{Natural Deduction in First Order Logic}
+
+\begin{slide}{Recalling FOL...}
+
+  \begin{block}{FOL language}  
+    A language of FOL considers the following sets of symbols:
+    \begin{description}
+    \item [logical symbols] of one of the following forms: a \textbf{set of variables} $S = \{x,y,\ldots,x_0,y_0,\ldots\}$; \textbf{logical connectives} $\land, \lor, \neg$, and $\to$; \textbf{quantifiers} $\forall$ (for all) and $\exists$ (exists); parenthesis $($ and $)$; possibly, the \textbf{equality} symbol $=$
+    \item [Non-logical symbols] of one of the following forms: a (possibly empty) set of \textbf{functional symbols} for each $n$-arity, represented as $\mathcal{F}_n$ (when referring to constants, we are actually talking about functional symbols with arity $0$). Typically, $f$, $g$, $h$, $\ldots$; a (possibly empty) set of \textbf{relation symbols} for each $n$-arity, represented as $\mathcal{R}_n$. Typically, $P$, $Q$, $R$, $\ldots$
+    \end{description}
+  \end{block}
+\end{slide}
+
+\begin{frame}[shrink=0.95]{First Order Logic - Syntax}
+  \begin{block}{FOL Terms and Atoms}  
+  Let $\mathcal{L}$ be a FOL language. A term is inductively/recursively defined as follows:
+  \begin{itemize}
+  \item a variable $x \in \mathcal{V}$ is a term;
+  \item a constant i.e., a symbol $c \in \mathcal{F}_0$ is also a term;
+  \item if $t_0,\ldots,t_n$ are terms and $f \in \mathcal{F}_n$ is a functional symbol, then $f(t_0,\ldots,t_n)$ is a term.  
+  \end{itemize}
+  A FOL term is said to be {\bf closed} if no variables occur in such term.\\
+  \vspace{5pt}
+  Let $\mathcal{L}$ be a FOL language. An {\bf atom} (from the term atomic formula) is inductively/recursively defined as follows:
+  \begin{itemize}
+  \item if $t_0,\ldots,t_n$ are terms and $R \in \mathcal{R}_n$ is a relational symbol, then $R(t_0,\ldots,t_n)$ is an atom;
+  \item if $\mathcal{L}$ include the equality symbol $=$ and if $t_1$ and $t_2$ are terms, then $t_1 = t_2$ is an atom.  
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\begin{slide}{First Order Logic - Syntax}
+ 
+ \begin{block}{FOL Formulae}  
+  Let $\mathcal{L}$ be a FOL language. The set of {\bf formulae} is inductively/recursively defined  as follows:
+  \begin{itemize}
+  \item an atom is a formula;
+  \item if $\varphi$ is a formula, then so is $\neg\varphi$;
+  \item if $\varphi$ and $\psi$ are formulas, then so are $\varphi \land \psi$, $\varphi \lor \psi$, and $\varphi \to \psi$;
+  \item if $\varphi$ is a formula and $x$ is a variable, then $\forall x, \varphi$ and $\exists x, \varphi$ are also formulas.
+  \end{itemize}
+  \end{block}
+
+\end{slide}
+
+
+
+\begin{slide}{Bound and free variables}
+  \begin{block}{Bound Variable}
+  A variable $x$ is said to be {\bf bound} to a formula $\varphi$ if $\varphi$ has a subformula $\psi$ whose schema is $\forall x, \theta$ or $\exists x, \theta$ and $x$ occurs in $\theta$. 
+  \end{block}
+  \begin{block}{Free Variable}
+  A variable $x$ is said to be {\bf free} if it is not bound.  
+  \end{block}
+  \begin{block}{Proposition}
+  A formula is said to be a proposition if it does not contain free variables.  
+  \end{block}
+\end{slide}
+
+
+
+\begin{slide}{Variable Substitution}
+
+\begin{block}{Substitution}
+Let $\mathcal{L}$ be a FOL language, $\varphi$ a formula, $t$ a term, and $x \in \mathcal{L}$ a variable. The substitution of the variable $x$ by the term $t$ in $\varphi$ is denoted by $\varphi[t/x]$ and corresponds to replacing all the free occurrences of $x$ in $\varphi$ by the term $t$.
+\end{block}
+
+\end{slide}
+
+
+\section*{Natural Deduction Rules}
+
+\begin{frame}[shrink=0.95]{Which are the new rules (on top of Propositional Logic)?}
+  \begin{block}{Elimination rule for $\forall$}
+  If we know that $\forall x, \varphi$ holds, then we can conclude that $\varphi$ holds for a specific term $t$
+  \begin{prooftree}
+      \AxiomC{$\forall x\,\varphi$}
+      \RightLabel{$\forall\text{\textbf{\textsc{E}}}$}
+      \UnaryInfC{$\varphi[t/x]$}
+    \end{prooftree}  
+  \end{block}
+  
+  \begin{block}{Introduction rule for $\forall$}
+  If we assume some term $t$ and we are able to prove that $\varphi[t/x]$ then we can conclude that $\forall x, \varphi$.
+  \begin{prooftree}
+      \AxiomC{$[t]$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$$}
+
+      \AxiomC{$$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$\vdots$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$$}
+
+        
+      \AxiomC{$$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$$}
+        \noLine
+        \UnaryInfC{$\varphi[t/x]$}
+
+      \RightLabel{$\forall\text{\textbf{\textsc{I}}}$}
+      
+      \TrinaryInfC{$\forall x\,\varphi[t/x]$}
+    \end{prooftree}
+  \end{block}
+  
+\end{frame}
+
+\begin{slide}{Examples of reasoning about "for all"}
+  
+Lets prove that $\forall x, (P(x) \to Q(x)), \forall x, P(x) \vdash \forall x, Q(x)$.\vspace{0.5cm}
+%\setlength{\fitchindent}{1em}
+\begin{fitch}
+    \fa \forall x, (P(x) \to Q(x)) \\
+    \fj \forall x, P(x) \\
+    \ftag{~}{\fa} \\
+    \fa \fal{t} P(t) \to Q(t) & \foralle{1}\\
+    \fa \fas P(t) & \foralle{2} \\
+    \fa \fas Q(t) & \impe{3}{4}\\
+    \fa \forall x, Q(x) & \foralli{3}{5}
+\end{fitch}
+\end{slide}
+
+\begin{slide}{Examples of reasoning about "for all"}
+  
+Lets prove that $P(t),\forall x (P(x) \to Q(x)) \vdash \neg Q(t)$.\vspace{0.5cm}
+%\setlength{\fitchindent}{1em}
+\begin{fitch}
+    \fa P(t) \\
+    \fj \forall x, (P(x) \to Q(x)) \\
+    \fa P(t) \to Q(t) & \foralle{2}\\
+    \fa \neg Q(t) & \impe{3}{1}
+\end{fitch}
+\end{slide}
+
+\begin{slide}{Examples of reasoning about "for all"}
+Lets prove that $\vdash \forall x (P(x) \to Q(x)) \to (\forall x, P(x) \to \forall x, Q(x))$.\vspace{0.5cm}
+%\setlength{\fitchindent}{1em}
+\begin{fitch}
+    \fa \fj \forall x (P(x) \to Q(x)) \\
+    \fa \fa \fj \forall x P(x) \\
+    \fa \fa \fa t\,\,\fa P(t) & \foralle{2}\\
+    \fa \fa \fa \;\,\,\,\fa P(t) \to Q(t) & \foralle{1} \\
+    \fa \fa \fa \;\,\,\,\fa Q(t) & \impe{3}{4} \\
+    \fa \fa \fa \forall x Q(x) & \foralli{3}{5} \\
+    \fa \fa \forall x P(x) \to \forall x Q(x) & \impi{2}{6} \\
+    \fa \forall x (P(x) \to Q(x)) \to (\forall x, P(x) \to \forall x, Q(x)) & \impi{1}{7}
+\end{fitch}
+\end{slide}
+
+\begin{frame}[shrink=0.95]{Which are the new rules (on top of Propositional Logic)?}
+  \begin{block}{Elimination rule for $\exists$}
+  If we know that $\exists x, \varphi$ holds, and if assuming term $t$ and $\varphi[t/x]$ we can deduce $\psi$, then we can prove $\psi$ overall.
+  \begin{prooftree}
+      \AxiomC{$\exists x\,\varphi$}
+      \AxiomC{$[t\:\:\:\varphi[t/x]]$}
+      \noLine
+      \UnaryInfC{$\vdots$}
+      \noLine
+      \UnaryInfC{$\psi$}
+      \RightLabel{$\exists\text{\textbf{\textsc{E}}}$}
+      \BinaryInfC{$\psi$}
+    \end{prooftree}  
+  \end{block}
+  
+  \begin{block}{Introduction rule for $\exists$}
+  If we assume some term $t$ and we are able to prove that $\varphi[t/x]$ then we can conclude that $\forall x, \varphi$.
+  \begin{prooftree}
+      \AxiomC{$\varphi[t/x]$}
+      \RightLabel{$\exists\text{\textbf{\textsc{I}}}$}
+      \UnaryInfC{$\exists x, \varphi$}  
+  \end{prooftree}
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{slide}{Examples of reasoning about "for all"}
+Lets prove that $\forall x, \varphi \vdash \exists x, \varphi$.\\\vspace{0.5cm}
+\begin{fitch}
+    \fj \forall x \varphi \\
+    \fa \varphi[t/x] & \foralle{1}\\
+    \fa \exists x, \varphi & \exi{2}
+\end{fitch}
+\end{slide}
+
+\begin{slide}{Examples of reasoning about "for all"}
+Lets prove that $\forall x (P(x) \to Q(x)), \exists x P(x) \vdash \exists x Q(x)$.\\\vspace{0.5cm}
+\begin{fitch}
+    \fa \forall x P(x) \to Q(x) \\
+    \fj \exists x Q(x) \\
+    \fa t\,\,\fj P(t) \\
+    \fa \;\,\,\,\fa P(t) \to Q(t) & \foralle{1} \\
+    \fa \;\,\,\,\fa Q(t) & \impe{3}{4} \\
+    \fa \;\,\,\,\fa \exists x Q(x) & \exi{5}\\
+    \fa \exists x Q(x) & \exe{3}{6}
+\end{fitch}
+\end{slide}
+
+\begin{frame}[shrink=10]
+\frametitle{Examples of reasoning about "for all"}
+Lets prove that $\exists x P(x), \forall x\forall y (P(x) \to Q(y)) \vdash \forall y Q(y)$.\\\vspace{0.5cm}
+\begin{fitch}
+    \fa \exists x Q(x) \\
+    \fj \forall x \forall y (P(x) \to Q(y)) \\
+    \ftag{~}{\fa} \\
+    \fa t\,\,\fa u\,\,\fj P(t) \\
+    \fa \;\,\,\,\fa\,\,\,\,\,\fa \forall y (P(t) \to Q(y)) & \foralle{2}   \\
+    \fa \;\,\,\,\fa\,\,\,\,\,\fa P(t) \to Q(u) & \foralle{4}   \\
+    \fa \;\,\,\,\fa\,\,\,\,\,\fa Q(u) & \impe{3}{5} \\
+    \fa \;\,\,\,\fa Q(u) & \exe{1}{3-6} \\
+    \fa \forall y Q(y) & \foralli{3}{7}  \\
+\end{fitch}
+\end{frame}
+
+
+\begin{frame}[shrink=0.95]{Which are the new rules (on top of Propositional Logic)?}
+  \begin{block}{Elimination rule for $=$}
+  If we know that two terms $t_1$ and $t_2$ are equal and that $\varphi[t_1/x]$ holds, then $\varphi[t_1/x]$ must also hold.
+  \begin{prooftree}
+      \AxiomC{$t_1 = t_2$}
+      \AxiomC{$\varphi[t_1/x]$}
+      \RightLabel{${=}\text{\textbf{\textsc{E}}}$}
+      \BinaryInfC{$\varphi[t_2/x]$}
+    \end{prooftree}  
+  \end{block}
+  
+  \begin{block}{Introduction rule for $=$}
+  If we assume some term $t$ and we are able to prove that $\varphi[t/x]$ then we can conclude that $\forall x, \varphi$.
+  \begin{prooftree}
+      \AxiomC{$$}
+      \RightLabel{${=}\text{\textbf{\textsc{I}}}$}
+      \UnaryInfC{$t = t$}  
+  \end{prooftree}
+  \end{block}
+  
+\end{frame}
+
+\begin{slide}{Examples of reasoning about equality}
+  \begin{columns}
+      \begin{column}{0.48\textwidth}
+      Lets prove that if $t_1 = t_2$ then $t_2 = t_1$.\vspace{0.5cm}
+        \begin{fitch}
+          \fj t_1 = t_2 \\
+          \fa t_1 = t_1 & \eqi\\
+          \fa t_2 = t_1 & \eqe{\varphi\,\text{is}\,x = t_1}{1}{2}
+        \end{fitch}
+      \end{column}
+      \begin{column}{0.48\textwidth}
+      Lets prove that if $t_1 = t_2$ and $t_2 = t_3$, then $t_1 = t_3$.\vspace{0.5cm}
+        \begin{fitch}
+          \fa t_1 = t_2 \\
+          \fj t_2 = t_3 & \eqi\\
+          \fa t_1 = t_3 & \eqe{\varphi\,\text{is}\,t_1 = x}{2}{2}
+        \end{fitch}
+      \end{column}
+    \end{columns}
+\end{slide}
+
+
+\section*{Exercises on FOL Natural Deduction}
+
+
+\begin{frame}
+\frametitle{Proving that $\exists x \neg\varphi \vdash \neg\forall x\varphi$}
+
+\begin{fitch}
+    \fj \exists x \neg\varphi \\
+    \fa \fj \forall x\varphi \\
+    \fa \fa u\,\,\fj\neg\varphi[u/x] \\
+    \fa \fa \,\,\,\,\,\fa \varphi[u/x] & \foralle{2} \\
+    \fa \fa \,\,\,\,\,\fa \bot & \falsei{3}{4} \\
+    \fa \fa \bot & \exe{1}{3-5}\\
+    \fa \neg\forall x\varphi & \negi{2{-}6}
+    
+\end{fitch}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proving that $\forall x \varphi \land \psi \vdash \forall x (\varphi \land \psi)$ and $x$ is not free in $\psi$}
+
+\begin{fitch}
+    \fj \forall x \varphi \land \psi \\
+    \fa \forall x\varphi & \conjel{1} \\
+    \fa \psi & \conjer{1} \\
+    \fa u\,\,\fj\varphi[u/x] \\
+    \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & \conji{4}{3} \\
+    \fa \:\,\,\,\,\fa (\varphi \land \psi)[u/x] & x \text{free in } \psi \\
+    \fa \forall x (\varphi \land \psi) & \foralli{4}{6}
+    
+\end{fitch}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Proving that $\forall x (\varphi \land \psi) \vdash \forall x \varphi \land \psi$ and $x$ is not free in $\psi$}
+
+\begin{fitch}
+    \fj \forall x (\varphi \land \psi) \\
+    \fa u\,\,\fa (\varphi \land \psi)[u/x] & \foralle{1}\\
+    \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & x \text{not free in} \psi \\
+    \fa \:\,\,\,\,\fa \psi & \conjer{3}\\
+    \fa \:\,\,\,\,\fa \varphi[u/x] & \conjel{3}\\
+    \fa \forall x\varphi & \foralli{2}{5} \\
+    \fa \forall x\varphi \land \psi & \conji{6}{4}
+
+    
+\end{fitch}
+\end{frame}
+
+
+
+
+\end{document}

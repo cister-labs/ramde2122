@@ -146,7 +146,7 @@ Using truth tables and considering $\varphi$ = "All dogs like running", $\psi$ =
   Let $\mathcal{L}$ be a FOL language. A term is inductively/recursively defined as follows:
   \begin{itemize}
   \item a variable $x \in \mathcal{V}$ is a term;
-  \item a constant (i.e., a symbol $c \in \mathcal{F}_0$ is also a term;
+  \item a constant i.e., a symbol $c \in \mathcal{F}_0$ is also a term;
   \item if $t_0,\ldots,t_n$ are terms and $f \in \mathcal{F}_n$ is a functional symbol, then $f(t_0,\ldots,t_n)$ is a term.  
   \end{itemize}
   \end{block}
@@ -159,7 +159,7 @@ Using truth tables and considering $\varphi$ = "All dogs like running", $\psi$ =
 
 \begin{slide}{Some quick examples}
 
-Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\mathcal{F}_2 = \{h\}$, and that $\mathcal{F}_3 = \{g\}$
+Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\mathcal{F}_2 = \{h\}$, and that $\mathcal{F}_3 = \{g\}$. Which of the following are terms and which are not?
 
 \begin{itemize}
 \item \color<2->{red}{$f(a,g(x,g(a),a))$}
@@ -167,6 +167,21 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
 \item \color<2->{red}{$x(d,g(y))$}
 \item \structure<2->{$h(h(x,x),h(y,y))$}
 \item \color<2->{red}{$f(a(x))$}
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}{Some quick examples}
+
+Assuming that $\mathcal{F}_0 = \{a,b\}$, that $\mathcal{F}_1 = \{g\}$, that $\mathcal{F}_2 = \{f,h\}$, $\mathcal{R}_1 = \{R,S\}$, and $\mathcal{R}_2 = \{P,Q\}$. Which of the following are closed terms?
+
+\begin{itemize}
+\item \color<2->{red}{$h(a,f(a,g(a),g(a)))$}
+\item \color<2->{red}{$f(h(x,g(g(a))),x)$}
+\item \color<2->{red}{$f(a,P(a,g(x)))$}
+\item \structure<2->{$h(g(f(a,a)),f(b,a))$}
+\item \color<2->{red}{$f(h(x,h(y,y)),g(g(b)))$}
+\item \color<2->{red}{$f(a,g(h(g(x),x(a))))$}
 \end{itemize}
 
 \end{slide}
@@ -209,6 +224,11 @@ Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\ma
   \item if $\varphi$ is a formula and $x$ is a variable, then $\forall x, \varphi$ and $\exists x, \varphi$ are also formulas.
   \end{itemize}
   \end{block}
+  \begin{block}{The role of parenthesis}
+  Parenthesis can be disregarded if we assume priority conventions to the remaining constructs, that is, that quantifiers have higher precedence than other logical operator. For instance, the formula
+  $\forall x, (P(x) \lor \neg P(x))$ does not have the same meaning that $\forall x, P(x) \lor \neg P(x)$.
+  \end{block}
+
 \end{slide}
 
 \begin{slide}{Some quick examples}
@@ -263,13 +283,13 @@ Type of text &  FOL formula \\ \hline
 Find some adequate predicates to express the following statements:
 \begin{itemize}
 \item All even numbers are prime numbers\\
-\onslide<2->{$\forall x, Even(x) \to Prime(x)$}
+\onslide<2->{$\forall x, (\textbf{Even}(x) \to \textbf{Prime}(x))$}
 \item Not all prime numbers are even numbers\\
-\onslide<3->{$\neg(\forall x, Prime(x) \to Even(x)) $}
+\onslide<3->{$\neg(\forall x, (\textbf{Prime}(x) \to \textbf{Even}(x))) $}
 \item Some prime numbers are not even\\
-\onslide<4->{$\exists x, Prime(x) \land \neg Even(x)$}
+\onslide<4->{$\exists x, (\textbf{Prime}(x) \land \neg \textbf{Even}(x))$}
 \item All prime number is not even or equal to 2\\  
-\onslide<5->{$\forall x, Prime(x) \to (\neg Even(x) \lor x = 2)$}
+\onslide<5->{$\forall x, (\textbf{Prime}(x) \to (\neg \textbf{Even}(x) \lor x = 2))$}
 \end{itemize}
 \end{slide}
 
@@ -294,6 +314,26 @@ For each of the formulae presented bellow, identify the bound and free variables
 \item $\exists x, (P(x) \to \neg Q(x))$
 \end{itemize}
 \end{slide}
+
+\begin{slide}{Small exercises}
+Assuming that $\mathcal{F}_0 = \{a,d\}$, that $\mathcal{F}_1 = \{f\}$, that $\mathcal{F}_2 = \{h\}$, and that $\mathcal{R}_2 = \{R,S\}$, which of the following expressions have free variables, which are propositions, and which are the atomic sub-formulas?
+\begin{itemize}
+\item $\forall x, Q(x,x) \land P(x,x)$ 
+\item $R(a) \land \exists y, (R(f(y,y)) \to P(a,y))$
+\item $\forall x,\forall y, x = y \to \forall x, Q(y,x)$
+\end{itemize}
+
+\end{slide}
+
+
+\begin{slide}{Variable Substitution}
+
+\begin{block}{Substitution}
+Let $\mathcal{L}$ be a FOL language, $\varphi$ a formula, $t$ a term, and $x \in \mathcal{L}$ a variable. The substitution of the variable $x$ by the term $t$ in $\varphi$ is denoted by $\varphi[t/x]$ and corresponds to replacing all the free occurrences of $x$ in $\varphi$ by the term $t$.
+\end{block}
+
+\end{slide}
+
 
 \section*{Semantics}
 
@@ -408,15 +448,35 @@ $\mathcal{S} \models_s \varphi$ holds for all interpretations $s$. If $\mathcal{
 \end{slide}
 
 \begin{slide}{Lets build some models}
+For the formula $$\forall x, \forall y, x = y$$ we can consider a structure $$\mathcal{S} = \langle \{0\},\cdot^\mathcal{S} \rangle$$
+Note that, in this case, the only element that can substitute the variables is the only element of the domain, thus $x = y$ always holds.
+
+To find a structure that is not a model, it is enough to consider the domain of the structure to have more than a value...
 \end{slide}
 
 \begin{slide}{Lets build some models}
+For the formula $$\forall x, x = a$$ we can consider a structure $$\mathcal{S} = \langle \{a\},\cdot^\mathcal{S} \rangle$$
+Note that, in this case, the only element that can substitute the variables is the only element of the domain, thus $x = a$ always holds.
+
+To find a structure that is not a model, it is enough to consider the domain of the structure to have more than a value...
 \end{slide}
 
 \begin{slide}{Lets build some models}
+For the formula $$\forall x, \forall y, (P(x) \to P(y))$$ we can consider a structure $$\mathcal{S} = \langle \{0,2,4,6,\ldots\},\cdot^\mathcal{S} \rangle$$
+where we give the following interpretation to the predicate $P$: $$P^\mathcal{S} = \{x\,|\,x\,\text{is even} \}$$ With this interpretation, whatever $x$ and $y$ we choose, they are even and so the formula holds.
+
+To find a structure that is not a model, it is enough to consider as domain the complete set of natural numbers (it includes both even and odd numbers), while retaining the same interpretation of $P^\mathcal{S}$.
 \end{slide}
 
 \begin{slide}{Lets build some models}
+For the formula $$\exists x, f(x) = c \to \exists y, f(y) \not= c$$ we can consider a structure $$\mathcal{S} = \langle \mathbb{N},\cdot^\mathcal{S} \rangle$$
+where we give the following interpretation:
+\begin{itemize}
+  \item $c^\mathcal{S} = 1$
+  \item $f^\mathcal{S}(x) = 1$ if $x = 1$, otherwise $f^\mathcal{S}(x) = 2$
+\end{itemize} 
+
+To find a structure that is not a model, it is enough to consider the interpretation of $f$ such that $f^\mathcal{S}(x) = 1$ for all variable $x$.
 \end{slide}
 
 
