@@ -4,38 +4,38 @@
 \input{macros/preamble}
 \input{macros/macros_drp}
 
-\usepackage{macros/fitch}
+\usepackage{macros/fitchalt}
 
-\newcommand{\fitchr}[2]{\ensuremath{#1\text{\sc #2}}}
-
-\newcommand{\conji}[2]{\ensuremath{\land\text{\textbf{\textsc{I}}}(#1,#2)}}
-\newcommand{\conjel}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_l(#1)}}
-\newcommand{\conjer}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_r(#1)}}
-
-\newcommand{\disjil}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_l(#1)}}
-\newcommand{\disjir}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_r(#1)}}
-\newcommand{\disje}[3]{\ensuremath{\lor\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
-
-\newcommand{\negi}[1]{\ensuremath{\neg\text{\textbf{\textsc{I}}}(#1)}}
-\newcommand{\nege}[1]{\ensuremath{\neg\text{\textbf{\textsc{E}}}(#1)}}
-
-\newcommand{\falsei}[2]{\ensuremath{\bot\text{\textbf{\textsc{I}}}(#1,#2)}}
-\newcommand{\falsee}[1]{\ensuremath{\bot\text{\textbf{\textsc{E}}}(#1)}}
-
-\newcommand{\impi}[2]{\ensuremath{{\to}\text{\textbf{\textsc{I}}}(#1{-}#2)}}
-\newcommand{\impe}[2]{\ensuremath{{\to}\text{\textbf{\textsc{E}}}(#1,#2)}}
-
-\newcommand{\eqi}{\ensuremath{{=}\text{\textbf{\textsc{I}}}}}
-\newcommand{\eqe}[3]{\ensuremath{{=}\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
-
-\newcommand{\foralli}[2]{\ensuremath{{\forall}\text{\textbf{\textsc{I}}}}(#1{-}#2)}
-\newcommand{\foralle}[1]{\ensuremath{{\forall}\text{\textbf{\textsc{E}}}(#1)}}
-
-\newcommand{\exi}[1]{\ensuremath{{\exists}\text{\textbf{\textsc{I}}}}(#1)}
-\newcommand{\exe}[2]{\ensuremath{{\exists}\text{\textbf{\textsc{E}}}(#1{-}#2)}}
-
-\newcommand{\fas}{\;\,\,\,\fa}
-\newcommand{\fal}[1]{{#1}\,\,\fa}
+%\newcommand{\fitchr}[2]{\ensuremath{#1\text{\sc #2}}}
+%
+%\newcommand{\conji}[2]{\ensuremath{\land\text{\textbf{\textsc{I}}}(#1,#2)}}
+%\newcommand{\conjel}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_l(#1)}}
+%\newcommand{\conjer}[1]{\ensuremath{\land\text{\textbf{\textsc{E}}}_r(#1)}}
+%
+%\newcommand{\disjil}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_l(#1)}}
+%\newcommand{\disjir}[1]{\ensuremath{\lor\text{\textbf{\textsc{I}}}_r(#1)}}
+%\newcommand{\disje}[3]{\ensuremath{\lor\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+%
+%\newcommand{\negi}[1]{\ensuremath{\neg\text{\textbf{\textsc{I}}}(#1)}}
+%\newcommand{\nege}[1]{\ensuremath{\neg\text{\textbf{\textsc{E}}}(#1)}}
+%
+%\newcommand{\falsei}[2]{\ensuremath{\bot\text{\textbf{\textsc{I}}}(#1,#2)}}
+%\newcommand{\falsee}[1]{\ensuremath{\bot\text{\textbf{\textsc{E}}}(#1)}}
+%
+%\newcommand{\impi}[2]{\ensuremath{{\to}\text{\textbf{\textsc{I}}}(#1{-}#2)}}
+%\newcommand{\impe}[2]{\ensuremath{{\to}\text{\textbf{\textsc{E}}}(#1,#2)}}
+%
+%\newcommand{\eqi}{\ensuremath{{=}\text{\textbf{\textsc{I}}}}}
+%\newcommand{\eqe}[3]{\ensuremath{{=}\text{\textbf{\textsc{E}}}(#1,#2,#3)}}
+%
+%\newcommand{\foralli}[2]{\ensuremath{{\forall}\text{\textbf{\textsc{I}}}}(#1{-}#2)}
+%\newcommand{\foralle}[1]{\ensuremath{{\forall}\text{\textbf{\textsc{E}}}(#1)}}
+%
+%\newcommand{\exi}[1]{\ensuremath{{\exists}\text{\textbf{\textsc{I}}}}(#1)}
+%\newcommand{\exe}[2]{\ensuremath{{\exists}\text{\textbf{\textsc{E}}}(#1{-}#2)}}
+%
+%\newcommand{\fas}{\;\,\,\,\fa}
+%\newcommand{\fal}[1]{{#1}\,\,\fa}
 
 
 \usepackage{macros/bussproofs}
@@ -57,78 +57,7 @@
 \frame[plain]{\titlepage}
 
 
-\section{Natural Deduction in First Order Logic}
-
-\begin{slide}{Recalling FOL...}
-
-  \begin{block}{FOL language}  
-    A language of FOL considers the following sets of symbols:
-    \begin{description}
-    \item [logical symbols] of one of the following forms: a \textbf{set of variables} $S = \{x,y,\ldots,x_0,y_0,\ldots\}$; \textbf{logical connectives} $\land, \lor, \neg$, and $\to$; \textbf{quantifiers} $\forall$ (for all) and $\exists$ (exists); parenthesis $($ and $)$; possibly, the \textbf{equality} symbol $=$
-    \item [Non-logical symbols] of one of the following forms: a (possibly empty) set of \textbf{functional symbols} for each $n$-arity, represented as $\mathcal{F}_n$ (when referring to constants, we are actually talking about functional symbols with arity $0$). Typically, $f$, $g$, $h$, $\ldots$; a (possibly empty) set of \textbf{relation symbols} for each $n$-arity, represented as $\mathcal{R}_n$. Typically, $P$, $Q$, $R$, $\ldots$
-    \end{description}
-  \end{block}
-\end{slide}
-
-\begin{frame}[shrink=0.95]{First Order Logic - Syntax}
-  \begin{block}{FOL Terms and Atoms}  
-  Let $\mathcal{L}$ be a FOL language. A term is inductively/recursively defined as follows:
-  \begin{itemize}
-  \item a variable $x \in \mathcal{V}$ is a term;
-  \item a constant i.e., a symbol $c \in \mathcal{F}_0$ is also a term;
-  \item if $t_0,\ldots,t_n$ are terms and $f \in \mathcal{F}_n$ is a functional symbol, then $f(t_0,\ldots,t_n)$ is a term.  
-  \end{itemize}
-  A FOL term is said to be {\bf closed} if no variables occur in such term.\\
-  \vspace{5pt}
-  Let $\mathcal{L}$ be a FOL language. An {\bf atom} (from the term atomic formula) is inductively/recursively defined as follows:
-  \begin{itemize}
-  \item if $t_0,\ldots,t_n$ are terms and $R \in \mathcal{R}_n$ is a relational symbol, then $R(t_0,\ldots,t_n)$ is an atom;
-  \item if $\mathcal{L}$ include the equality symbol $=$ and if $t_1$ and $t_2$ are terms, then $t_1 = t_2$ is an atom.  
-  \end{itemize}
-  \end{block}
-\end{frame}
-
-
-\begin{slide}{First Order Logic - Syntax}
- 
- \begin{block}{FOL Formulae}  
-  Let $\mathcal{L}$ be a FOL language. The set of {\bf formulae} is inductively/recursively defined  as follows:
-  \begin{itemize}
-  \item an atom is a formula;
-  \item if $\varphi$ is a formula, then so is $\neg\varphi$;
-  \item if $\varphi$ and $\psi$ are formulas, then so are $\varphi \land \psi$, $\varphi \lor \psi$, and $\varphi \to \psi$;
-  \item if $\varphi$ is a formula and $x$ is a variable, then $\forall x, \varphi$ and $\exists x, \varphi$ are also formulas.
-  \end{itemize}
-  \end{block}
-
-\end{slide}
-
-
-
-\begin{slide}{Bound and free variables}
-  \begin{block}{Bound Variable}
-  A variable $x$ is said to be {\bf bound} to a formula $\varphi$ if $\varphi$ has a subformula $\psi$ whose schema is $\forall x, \theta$ or $\exists x, \theta$ and $x$ occurs in $\theta$. 
-  \end{block}
-  \begin{block}{Free Variable}
-  A variable $x$ is said to be {\bf free} if it is not bound.  
-  \end{block}
-  \begin{block}{Proposition}
-  A formula is said to be a proposition if it does not contain free variables.  
-  \end{block}
-\end{slide}
-
-
-
-\begin{slide}{Variable Substitution}
-
-\begin{block}{Substitution}
-Let $\mathcal{L}$ be a FOL language, $\varphi$ a formula, $t$ a term, and $x \in \mathcal{L}$ a variable. The substitution of the variable $x$ by the term $t$ in $\varphi$ is denoted by $\varphi[t/x]$ and corresponds to replacing all the free occurrences of $x$ in $\varphi$ by the term $t$.
-\end{block}
-
-\end{slide}
-
-
-\section*{Natural Deduction Rules}
+\section{Recalling Natural Deduction Rules in First Order Logic}
 
 \begin{frame}[shrink=0.95]{Which are the new rules (on top of Propositional Logic)?}
   \begin{block}{Elimination rule for $\forall$}
@@ -182,47 +111,6 @@ Let $\mathcal{L}$ be a FOL language, $\varphi$ a formula, $t$ a term, and $x \in
   
 \end{frame}
 
-\begin{slide}{Examples of reasoning about "for all"}
-  
-Lets prove that $\forall x, (P(x) \to Q(x)), \forall x, P(x) \vdash \forall x, Q(x)$.\vspace{0.5cm}
-%\setlength{\fitchindent}{1em}
-\begin{fitch}
-    \fa \forall x, (P(x) \to Q(x)) \\
-    \fj \forall x, P(x) \\
-    \ftag{~}{\fa} \\
-    \fa \fal{t} P(t) \to Q(t) & \foralle{1}\\
-    \fa \fas P(t) & \foralle{2} \\
-    \fa \fas Q(t) & \impe{3}{4}\\
-    \fa \forall x, Q(x) & \foralli{3}{5}
-\end{fitch}
-\end{slide}
-
-\begin{slide}{Examples of reasoning about "for all"}
-  
-Lets prove that $P(t),\forall x (P(x) \to Q(x)) \vdash \neg Q(t)$.\vspace{0.5cm}
-%\setlength{\fitchindent}{1em}
-\begin{fitch}
-    \fa P(t) \\
-    \fj \forall x, (P(x) \to Q(x)) \\
-    \fa P(t) \to Q(t) & \foralle{2}\\
-    \fa \neg Q(t) & \impe{3}{1}
-\end{fitch}
-\end{slide}
-
-\begin{slide}{Examples of reasoning about "for all"}
-Lets prove that $\vdash \forall x (P(x) \to Q(x)) \to (\forall x, P(x) \to \forall x, Q(x))$.\vspace{0.5cm}
-%\setlength{\fitchindent}{1em}
-\begin{fitch}
-    \fa \fj \forall x (P(x) \to Q(x)) \\
-    \fa \fa \fj \forall x P(x) \\
-    \fa \fa \fa t\,\,\fa P(t) & \foralle{2}\\
-    \fa \fa \fa \;\,\,\,\fa P(t) \to Q(t) & \foralle{1} \\
-    \fa \fa \fa \;\,\,\,\fa Q(t) & \impe{3}{4} \\
-    \fa \fa \fa \forall x Q(x) & \foralli{3}{5} \\
-    \fa \fa \forall x P(x) \to \forall x Q(x) & \impi{2}{6} \\
-    \fa \forall x (P(x) \to Q(x)) \to (\forall x, P(x) \to \forall x, Q(x)) & \impi{1}{7}
-\end{fitch}
-\end{slide}
 
 \begin{frame}[shrink=0.95]{Which are the new rules (on top of Propositional Logic)?}
   \begin{block}{Elimination rule for $\exists$}
@@ -252,43 +140,6 @@ Lets prove that $\vdash \forall x (P(x) \to Q(x)) \to (\forall x, P(x) \to \fora
 
 
 
-\begin{slide}{Examples of reasoning about "for all"}
-Lets prove that $\forall x, \varphi \vdash \exists x, \varphi$.\\\vspace{0.5cm}
-\begin{fitch}
-    \fj \forall x \varphi \\
-    \fa \varphi[t/x] & \foralle{1}\\
-    \fa \exists x, \varphi & \exi{2}
-\end{fitch}
-\end{slide}
-
-\begin{slide}{Examples of reasoning about "for all"}
-Lets prove that $\forall x (P(x) \to Q(x)), \exists x P(x) \vdash \exists x Q(x)$.\\\vspace{0.5cm}
-\begin{fitch}
-    \fa \forall x P(x) \to Q(x) \\
-    \fj \exists x Q(x) \\
-    \fa t\,\,\fj P(t) \\
-    \fa \;\,\,\,\fa P(t) \to Q(t) & \foralle{1} \\
-    \fa \;\,\,\,\fa Q(t) & \impe{3}{4} \\
-    \fa \;\,\,\,\fa \exists x Q(x) & \exi{5}\\
-    \fa \exists x Q(x) & \exe{3}{6}
-\end{fitch}
-\end{slide}
-
-\begin{frame}[shrink=10]
-\frametitle{Examples of reasoning about "for all"}
-Lets prove that $\exists x P(x), \forall x\forall y (P(x) \to Q(y)) \vdash \forall y Q(y)$.\\\vspace{0.5cm}
-\begin{fitch}
-    \fa \exists x Q(x) \\
-    \fj \forall x \forall y (P(x) \to Q(y)) \\
-    \ftag{~}{\fa} \\
-    \fa t\,\,\fa u\,\,\fj P(t) \\
-    \fa \;\,\,\,\fa\,\,\,\,\,\fa \forall y (P(t) \to Q(y)) & \foralle{2}   \\
-    \fa \;\,\,\,\fa\,\,\,\,\,\fa P(t) \to Q(u) & \foralle{4}   \\
-    \fa \;\,\,\,\fa\,\,\,\,\,\fa Q(u) & \impe{3}{5} \\
-    \fa \;\,\,\,\fa Q(u) & \exe{1}{3-6} \\
-    \fa \forall y Q(y) & \foralli{3}{7}  \\
-\end{fitch}
-\end{frame}
 
 
 \begin{frame}[shrink=0.95]{Which are the new rules (on top of Propositional Logic)?}
@@ -313,79 +164,377 @@ Lets prove that $\exists x P(x), \forall x\forall y (P(x) \to Q(y)) \vdash \fora
   
 \end{frame}
 
-\begin{slide}{Examples of reasoning about equality}
-  \begin{columns}
-      \begin{column}{0.48\textwidth}
-      Lets prove that if $t_1 = t_2$ then $t_2 = t_1$.\vspace{0.5cm}
-        \begin{fitch}
-          \fj t_1 = t_2 \\
-          \fa t_1 = t_1 & \eqi\\
-          \fa t_2 = t_1 & \eqe{\varphi\,\text{is}\,x = t_1}{1}{2}
-        \end{fitch}
-      \end{column}
-      \begin{column}{0.48\textwidth}
-      Lets prove that if $t_1 = t_2$ and $t_2 = t_3$, then $t_1 = t_3$.\vspace{0.5cm}
-        \begin{fitch}
-          \fa t_1 = t_2 \\
-          \fj t_2 = t_3 & \eqi\\
-          \fa t_1 = t_3 & \eqe{\varphi\,\text{is}\,t_1 = x}{2}{2}
-        \end{fitch}
-      \end{column}
-    \end{columns}
+\section*{Practical Exercises}
+
+\begin{slide}{Ex1. Build a proof of $\forall x (R(x) \land Q(x)) \vdash \forall x R(x) \land \forall x Q(x)$}
+
+$$
+\begin{nd}
+  \hypo{1}{\forall x (R(x) \land Q(x))} \pause
+  \open[v]
+    \have{2}{R(v) \land Q(v)} \Ae{1}\pause
+    \have{3}{R(v)} \ae{2}\pause
+  \close
+  \have{4}{\forall x R(x)} \Ai{2-3}\pause
+  \open[v]
+    \have{5}{R(v) \land Q(v)} \Ae{1}\pause
+    \have{6}{Q(v)} \ae{5}\pause
+  \close
+  \have{6}{\forall x Q(x)} \Ai{5-6}\pause
+  \have{7}{\forall x R(x) \land \forall x Q(x)} \ai{4,7}\pause
+\end{nd}
+$$
+
 \end{slide}
 
+\begin{slide}{Ex2. Build a proof of $\forall x (R(x) \to Q(x)) \vdash \forall x R(x) \to \forall x Q(x)$}
 
-\section*{Exercises on FOL Natural Deduction}
+$$
+\begin{nd}
+  \hypo{1}{\forall x (R(x) \to Q(x))} \pause
+    \open
+      \hypo{2}{\forall x R(x)}\pause
+        \open[v] 
+          \have{3}{R(v) \to Q(v)} \Ae{1}\pause
+          \have{4}{R(v)} \Ae{2}\pause
+          \have{5}{Q(v)} \ie{3,4}\pause
+        \close
+        \have{6}{\forall x Q(x)} \Ai{3-5}\pause
+    \close
+    \have{7}{\forall x P(x) \to \forall x Q(x)} \ii{2-6}\pause
+\end{nd}
+$$
 
+\end{slide}
 
-\begin{frame}
-\frametitle{Proving that $\exists x \neg\varphi \vdash \neg\forall x\varphi$}
+\begin{slide}{Ex3. Build a proof of $\exists x (R(x) \to Q(x)) \vdash \exists x R(x) \to \exists x Q(x)$}
 
-\begin{fitch}
-    \fj \exists x \neg\varphi \\
-    \fa \fj \forall x\varphi \\
-    \fa \fa u\,\,\fj\neg\varphi[u/x] \\
-    \fa \fa \,\,\,\,\,\fa \varphi[u/x] & \foralle{2} \\
-    \fa \fa \,\,\,\,\,\fa \bot & \falsei{3}{4} \\
-    \fa \fa \bot & \exe{1}{3-5}\\
-    \fa \neg\forall x\varphi & \negi{2{-}6}
-    
-\end{fitch}
+$$
+\begin{nd}
+  \hypo{1}{\exists x (R(x) \to Q(x))} \pause
+    \open
+      \hypo{2}{\exists x R(x)}\pause
+        \open[v] 
+          \hypo{3}{R(v) \to Q(v)} \pause
+          \open
+            \hypo{4}{R(v)} \pause
+            \have{5}{Q(v)} \ie{3,4}\pause
+            \have{6}{\exists x Q(x)} \Ei{5}\pause
+          \close
+        \have{7}{\exists x Q(x)} \Ee{2,4-6}\pause
+        \close
+        \have{8}{\exists x Q(x)} \Ee{1,3-7}\pause
+    \close
+    \have{9}{\exists x P(x) \to \exists x Q(x)} \ii{2-8}\pause
+\end{nd}
+$$
+
+\end{slide}
+
+\begin{slide}{Ex4. Build a proof of $\exists x\neg Q(x) \vdash \neg\forall x Q(x)$}
+
+$$
+\begin{nd}
+  \hypo{1}{\exists x\neg Q(x)}\pause
+  \open
+    \hypo{2}{\forall x Q(x)}\pause
+    \open[v]
+        \hypo{3}{\neg Q(v)}\pause
+        \have{4}{Q(v)} \Ae{2} \pause
+        \have{5}{\bot}  \by{$\bot$I}{3,4}\pause
+    \close
+    \have{6}{\bot}  \Ee{1,3-5}\pause
+  \close
+  \have{7}{\neg\forall x Q(x)} \ni{2-6}\pause
+\end{nd}
+$$
+\end{slide}
+
+\begin{frame}[shrink]{Ex5. Build a proof of $\neg \exists x\neg Q(x) \vdash \forall x Q(x)$}
+
+$$
+\begin{nd}
+  \hypo{1}{\neg \exists x\neg Q(x)}\pause
+  \open
+    \hypo{2}{\neg\forall x Q(x)}\pause
+    \open[v]
+      \open
+        \hypo{3}{\neg Q(v)}\pause
+        \have{4}{\exists x \neg Q(x)} \Ei{3} \pause
+        \have{5}{\bot}  \by{$\bot$I}{1,4}\pause
+      \close
+      \have{6}{\neg\neg Q(v)} \ni{3-5}\pause
+      \have{7}{Q(v)} \ne{6}\pause
+    \close
+    \have{8}{\forall x Q(x)}  \Ai{3-7}\pause
+    \have{9}{\bot}  \by{$\bot$I}{2,8}\pause
+  \close
+  \have{10}{\neg\neg\forall x Q(x)} \ni{2-9}\pause
+  \have{11}{\forall x Q(x)} \ne{10}\pause
+\end{nd}
+$$
 \end{frame}
 
-\begin{frame}
-\frametitle{Proving that $\forall x \varphi \land \psi \vdash \forall x (\varphi \land \psi)$ and $x$ is not free in $\psi$}
+\begin{slide}{Ex6. Build a proof of $\forall x Q(x) \vdash  \neg \exists x\neg Q(x)$}
 
-\begin{fitch}
-    \fj \forall x \varphi \land \psi \\
-    \fa \forall x\varphi & \conjel{1} \\
-    \fa \psi & \conjer{1} \\
-    \fa u\,\,\fj\varphi[u/x] \\
-    \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & \conji{4}{3} \\
-    \fa \:\,\,\,\,\fa (\varphi \land \psi)[u/x] & x \text{free in } \psi \\
-    \fa \forall x (\varphi \land \psi) & \foralli{4}{6}
-    
-\end{fitch}
+$$
+\begin{nd}
+  \hypo{1}{\forall x Q(x)}\pause
+  \open
+    \hypo{2}{\exists x \neg Q(x)}\pause
+    \have{3}{\neg\forall x Q(x)} \by{Ex4.}{1}\pause
+    \have{4}{\bot} \by{$\bot$I}{1,3}\pause
+  \close
+  \have{5}{\neg\exists x Q(x)} \ni{2-4}\pause
+\end{nd}
+$$
+\end{slide}
+
+\begin{frame}[shrink=0.95]{Ex7. Build a proof of $\exists x (P(x) \land Q(x)), \forall x (P(x) \to R(x)) \vdash \exists x (R(x) \land P(x))$}
+
+$$
+\begin{nd}
+  \have{1}{\exists x (P(x) \land Q(x))}
+  \hypo{2}{\forall x (P(x) \to R(x))}\pause
+
+  \open[v]
+      \hypo{3}{P(v) \land Q(v)}\pause
+      \have{4}{P(v)} \ae{3}\pause
+      \have{5}{P(v) \to R(v)} \Ae{2}\pause
+      \have{6}{R(v)} \ie{4,5}\pause
+      \have{7}{Q(v)} \ae{3}\pause
+      \have{8}{R(v) \land Q(v)} \ai{6,7}\pause
+      \have{9}{\exists x(R(x) \land Q(x))} \Ei{8}\pause
+  \close
+  \have{10}{\exists x(R(x) \land Q(x))} \Ee{1,3-9}\pause
+\end{nd}
+$$
+
+\end{frame}
+
+\begin{frame}[shrink=0.95]{Ex8. Build a proof of $\forall x \forall y ( x = y \to f(x) = f(y))$}
+
+$$
+\begin{nd}
+  \open[u]
+    \open[v]
+      \open
+      \hypo{1}{u = v}\pause
+      \open
+        \hypo{2}{\neg(f(u) = f(v))}\pause
+        \have{3}{f(u) = f(u)} \by{$=$I}{}\pause
+        \have{4}{f(u) = f(v)} \by{$=$E}{1,3}\pause
+        \have{5}{\bot} \by{$\bot$I}{2-4}\pause
+      \close
+      \have{6}{\neg\neg(f(u) = f(v))} \ni{2-5}\pause
+      \have{7}{f(u) = f(v)} \ne{6}\pause
+      \close
+      \have{8}{u = v \to f(u) = f(v)} \ii{1-7}\pause
+    \close
+    \have{9}{\forall y (u = y \to f(u) = f(y)} \Ai{8}\pause
+  \close
+  \have{10}{\forall x\forall y (x = y \to f(x) = f(y)} \Ai{9}\pause
+
+\end{nd}
+$$
+
+\end{frame}
+
+\begin{frame}[shrink=0.95]{Ex9. Build a proof of $\forall x P(a,x,x), \forall x \forall y \forall z (P(x,y,z) \to P(f(x),y,f(z))) \vdash P(f(a),a,f(a))$}
+
+$$
+\begin{nd}
+  \have{1}{\forall x P(a,x,x)}\pause
+  \hypo{2}{\forall x \forall y \forall z (P(x,y,z) \to P(f(x),y,f(z)))}\pause
+  \have{3}{P(a,a,a)} \Ae{1}\pause
+  \have{4}{\forall y \forall z (P(a,y,z) \to P(f(a),y,f(z)))} \Ae{2}\pause
+  \have{5}{\forall z (P(a,a,z) \to P(f(a),a,f(z)))} \Ae{4}\pause
+  \have{6}{P(a,a,a) \to P(f(a),a,f(a))} \Ae{5}\pause
+  \have{7}{P(f(a),a,f(a))} \ie{3,6}\pause
+  
+
+\end{nd}
+$$
+
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Proving that $\forall x (\varphi \land \psi) \vdash \forall x \varphi \land \psi$ and $x$ is not free in $\psi$}
+\begin{frame}[shrink=0.95]{Ex10. Build a proof of $ \exists x \exists y (H(x,y) \lor H(y,x)), \neg \exists x H(x,x) \vdash \exists x\exists y \neg(x=y)$}
 
-\begin{fitch}
-    \fj \forall x (\varphi \land \psi) \\
-    \fa u\,\,\fa (\varphi \land \psi)[u/x] & \foralle{1}\\
-    \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & x \text{not free in} \psi \\
-    \fa \:\,\,\,\,\fa \psi & \conjer{3}\\
-    \fa \:\,\,\,\,\fa \varphi[u/x] & \conjel{3}\\
-    \fa \forall x\varphi & \foralli{2}{5} \\
-    \fa \forall x\varphi \land \psi & \conji{6}{4}
+$$
+\begin{nd}
+  \have{1}{\exists x \exists y (H(x,y) \lor H(y,x))}
+  \hypo{2}{\neg \exists x H(x,x)}\pause
+  \open[u]
+    \open[v]
+      \open
+        \hypo{3}{u = v}\pause
+        \open 
+          \hypo{4}{H(u,v) \lor H(v,u)}\pause
+          \open
+            \hypo{5}{H(u,v)}
+            \have{6}{H(u,u)} \by{$=$E}{3,5}\pause
+            \have{7}{\exists x H(x,x)} \Ei{5}\pause
+            \have{8}{\bot} \by{$\bot$I}{2,7}\pause
+          \close
+        \close
+      \close
+    \close
+  \close
+\end{nd}
+$$
 
-    
-\end{fitch}
 \end{frame}
 
+\begin{frame}[shrink=0.95]{Ex10. Build a proof of $ \exists x \exists y (H(x,y) \lor H(y,x)), \neg \exists x H(x,x) \vdash \exists x\exists y \neg(x=y)$}
 
+$$
+\begin{nd}
+  \open
+    \open
+      \open
+        \open 
+          %\have[\vdots]{skip1}{\vdots}
+          \have[][8]{8}{\vdots}\pause
+          \open
+            \hypo{9}{H(v,u)}\pause
+            \have{10}{H(v,v)} \by{$=$E}{3,9}\pause
+            \have{11}{\exists x H(x,x)} \Ei{10}\pause
+            \have{12}{\bot} \by{$\bot$I}{2,7}\pause
+          \close
+        \have{13}{\bot} \oe{4,5-8,9-12}\pause
+        \close
+        \have{14}{\bot} \Ee{1,4-13}\pause
+      \close
+      \have{15}{\neg(u = v)} \ni{3-14}\pause
+    \close
+    \have{16}{\exists y \neg(u = y)} \Ei{15}\pause
+  \close
+  \have{17}{\exists x \exists y \neg(x = y)} \Ei{16}\pause
+\end{nd}
+$$
+\end{frame}
 
+\begin{frame}[shrink=0.95]{Ex11. Build a proof of $ \exists y \exists x Q(y,x) \vdash \exists x\exists y Q(y,x)$}
+
+$$
+\begin{nd}
+  \hypo{1}{\exists y \exists x Q(y,x)}\pause
+  \open[u]
+    \hypo{2}{\exists x Q(u,x)}\pause
+    \open[v]
+      \hypo{3}{Q(u,v)}\pause
+      \have{4}{\exists y Q(y,v)} \Ei{3}\pause
+    \close
+    \have{5}{\exists y Q(y,v)} \Ee{2,3-4}\pause
+    \have{6}{\exists x\exists y Q(y,x)} \Ei{5}\pause
+  \close
+  \have{7}{\exists x\exists y Q(y,x)} \Ee{1,2-6}\pause
+\end{nd}
+$$
+\end{frame}
+
+\begin{frame}[shrink=0.95]{Ex12. Build a proof of $\vdash (\exists x P(x) \to \forall x R(x)) \to (\forall x (P(x) \to Q(x)))$}
+
+$$
+\begin{nd}
+  \open
+    \hypo{1}{\exists x P(x) \to \forall x R(x)} \pause
+    \open[u]
+      \open
+        \hypo{2}{P(u)}
+        \have{3}{\exists x P(x)} \Ei{2} \pause
+        \have{4}{\forall x R(x)} \ie{1,3} \pause
+        \have{5}{R(u)} \Ae{4} \pause
+      \close
+      \have{6}{P(u) \to Q(u)} \ii{2-5} \pause
+    \close
+    \have{7}{\forall x (P(x) \to Q(x))} \Ai{2-6} \pause
+  \close
+  \have{8}{(\exists x P(x) \to \forall x R(x)) \to (\forall x (P(x) \to Q(x)))} \ii{1-7} \pause
+\end{nd}
+$$
+\end{frame}
+
+\begin{frame}[shrink=0.95]{Ex13. Build a proof of $\vdash x = f(y) \to \forall z (P(x,z) \to P(f(y),z))$}
+
+$$
+\begin{nd}
+  \open
+    \hypo{1}{x = f(y)} \pause
+    \open[u]
+      \open
+        \hypo{2}{P(x,u)} \pause
+        \have{3}{P(f(y),u)} \by{$=$E}{1,2} \pause
+      \close
+      \have{4}{P(x,u) \to P(f(y),u)} \ii{2-3} \pause
+    \close
+    \have{5}{\forall z (P(x,z) \to P(f(y),z))} \Ai{2-4} \pause
+  \close
+  \have{8}{x = f(y) \to \forall z (P(x,z) \to P(f(y),z))} \ii{1-5} \pause
+\end{nd}
+$$
+
+\end{frame}
+
+\begin{frame}[shrink=0.95]{Ex14. Build a proof of $\forall x\forall y\forall u\forall v(x = u \to (y = v \to f(x,y) = f(u,v)))$}
+
+$$
+\begin{nd}
+  \open[a]
+    \open[b]
+      \open[c]
+        \open[d]
+          \open
+          \hypo{1}{a=b} \pause
+          \open
+            \hypo{2}{c=d} \pause
+            \have{3}{f(a,c) = f(a,c)} \by{$=$I}{} \pause
+            \have{4}{f(a,c) = f(b,c)} \by{$=$E}{1,3} \pause
+            \have{5}{f(a,c) = f(b,d)} \by{$=$E}{2,4} \pause
+          \close
+          \have{6}{c=d \to f(a,c) = f(b,d)} \ii{2-5} \pause
+        \close
+        \have{7}{a = b \to (c=d \to f(a,c) = f(b,d))} \ii{1-6} \pause
+        \close
+        \have{8}{\forall v(a = b \to (c=v \to f(a,c) = f(b,v)))} \Ai{7} \pause
+      \close
+      \have{9}{\forall u\forall v(a = u \to (c=v \to f(a,c) = f(u,v)))} \Ai{8} \pause
+    \close
+    \have{10}{\forall y\forall u\forall v(a = u \to (y=v \to f(a,y) = f(u,v)))} \Ai{9} \pause
+  \close
+  \have{11}{\forall x\forall y\forall u\forall v(x = u \to (y=v \to f(x,y) = f(u,v)))} \Ai{10} \pause
+\end{nd}
+$$
+
+\end{frame}
+
+\begin{frame}[shrink=0.95]{Ex15. Build a proof of $\exists x\forall y(P(x) \land (P(y) \to y=x)) \vdash \forall x\forall y((P(x) \land P(y)) \to x = y)$}
+$$
+\begin{nd}
+  \hypo{1}{\exists x\forall y(P(x) \land (P(y) \to y=x))} \pause
+  \open[a]
+    \open[b]
+      \open
+        \hypo{2}{P(a) \land P(b)} \pause
+          \open
+            \hypo{3}{P(a) \land (P(b) \to b=a)} \pause
+            \have{4}{P(b)} \ae{2} \pause
+            \have{5}{P(b) \to b = a} \ae{3} \pause
+            \have{6}{b = a} \ie{4,5} \pause
+            \have{7}{b = b} \by{$=$I}{} \pause
+            \have{8}{a = b} \by{$=$E}{6,7} \pause
+          \close
+          \have{9}{a = b} \Ee{1,3-8} \pause
+      \close
+      \have{10}{(P(a) \land P(b)) \to a = b} \ii{2-9} \pause
+    \close  
+    \have{11}{\forall y ((P(a) \land P(y)) \to a = y)} \Ai{10} \pause
+  \close
+  \have{12}{\forall x\forall y ((P(x) \land P(y)) \to x = y)} \Ai{11} \pause
+\end{nd}
+$$
+
+\end{frame}
 
 \end{document}
