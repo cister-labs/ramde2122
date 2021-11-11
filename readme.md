@@ -60,17 +60,21 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
  -->
 
 <ul>
-  <li><a href="" class="hide">
-    Introduction to MDE and Requirement engineering; Structural diagrams (Week 1)
-  </a></li><li><a class="hide" href="slides/2-prop-logic-tp.pdf">
+  <li><a href="slides/1-intro-part-1.pdf">
+    Introduction to MDE and Requirement engineering I (Lecture 1)
+  </a></li><li><a href="slides/1-intro-part-2.pdf">
+    Introduction to MDE and Requirement engineering II (Lecture 1)
+  </a></li><li><a href="slides/2-prop-logic.pdf">
+    Propositional Logic (Lecture 2)
+  </a></li><li><a href="slides/2-prop-logic-tp.pdf">
     Propositional Logic - exercises (Lecture 3)
-  </a></li><li><a class="hide" href="slides/2-lpo.pdf">
+  </a></li><li><a href="slides/2-lpo.pdf">
     First Order Logic (Lecture 4)
-  </a></li><li><a class="hide" href="slides/2-lpo-dn.pdf">
+  </a></li><li><a href="slides/2-lpo-dn.pdf">
     Natural deduction (Lecture 5)
-  </a></li><li><a class="hide" href="slides/2-lpo-tp.pdf">
+  </a></li><li><a href="slides/2-lpo-dn-tp.pdf">
     Natural deduction - exercises (Lecture 6)
-  </a></li><li><a class="hide" href="slides/3-behaviour.pdf">
+  </a></li><li><a href="slides/3-behaviour.pdf">
     Modelling behaviour: Automata and Process Algebra (Week 5)
   </a></li><li><a class="hide" href="slides/4-equivalences.pdf">
     Analysing behaviour: Equivalence of systems; Realisability (Week 6)
@@ -91,7 +95,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 <ul>
   <li><a href="" class="hide">Exercises on Logic (individual)</a></li>
   <li><a href="assignments/a1-modelling.pdf" class="hide">A1: Modelling Behaviour (group)</a></li>
-  <li><a href="assignments/a1-verification.pdf" class="hide">A2: Analysing Behaviour (group)</a></li>
+  <li><a href="assignments/a2-verification.pdf" class="hide">A2: Analysing Behaviour (group)</a></li>
 </ul>
 
 
