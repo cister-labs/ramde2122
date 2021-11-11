@@ -362,7 +362,7 @@ Lets prove that $\exists x P(x), \forall x\forall y (P(x) \to Q(y)) \vdash \fora
     \fa \psi & \conjer{1} \\
     \fa u\,\,\fj\varphi[u/x] \\
     \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & \conji{4}{3} \\
-    \fa \:\,\,\,\,\fa (\varphi \land \psi)[u/x] & x \text{free in } \psi \\
+    \fa \:\,\,\,\,\fa (\varphi \land \psi)[u/x] & $x \text{ free in } \psi$ \\
     \fa \forall x (\varphi \land \psi) & \foralli{4}{6}
     
 \end{fitch}
@@ -375,7 +375,7 @@ Lets prove that $\exists x P(x), \forall x\forall y (P(x) \to Q(y)) \vdash \fora
 \begin{fitch}
     \fj \forall x (\varphi \land \psi) \\
     \fa u\,\,\fa (\varphi \land \psi)[u/x] & \foralle{1}\\
-    \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & x \text{not free in} \psi \\
+    \fa \:\,\,\,\,\fa \varphi[u/x] \land \psi & $x \text{ not free in } \psi$ \\
     \fa \:\,\,\,\,\fa \psi & \conjer{3}\\
     \fa \:\,\,\,\,\fa \varphi[u/x] & \conjel{3}\\
     \fa \forall x\varphi & \foralli{2}{5} \\

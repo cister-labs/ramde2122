@@ -62,8 +62,14 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 <ul>
   <li><a href="" class="hide">
     Introduction to MDE and Requirement engineering; Structural diagrams (Week 1)
-  </a></li><li><a class="hide" href="">
-    Logics for states: Modelling requirements and using SMT solvers (Week 2-3)
+  </a></li><li><a class="hide" href="slides/2-prop-logic-tp.pdf">
+    Propositional Logic - exercises (Lecture 3)
+  </a></li><li><a class="hide" href="slides/2-lpo.pdf">
+    First Order Logic (Lecture 4)
+  </a></li><li><a class="hide" href="slides/2-lpo-dn.pdf">
+    Natural deduction (Lecture 5)
+  </a></li><li><a class="hide" href="slides/2-lpo-tp.pdf">
+    Natural deduction - exercises (Lecture 6)
   </a></li><li><a class="hide" href="slides/3-behaviour.pdf">
     Modelling behaviour: Automata and Process Algebra (Week 5)
   </a></li><li><a class="hide" href="slides/4-equivalences.pdf">
@@ -81,11 +87,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 
 
-### Assignments
+### Exercises and Assignments
 <ul>
-  <li><a href="" class="hide">A1: Modelling Requirements (individual)</a></li>
-  <li><a href="assignments/a2-modelling.pdf" class="hide">A2: Modelling Behaviour (group)</a></li>
-  <li><a href="assignments/a3-verification.pdf" class="hide">A3: Analysing Behaviour (group)</a></li>
+  <li><a href="" class="hide">Exercises on Logic (individual)</a></li>
+  <li><a href="assignments/a1-modelling.pdf" class="hide">A1: Modelling Behaviour (group)</a></li>
+  <li><a href="assignments/a1-verification.pdf" class="hide">A2: Analysing Behaviour (group)</a></li>
 </ul>
 
 
@@ -122,11 +128,13 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Evaluation
 
- * __Final mark__ = Individual Exercises (10%) + Assignments (60%) + Literature Review (30%)
+ * __Final mark__ = Homework (10%) + Individual Exercises (10%) + Assignments (50%) + Literature Review (30%)
 
-__Individual Exercises__ are to be developed individually. These exercises are included in the lecture slides, some of which will be done during lessons. Marks will reflect mainly the effort, and the feedback will be provided during the practical lessons.
+__Homework__ consists of exercises presented in the slides, partially done during the lessons, that should be submitted as a PDF file per week until the end of the following week. Marks reflect mainly the effort, i.e., bad resolutions are better than no resolutions.
 
-__Assignments__ are either individual (A1) or to be developed by teams of 4 students (A2 and A3). Each team has a dedicated `git` repository that will contain the software artefacts and a report for each assignment. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
+__Individual Exercises__ are to be developed individually, and submitted as a single PDF report, covering mainly logic deduction. Feedback will be given online on request, and marked at the end of the unit.
+
+__Assignments__ are to be developed by teams of 4 students. Each team has a dedicated `git` repository that will contain the software artefacts and a report for each assignment. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
 
 __Literature Review__ is to be developed by the same groups of 4 students, and consists of a written _critical_ review of maximum 4 pages using a LaTeX template that will be made available.
 The review will be presented in an oral presentation, and the review will be partial evaluated by peers.
@@ -145,17 +153,16 @@ Both the project and the review will be presented in an oral presentation, and t
 
 ### Deadlines
 
-__Individual exercises__ must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+__Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
 
-  - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf), slides 1 - TBD:__ 28 Nov @ 23:59 (Sunday)
+<!--   - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf), slides 1 - TBD:__ 28 Nov @ 23:59 (Sunday)
   - ...
-
+ -->
 
 __Assignments__ have the following deadlines, that may still suffer changes.
 
   - __A1:__ tbd
   - __A2:__ tbd
-  - __A3:__ tbd
 
 
 
