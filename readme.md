@@ -66,22 +66,22 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Introduction to MDE and Requirement engineering II (Lecture 1)
   </a></li><li><a href="slides/2-prop-logic.pdf">
     Propositional Logic (Lecture 2)
-  </a></li><li><a href="slides/2-prop-logic-tp.pdf">
+  </a></li><li><a href="slides/3-prop-logic-tp.pdf">
     Propositional Logic - exercises (Lecture 3)
-  </a></li><li><a href="slides/2-lpo.pdf">
+  </a></li><li><a href="slides/4-lpo.pdf">
     First Order Logic (Lecture 4)
-  </a></li><li><a href="slides/2-lpo-dn.pdf">
+  </a></li><li><a href="slides/5-lpo-dn.pdf">
     Natural deduction (Lecture 5)
-  </a></li><li><a href="slides/2-lpo-dn-tp.pdf">
+  </a></li><li><a href="slides/6-lpo-dn-tp.pdf">
     Natural deduction - exercises (Lecture 6)
-  </a></li><li><a href="slides/3-behaviour.pdf">
-    Modelling behaviour: Automata and Process Algebra (Week 5)
-  </a></li><li><a class="hide" href="slides/4-equivalences.pdf">
-    Analysing behaviour: Equivalence of systems; Realisability (Week 6)
-  </a></li><li><a class="hide" href="slides/5-modal-logic.pdf">
-    Logics for behaviour: Modal logics; Model-Checking (Week 8)
-  </a></li><li><a class="hide" href="slides/6-mcrl2.pdf">
-    Modelling and verification in mCRL2 (Week 5-8)
+  </a></li><li><a href="slides/7-behaviour.pdf">
+    Modelling behaviour: Automata and Process Algebra (Lecture 7)
+  </a></li><li><a class="hide" href="slides/8-equivalences.pdf">
+    Analysing behaviour: Equivalence of systems; Realisability (Lecture 8)
+  </a></li><li><a class="hide" href="slides/9-modal-logic.pdf">
+    Logics for behaviour: Modal logics; Model-Checking (Lecture 9)
+  </a></li><li><a class="hide" href="slides/10-mcrl2.pdf">
+    Modelling and verification in mCRL2 (Lecture 10)
    </a></li>
    <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
