@@ -28,9 +28,9 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     * Syntax, semantics, and reasoning
   + First Order Logic
     * Syntax, semantics, and reasoning
-  + The Z3 automatic theorem prover
+<!--   + The Z3 automatic theorem prover
     * Rise4fun interface: get acquainted with the tool
-    * Python API: automating search for solutions
+    * Python API: automating search for solutions -->
 - Behavioural modelling
   + Single component
     * State diagrams and Flow charts
