@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+
+
+\input{macros}
+\date{RAMDE -- 2021/2022}
+
+\usepackage[latin1]{inputenc} % pt characters
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Draft}
+%\SetWatermarkScale{1.4}
+
+
+\newcommand{\myset}[1]{\{#1\}}
+
+\newcommand{\descrbox}[2]{
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\Large\center, title=#1]
+  {#2}
+\end{tcolorbox}
+}
+
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Assignment 1: Set Theory, Propositional Logic, and First Order Logic}%\\
+%{\Large Crossing the river -- Part 1}}
+
+\author{David Pereira \& Jos\'{e} Proen\c{c}a} 
+
+
+\maketitle
+
+\vspace*{-5mm}
+
+\descrbox{Rationale}{
+This exercises sheet is made of three questions, each covering one of the topics taught during the first module of RAMDE. For each of the questions, you are asked to select a subset of its exercises for evaluation (the precise number of exercises for you to select is specified in the question)..
+}
+
+
+\descrbox{What to Submit}{A PDF/word report (preferable PDF) containing your answers to the evaluation exercises. You can do the exercises with pen and paper and then scan/take a photo, and include them in the report file. The name of your file must have the following pattern: RAMDE-eval-1-<student number>.<file extension>}
+
+
+\descrbox{Deadline}{Your answers must be submitted until 23h59PM of the 28$^\text{th}$ of November, 2021.}
+
+
+
+%\myparagraph{Auxiliary files:} \url{https://cister-labs.github.io/ramde2122/assignment/farmer.zip}
+
+
+\section{Set Theory}
+
+%Before proceeding with the exercises, lets recall the main definitions of set theory that are necessary to solve them. Essentially, you need to know the following:
+%\begin{itemize}
+%  
+%  \item a set is a collection of elements, and can be finite or infinite. In the case the set is finite, we call its size the cardinality of the set, and we denote it by $|S|$ (or, alternatively, by $\#S$)
+%  
+%  \item if $x$ is an element of a given set $S$, then we say that "$x$ is in $S$" and we denote this by $x \in S$
+%  
+%  \item a set can be defined by comprehension, that is, we consider a property $\mathcal{P}$ that determines if a value is part, or not of the set. We denote this by $\myset{x\,|\,\mathcal{P}}$
+%  
+%  \item if $A$ and $B$ are sets, and all elements of $A$ are also elements of $B$, then we say that "$A$ is a subset of $B$, and denote this relation by $A \subseteq B$
+%  
+%  \item if $A$ and $B$ are sets, then $A \cup B$ is the union of the elements of each set, i.e., the set formed by all elements that belong to $A$ and all the elements that belong to $B$
+%  
+%  \item if $A$ and $B$ are sets, then $A \cap B$ is the intersection of the elements of each set (i.e., the values that belong to both sets)
+%  
+%  \item if $A$ and $B$ are sets, then $A \setminus B$ is the set formed by the elements of $A$ that are not elements of $B$. We call this "set difference".
+%
+%  \item if $A$ is a set, we call the complement of $A$ the set formed by all elements that are not part of $A$. We denote this by $\overline{A}$
+%\end{itemize}
+
+%\vspace*{-3mm}
+%\lstinputlisting{farmer1.mcrl2}
+
+%\begin{myExercise} \label{ex:ba1}
+%
+%  Which of the statements are true and which are false?
+%  \begin{enumerate}[label=\alph*)]
+%    \item $3 \in \myset{1,2,3}$
+%    \item $\{3\} \in \{\{1\},\{2\},\{3\}\}$
+%    \item $3 \subseteq \{3\}$
+%    \item $\emptyset \subseteq \emptyset$
+%    \item $\emptyset \in \emptyset$
+%    \item $\emptyset \in \myset{\emptyset}$
+%  \end{enumerate}
+%
+%\end{myExercise}
+%
+%~\\[-6mm]
+
+%----------------------------------------------
+%\begin{myExercise} \label{ex:ba2}
+%
+%  Consider the following sets: $A = \myset{2n\,|\,n \in \mathbb{N}}$, $B = \myset{3n\,|\,n \in \mathbb{N}}$, and $C = \myset{6n\,|\,n \in \mathbb{N}}$.
+%  
+%  \subex{Which of the following statements are false?
+%  \begin{enumerate}[label=\alph*)]
+%    \item $B \subseteq C$
+%    \item $C \subseteq B$
+%    \item $\myset{3,8} \subseteq A \cup B$
+%    \item $\myset{3,8} \subseteq A \cap C$
+%    \item $A \cap B = \emptyset$
+%    %\item $???$
+%  \end{enumerate}}
+%  
+%  \subex{Calculate the following sets:
+%    \begin{enumerate}[label=\alph*)]
+%    \item $A \cap B$
+%    \item $B \cup C$
+%    \item $A \setminus B$
+%    \item $B \setminus C$  
+%    \end{enumerate}
+%  }
+%  
+%\end{myExercise}
+%
+%~\\[-6mm]
+
+\begin{myExercise}
+Consider the following sets: $A = \myset{1,2,3,4,5}$, $B = \myset{1,2,4,8}$, $C = \myset{1,2,3,5,7}$, and $D = \myset{2,4,6,8}$. The goal of this exercise is for you to calculate the sets resulting from performing the defined set operations.  Select four of the questions below for evaluation.
+\begin{enumerate}[label=(\alph*)]
+\item $(A \cup B)  \cap C$
+\item $A \cup (B \cap C)$
+\item $(A \cap B) \cup (C \cap D)$
+\item $(A \cup B) \cap (C \cup D)$
+\item $(A \cup B) \setminus C$
+\item $A \cup (B \setminus C)$
+\item $(A \setminus B) \setminus C$
+\item $A \setminus (B \setminus C)$
+\item $(B \setminus C) \setminus D$
+\item $D \setminus (B \setminus C)$
+\end{enumerate}
+
+\end{myExercise}
+
+%~\\[-6mm]
+%
+%\begin{myExercise}
+%  
+%  Find the sets $A$ and $B$ that satisfy the conditions imposed (each question is independent):
+%  
+%  \begin{enumerate}[label=(\alph*)]
+%    \item $A \setminus B = \myset{1,3,7,11}$, $B \cup A = \myset{1,2,3,5,6,7,11,14}$, and $A \cap B = \myset{2}$  
+%    \item $A \setminus B = \myset{1,3,7,11}$, $B \setminus A = \myset{2,6,8}$, and $A \cap B = \myset{4,9}$  
+%    \item $A \setminus B = \myset{1,2,4}$, $B \setminus A = \myset{7,8}$, and $A \cup B = \myset{1,2,4,5,7,8,9}$  
+%  \end{enumerate}
+%
+%\end{myExercise}
+
+%~\\[-6mm]
+%
+%\begin{myExercise}
+%  $\star\star$ For each of the statements presented below, answer if they are true and, when they are false provide a counter-example. Select two of the questions below for evaluation.
+%  \begin{enumerate}[label=(\alph*)]
+%  \item if $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$
+%  \item if $A \subseteq B$ and $B \not\subseteq C$, then $A \not\subseteq C$
+%  \item if $A \subseteq B$ and $B \not\subseteq C$, then $A \subseteq C$
+%  \item if $A \cap C = B \cap C$, then $A = B$
+%  \item if $A \cup C = B \cup C$, then $A = B$
+%  \item if $A \subseteq B$ if, and only if, $A \cap \overline{B} = \emptyset$
+%  \end{enumerate}
+%
+%\end{myExercise}
+%
+%~\\[-6mm]
+%
+%\begin{myExercise}
+%  Provide an explanation for the following statements that are true, or provide a counter-example for those that are false.
+%  
+%  \begin{enumerate}[label=(\alph*)]
+%    \item $A \cap B = B \cap A$  
+%    \item $(A \setminus B) \cap C = (A \cap C) \setminus B$
+%    \item $A \setminus (B \cap C) = (A \setminus B) \cap (A \setminus C)$
+%    \item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+%    \item if $A \subseteq B$ then $A \cap B = A$
+%
+%  \end{enumerate}
+%
+%\end{myExercise}
+
+\section{Propositional Logic}
+
+\begin{myExercise}
+  Provide the proofs, using natural deduction for Propositional Logic, of the following valid formulas. Select three of the exercises for evaluation.
+  
+  \begin{enumerate}[label=(\alph*)]
+    \item $(\delta \land \neg\varphi) \to \psi, \neg\psi, \delta \vdash \varphi$
+    \item $\vdash (\delta \to \psi) \to ((\neg\delta \to \neg\psi) \to (\varphi \to \psi))$
+    \item $\vdash (\delta \to (\varphi \to \psi)) \to (\varphi \to (\delta \to \psi))$
+    \item $\vdash \delta \to (\neg\varphi \to \neg(\delta \to \varphi))$
+    \item $\vdash (\delta \to \varphi) \to (\neg\delta \lor \varphi)$
+    \item $(\psi \to \varphi) \lor (\delta \to \gamma) \vdash (\psi \to \gamma) \lor (\delta \to \varphi)$
+    \item $\psi \vdash (\psi \land \varphi) \lor (\psi \land \neg\varphi)$
+
+  \end{enumerate}
+
+\end{myExercise}
+
+\section{First Order Logic}
+
+\begin{myExercise}
+ Provide the proofs, using natural deduction for First Order Logic, of the following valid formulas. Select two of the exercises for evaluation.
+  
+  \begin{enumerate}[label=(\alph*)]
+    \item $\forall x \forall y R(x,y) \vdash \forall y\forall x R(x,y)$
+    \item $\exists x\forall y P(x,y) \vdash \forall y\exists x P(x,y)$
+    \item $\forall x\forall y (x = y \to f(x) = f(y))$
+    \item $\exists x (P(x) \to R(x)) \to (\forall x P(x) \to \exists x R(x))$
+    \item $\forall x(S(x) \to R(x)) \to (\exists x\neg R(x) \to \exists x\neg S(x))$
+    \item $\forall x (\neg P(x) \to S(x)) \to (\exists x \neg S(x) \to \exists x P(x))$
+
+  \end{enumerate}
+
+\end{myExercise}
+ 
+\end{document}
