@@ -179,7 +179,7 @@
       % \begin{itemize}
       %   \item Syntax, semantics, and reasoning
       % \end{itemize}
-      \item The Z3 automatic theorem prover
+      % \item The Z3 automatic theorem prover
       % \begin{itemize}
       %   \item Rise4fun interface: get acquainted with the tool
       %   \item Python API: automating search for solutions
@@ -704,7 +704,7 @@ where
 \\- $\alpha \in \Act %\faded{\cup \overline\Act \cup \set{\tau}}
     \cup \set{\tau}$~ is an \structure{action}
 \\- $K$ s a collection of \structure{process} names or process constants
-\\- $I$ is an indexing set
+% \\- $I$ is an indexing set
 \\- $L \subseteq \Act %\faded{\cup \overline{\Act}}
     $ is a set of \structure{labels}
 \\- $f$ is a function that \structure{renames} actions s.t. $f(\tau) = \tau$ % and $f(\overline{a}) = \overline{f(a)}$
@@ -844,6 +844,13 @@ where
 
 \end{slide}
 
+
+\begin{frame}
+  \huge\centering
+  mCRL2 Tools
+  \\[5mm]\large
+  Slides 10:\\\url{https://cister-labs.github.io/ramde2122/slides/10-mcrl2.pdf}
+\end{frame}
 
 % \begin{slide}{Exercise}
 %   \centering
@@ -1021,13 +1028,19 @@ where
 \begin{slide}{Exercises}
   \doExercise{Let $A=b.a.B$. Show that:}{
     \begin{enumerate}
-      \item $(A ~|~ \overline{b}.\cnil)\backslash \{b\}\trans\tau (a.B ~|~ \cnil)\backslash\{b\}$
-      \item $(A ~|~ b.a.B) + (b.A)[a/b] \trans{a} A[a/b]$
+      \item $(A ~|~ \overline{b}.\cnil)\backslash \{b\}~\trans\tau~ (a.B ~|~ \cnil)\backslash\{b\}$
+      \item $(A ~|~ b.a.B) + ((b.A)[b\mapsto a]) ~\trans{a}~ A[b \mapsto a]$
     \end{enumerate}
   }  
 \end{slide}
 
 
+\begin{frame}
+  \huge\centering
+  mCRL2 Tools
+  \\[5mm]\large
+  Slides 10:\\\url{https://cister-labs.github.io/ramde2122/slides/10-mcrl2.pdf}
+\end{frame}
 
 %----------------------------------------------------------------------------------
 \section{Sequence Diagrams vs. Interactive Processes}

@@ -103,7 +103,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 <!-- - [Visual Paradigm](https://www.visual-paradigm.com) -->
 - [mCRL2](https://www.mcrl2.org)
-- [Z3 in Python](https://ericpony.github.io/z3py-tutorial/guide-examples.htm)
+<!-- - [Z3 in Python](https://ericpony.github.io/z3py-tutorial/guide-examples.htm) -->
 
 
 ### Bibliography
