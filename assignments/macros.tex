@@ -43,3 +43,13 @@
 \newtheorem{subexercise}{}[myExercise]
 
 \newcommand{\subex}[1]{\begin{subexercise}#1\end{subexercise}}
+
+
+\usepackage{enumitem} % enumeration with alpha and others - not needed for slides
+\usepackage{tcolorbox}
+\newcommand{\descrbox}[2]{
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\Large\center, title=#1]
+  {#2}
+\end{tcolorbox}
+}
+
