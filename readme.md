@@ -170,7 +170,7 @@ __Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the followi
 
 __Exercises and Assignments__ have the following deadlines, that may still suffer changes.
 
-  - __Exer.__ 28 Nov @ 23:59
+  - __[Exer.](assignments/a1-sets-pl-fol.pdf)__ 28 Nov @ 23:59
   - __A1:__ tbd
   - __A2:__ tbd
 

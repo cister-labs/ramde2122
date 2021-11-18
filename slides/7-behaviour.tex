@@ -1027,11 +1027,34 @@ where
 
 \begin{slide}{Exercises}
   \doExercise{Let $A=b.a.B$. Show that:}{
+    \vspace*{-8mm}
     \begin{enumerate}
       \item $(A ~|~ \overline{b}.\cnil)\backslash \{b\}~\trans\tau~ (a.B ~|~ \cnil)\backslash\{b\}$
       \item $(A ~|~ b.a.B) + ((b.A)[b\mapsto a]) ~\trans{a}~ A[b \mapsto a]$
     \end{enumerate}
   }  
+
+  \doExercise{Draw the NFAs $A$ and $D$}{
+    \vspace*{-8mm}
+
+    \begin{columns}
+    \col[0.45]{      
+    \begin{align*}
+      A = x.B+x.x.C\\
+      B = x.x.A+y.C\\
+      C = x.A      
+    \end{align*}
+    }
+    \col[0.45]{      
+    \begin{align*}
+      D = x.x.x.D + x.E\\
+      E = x.F+y.F\\
+      F = x.A      
+    \end{align*}
+    }
+    \end{columns}
+  }  
+
 \end{slide}
 
 

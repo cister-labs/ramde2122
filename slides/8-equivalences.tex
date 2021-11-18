@@ -700,7 +700,7 @@ Draw their LTS. If bisimilar, find the bisimulation.
 %-------------------------------------------------------------------------------
 
 \begin{slide}{Exercises}
-\begin{exampleblock}{\exercise Find a bisimulation}
+\begin{exampleblock}{\exercise Find a bisimulation with $\pair{s,t}$}
 %\vspace*{-3mm}
 \frsplit{\centering
   \includegraphics{images/LTS-1}
@@ -710,6 +710,39 @@ Draw their LTS. If bisimilar, find the bisimulation.
 \end{exampleblock}
 \end{slide}
 %Rania Khalaf (IBM T.J. Watson Research Center, USA) - rkhalaf@us.ibm.com 
+
+
+\begin{slide}{Exercise}
+\doExercise{Find a simulation between $SmUni$ and $SmUni'$}{
+  \vspace*{-10mm}
+  \begin{columns}
+  \col[0.35]{    
+    \begin{align*}
+      % CM &= \mathsf{coin.coffee}.CM
+      % \\
+      % CS &= \mathsf{pub.(coin.coffee.CS + coin.tea.CS)}
+      CM &= \mathsf{coin.\ainv{coffee}}.CM
+      \\
+      CS &= \mathsf{pub.\ainv{coin}.coffee}.CS
+      \\
+      ~~~SmUni &= \crt{(CM|CS)}{\mathsf{\set{coin,coffee}}}
+    \end{align*}
+  }\col[0.6]{
+    \begin{align*}
+      % CM &= \mathsf{coin.coffee}.CM
+      % \\
+      % CS &= \mathsf{pub.(coin.coffee.CS + coin.tea.CS)}
+      CM' &= \mathsf{coin.(\ainv{coffee}}.CM' + \mathsf{coin.\ainv{latte}}.CM')
+      \\
+      CS' &= \mathsf{pub.\ainv{coin}.(coffee}.CS' + \mathsf{\ainv{coin}.latte}.CS')
+      \\
+      SmUni' &= \crt{(CM'|CS')}{\mathsf{\set{coin,coffee,latte}}}
+    \end{align*}  
+  }
+  \end{columns}
+  % \vspace*{-7mm}
+}
+\end{slide}
 
 %-------------------------------------------------------------------------------
 % \begin{slide}{More bisimulations}
@@ -1003,6 +1036,7 @@ Draw their LTS. If bisimilar, find the bisimulation.
 \myblock{Considering $\tau$-transitions}
 
 \begin{block}{Weak transition}
+\vspace{-6mm}
 \begin{align*}
   p \Trans{\alpha} q ~~~&\text{iff}~~~
   p \,(\rtran{\tau})^{*}\, q_1\rtran{a} q_2 \,(\rtran{\tau})^{*}\, q
@@ -1016,12 +1050,17 @@ where $\alpha \neq \tau$ and $(\rtran{\tau})^{*}$ is the reflexive and transitiv
 \begin{block}{Weak bisimulation (vs. strong)}
 Given  $\pair{S_1, \Act,  \rra_1}$  and $\pair{S_2, \Act, \rra_2}$ over $\Act$,
 relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pair{p,q} \in R$ and $a \in \Act\,\rdb{\cup \set{\tau}}$,
-%
+
+\vspace{-8mm}
 \begin{align*}
 %\text{\structure{(1)}}\; \;  &  p \downarrow_1 \;  \dimp\; q \downarrow_2\\ &\\
+% \text{\structure{(1)}}\; \;  & p \rtran{\tau}_1 p'\; \imp\;
+  % \rcb{\exists}{q'}{q' \in S_2}{\rdb{q \Trans{tau}_2  q'}\, \e\,
+  % \pair{p',q'} \in R}   \\
 \text{\structure{(1)}}\; \;  & p \rtran{a}_1 p'\; \imp\;
   \rcb{\exists}{q'}{q' \in S_2}{\rdb{q \Trans{a}_2  q'}\, \e\,
   \pair{p',q'} \in R}   \\
+% \text{\structure{(3) and (4)}}\; \;  & \text{symmetric case for }q\rtran{~}_2 q'
 \text{\structure{(2)}}\; \;  & q \rtran{a}_2 q'\; \imp\;
   \rcb{\exists}{p'}{p' \in S_1}{\rdb{p \Trans{a}_1 p'}\, \e\,
   \pair{p',q'} \in R}   
@@ -1087,6 +1126,40 @@ relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pa
     \pair{p'',q'} \in R}
 \end{align*}
 \end{block}
+\end{slide}
+
+
+\begin{slide}{Exercise}
+\doExercise{Search for a bisimulation, a weak bisimulation, and a branching bisimulation between $SmUni$ and $SmUni'$}{
+  \vspace*{-10mm}
+  \begin{columns}
+  \col[0.45]{    
+    \begin{align*}
+      % CM &= \mathsf{coin.coffee}.CM
+      % \\
+      % CS &= \mathsf{pub.(coin.coffee.CS + coin.tea.CS)}
+      CM &= \mathsf{coin.\ainv{coffee}}.CM
+      \\
+      CS &= \mathsf{pub.\ainv{coin}.coffee}.CS
+      \\
+      SmUni &= \crt{(CM|CS)}{\mathsf{\set{coin,coffee}}}
+    \end{align*}
+  }\col[0.55]{
+    \begin{align*}
+      % CM &= \mathsf{coin.coffee}.CM
+      % \\
+      % CS &= \mathsf{pub.(coin.coffee.CS + coin.tea.CS)}
+      CM'' &= \mathsf{coin.(sel.\ainv{coffee}}.CM'' + \\&~~~~~~~\mathsf{coin.sel.\ainv{latte}}.CM'')
+      \\
+      CS'' &= \mathsf{pub.\ainv{coin}.\ainv{sel}.(coffee}.CS''
+      \\
+      \!\!\!\!\!\!%
+      SmUni'' &= \crt{(CM''|CS'')}{\mathsf{\set{coin,coffee,latte,sel}}}
+    \end{align*}  
+  }
+  \end{columns}
+  % \vspace*{-7mm}
+}
 \end{slide}
 
 
