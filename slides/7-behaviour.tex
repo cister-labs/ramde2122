@@ -1040,16 +1040,16 @@ where
     \begin{columns}
     \col[0.45]{      
     \begin{align*}
-      A = x.B+x.x.C\\
-      B = x.x.A+y.C\\
-      C = x.A      
+      A &= x.B+x.x.C\\
+      B &= x.x.A+y.C\\
+      C &= x.A      
     \end{align*}
     }
     \col[0.45]{      
     \begin{align*}
-      D = x.x.x.D + x.E\\
-      E = x.F+y.F\\
-      F = x.A      
+      D &= x.x.x.D + x.E\\
+      E &= x.F+y.F\\
+      F &= x.A      
     \end{align*}
     }
     \end{columns}
@@ -1128,6 +1128,27 @@ where
 \end{slide}
 
 
+\begin{slide}{Sequence Diagrams as Interactive Processes}
+  \label{slide:sd as proc with alt}
+  \centering
+
+  ~\\
+  
+  \begin{columns}
+  \col[0.6]{
+    \includegraphics[width=\textwidth]{images/diagrams/sd-bank-alt.png}
+  }
+  \col[0.4]{
+    \begin{exampleblock}{\exercise  Write an interactive processes that acts as above}
+    $Sys = (U | A | C | E)$ % \backslash \alert{\ldots}$
+    \\~~$U = \alert{\ldots}$
+    \\~~$A = \alert{\ldots}$
+    \\~~$C = \alert{\ldots}$
+    \\~~$E = \alert{\ldots}$
+    \end{exampleblock}
+  }
+  \end{columns}
+\end{slide}
 
 %-------------------------------------------------------------------------------
 % \section{Behavioural equivalences}
