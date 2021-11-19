@@ -166,13 +166,13 @@ Both the project and the review will be presented in an oral presentation, and t
 
 __Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
 
-<!--   - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf), slides 1 - TBD:__ 28 Nov @ 23:59 (Sunday)
+  - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf) (pages 1-25)__ - 28 Nov @ 23:59 (Sunday)
   - ...
- -->
+
 
 __Exercises and Assignments__ have the following deadlines, that may still suffer changes.
 
-  - __[Exer.](assignments/a1-sets-pl-fol.pdf)__ 28 Nov @ 23:59
+  - __[Exer.](assignments/a1-sets-pl-fol.pdf)__ - 28 Nov @ 23:59 (Sunday)
   - __A1:__ tbd
   - __A2:__ tbd
 
