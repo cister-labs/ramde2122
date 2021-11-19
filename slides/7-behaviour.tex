@@ -797,7 +797,7 @@ where
   \begin{enumerate}
     \item $(a.A + b.B) ~\trans{b}~ B$
     \item $(a.b.A + (b.a.B + c.a.C)) ~\trans{b}~ a.B$
-    \item $((a.B + b.A)[a \mapsto c])\backslash\{a,b\} ~\trans{c}~ B$
+    \item $((a.B + b.A)[a \mapsto c])\backslash\{a,b\} ~\trans{c}~ (B[a\mapsto c])\backslash\{a,b\}$
   \end{enumerate}
 \end{exampleblock}
 
@@ -818,7 +818,7 @@ where
   \end{align*}
 \end{exampleblock}
 
-\doExercise{What is the language of this process?}{
+\doExercise{What is the language of the process $A$?}{
 \centering
   \vspace*{-5mm}
   \begin{align*}
