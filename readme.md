@@ -166,7 +166,7 @@ Both the project and the review will be presented in an oral presentation, and t
 
 __Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
 
-  - __[Slides of Lecture 7](slides/3-behaviour.pdf) (pages 1-25)__ - 28 Nov @ 23:59 (Sunday)
+  - __[Slides of Lecture 7](slides/7-behaviour.pdf) (pages 1-25)__ - 28 Nov @ 23:59 (Sunday)
   - ...
 
 
