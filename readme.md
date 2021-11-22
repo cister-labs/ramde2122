@@ -101,7 +101,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     </li>
     </ul>
   </li>
-  <li><a href="assignments/a1-modelling.pdf" class="hide">A1: Modelling Behaviour (group)</a></li>
+  <li><a href="assignments/a1-modelling.pdf">A1: Modelling Behaviour (group)</a></li>
   <li><a href="assignments/a2-verification.pdf" class="hide">A2: Analysing Behaviour (group)</a></li>
 </ul>
 
@@ -173,7 +173,7 @@ __Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the followi
 __Exercises and Assignments__ have the following deadlines, that may still suffer changes.
 
   - __[Exer.](assignments/a1-sets-pl-fol.pdf)__ - 28 Nov @ 23:59 (Sunday)
-  - __A1:__ tbd
+  - __[A1](assignments/a1-modelling.pdf):__ 12 Dec @ 23:59 (Sunday)
   - __A2:__ tbd
 
 

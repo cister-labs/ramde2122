@@ -238,6 +238,17 @@ Two automata $A, B$ are \alert{language equivalent} iff  $ L_A =  L_B$\\
   }
 \end{slide}
 
+\begin{slide}{Exercise}
+  \doExercise{Check if the processes are language equivalent}{
+    \begin{align*}
+      P &= coin.(\ainv{coffee}.P + \ainv{tea}.P)
+      &
+      Q &= coin.\ainv{coffee}.Q + coin.\ainv{tea}.Q
+    \end{align*}
+  }
+
+\end{slide}
+
 
 \section{EQ2 -- Similarity}
 
@@ -393,7 +404,7 @@ whenever $\pair{p,q} \in R$ and $a \in \Act$,
 %----------------------------------------------------------------------------------
 \begin{slide}{Examples}
 
-\begin{exampleblock}{\exercise Find bisimulations that include $q_1$}
+\doExercise{Find bisimulations that include $\pair{q_1,m}$}{
 \begin{equation*}
 \xymatrix{
 & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & m \ar[d]_{a}\\
@@ -401,7 +412,9 @@ q_2 \ar[rr]^{c}  && q_3 \ar@(ur,dr)[]^{c}  & & & n\ar@(ur,dr)[]^{c}
 }
 \end{equation*}
 % R = \enset{(q_1,m), (q_2, n), (q_3,n) }
-\vspace{1cm}
+}
+
+\doExercise{Find bisimulations that include $\pair{q_1,h}$}{
 
 \begin{equation*}
 \xymatrix{
@@ -409,28 +422,56 @@ q_1 \ar[r]^{a} & q_2  \ar[r]^{a}  & q_3  \ar[r]^{a} & \cdots & & h\ar@(ur,dr)[]^
 }
 \end{equation*}
 % R = \setdef{q_i, h}{i \geq 1}  
-\end{exampleblock}
+}
 
 \end{slide}
 
 
 %----------------------------------------------------------------------------------
-\begin{slide}{Examples}
+\begin{slide}{Exercises}
 
-\begin{exampleblock}{\exercise Find bisimulations that include $q_1$}
+\doExercise{Check if there is a bisimulation that include $\pair{q_1,p_1}$}{
 \vspace*{-3mm}
 \begin{equation*}
 \xymatrix{
 & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & p_1  \ar[d]^{a} \\
 q_2 \ar[d]^{c}  && q_3  \ar[d]^{c}  & && p_2  \ar[ld]_{c}  \ar[rd]^{c} & \\
 q_4 & & q_5 & &p_4 & & p_5\\
+% & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & p_1  \ar[d]^{a} \\
+% q_2 \ar[d]^{\rdb{b}}  && q_3  \ar[d]^{c}  & && p_2  \ar[ld]_{\rdb{b}}  \ar[rd]^{c} & \\
+% q_4 & & q_5 & &p_4 & & p_5
+}
+\end{equation*}
+}
+\end{slide}
+
+
+\begin{slide}{Exercises}
+\doExercise{Check if there is a bisimulation that include $\pair{q_1,p_1}$}{
+\vspace*{-3mm}
+\begin{equation*}
+\xymatrix{
+% & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & p_1  \ar[d]^{a} \\
+% q_2 \ar[d]^{c}  && q_3  \ar[d]^{c}  & && p_2  \ar[ld]_{c}  \ar[rd]^{c} & \\
+% q_4 & & q_5 & &p_4 & & p_5\\
 & q_1  \ar[ld]_{a}  \ar[rd]^{a} & & & & p_1  \ar[d]^{a} \\
 q_2 \ar[d]^{\rdb{b}}  && q_3  \ar[d]^{c}  & && p_2  \ar[ld]_{\rdb{b}}  \ar[rd]^{c} & \\
 q_4 & & q_5 & &p_4 & & p_5
-}
+}  
 \end{equation*}
-\end{exampleblock}
+}
+
+\doExercise{Check if there is a bisimulation that include $\pair{P,Q}$}{
+  \vspace*{-5mm}
+  \begin{align*}
+      P &= coin.(\ainv{coffee}.P + \ainv{tea}.P)
+      &
+      Q &= coin.\ainv{coffee}.Q + coin.\ainv{tea}.Q
+  \end{align*}
+}
+
 \end{slide}
+
 
 
 % Definition
@@ -1461,6 +1502,18 @@ relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pa
     % ~~
   }
 \end{slide}
+
+\begin{slide}{Curiosity}
+  
+  \Large
+
+  \begin{block}{Realisability of sequence diagrams experiments: }
+    \begin{center}
+      \url{https://arca.di.uminho.pt/choreo}      
+    \end{center}
+  \end{block}
+\end{slide}
+
 % \begin{slide}{Exercise}
 %   \centering
 
