@@ -78,11 +78,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Natural deduction - exercises (Lecture 6)
   </a></li><li><a href="slides/7-behaviour.pdf">
     Modelling behaviour: Automata and Process Algebra (Lecture 7)
-  </a></li><li><a class="hide" href="slides/8-equivalences.pdf">
+  </a></li><li><a href="slides/8-equivalences.pdf">
     Analysing behaviour: Equivalence of systems; Realisability (Lecture 8)
   </a></li><li><a class="hide" href="slides/9-modal-logic.pdf">
     Logics for behaviour: Modal logics; Model-Checking (Lecture 9)
-  </a></li><li><a class="hide" href="slides/10-mcrl2.pdf">
+  </a></li><li><a href="slides/10-mcrl2.pdf">
     Modelling and verification in mCRL2 (Lecture 10)
    </a></li>
    <!--<li><a class="hide" href="">
