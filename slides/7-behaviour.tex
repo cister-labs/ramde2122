@@ -1074,19 +1074,19 @@ where
 
   \includegraphics[width=0.6\textwidth]{images/sd-simple-atm.png}
 
-  \frsplitdiff{0.57}{0.44}{
+  % \frsplitdiff{0.57}{0.44}{
   \begin{itemize}
     \item \structure{Objects} as \alert{Processes}
-    \\(e.g.,processes $U$, $A$, $C$, $B$)
-    \item \alert{Send} actions (e.g., \mi{insertCard})
-    \item \alert{Reveive} actions (e.g., \mi{\ainv{insertCard}})
+    (e.g., processes $U$, $A$, $C$, $B$)
+    \item \alert{Send} actions (e.g., \mi{\ainv{insertCard}})
+    \item \alert{Reveive} actions (e.g., \mi{{insertCard}})
     
   \end{itemize}
-  }{\begin{itemize}
-    \item Unique action for each object pair
-    \item Do not write $(\ldots + \cnil)$
-  \end{itemize}
-  }
+  % }{\begin{itemize}
+  %   \item Unique action for each object pair
+  %   \item Do not write $(\ldots + \cnil)$
+  % \end{itemize}
+  % }
 \end{slide}
 
 %----------------------------------------------------------------------------------
@@ -1096,8 +1096,8 @@ where
   \includegraphics[width=0.6\textwidth]{images/sd-simple-atm.png}
 
   \begin{exampleblock}{This example has only 1 word and its prefixes}
-   $\Tr{sd} = \begin{array}[t]{l}
-      insertCard \cdot verifyCard \cdot verifyAccount \cdot accountNotOK \cdot \\ rejectedCard \cdot ejectCard
+   $Sys_{global}= \begin{array}[t]{l}
+      insertCard ~.~ verifyCard ~.~ verifyAccount ~.~ accountNotOK ~.~ \\ rejectedCard ~.~ ejectCard ~.~ \cnil
       \end{array}$
   \end{exampleblock}
 \end{slide}
@@ -1115,9 +1115,9 @@ where
     \includegraphics[width=\textwidth]{images/sd-simple-atm.png}
   }
   \col[0.4]{
-    \begin{exampleblock}{\exercise  Write an interactive processes that acts as above}
-    $Sys = (U | A | C | E) \backslash \alert{\ldots}$
-    \\~~$U = insertCard.\ainv{ejectCart}.\cnil$
+    \begin{exampleblock}{\exercise  Write an interactive processes that act the seq. diagram.}
+    $Sys_{local} = (U | A | C | E) \backslash \alert{\ldots}$
+    \\~~$U = \ainv{insertCard}.ejectCart.\cnil$
     \\~~$A = \alert{\ldots}$
     \\~~$C = \alert{\ldots}$
     \\~~$E = \alert{\ldots}$
@@ -1138,8 +1138,11 @@ where
     \includegraphics[width=\textwidth]{images/diagrams/sd-bank-alt.png}
   }
   \col[0.4]{
-    \begin{exampleblock}{\exercise  Write an interactive processes that acts as above}
-    $Sys = (U | A | C | E) \backslash \alert{\ldots}$
+    \begin{exampleblock}{\exercise  Write a single process $Sys_{global}$ and a set of interactive processes $Sys_{local}$ that act the seq. diagram.}
+    $Sys_{global} = insertCard ~.~ \alert{\ldots}$
+    \\[5mm]
+
+    $Sys_{local} = (U | A | C | E) \backslash \alert{\ldots}$
     \\~~$U = \alert{\ldots}$
     \\~~$A = \alert{\ldots}$
     \\~~$C = \alert{\ldots}$
