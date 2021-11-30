@@ -164,18 +164,15 @@ Both the project and the review will be presented in an oral presentation, and t
 
 ### Deadlines
 
-__Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+__Homework__  consists of a PDF report that must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+__Exercises and Assignments__ have specific deadlines, mentioned on their instructions.
+The deadlines are summarised below, and may still suffer changes.
 
-  - __[Slides of Lecture 7](slides/7-behaviour.pdf) (pages 1-25)__ - 28 Nov @ 23:59 (Sunday)
-  - __[Slides of Lecture 7](slides/7-behaviour.pdf) (pages 26-end) & [Lecture 8](slides/8-equivalences.pdf) (pages 1-10)__ - 5 Dec @ 23:59 (Sunday)
-  -   - ...
-
-
-__Exercises and Assignments__ have the following deadlines, that may still suffer changes.
-
-  - __[Exer.](assignments/a1-sets-pl-fol.pdf)__ - 28 Nov @ 23:59 (Sunday)
-  - __[A1](assignments/a1-modelling.pdf):__ 12 Dec @ 23:59 (Sunday)
-  - __A2:__ tbd
+ - __28 Nov (Sun) @ 23:59__ - [Slides of Lecture 7](slides/7-behaviour.pdf) (pages 1-25)
+ - __28 Nov (Sun) @ 23:59__ - [Logic exercises](assignments/a1-sets-pl-fol.pdf)
+ - __5 Dec (Sun)@ 23:59__ - Slides of [Lecture 7](slides/7-behaviour.pdf) (26-end) & [Lecture 8](slides/8-equivalences.pdf) (1-10)
+ - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-...) tbd.
+ - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
 
 
 
