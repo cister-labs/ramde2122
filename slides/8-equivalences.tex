@@ -1180,7 +1180,7 @@ relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pa
 
 
 \begin{slide}{Exercise}
-\doExercise{Search for a bisimulation, a weak bisimulation, and a branching bisimulation between $SmUni$ and $SmUni'$}{
+\doExercise{Search for a bisimulation, a weak bisimulation, and a branching bisimulation between $SmUni$ and $SmUni''$}{
   \vspace*{-10mm}
   \begin{columns}
   \col[0.45]{    
@@ -1201,7 +1201,7 @@ relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pa
       % CS &= \mathsf{pub.(coin.coffee.CS + coin.tea.CS)}
       CM'' &= \mathsf{coin.(sel.\ainv{coffee}}.CM'' + \\&~~~~~~~\mathsf{coin.sel.\ainv{latte}}.CM'')
       \\
-      CS'' &= \mathsf{pub.\ainv{coin}.\ainv{sel}.(coffee}.CS''
+      CS'' &= \mathsf{pub.\ainv{coin}.\ainv{sel}.coffee}.CS''
       \\
       \!\!\!\!\!\!%
       SmUni'' &= \crt{(CM''|CS'')}{\mathsf{\set{coin,coffee,latte,sel}}}
@@ -1254,7 +1254,7 @@ relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pa
 
   \begin{exampleblock}{This example has only 1 word and its prefixes}
    $L_{sd} = \begin{array}[t]{l}
-      insertCard \cdot verifyCard \cdot verifyAccount \cdot accountNotOK \cdot \\ rejectedCard \cdot ejectCard
+      \{insertCard \cdot verifyCard \cdot verifyAccount \cdot accountNotOK \cdot \\ rejectedCard \cdot ejectCard\}
       \end{array}$
   \end{exampleblock}
 \end{slide}
@@ -1367,8 +1367,8 @@ relation $R \subseteq S_1 \times S_2$ is a \alert{bisimulation} iff for all $\pa
     Does $Sys_{local}$ still includes $sd$ if $U$ is instead defined as below? 
     \begin{enumerate}
       % \item Your process from Slide~\ref{slide:sd as proc} \alert{covers} $sd$?
-      \item $U = insertCard.\ainv{ejectCard}.\cnil + insertCard.\cnil$
-      \item $U = (insertCard.\ainv{ejectCard}.\cnil) + goAway.\cnil)$
+      \item $U = \ainv{insertCard}.{ejectCard}.\cnil + \ainv{insertCard}.\cnil$
+      \item $U = (\ainv{insertCard}.{ejectCard}.\cnil) + \ainv{goAway}.\cnil)$
       % \item $(insertCard. verifyCard. verifyAccount. accountOK.$\\
       %       $rejectedCard. (ejectCard.\cnil + \structure{giveMoney.\cnil}))$ \alert{covers} $sd$?
       % \item $(insertCard. verifyCard. verifyAccount. accountOK.$\\
