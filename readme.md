@@ -28,9 +28,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     * Syntax, semantics, and reasoning
   + First Order Logic
     * Syntax, semantics, and reasoning
-<!--   + The Z3 automatic theorem prover
+<!--
+  * The Z3 automatic theorem prover
     * Rise4fun interface: get acquainted with the tool
-    * Python API: automating search for solutions -->
+    * Python API: automating search for solutions
+-->
 - Behavioural modelling
   + Single component
     * State diagrams and Flow charts
@@ -76,11 +78,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Natural deduction - exercises (Lecture 6)
   </a></li><li><a href="slides/7-behaviour.pdf">
     Modelling behaviour: Automata and Process Algebra (Lecture 7)
-  </a></li><li><a class="hide" href="slides/8-equivalences.pdf">
+  </a></li><li><a href="slides/8-equivalences.pdf">
     Analysing behaviour: Equivalence of systems; Realisability (Lecture 8)
   </a></li><li><a class="hide" href="slides/9-modal-logic.pdf">
     Logics for behaviour: Modal logics; Model-Checking (Lecture 9)
-  </a></li><li><a class="hide" href="slides/10-mcrl2.pdf">
+  </a></li><li><a href="slides/10-mcrl2.pdf">
     Modelling and verification in mCRL2 (Lecture 10)
    </a></li>
    <!--<li><a class="hide" href="">
@@ -93,8 +95,13 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Exercises and Assignments
 <ul>
-  <li><a href="" class="hide">Exercises on Logic (individual)</a></li>
-  <li><a href="assignments/a1-modelling.pdf" class="hide">A1: Modelling Behaviour (group)</a></li>
+  <li><a href="assignments/a1-sets-pl-fol.pdf">Exercises on Logic (individual)</a>
+    <ul><li>
+      <a href="assignments/a1-pl-rules.pdf">Compilation of logic rules</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="assignments/a1-modelling.pdf">A1: Modelling Behaviour (group)</a></li>
   <li><a href="assignments/a2-verification.pdf" class="hide">A2: Analysing Behaviour (group)</a></li>
 </ul>
 
@@ -157,16 +164,15 @@ Both the project and the review will be presented in an oral presentation, and t
 
 ### Deadlines
 
-__Homework:__ a PDF report must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+__Homework__  consists of a PDF report that must be submitted until Sunday @ 23:59 of the following week of being shown during lessons. For example, all exercises presented in the slides used in the week 8 Nov - 12 Nov must be submitted until Sunday 21 Nov.
+__Exercises and Assignments__ have specific deadlines, mentioned on their instructions.
+The deadlines are summarised below, and may still suffer changes.
 
-<!--   - __Slides [`3-behaviour.pdf`](slides/3-behaviour.pdf), slides 1 - TBD:__ 28 Nov @ 23:59 (Sunday)
-  - ...
- -->
-
-__Assignments__ have the following deadlines, that may still suffer changes.
-
-  - __A1:__ tbd
-  - __A2:__ tbd
+ - __28 Nov (Sun) @ 23:59__ - [Slides of Lecture 7](slides/7-behaviour.pdf) (pages 1-25)
+ - __28 Nov (Sun) @ 23:59__ - [Logic exercises](assignments/a1-sets-pl-fol.pdf)
+ - __5 Dec (Sun)@ 23:59__ - Slides of [Lecture 7](slides/7-behaviour.pdf) (26-end) & [Lecture 8](slides/8-equivalences.pdf) (1-10)
+ - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37).
+ - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
 
 
 

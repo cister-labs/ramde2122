@@ -5,7 +5,7 @@
 %\date{RAMDE -- 2021/2022}
 
 \usepackage[latin1]{inputenc} % pt characters
-\usepackage{enumitem}
+% \usepackage{enumitem}
 %\usepackage{draftwatermark}
 %\SetWatermarkText{Draft}
 %\SetWatermarkScale{1.4}
@@ -61,18 +61,28 @@ The rules:\\
 \begin{tabular}{ccc}
 \begin{minipage}{0.3\textwidth}
 
-    \begin{prooftree}	    \AxiomC{$\varphi$}		\AxiomC{$\psi$}
-		\RightLabel{$\land\text{\textbf{\textsc{I}}}$}		\BinaryInfC{$\varphi \land \psi$}    \end{prooftree}
+    \begin{prooftree}
+	    \AxiomC{$\varphi$}
+		\AxiomC{$\psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{I}}}$}
+		\BinaryInfC{$\varphi \land \psi$}
+    \end{prooftree}
 \end{minipage}
 &
 \begin{minipage}{0.3\textwidth}
-    \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
-		\RightLabel{$\land\text{\textbf{\textsc{E}}}_l$}		\UnaryInfC{$\varphi$}	\end{prooftree}  
+    \begin{prooftree}
+		\AxiomC{$\varphi \land \psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_l$}
+		\UnaryInfC{$\varphi$}
+	\end{prooftree}  
 \end{minipage}
 &
 \begin{minipage}{0.3\textwidth}
-    \begin{prooftree}		\AxiomC{$\varphi \land \psi$}
-		\RightLabel{$\land\text{\textbf{\textsc{E}}}_r$}		\UnaryInfC{$\psi$}	\end{prooftree} 
+    \begin{prooftree}
+		\AxiomC{$\varphi \land \psi$}
+		\RightLabel{$\land\text{\textbf{\textsc{E}}}_r$}
+		\UnaryInfC{$\psi$}
+	\end{prooftree} 
    
 \end{minipage}
 \end{tabular}
@@ -119,13 +129,19 @@ The rules:\\
 The rules:\\
 \begin{tabular}{ccc}
 \begin{minipage}{0.3\textwidth}
-    \begin{prooftree}	 	 \AxiomC{$\varphi$}
-	 	 \RightLabel{$\lor\text{\textbf{\textsc{I}}}_l$}		  \UnaryInfC{$\varphi \lor \psi$}    	\end{prooftree}
+    \begin{prooftree}
+	 	 \AxiomC{$\varphi$}
+	 	 \RightLabel{$\lor\text{\textbf{\textsc{I}}}_l$}
+		  \UnaryInfC{$\varphi \lor \psi$}
+    	\end{prooftree}
 \end{minipage}
 &
 \begin{minipage}{0.3\textwidth}
-    \begin{prooftree}		  \AxiomC{$\psi$}
-		  \RightLabel{$\lor\text{\textbf{\textsc{I}}}_r$}		  \UnaryInfC{$\varphi \lor \psi$}	   \end{prooftree}
+    \begin{prooftree}
+		  \AxiomC{$\psi$}
+		  \RightLabel{$\lor\text{\textbf{\textsc{I}}}_r$}
+		  \UnaryInfC{$\varphi \lor \psi$}
+	   \end{prooftree}
 \end{minipage}
 &
 \begin{minipage}{0.3\textwidth}

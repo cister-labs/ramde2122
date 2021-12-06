@@ -797,7 +797,7 @@ where
   \begin{enumerate}
     \item $(a.A + b.B) ~\trans{b}~ B$
     \item $(a.b.A + (b.a.B + c.a.C)) ~\trans{b}~ a.B$
-    \item $((a.B + b.A)[a \mapsto c])\backslash\{a,b\} ~\trans{c}~ B$
+    \item $((a.B + b.A)[a \mapsto c])\backslash\{a,b\} ~\trans{c}~ (B[a\mapsto c])\backslash\{a,b\}$
   \end{enumerate}
 \end{exampleblock}
 
@@ -818,7 +818,7 @@ where
   \end{align*}
 \end{exampleblock}
 
-\doExercise{What is the language of this process?}{
+\doExercise{What is the language of the process $A$?}{
 \centering
   \vspace*{-5mm}
   \begin{align*}
@@ -922,7 +922,6 @@ where
 \\- $\alpha \in \Act \alert{\cup \overline\Act}
     \cup \set{\tau}$~ is an action
 \\- $K$ s a collection of process names or process constants
-\\- $I$ is an indexing set
 \\- $L \subseteq \Act %\transp{\cup \overline{\Act}}
     $ is a set of labels
 \\- $f$ is a function that renames actions s.t. $f(\tau) = \tau$  \alert{and $f(\overline{a}) = \overline{f(a)}$}
@@ -1027,11 +1026,34 @@ where
 
 \begin{slide}{Exercises}
   \doExercise{Let $A=b.a.B$. Show that:}{
+    \vspace*{-8mm}
     \begin{enumerate}
       \item $(A ~|~ \overline{b}.\cnil)\backslash \{b\}~\trans\tau~ (a.B ~|~ \cnil)\backslash\{b\}$
       \item $(A ~|~ b.a.B) + ((b.A)[b\mapsto a]) ~\trans{a}~ A[b \mapsto a]$
     \end{enumerate}
   }  
+
+  \doExercise{Draw the NFAs $A$ and $D$}{
+    \vspace*{-8mm}
+
+    \begin{columns}
+    \col[0.45]{      
+    \begin{align*}
+      A &= x.B+x.x.C\\
+      B &= x.x.A+y.C\\
+      C &= x.A      
+    \end{align*}
+    }
+    \col[0.45]{      
+    \begin{align*}
+      D &= x.x.x.D + x.E\\
+      E &= x.F+y.F\\
+      F &= x.A      
+    \end{align*}
+    }
+    \end{columns}
+  }  
+
 \end{slide}
 
 
@@ -1052,19 +1074,19 @@ where
 
   \includegraphics[width=0.6\textwidth]{images/sd-simple-atm.png}
 
-  \frsplitdiff{0.57}{0.44}{
+  % \frsplitdiff{0.57}{0.44}{
   \begin{itemize}
     \item \structure{Objects} as \alert{Processes}
-    \\(e.g.,processes $U$, $A$, $C$, $B$)
-    \item \alert{Send} actions (e.g., \mi{insertCard})
-    \item \alert{Reveive} actions (e.g., \mi{\ainv{insertCard}})
+    (e.g., processes $U$, $A$, $C$, $B$)
+    \item \alert{Send} actions (e.g., \mi{\ainv{insertCard}})
+    \item \alert{Reveive} actions (e.g., \mi{{insertCard}})
     
   \end{itemize}
-  }{\begin{itemize}
-    \item Unique action for each object pair
-    \item Do not write $(\ldots + \cnil)$
-  \end{itemize}
-  }
+  % }{\begin{itemize}
+  %   \item Unique action for each object pair
+  %   \item Do not write $(\ldots + \cnil)$
+  % \end{itemize}
+  % }
 \end{slide}
 
 %----------------------------------------------------------------------------------
@@ -1074,8 +1096,8 @@ where
   \includegraphics[width=0.6\textwidth]{images/sd-simple-atm.png}
 
   \begin{exampleblock}{This example has only 1 word and its prefixes}
-   $\Tr{sd} = \begin{array}[t]{l}
-      insertCard \cdot verifyCard \cdot verifyAccount \cdot accountNotOK \cdot \\ rejectedCard \cdot ejectCard
+   $Sys_{global}= \begin{array}[t]{l}
+      insertCard ~.~ verifyCard ~.~ verifyAccount ~.~ accountNotOK ~.~ \\ rejectedCard ~.~ ejectCard ~.~ \cnil
       \end{array}$
   \end{exampleblock}
 \end{slide}
@@ -1093,9 +1115,9 @@ where
     \includegraphics[width=\textwidth]{images/sd-simple-atm.png}
   }
   \col[0.4]{
-    \begin{exampleblock}{\exercise  Write an interactive processes that acts as above}
-    $Sys = (U | A | C | E)$ % \backslash \alert{\ldots}$
-    \\~~$U = insertCard.\ainv{ejectCart}.\cnil$
+    \begin{exampleblock}{\exercise  Write an interactive processes that act as the seq. diagram.}
+    $Sys_{local} = (U | A | C | E) \backslash \alert{\ldots}$
+    \\~~$U = \ainv{insertCard}.ejectCart.\cnil$
     \\~~$A = \alert{\ldots}$
     \\~~$C = \alert{\ldots}$
     \\~~$E = \alert{\ldots}$
@@ -1105,6 +1127,30 @@ where
 \end{slide}
 
 
+\begin{slide}{Sequence Diagrams as Interactive Processes}
+  \label{slide:sd as proc with alt}
+  \centering
+
+  ~\\
+  
+  \begin{columns}
+  \col[0.6]{
+    \includegraphics[width=\textwidth]{images/diagrams/sd-bank-alt.png}
+  }
+  \col[0.4]{
+    \begin{exampleblock}{\exercise  Write a single process $Sys_{global}$ and a set of interactive processes $Sys_{local}$ that act as the seq. diagram.}
+    $Sys_{global} = insertCard ~.~ \alert{\ldots}$
+    \\[5mm]
+
+    $Sys_{local} = (U | A | C | E) \backslash \alert{\ldots}$
+    \\~~$U = \alert{\ldots}$
+    \\~~$A = \alert{\ldots}$
+    \\~~$C = \alert{\ldots}$
+    \\~~$E = \alert{\ldots}$
+    \end{exampleblock}
+  }
+  \end{columns}
+\end{slide}
 
 %-------------------------------------------------------------------------------
 % \section{Behavioural equivalences}

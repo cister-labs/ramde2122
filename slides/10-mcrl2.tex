@@ -53,6 +53,9 @@
 \typerule{com3}{P\trans a P' \quad Q\trans{\ainv{a}} Q'}{P|Q\trans{\tau_a} P'|Q'}
 \end{slide}
 
+
+\section{Processes in mCRL2}
+
 %-------------------------------------------------------------------------------
 \begin{frame}[fragile]{CCS in mCRL2}
   
@@ -68,7 +71,7 @@
  \\
  \crn{P}{f} &\to \mcode{rename(f,P)}
   \\
-  a.P|\ainv a.Q &\to \mcode{comm(\{ $\textcolor{blue}{\tt a1|a2}$->a\}, }\mcode{a1.P}\mcode{||a2.P)}
+  a.P|\ainv a.Q &\to \mcode{comm(\{ $\textcolor{blue}{\tt a1|a2}$->a\}, }\mcode{a1.P}\mcode{||a2.Q)}
   \\
   a.P|\ainv a.Q \backslash \{a\}  &\to \mcode{block(\{a1,a2\},}\mcode{comm(\{$\textcolor{blue}{\tt a1|a2}$->a\}, }
   \\&~~~~~
@@ -78,7 +81,6 @@
 \end{frame}
 
 
-\section{Processes in mCRL2}
 
 %-------------------------------------------------------------------------------
 \begin{frame}[fragile]{CCS in mCRL2 hiding communication}
@@ -96,7 +98,7 @@
  \crn{P}{f} &\to \mcode{rename(f,P)}
   \\
   a.P|\ainv a.Q &\to \texttt{\structure{hide(\{a\}, }}
-    \mcode{comm(\{ $\textcolor{blue}{\tt a1|a2}$->a\}, }\mcode{a1.P}\mcode{||a2.P))}
+    \mcode{comm(\{ $\textcolor{blue}{\tt a1|a2}$->a\}, }\mcode{a1.P}\mcode{||a2.Q))}
   \\
   a.P|\ainv a.Q \backslash \{a\}  &\to \texttt{\structure{hide(\{a\}, }}
     \mcode{block(\{a1,a2\},}\mcode{comm(\{$\textcolor{blue}{\tt a1|a2}$->a\}, }
