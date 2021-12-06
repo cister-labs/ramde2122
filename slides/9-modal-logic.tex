@@ -1091,6 +1091,75 @@ Give a modal formula that can be satisfied at point $1$ but not at $3$.
 }
 \end{slide}
 
+
+\begin{slide}{Exercise}
+  \begin{exampleblock}{\exercise Find distinguishing modal formula}
+    \begin{align*}
+    1)~~~&&&
+    \wrap{\begin{tikzpicture}[aut]
+      \node[sst,initial left,final]  (s_0) {$p_0$};
+      \node[sst] (s_1) [right of=s_0] {$p_1$};
+      \path[->]
+        (s_0) edge[bend left] node {coin} (s_1)
+        (s_1) edge[bend left] node {coffee} (s_0);
+    \end{tikzpicture}}
+    &&
+    \wrap{\begin{tikzpicture}[aut]
+      \node[sst,initial left,final]  (s_0) {$q_0$};
+      \node[sst] (s_1) [right of=s_0] {$q_1$};
+      \path[->]
+        (s_0) edge[bend left] node {coin} (s_1)
+        (s_1) edge[bend left] node {coffee} (s_0)
+        (s_1) edge[bend left=10] node[above] {tea} (s_0);
+    \end{tikzpicture}}
+    \\[3mm]
+    2)~~~&&&
+    \wrap{\begin{tikzpicture}[aut]
+      \node[sst,initial left,final]  (s_0) {$p_0$};
+      \node[sst] (s_1) [right of=s_0, yshift=3mm] {$p_1$};
+      \node[sst] (s_2) [right of=s_1] {$p_2$};
+      \node[sst] (s_3) [right of=s_0, yshift=-3mm] {$p_3$};
+      \path[->]
+        (s_0) edge  node {a} (s_1) edge node[below]{a} (s_3)
+        (s_1) edge  node {b}  (s_2);
+    \end{tikzpicture}}
+    &&
+    \wrap{\begin{tikzpicture}[aut]
+      \node[sst,initial left,final]  (s_0) {$q_0$};
+      \node[sst] (s_1) [right of=s_0] {$q_1$};
+      \node[sst] (s_2) [right of=s_1] {$q_2$};
+      \path[->]
+        (s_0) edge  node {a} (s_1)
+        (s_1) edge  node {b}  (s_2);
+    \end{tikzpicture}}
+    \\[3mm]
+    3)~~~&&&
+    \wrap{\begin{tikzpicture}[aut]
+      \node[sst,initial left,final]  (s_0) {$p_0$};
+      \node[sst] (s_1) [right of=s_0, yshift=3mm] {$p_1$};
+      \node[sst] (s_2) [right of=s_1] {$p_2$};
+      \node[sst] (s_3) [right of=s_0, yshift=-3mm] {$p_3$};
+      \node[sst] (s_4) [right of=s_3] {$p_4$};
+      \path[->]
+        (s_0) edge  node {a} (s_1) edge node[below]{a} (s_3)
+        (s_1) edge  node {b}  (s_2)
+        (s_3) edge  node[below] {c}  (s_4);
+    \end{tikzpicture}}
+    &&
+    \wrap{\begin{tikzpicture}[aut]
+      \node[sst,initial left,final]  (s_0) {$q_0$};
+      \node[sst] (s_1) [right of=s_0] {$q_1$};
+      \node[sst] (s_2) [right of=s_1, yshift=3mm] {$q_2$};
+      \node[sst] (s_3) [right of=s_1, yshift=-3mm] {$q_3$};
+      \path[->]
+        (s_0) edge  node {a} (s_1)
+        (s_1) edge  node {b}  (s_2)
+        (s_1) edge node[below]{c} (s_3);
+    \end{tikzpicture}}
+    \end{align*}
+\end{exampleblock}
+
+\end{slide}
 %----------------------------------------------------------------------------------
 % \begin{slide}{Invariance and definability}\label{s:33}
 % \small
