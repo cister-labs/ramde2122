@@ -103,15 +103,15 @@
 \end{frame}
 
 
-\section*{The EARS Patterns}
 
+\section*{The EARS Patterns}
 
 % \newcommand{\mkw}[2]{\textcolor{#2}{\textbf{#1}}\xspace}
 \newcommand{\mkw}[3]{\textcolor{#2}{\textbf{#1}\xspace#3}\xspace}
 \newcommand{\ewhile}[1][]{\mkw{while}{orange!85!black}{#1}}
 % \newcommand{\ewhile}{\mkw{while}{pink!75!black}}
-\newcommand{\ewhere}[1][]{\mkw{where}{pink!75!black}{#1}}
-\newcommand{\eif}[1][]{\mkw{if}{pink!75!black}{#1}}
+\newcommand{\ewhere}[1][]{\mkw{where}{pink!65!black}{#1}}
+\newcommand{\eif}[1][]{\mkw{if}{pink!65!black}{#1}}
 \newcommand{\ethen}[1][]{\mkw{then}{pink!75!black}{#1}}
 \newcommand{\ewhen}[1][]{\mkw{when}{purple!65!black}{#1}}
 \newcommand{\ethe}[1][]{\mkw{the}{red!75!black}{#1}}
@@ -160,6 +160,7 @@
 % \end{frame}
 
 
+
 \begin{slide}{Ubiquitous requirements}
 
   These refer to requirements that are always active. 
@@ -170,8 +171,8 @@
 
   \begin{example}
     \begin{itemize}
-      \item The {\color{red}{mobile phone}} shall {\color{blue}{have a mass of less than $x$ grams}}.
-      \item The {\color{red}kitchen system} shall {\color{blue}{have an input hatch}}.
+      \item \ethe[mobile phone] \eshall[have a mass of less than $x$ grams].
+      \item \ethe[kitchen system] \eshall[have an input hatch].
     \end{itemize}
   \end{example}
 \end{slide}
@@ -187,6 +188,13 @@
 %     No EARS specific keyword is present when specifying this particular type of requirement.
 %   \end{block}
 %  ...
+%  \begin{example}
+%     \begin{itemize}
+%       \item The {\color{red}{mobile phone}} shall {\color{blue}{have a mass of less than $x$ grams}}.
+%       \item The {\color{red}kitchen system} shall {\color{blue}{have an input hatch}}.
+%     \end{itemize}
+%   \end{example}
+
 
 
 \begin{slide}{State driven requirements}
@@ -216,6 +224,7 @@
 %       While {\color{orange}{$<$pre-condition(s)$>$}} the {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
 %     \end{center}  
 %   \end{block}
+
 
 
 \begin{slide}{Event driven requirements}
@@ -257,9 +266,9 @@
 %   \end{block}
 % =======
     \begin{block}{}\centering
-      \ewhere <feature is included>,
-       \ethe <system name>
-        \eshall <system response>
+      \ewhere[<feature is included>],
+       \ethe[<system name>]
+        \eshall[<system response>]
     \end{block}
   
   \begin{example}
@@ -274,10 +283,11 @@
 
 \begin{slide}{Unwanted behaviour requirements}
     These are used to specify the required system response to undesired situations and are denoted by the keywords If and Then.
-    \begin{block}{}
-     \eif <trigger>, \ethen\\
-     \ethe <system name> \\
-       \eshall <system response>
+    \begin{block}{}\centering
+     \eif[<trigger>],
+     \ethen
+     \ethe[<system name>]
+       \eshall[<system response>]
     \end{block}
       
   \begin{example}
@@ -292,10 +302,11 @@
 
 \begin{slide}{Complex requirements}
   The simple building blocks of the EARS patterns described above can be combined to specify requirements for richer system behaviour. Requirements that include more than one EARS keyword are called Complex requirements.
-    \begin{block}{}
-     \ewhile <precondition(s)>, \\
-      \ewhen <trigger>, \\
-       \ethe <system name> \eshall <system response>
+    \begin{block}{}\centering
+     \ewhile[<precondition(s)>],
+      \ewhen[<trigger>],\\
+       \ethe[<system name>]
+       \eshall[<system response>]
     \end{block}
     Example: While the aircraft is on ground, when reverse thrust is commanded, the engine control system shall enable reverse thrust.
 
@@ -311,9 +322,9 @@ Complex requirements for unwanted behaviour also include the If-Then keywords.
     % \vspace*{-7mm}
     Assume predicates \texttt{isMobile, hasMass, isKitchen, hasInputHatch}.
     \begin{enumerate}
-      \item \ethe mobile phone \eshall have a mass of less than XX grams.
+      \item \ethe[mobile phone] \eshall[have a mass of less than XX grams.]
       % exists ph,m . isMobile(ph) and hasMass(ph,m) and m<XX
-      \item \ethe kitchen system \eshall have an input hatch
+      \item \ethe[kitchen system] \eshall[have an input hatch.]
       % exists k. isKitchen(k) and hasInputHatch(k)
     \end{enumerate}
   }
@@ -322,9 +333,9 @@ Complex requirements for unwanted behaviour also include the If-Then keywords.
     % \vspace*{-7mm}
     Assume $MOD = 1$ (singleton) and $PROP = \{atmHasCard, atmAsksForCard, kitchenInMaintenance, kitchenRejInput\}$
     \begin{enumerate}
-    \item \ewhile there is no card in the ATM, \ethe ATM \eshall display ``insert card to begin''.
+    \item \ewhile[there is no card in the ATM], \ethe[ATM] \eshall[display ``insert card to begin''].
     % [] !hasCard -> askForCard
-    \item \ewhile the kitchen system is in maintenance mode, \ethe kitchen system \eshall reject all input.
+    \item \ewhile[the kitchen system is in maintenance mode], \ethe[kitchen system] \eshall[reject all input].
     % [] !hasCard -> askForCard
     \end{enumerate}
   }
