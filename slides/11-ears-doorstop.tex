@@ -102,204 +102,72 @@
   \end{block} 
 \end{frame}
 
+
 \section*{The EARS Patterns}
 
-<<<<<<< HEAD
-\begin{frame}[fragile]
-  \frametitle{EARS Patterns}
-  \begin{block}{Syntax of a generic EARS syntax}
-    \begin{verbatim}
-    While <pre-condition(s)>, 
-     when <trigger>, 
-      the <system name> shall <system response>  
-    \end{verbatim}
+
+% \newcommand{\mkw}[2]{\textcolor{#2}{\textbf{#1}}\xspace}
+\newcommand{\mkw}[3]{\textcolor{#2}{\textbf{#1}\xspace#3}\xspace}
+\newcommand{\ewhile}[1][]{\mkw{while}{orange!85!black}{#1}}
+% \newcommand{\ewhile}{\mkw{while}{pink!75!black}}
+\newcommand{\ewhere}[1][]{\mkw{where}{pink!75!black}{#1}}
+\newcommand{\eif}[1][]{\mkw{if}{pink!75!black}{#1}}
+\newcommand{\ethen}[1][]{\mkw{then}{pink!75!black}{#1}}
+\newcommand{\ewhen}[1][]{\mkw{when}{purple!65!black}{#1}}
+\newcommand{\ethe}[1][]{\mkw{the}{red!75!black}{#1}}
+\newcommand{\eshall}[1][]{\mkw{shall}{blue!75!black}{#1}}
+
+
+\begin{slide}{Generic EARS syntax}
+    The clauses of a requirement written in EARS always appear in the same order. The basic structure of an EARS requirement is:
+
+    \begin{block}{}\ttfamily
+    ~~~~\ewhile[<optional pre-condition>], \\
+    ~~~~ \ewhen[<optional trigger>], \\
+    ~~~~  \ethe[<system name>] \eshall[<system response>]
+    \end{block}
+
     such that:
     \begin{itemize}
       \item a {\tt pre-condition} defines a condition that must be true in order for a requirement to be active
       \item a {\tt trigger} is a discrete event that when detected makes the requirement active
       \item {\tt system name} is the name of the concrete (sub{-})system 
     \end{itemize}
-  \end{block}
 %  The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
 
 %The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used. The patterns are illustrated below.
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{The EARS Patterns}
-  \begin{block}{Ubiquitous requirements}
-    These refer to requirements that are always active. 
-    \begin{center}
-    The {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
-    \end{center}
-    No EARS specific keyword is present when specifying this particular type of requirement.
-  \end{block}
-=======
-% \begin{frame}[fragile]
-%   \frametitle{THE EARS PATTERNS}
-%   \begin{block}{Generic EARS syntax}
-%     The clauses of a requirement written in EARS always appear in the same order. The basic structure of an EARS requirement is:
-%     \begin{verbatim}
-%     While <optional pre-condition>, 
-%      when <optional trigger>, 
-%       the <system name> shall <system response>  
-%     \end{verbatim}
-%   The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
-
-% The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used. The patterns are illustrated below.
-%   \end{block}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{The EARS Patterns}
-%   \begin{block}{Ubiquitous requirements}
-%     These refer to requirements that are always active. No EARS specific keyword is present when specifying this particular type of requirement.
-    
-%     The pattern for 
-%     \begin{verbatim}
-%     The <system name> shall <system response>  
-%     \end{verbatim}
-%   \end{block}
-%   \begin{example}
-%     \begin{itemize}
-%       \item The mobile phone shall have a mass of less than XX grams.
-%       \item The kitchen system shall have an input hatch
-%     \end{itemize}
-%   \end{example}
-% \end{frame}
-
-
-% \begin{frame}[fragile]
-%   \frametitle{THE EARS PATTERNS}
-%   \begin{block}{State driven requirements}
-%   State driven requirements are active as long as the specified state remains true and are denoted by the keyword While.
-%     \begin{verbatim}
-%       While <precondition(s)>, 
-%        the <system name> 
-%         shall <system response>
-%     \end{verbatim}  
-%   \end{block}
-  
-%   \begin{example}
-%   \begin{itemize}
-%     \item While there is no card in the ATM, the ATM shall display “insert card to begin.
-%     \item While the kitchen system is in maintenance mode, the kitchen system shall reject all input.
-%   \end{itemize}
-%   \end{example}
-
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{THE EARS PATTERNS}
-%   \begin{block}{Event driven requirements}
-%   Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
-%     \begin{verbatim}
-%       When <trigger>, 
-%         the <system name> 
-%          shall <system response>
-%     \end{verbatim}
-%   \end{block}
-  
-%   \begin{example}
-%   \begin{itemize}
-%     \item When mute is selected, the laptop shall suppress all audio output.
-%     \item When the chef inserts potato to the input hatch, the kitchen system shall peel the potato.
-%   \end{itemize}
-%   \end{example}
-% \end{frame}
-
-
-
-% \begin{frame}[fragile]
-%   \frametitle{THE EARS PATTERNS}
-%   \begin{block}{Optional feature requirements}
-%   Optional feature requirements apply in products or systems that include the specified feature and are denoted by the keyword Where.
-%     \begin{verbatim}
-%       Where <feature is included>, 
-%        the <system name> 
-%         shall <system response>
-%     \end{verbatim}
-%   \end{block}
-  
-%   \begin{example}
-%   \begin{itemize}
-%     \item Where the car has a sunroof, the car shall have a sunroof control panel on the driver door.
-%     \item Where the kitchen system has a food freshness sensor, the kitchen system shall detect rotten foodstuffs. 
-%   \end{itemize}
-%   \end{example}
-% \end{frame}
-
-
-
-% \begin{frame}[fragile]
-%   \frametitle{THE EARS PATTERNS}
-%   \begin{block}{Unwanted behaviour requirements}
-%     These are used to specify the required system response to undesired situations and are denoted by the keywords If and Then.
-%     \begin{verbatim}
-%      If <trigger>, 
-%       then the <system name> 
-%        shall <system response> 
-%     \end{verbatim}
-%       \end{block}
-  
-%   \begin{example}
-%   \begin{itemize}
-%     \item If an invalid credit card number is entered, then the website shall display "please re-enter credit card details"
-%     \item  If a spoon is inserted to the input hatch, then the kitchen system shall eject the spoon.
-%   \end{itemize}
-%   \end{example}
-% \end{frame}
-
-
-
-% \begin{frame}[fragile]
-%   \frametitle{THE EARS PATTERNS}
-%   \begin{block}{Complex requirements}
-%   The simple building blocks of the EARS patterns described above can be combined to specify requirements for richer system behaviour. Requirements that include more than one EARS keyword are called Complex requirements.
-%     \begin{verbatim}
-%      While <precondition(s)>, 
-%       When <trigger>, 
-%        the <system name> shall <system response> 
-%     \end{verbatim}
-%     Example: While the aircraft is on ground, when reverse thrust is commanded, the engine control system shall enable reverse thrust.
-
-% Complex requirements for unwanted behaviour also include the If-Then keywords.
-%   \end{block}
-
-% \end{frame}
-
-
-\newcommand{\mkw}[2]{\textcolor{#2}{\textbf{#1}}\xspace}
-\newcommand{\ewhile}{\mkw{while}{pink!75!black}}
-\newcommand{\ewhere}{\mkw{where}{pink!75!black}}
-\newcommand{\eif}{\mkw{if}{pink!75!black}}
-\newcommand{\ethen}{\mkw{then}{pink!75!black}}
-\newcommand{\ewhen}{\mkw{when}{blue!75!black}}
-\newcommand{\ethe}{\mkw{the}{purple!75!black}}
-\newcommand{\eshall}{\mkw{shall}{red!75!black}}
-
-\begin{slide}{Generic EARS syntax}
-    The clauses of a requirement written in EARS always appear in the same order. The basic structure of an EARS requirement is:
-
-    \begin{block}{}\ttfamily
-    \ewhile <optional pre-condition>, \\
-     \ewhen <optional trigger>, \\
-      \ethe <system name> \eshall <system response> 
-    \end{block}
-
-  The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
-
-The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used. The patterns are illustrated below.
 \end{slide}
 
+%%%% PRE-merge
+% \begin{frame}[fragile]
+%   \frametitle{EARS Patterns}
+%   \begin{block}{Syntax of a generic EARS syntax}
+%     \begin{verbatim}
+%     While <pre-condition(s)>, 
+%      when <trigger>, 
+%       the <system name> shall <system response>  
+%     \end{verbatim}
+%     such that:
+%     \begin{itemize}
+%       \item a {\tt pre-condition} defines a condition that must be true in order for a requirement to be active
+%       \item a {\tt trigger} is a discrete event that when detected makes the requirement active
+%       \item {\tt system name} is the name of the concrete (sub{-})system 
+%     \end{itemize}
+%   \end{block}
+% %  The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
+
+% %The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used. The patterns are illustrated below.
+% \end{frame}
+
+
 \begin{slide}{Ubiquitous requirements}
-    These refer to requirements that are always active. No EARS specific keyword is present when specifying this particular type of requirement.
-    
-    The pattern for 
-    \begin{block}{}
-    \ethe <system name> \eshall <system response>  
-    \end{block}
->>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
+
+  These refer to requirements that are always active. 
+  \begin{block}{}\centering
+  \ethe[$<$system name$>$] \eshall[$<$system response$>$]
+  \end{block}
+  No EARS specific keyword is present when specifying this particular type of requirement.
+
   \begin{example}
     \begin{itemize}
       \item The {\color{red}{mobile phone}} shall {\color{blue}{have a mass of less than $x$ grams}}.
@@ -308,53 +176,55 @@ The application of the EARS notation produces requirements in a small number of 
   \end{example}
 \end{slide}
 
+%%%% PRE-merge
+% \begin{frame}[fragile]
+%   \frametitle{The EARS Patterns}
+%   \begin{block}{Ubiquitous requirements}
+%     These refer to requirements that are always active. 
+%     \begin{center}
+%     The {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
+%     \end{center}
+%     No EARS specific keyword is present when specifying this particular type of requirement.
+%   \end{block}
+%  ...
 
-<<<<<<< HEAD
-\begin{frame}[fragile]
-  \frametitle{THE EARS PATTERNS}
-  \begin{block}{State driven requirements}
-  State driven requirements are active as long as the specified state remains true.
-    \begin{center}
-      While {\color{orange}{$<$pre-condition(s)$>$}} the {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
-    \end{center}  
-  \end{block}
-=======
+
 \begin{slide}{State driven requirements}
-  State driven requirements are active as long as the specified state remains true and are denoted by the keyword While.
-    \begin{block}{}
-      \ewhile <precondition(s)>,\\
-       \ethe <system name> \\
-        \eshall <system response>
+  State driven requirements are active as long as the specified state remains true.
+    \begin{block}{}\centering
+      \ewhile[<precondition(s)>],
+       \ethe[<system name>]
+        \eshall[<system response>]
     \end{block}  
->>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   
   \begin{example}
   \begin{itemize}
-    \item While {\color{orange}{there is no card in the ATM}} the {\color{red}{ATM}} shall {\color{blue}{display "insert card to begin"}}.
-    \item While {\color{orange}{in maintenance mode}}, the {\color{red}{kitchen system}} shall {\color{blue}{reject all input}}.
+    \item \ewhile[there is no card in the ATM] \ethe[ATM] \eshall[display ``insert card to begin''].
+    \item \ewhile[in maintenance mode], \ethe[kitchen system] \eshall[reject all input].
   \end{itemize}
   \end{example}
 
 \end{slide}
 
-<<<<<<< HEAD
-\begin{frame}[fragile]
-  \frametitle{THE EARS Patterns}
-  \begin{block}{Event driven requirements}
-  Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
-    \begin{center}
-      When <trigger> the <system name> shall <system response>
-    \end{center}
-  \end{block}
-=======
+
+%%%% PRE-merge
+% \begin{frame}[fragile]
+%   \frametitle{THE EARS PATTERNS}
+%   \begin{block}{State driven requirements}
+%   State driven requirements are active as long as the specified state remains true.
+%     \begin{center}
+%       While {\color{orange}{$<$pre-condition(s)$>$}} the {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
+%     \end{center}  
+%   \end{block}
+
+
 \begin{slide}{Event driven requirements}
   Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
-    \begin{block}{}
-      \ewhen <trigger>, \\
-        \ethe <system name> \\
-         \eshall <system response>
+    \begin{block}{}\centering
+      \ewhen[<trigger>], 
+        \ethe[<system name>]
+         \eshall[<system response>]
     \end{block}
->>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   
   \begin{example}
   \begin{itemize}
@@ -365,23 +235,32 @@ The application of the EARS notation produces requirements in a small number of 
 \end{slide}
 
 
+%%%% PRE-merge
+% \begin{frame}[fragile]
+%   \frametitle{THE EARS Patterns}
+%   \begin{block}{Event driven requirements}
+%   Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
+%     \begin{center}
+%       When <trigger> the <system name> shall <system response>
+%     \end{center}
+%   \end{block}
+
 
 \begin{slide}{Optional feature requirements}
   Optional feature requirements apply in products or systems that include the specified feature and are denoted by the keyword Where.
-<<<<<<< HEAD
-    \begin{center}
-      Where <feature is included>, 
-       the <system name> 
-        shall <system response>
-    \end{center}
-  \end{block}
-=======
-    \begin{block}{}
-      \ewhere <feature is included>, \\
-       \ethe <system name> \\
+% <<<<<<< HEAD
+%     \begin{center}
+%       Where <feature is included>, 
+%        the <system name> 
+%         shall <system response>
+%     \end{center}
+%   \end{block}
+% =======
+    \begin{block}{}\centering
+      \ewhere <feature is included>,
+       \ethe <system name>
         \eshall <system response>
     \end{block}
->>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   
   \begin{example}
   \begin{itemize}
