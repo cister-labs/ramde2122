@@ -171,7 +171,7 @@ The deadlines are summarised below, and may still suffer changes.
  - __28 Nov (Sun) @ 23:59__ - [Slides of Lecture 7](slides/7-behaviour.pdf) (pages 1-25)
  - __28 Nov (Sun) @ 23:59__ - [Logic exercises](assignments/a1-sets-pl-fol.pdf)
  - __5 Dec (Sun)@ 23:59__ - Slides of [Lecture 7](slides/7-behaviour.pdf) (26-end) & [Lecture 8](slides/8-equivalences.pdf) (1-10)
- - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37).
+ - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37)
  - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
 
 
@@ -182,6 +182,8 @@ The deadlines are summarised below, and may still suffer changes.
   `drp arroba isep ponto ipp ponto pt`
 - [_José Proença_](https://jose.proenca.org),
   `pro arroba isep ponto ipp ponto pt`
+- [_Eduardo Tovar_](https://www.dei.isep.ipp.pt/~emt/),
+  `emt arroba isep ponto ipp ponto pt`
 
 
 
