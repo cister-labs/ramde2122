@@ -14,16 +14,32 @@
 
 \section*{The EARS Approach to Requirements Specification}
 
-\begin{frame}
+\begin{frame}[shrink]
   \small
   \frametitle{Getting to Know EARS}
-  \begin{block}{WHAT IS EARS?}
+  \begin{block}{What is EARS?}
   \begin{itemize}
     \item The acronym {\bf EARS} stands for {\it "Easy Approach to Requirements Syntax"} 
     \item EARS is a mechanism to gently constrain textual requirements
     \item EARS patterns provide structured guidance that enable authors to write high quality textual requirements.
   \end{itemize}
-\end{block}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Some history on the origins and motivations for proposing EARS}
+  \begin{block}{Main aspects}
+  \begin{itemize}
+    \item Alistair Mavin and colleagues faced a challenge when working at Rolls Royce and developing a XXX and (i) find the real requirements to the problem at hand, (ii) organize them, (iii) refine them, (iv) fill in the gaps 
+    \item moreover, the management required that the elicited should be clear, concise, testable, traceable, and correct
+    \item overall the objectives set where that (i) significantly reduce requirement errors when compared to previous projects, (ii) reducing those errors that became implementation errors, (iii) and minimize the error mitigation costs   
+  \end{itemize}
+  
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
 
 \begin{block}{EARS Building Blocks}
   \begin{itemize}
@@ -88,6 +104,37 @@
 
 \section*{The EARS Patterns}
 
+<<<<<<< HEAD
+\begin{frame}[fragile]
+  \frametitle{EARS Patterns}
+  \begin{block}{Syntax of a generic EARS syntax}
+    \begin{verbatim}
+    While <pre-condition(s)>, 
+     when <trigger>, 
+      the <system name> shall <system response>  
+    \end{verbatim}
+    such that:
+    \begin{itemize}
+      \item a {\tt pre-condition} defines a condition that must be true in order for a requirement to be active
+      \item a {\tt trigger} is a discrete event that when detected makes the requirement active
+      \item {\tt system name} is the name of the concrete (sub{-})system 
+    \end{itemize}
+  \end{block}
+%  The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
+
+%The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used. The patterns are illustrated below.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The EARS Patterns}
+  \begin{block}{Ubiquitous requirements}
+    These refer to requirements that are always active. 
+    \begin{center}
+    The {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
+    \end{center}
+    No EARS specific keyword is present when specifying this particular type of requirement.
+  \end{block}
+=======
 % \begin{frame}[fragile]
 %   \frametitle{THE EARS PATTERNS}
 %   \begin{block}{Generic EARS syntax}
@@ -252,15 +299,26 @@ The application of the EARS notation produces requirements in a small number of 
     \begin{block}{}
     \ethe <system name> \eshall <system response>  
     \end{block}
+>>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   \begin{example}
     \begin{itemize}
-      \item The mobile phone shall have a mass of less than XX grams.
-      \item The kitchen system shall have an input hatch
+      \item The {\color{red}{mobile phone}} shall {\color{blue}{have a mass of less than $x$ grams}}.
+      \item The {\color{red}kitchen system} shall {\color{blue}{have an input hatch}}.
     \end{itemize}
   \end{example}
 \end{slide}
 
 
+<<<<<<< HEAD
+\begin{frame}[fragile]
+  \frametitle{THE EARS PATTERNS}
+  \begin{block}{State driven requirements}
+  State driven requirements are active as long as the specified state remains true.
+    \begin{center}
+      While {\color{orange}{$<$pre-condition(s)$>$}} the {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
+    \end{center}  
+  \end{block}
+=======
 \begin{slide}{State driven requirements}
   State driven requirements are active as long as the specified state remains true and are denoted by the keyword While.
     \begin{block}{}
@@ -268,16 +326,27 @@ The application of the EARS notation produces requirements in a small number of 
        \ethe <system name> \\
         \eshall <system response>
     \end{block}  
+>>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   
   \begin{example}
   \begin{itemize}
-    \item While there is no card in the ATM, the ATM shall display “insert card to begin.
-    \item While the kitchen system is in maintenance mode, the kitchen system shall reject all input.
+    \item While {\color{orange}{there is no card in the ATM}} the {\color{red}{ATM}} shall {\color{blue}{display "insert card to begin"}}.
+    \item While {\color{orange}{in maintenance mode}}, the {\color{red}{kitchen system}} shall {\color{blue}{reject all input}}.
   \end{itemize}
   \end{example}
 
 \end{slide}
 
+<<<<<<< HEAD
+\begin{frame}[fragile]
+  \frametitle{THE EARS Patterns}
+  \begin{block}{Event driven requirements}
+  Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
+    \begin{center}
+      When <trigger> the <system name> shall <system response>
+    \end{center}
+  \end{block}
+=======
 \begin{slide}{Event driven requirements}
   Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
     \begin{block}{}
@@ -285,6 +354,7 @@ The application of the EARS notation produces requirements in a small number of 
         \ethe <system name> \\
          \eshall <system response>
     \end{block}
+>>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   
   \begin{example}
   \begin{itemize}
@@ -298,11 +368,20 @@ The application of the EARS notation produces requirements in a small number of 
 
 \begin{slide}{Optional feature requirements}
   Optional feature requirements apply in products or systems that include the specified feature and are denoted by the keyword Where.
+<<<<<<< HEAD
+    \begin{center}
+      Where <feature is included>, 
+       the <system name> 
+        shall <system response>
+    \end{center}
+  \end{block}
+=======
     \begin{block}{}
       \ewhere <feature is included>, \\
        \ethe <system name> \\
         \eshall <system response>
     \end{block}
+>>>>>>> ef03fff95784903be0e9f73a26dbf780eb84f02a
   
   \begin{example}
   \begin{itemize}
@@ -408,7 +487,7 @@ Complex requirements for unwanted behaviour also include the If-Then keywords.
 
 
 \begin{frame}
-  \frametitle{What is Doorstop}
+  \frametitle{What is Doorstop?}
   \begin{block}{Motivations for Doorstop}
   \begin{itemize}
     \item Effectively managing the requirements and traceability in a complex software project can be a
@@ -422,9 +501,30 @@ a database with a front-end desktop or web interface
   
   \end{block}
 
-  Doorstop is a Python tool and API that allows to write requirements in a text based manner and that uses version control. This solution allows a project to utilize its existing development tools to manage versions of the requirements using a lightweight, developer-friendly interface.  
+   
 \end{frame}
 
+\begin{frame}
+  \frametitle{What is Doorstop?}
+  \begin{block}{In a Nutshell}
+  \begin{itemize}
+    \item Doorstop is both a Python tool and API that allows to write requirements in a text based manner and that uses version control. 
+    \item This solution allows a project to utilize its existing development tools to manage versions of the requirements using a lightweight, developer-friendly interface.
+  \end{itemize}
+  \end{block}
+  \begin{block}{How it works (high-level description)}
+  \begin{itemize}
+  \item When a project leverages this tool, each linkable item (requirement, test case, etc.) is stored as a YAML file in a designated directory. 
+  \item The items in each directory form a document.
+  \item The relationship between documents forms a tree hierarchy.
+  \item Doorstop provides mechanisms for modifying this tree, validating item traceability, and publishing documents in several formats.  
+  \end{itemize}
+
+       
+  \end{block}
+
+  
+\end{frame}
 
 
 
