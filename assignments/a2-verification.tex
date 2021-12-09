@@ -90,16 +90,16 @@ What does the property ``\code{[true*]<ready>true}'' mean? Does it hold in any o
 \subex{\label{ex:ver2}
 Does the property ``\code{[true*.foxr.win]false}'' holds for \bash{farmer1}? Does the equivalent property ``\code{[true*.fox(right).win]false}'' holds for \bash{farmer2}? What can you conclude?}
 
-% \subex{\label{ex:ver3}
-% Recall that \bash{farmer1} is less complete than \bash{farmer2}, because it fails to include some important invariants.
-% Write a \textbf{single property} for \bash{farmer2} to capture that:
-% \begin{itemize}
-%   \item no bad state is reached, and
-%   \item the goal is reached (everyone can cross).
-% \end{itemize}
-% \textbf{Verify} it using mCRL2 toolset.
-% \textbf{Verify} if its equivalent formulation holds for \bash{farmer1}.
-% }
+\subex{\label{ex:ver3}
+Recall that \bash{farmer1} is less complete than \bash{farmer2}, because it fails to include some important invariants.
+Write a \textbf{single property} for \bash{farmer2} to capture that:
+\begin{itemize}
+  \item no bad state is reached, and
+  \item the goal is reached (everyone can cross).
+\end{itemize}
+\textbf{Add this property} to your project and \textbf{verify} it using mCRL2 toolset.
+\textbf{Reformulate} this property for \bash{farmer1} and add it to that project, and \textbf{verify} if it holds.
+}
 
 \subex{
 Consider now the extended system \bash{farmer3}.
@@ -142,6 +142,11 @@ Provide two variations of this system and include them in files \bash{vending1.m
 <true*>[true*.getApple] false\end{lstlisting}
 \textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
 
+\vspace{2mm}
+\subex{Now it is your turn to formalise the requirements. Write a set of requirements using mCRL2's formulas that capture the informal requirements stated below. Do not implement the mCRL2 model. If necessary, include an explanation of the actions and assumptions that you used.}
+\begin{quote}\it
+  I would like the vending machine to sell 3 items: apples, bananas, and chocolates. Chocolates cost 2eur, and fruit costs 1eur. Only 1eur and 2eur coins are accepted. If the machine has no 1eur coins, it does not sell fruit with a 2eur coin. The machine can hold at most 100 coins of 1eur and 100 coins of 2eur.
+\end{quote}
 \end{myExercise}
 
 
