@@ -4,7 +4,7 @@
 \input{macros}
 \date{RAMDE -- 2021/2022}
 
-\usepackage[latin1]{inputenc} % pt characters
+\usepackage[utf8x]{inputenc} % pt characters and eur sign (instead of latin1)
 
 \usepackage{draftwatermark}
 \SetWatermarkText{Draft}
@@ -118,8 +118,8 @@ In this example there is a an extra process called \code{Counter(n:Nat)}.
 \begin{myExercise} \label{ex:vm}
 Specify two interacting processes in mCRL2:
 \begin{itemize}
-  \item \textbf{a vending machine} with 2 products, apples and bananas, costing 1eur and 2eur respectively; and
-  \item \textbf{a user} who can insert 1eur or 2eur coins and request for products.
+  \item \textbf{a vending machine} with 2 products, apples and bananas, costing 1€ and 2€ respectively; and
+  \item \textbf{a user} who can insert 1€ or 2€ coins and request for products.
 \end{itemize}
 Provide two variations of this system and include them in files \bash{vending1.mcrl2} and \bash{vending2.mcrl2}, respectively, according to the requirements below. Try to keep the specifications simple. \textbf{Submit this file in your git repository.}
 %You have the freedom to select the set of actions and behaviour that you believe to make 
@@ -145,7 +145,14 @@ Provide two variations of this system and include them in files \bash{vending1.m
 \vspace{2mm}
 \subex{Now it is your turn to formalise the requirements. Write a set of requirements using mCRL2's formulas that capture the informal requirements stated below. Do not implement the mCRL2 model. If necessary, include an explanation of the actions and assumptions that you used.}
 \begin{quote}\it
-  I would like the vending machine to sell 3 items: apples, bananas, and chocolates. Chocolates cost 2eur, and fruit costs 1eur. Only 1eur and 2eur coins are accepted. If the machine has no 1eur coins, it does not sell fruit with a 2eur coin. The machine can hold at most 100 coins of 1eur and 100 coins of 2eur.
+  I would like the vending machine to sell 3 items: apples, bananas, and chocolates.
+  It should be possible to buy chocolates for 2€ and fruit for 1€.
+  Only 1€ and 2€ coins are accepted.
+  The machine can hold at most 100 coins of 1€ and 100 coins of 2€. 
+  If the machine has no 1€ coins, it cannot not sell fruit with a 2€ coin. 
+  If the machine has already 2€ inserted, it cannot collect another coin.
+  The machine should give change back when buying fruit after inserting 2€.
+  The user can cancel its request and get the money back.
 \end{quote}
 \end{myExercise}
 
