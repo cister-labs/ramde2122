@@ -1,0 +1,26 @@
+%% file: famer1.mcrl2
+act
+  fr,fl,gr,gl,br,bl,                       % actions by the passengers
+  ffr,fgr,fbr,farmerr,ffl,fgl,fbl,farmerl, % actions by the farmer
+  foxr,foxl,gooser,goosel,beansr,beansl,   % actions by the system
+  winf,wing,winb,win;                      % actions to detect winning conditions
+
+proc
+  Fox = fr.(fl+winf).Fox ;
+  Goose = gr.(gl+wing).Goose ;
+  Beans = br.(bl+winb).Beans ;
+  Farmer = (ffr+fgr+fbr+farmerr).(ffl+fgl+fbl+farmerl).Farmer ;
+
+  Sys = allow(
+          { foxr,foxl,gooser,goosel,beansr,beansl,farmerl,farmerr,win },
+        comm(
+          { fr|ffr -> foxr,   fl|ffl -> foxl, 
+            gr|fgr -> gooser, gl|fgl -> goosel, 
+            br|fbr -> beansr, bl|fbl -> beansl,
+            winf|wing|winb|farmerl -> win
+          },
+          Fox || Goose || Beans || Farmer
+        ));
+
+init
+  Sys;

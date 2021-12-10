@@ -1,0 +1,28 @@
+%% file: farmer2.mcrl2
+sort
+  Position = struct left | right;
+map
+  inv : Position -> Position ;
+  ok  : Position # Position # Position # Position -> Bool ;
+var
+  fm,f,g,b: Position;
+eqn
+  inv(left)   = right ;
+  inv(right)  = left ;
+  ok(fm,f,g,b) = %% (1) %%;
+
+act
+  fox,goose,beans,farmer : Position; % system actions, parameterised on the position
+  win;                               % actions to detect the winning condition
+proc
+  State(fm:Position,f:Position,g:Position,b:Position) = % (farmer,fox,goose,beans)
+     ((fm==f && ok(inv(fm),inv(f),g,b)) -> fox(inv(f))    .State(inv(fm),inv(f),g,b))
+   + ((fm==g && ok(inv(fm),f,inv(g),b)) -> goose(inv(g))  .State(inv(fm),f,inv(g),b))
+   + ((fm==b && ok(inv(fm),f,g,inv(b))) -> beans(inv(b))  .State(inv(fm),f,g,inv(b)))
+   + (          ok(inv(fm),f,g,b)       -> farmer(inv(fm)).State(inv(fm),f,g,b))
+   + ((fm==right && f==right && g==right && b==right)  -> win.State(left,left,left,left));
+
+   Sys = State(left,left,left,left);
+
+init
+  Sys;
