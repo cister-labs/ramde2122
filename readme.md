@@ -80,7 +80,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Modelling behaviour: Automata and Process Algebra (Lecture 7)
   </a></li><li><a href="slides/8-equivalences.pdf">
     Analysing behaviour: Equivalence of systems; Realisability (Lecture 8)
-  </a></li><li><a class="hide" href="slides/9-modal-logic.pdf">
+  </a></li><li><a href="slides/9-modal-logic.pdf">
     Logics for behaviour: Modal logics; Model-Checking (Lecture 9)
   </a></li><li><a href="slides/10-mcrl2.pdf">
     Modelling and verification in mCRL2 (Lecture 10)
@@ -102,7 +102,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     </ul>
   </li>
   <li><a href="assignments/a1-modelling.pdf">A1: Modelling Behaviour (group)</a></li>
-  <li><a href="assignments/a2-verification.pdf" class="hide">A2: Analysing Behaviour (group)</a></li>
+  <li><a href="assignments/a2-verification.pdf">A2: Analysing Behaviour I (group)</a></li>
 </ul>
 
 
@@ -171,8 +171,10 @@ The deadlines are summarised below, and may still suffer changes.
  - __28 Nov (Sun) @ 23:59__ - [Slides of Lecture 7](slides/7-behaviour.pdf) (pages 1-25)
  - __28 Nov (Sun) @ 23:59__ - [Logic exercises](assignments/a1-sets-pl-fol.pdf)
  - __5 Dec (Sun)@ 23:59__ - Slides of [Lecture 7](slides/7-behaviour.pdf) (26-end) & [Lecture 8](slides/8-equivalences.pdf) (1-10)
- - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37).
+ - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37)
  - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
+ - __19 Dec (Sun)@ 23:59__ - Slides of [Lecture 9](slides/9-modal-logic.pdf) (1-29)
+ - __9 Jan (Sun)@ 23:59__ - Behaviour assignment, [Part I](assignments/a2-verification.pdf) and <div class="hide">Part II (to appear)</div>
 
 
 
@@ -182,6 +184,8 @@ The deadlines are summarised below, and may still suffer changes.
   `drp arroba isep ponto ipp ponto pt`
 - [_José Proença_](https://jose.proenca.org),
   `pro arroba isep ponto ipp ponto pt`
+- [_Eduardo Tovar_](https://www.dei.isep.ipp.pt/~emt/),
+  `emt arroba isep ponto ipp ponto pt`
 
 
 

@@ -6,9 +6,9 @@
 
 \usepackage[utf8x]{inputenc} % pt characters and eur sign (instead of latin1)
 
-\usepackage{draftwatermark}
-\SetWatermarkText{Draft}
-\SetWatermarkScale{1.4}
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Draft}
+% \SetWatermarkScale{1.4}
 
 \begin{document}
  
@@ -16,10 +16,10 @@
 %                         Start here
 % --------------------------------------------------------------
  
-\title{A2: Analysing behaviour\\
-{\Large Crossing the river -- Part 2}}
+\title{A2: Analysing behaviour -- Part I}
+% {\Large Crossing the river -- Part 2}}
 
-\author{David Pereira \& Jos\'{e} Proen\c{c}a} 
+\author{David Pereira \& Jos\'{e} Proen\c{c}a \& Eduardo Tovar} 
 
 
 \maketitle
@@ -30,11 +30,12 @@
 }
 
 \descrbox{What to submit}{
- The PDF report and a new \bash{vending.mcrl2} file (for Exercise~\ref{ex:vm}), placed in your group's git repository. Recall that \textbf{all students should push commits}.
+ The PDF report and the new files required by the exercises placed in your group's git repository: \bash{farmer12.mcrl2}, \bash{vending1.mcrl2} and \bash{vending2.mcrl2}.
+Recall that \textbf{all students should push commits}.
 }
 
 \descrbox{Deadline:}{
- TBD % 14 Dec 2020 @ 23:59 (Monday)
+  9 Jan 2022 @ 23:59 (Monday) -- together with Part II (to appear)
 }
 
 
@@ -61,8 +62,8 @@ Create variations of the \code{Sys} processes in \bash{farmer1} and \bash{farmer
 }
 
 \subex{
-Combine both specifications of \bash{farmer1} and \bash{farmer2} in a single specification.
-Rename \code{Sys} from \bash{farmer1} to \code{Sys1} and \code{SysHide1}, and similarly for \code{Sys} from \bash{farmer2}.
+Combine both specifications of \bash{farmer1} and \bash{farmer2} in a single specification \bash{farmer12}.
+Rename \code{Sys}/\code{SysHide} from \bash{farmer1} to \code{Sys1}/\code{SysHide1}, and similarly for \code{Sys}/\code{SysHide} from \bash{farmer2}.
 Redefine the function \code[morekeywords={ok}]{ok} by setting it to true, i.e., define \code[morekeywords={ok}]{ok(fm,f,g,b)=true;}.
 
 Visualise the processes \code{SysHide1} and \code{SysHide2}. Compare them using strong bisimulation by adding a new \textbf{Equivalence} property that compares them. %Note that you will have to delete the \code{init} block.
@@ -85,7 +86,7 @@ Visualise the processes \code{SysHide1} and \code{SysHide2}. Compare them using 
 Answer the questions below on the use of mu-calculus for specifying properties in mCRL2.
 
 \subex{\label{ex:ver1}
-What does the property ``\code{[true*]<ready>true}'' mean? Does it hold in any of these 2 LTSs?}
+What does the property ``\code{[true*]<ready>true}'' mean? Does it hold for \bash{farmer1} and for \bash{farmer2}?}
 
 \subex{\label{ex:ver2}
 Does the property ``\code{[true*.foxr.win]false}'' holds for \bash{farmer1}? Does the equivalent property ``\code{[true*.fox(right).win]false}'' holds for \bash{farmer2}? What can you conclude?}
@@ -148,11 +149,12 @@ Provide two variations of this system and include them in files \bash{vending1.m
   I would like the vending machine to sell 3 items: apples, bananas, and chocolates.
   It should be possible to buy chocolates for 2€ and fruit for 1€.
   Only 1€ and 2€ coins are accepted.
-  The machine can hold at most 100 coins of 1€ and 100 coins of 2€. 
-  If the machine has no 1€ coins, it cannot not sell fruit with a 2€ coin. 
-  If the machine has already 2€ inserted, it cannot collect another coin.
+  The machine has a maximum capacity for 1€ coins and for 2€ coins. 
+  The machine does not accept coins if its capacity is full.
   The machine should give change back when buying fruit after inserting 2€.
-  The user can cancel its request and get the money back.
+  If the machine has already 2€ inserted, it refuses another coin.
+  If the machine has no 1€ coins, it cannot not sell fruit with a 2€ coin. 
+  The user can request the money back after inserting coins.
 \end{quote}
 \end{myExercise}
 
@@ -190,7 +192,7 @@ Provide two variations of this system and include them in files \bash{vending1.m
     \item \textbf{Quality} (of the work produced)
     \item \textbf{Collaboration} (how easy it was to meet and interact)
   \end{itemize}
-  \textbf{Send this information individually} as before by to David Pereira and Jos\'{e} Proen\c{c}a. No justification is needed -- e.g., \emph{``Group 3: Jo\~{a}o: Effort 5, Quality 4, Collaboration 5; Maria: ...''}.
+  \textbf{Send this information individually} as before by email or Teams to David Pereira and Jos\'{e} Proen\c{c}a. No justification is needed -- e.g., \emph{``Group 3: Jo\~{a}o: Effort 5, Quality 4, Collaboration 5; Maria: ...''}.
 \end{myExercise}
 
 

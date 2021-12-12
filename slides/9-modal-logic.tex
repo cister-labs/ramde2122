@@ -829,7 +829,7 @@ Each logic accepts a different set of \emph{principles} or \emph{rules} (with va
 \item $\phi_1 =$ \emph{This applies only to cars already \alert{on-service}}
 \item $\phi_2 =$
  \emph{If a car is \alert{allo}{cated} to a service, it must first \alert{col}{lect} the passenger and then \alert{plan} the route}
-\item $\phi_3 =$ \emph{On detecting an \alert{emergence} the taxi becomes inactive}
+\item $\phi_3 =$ \emph{On detecting an \alert{emergency} the taxi becomes inactive}
 \item $\phi_4 =$ \emph{A car \alert{on-service} is not inactive}
 \end{itemize}
 }
@@ -905,7 +905,7 @@ Each logic accepts a different set of \emph{principles} or \emph{rules} (with va
     \item $\pv{-}\true$
     \item $\boxx{-^{*}}\pv{-}\true$
     \item $\boxx{-^{*}.a}\pv{b}\true$
-    \item $\diam{-^{*}.send}$\\$\pv{(-send)^{*}.recv}\true$
+    \item $\boxx{-^{*}.send}$\\$\pv{(-send)^{*}.recv}\true$
   \end{enumerate}
 }}
 
@@ -992,9 +992,9 @@ $R$ between their states:
   \centering
   Given 2 models $\ger{M}$ and $\ger{M'}$, if you can find $\phi$ such that
   \\[4mm]
-  $\ger{M}\models \phi$ and $\ger{M'}\models \phi$
+  $\ger{M}\models \phi$ and $\ger{M'}\not \models \phi$
   \\[4mm]
-  then they are NOT bisimilar.
+  (or vice-versa) then they are NOT bisimilar.
   
 \end{alertblock}
 

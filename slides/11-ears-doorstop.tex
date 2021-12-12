@@ -1,5 +1,6 @@
 \documentclass[aspectratio=169]{beamer}
 \usepackage{etex} % fixes new-dimension error
+\usepackage{wasysym}
 
 \input{macros/beamerconf}
 \input{macros/preamble}
@@ -65,52 +66,51 @@
     \item moreover, the management required that the elicited should be clear, concise, testable, traceable, and correct
     \item overall the objectives set where that (i) significantly reduce requirement errors when compared to previous projects, (ii) reducing those errors that became implementation errors, (iii) and minimize the error mitigation costs   
   \end{itemize}
-  
   \end{block}
-
 \end{frame}
-
+%
 \begin{frame}
-
-\begin{block}{EARS Building Blocks}
+ \begin{block}{EARS Building Blocks}
   \begin{itemize}
     \item There is a set syntax (structure), with an underlying ruleset. 
     \item A small number of keywords are used to denote the different clauses of an EARS requirement. 
     \item The clauses are always in the same order, following temporal logic. 
     \item The syntax and the keywords closely match common usage of English and are therefore intuitive.
   \end{itemize}  
-\end{block}
-
+ \end{block}
 \end{frame}
-
-
+%
 \begin{frame}
-  \small
+%  \small
   \frametitle{How EARS Came to Life}
   \begin{block}{Context}
   \begin{itemize}
-    \item Ideas triggered while the author and colleagues at Rolls-Royce PLC were analysing the airworthiness regulations for an engine jet control system. 
-    \item The regulations contained high level objectives, a mixture of implicit and explicit requirements at different levels, lists, guidelines and supporting information.
-    \item In the process of extracting and simplifying the requirements, Mav noticed that the requirements all followed a similar structure.
-    \item He found that requirements were easiest to read when the clauses always appeared in the same order. These patterns were refined and evolved to create EARS.
-    \item The notation was first published in 2009 and has been adopted by many organisations across the world.
+    \item {\bf When:} while the author and colleagues at Rolls-Royce PLC were analysing the airworthiness regulations for an engine jet control system. 
+    \item {\bf "Inputs":}The regulations contained high level objectives, a mixture of implicit and explicit requirements at different levels, lists, guidelines and supporting information.
+    \item {\bf How?:} 
+      \begin{itemize}
+        \item In the process of extracting and simplifying the requirements, Mav noticed that the requirements all followed a similar structure.
+      \item He found that requirements were easiest to read when the clauses always appeared in the same order. These patterns were refined and evolved to create EARS.
+    \end{itemize}
+    \item {\bf Inception:} The notation was first published in 2009 and has been adopted by many organisations across the world.
   \end{itemize}
   \end{block}
-  
 \end{frame}
-
+%
 \begin{frame}
   \frametitle{Motivations for Adopting EARS (1/2)}
   \begin{block}{Why adopt EARS?}
-  \begin{itemize}
-  \item  System requirements are usually written in unconstrained natural language, which is inherently imprecise. 
-  \item Often, requirements authors are not trained in how to write requirements. 
-  \item During system development, requirements problems propagate to lower levels. 
-  \end{itemize}
-  {\bf This creates unnecessary volatility and risk, impacting programme schedule and cost.}
+    \begin{itemize}
+      \item System requirements are usually written in unconstrained natural language, which being to the table its inherent imprecision and ambiguity. 
+      \item It is not unusual that authors of requirements have no training on how to write requirements. 
+      \item During system development, requirements problems propagate to lower levels. 
+    \end{itemize}
   \end{block} 
+  \begin{alert}
+  {\bf This creates unnecessary volatility and risk, impacting schedules and costs.}
+  \end{alert}
 \end{frame}
-
+%
 \begin{frame}
   \frametitle{Motivations for Adopting EARS (2/2)}
   \begin{block}{Why adopt EARS?}
@@ -121,42 +121,60 @@
   \end{itemize}
   \end{block} 
 \end{frame}
-
+%
 \begin{frame}
-  \frametitle{Who is using EARS?}
-  \begin{block}{WHO USES EARS?}
+  \frametitle{On the adoption of EARS}
+  \begin{block}{Who is using EARS?}
   \begin{itemize}
     \item the EARS methodology was first presented to the 17th IEEE International Requirements Engineering Conference in 2009
-    \item Since then, it has been adopted by numerous organizations (Bosch, Honeywell, Intel, Rolls-Royce and Siemens) and included in the requirements engineering curricula of many universities (China, France, Sweden, UK, USA, and now Portugal :-)).  
+    \item since then, it has been adopted by numerous organizations (Bosch, Honeywell, Intel, Rolls-Royce and Siemens) and included in the requirements engineering curricula of many universities (China, France, Sweden, UK, USA, and now Portugal {\Large\smiley{}}).  
   \end{itemize}
-  In the words of the author, "(...) because the EARS method imposes just a slight constraint on natural language while providing a simple, logical method for constructing clear, concise, unambiguous requirements."
+  In the words of the author, {\it {\bf "(...) because the EARS method imposes just a slight constraint on natural language while providing a simple, logical method for constructing clear, concise, unambiguous requirements."}}
   \end{block} 
 \end{frame}
-
+%
+%
+%
 \section*{The EARS Patterns}
-
+%
+%
+%
 \begin{frame}
-  \frametitle{EARS Patterns - Overview}  
-  Adicionar aqui texto generico, e.g., quantos padroes, etc., etc.
+  \frametitle{EARS Patterns - Overview}
+  \begin{block}{Vocabulary}
+    \small
+    \begin{description}
+      \item [\texttt{<sys>}] the system name
+      \item [\texttt{<res>}] the system response
+      \item [\texttt{<pre>}] a precondition, {\em i.e.}, a set of properties from a state that need to be true for the requirement to be active
+      \item [\texttt{<tri>}] the trigger that activates a requirement
+    \end{description}
+  \end{block}
+  \begin{block}{Some remarks}
+  \small
+    \begin{itemize}
+      \item   The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
+      \item The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used.
+    \end{itemize}
+  \end{block}
 \end{frame}
-
+%
 \begin{frame}[fragile]
   \frametitle{The EARS Patterns - Ubiquitous Requirements}
   \begin{block}{Ubiquitous requirements}
-    These refer to requirements that are always active. 
+    These refer to requirements that must be always active during system operation. 
     \begin{lstlisting}[language=EARS]
-               the <system name> shall <system response>
+                      the <sys> shall <res>
     \end{lstlisting}
     Moreover:
     \begin{itemize}
     \item typically state fundamental aspects of the system
-    \item No EARS specific keyword is present when specifying this particular type of requirement.\\
-    
+    \item No EARS specific keyword is present when specifying this particular type of requirement.
     \item Which makes sense! These requirements do not depends on pre-condition(s) or triggers to become active. They must remain active all the time.
     \end{itemize}
   \end{block}
 \end{frame}
-
+%
 \begin{frame}[fragile]
   \frametitle{Ubiquitous Requirements Examples}
   \begin{example}
@@ -169,20 +187,21 @@
   \end{itemize}
   \end{example}
 \end{frame}
-
-%Distances computed between two sets of coordinates shall account for curvature of the earth.
-
+%
+%%Distances computed between two sets of coordinates shall account for curvature of the earth.
+%
 \begin{frame}[fragile]
  \frametitle{THE EARS Patterns - State Driven Requirements}
  \begin{block}{State driven requirements}
   These are requirements that are active as long as the specified state, hereby represented by a pre-condition, remains true. These requirements start with the keyword while.
+  \end{block}
+  \begin{block}{Syntactic pattern}
   \begin{lstlisting}[language=EARS]
-   while <precondition(s)> the <system name> shall <system response>
+                 while <pre(s)> the <sys> shall <res>
   \end{lstlisting}  
   \end{block}
 \end{frame}
-
-
+%
 \begin{frame}
   \frametitle{Examples of State Driven Requirements}
   \begin{example}
@@ -195,25 +214,53 @@
   \end{itemize}
  \end{example}
 \end{frame}
-
+%%=======
+%%  The EARS ruleset states that a requirement must have: Zero or many preconditions; Zero or one trigger; One system name; One or many system responses.
+%
+%%The application of the EARS notation produces requirements in a small number of patterns, depending on the clauses that are used. The patterns are illustrated below.
+%%\end{slide}
+%
+%%%%% PRE-merge
+%% \begin{frame}[fragile]
+%%   \frametitle{EARS Patterns}
+%%   \begin{block}{Syntax of a generic EARS syntax}
+%%     \begin{verbatim}
+%%     While <pre-condition(s)>, 
+%%      when <trigger>, 
+%%       the <system name> shall <system response>  
+%%     \end{verbatim}
+%%     such that:
+%%     \begin{itemize}
+%%       \item a {\tt pre-condition} defines a condition that must be true in order for a requirement to be active
+%%       \item a {\tt trigger} is a discrete event that when detected makes the requirement active
+%%       \item {\tt system name} is the name of the concrete (sub{-})system 
+%%     \end{itemize}
+%%   \end{block}
+%% %  .
+%% \end{frame}
+%%>>>>>>> e18157a6455357ad0588caee54e2725f0281f550
+%
 \begin{frame}[fragile]
  \frametitle{THE EARS Patterns - Event Driven Requirements}
  \begin{block}{Event driven requirements}
-  Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword {\bf \color{mygreen} when}.
-  
-  Event driven requirementsAre initiated {\bf when and only when} a trigger occurs or is detected.
+  Event driven requirements are initiated {\bf when and only when} a trigger occurs or is detected. They are denoted  by the keyword {\bf \color{mygreen} when}.
  \end{block}
  \begin{block}{Syntactic pattern}
   \begin{lstlisting}[language=EARS]
-        when <trigger> the <system name> shall <system response>
+                when <tri> the <sys> shall <res>
   \end{lstlisting}
  \end{block}
- \begin{block}{}
-   
- \end{block}
-
+  \pause
+   \begin{block}{Simple translation exercise}
+   %\small
+   \begin{description}
+   \pause
+     \item [Original req:] \textit{In the event of a fire, the security system shall Unlock the fire escape doors}
+     \item [In EARS:] \pause \earse{\textit{a fire is detected}}{\textit{security system}}{\textit{unlock the fire escape doors}}
+   \end{description}
+   \end{block}
 \end{frame}  
-
+%
 \begin{frame}
   \frametitle{Examples of Event Driven Requirements}
    \begin{example}
@@ -226,116 +273,218 @@
 to fill the tank to the High Water Threshold}
    \end{itemize}
    \end{example}
-%   \pause
-%   \begin{block}{Simple translation exercise}
-%   \begin{description}
-%     \item [Original req:] In the event of a fire, the security system shall Unlock the fire escape doors
-%     \item [In EARS:] \pause \earse{a fire is detected }{security system}{unlock the fire escape doors}
-%   \end{description}
+\end{frame}
+%
+%%   \pause
+%%   \begin{block}{Simple translation exercise}
+%%   \begin{description}
+%%     \item [Original req:] In the event of a fire, the security system shall Unlock the fire escape doors
+%%     \item [In EARS:] \pause \earse{a fire is detected }{security system}{unlock the fire escape doors}
+%%   \end{description}
+%%   \end{block}
+%
+%
+%%When Continuous_Ignition is commanded by the Aircraft, the Control_System shall switch on%%Continuous_Ignition.%%In the event of a fire, the Security_System shall Unlock the Fire_Escape_Doors.
+%
+%\begin{frame}[fragile]
+%  \frametitle{THE EARS Patterns - Optional feature requirements}
+%  \begin{block}{Optional feature requirements}
+%   Optional feature requirements apply in products or systems that include the specified feature and are denoted by the keyword Where.
+%  \begin{lstlisting}[language=EARS]
+% where <feature is included> the <system name> shall <system response>
+%     \end{lstlisting}
 %   \end{block}
-
-
-\end{frame}
-
-%When Continuous_Ignition is commanded by the Aircraft, the Control_System shall switch on%Continuous_Ignition.%In the event of a fire, the Security_System shall Unlock the Fire_Escape_Doors.
-
-\begin{frame}[fragile]
-  \frametitle{THE EARS Patterns - Optional feature requirements}
-  \begin{block}{Optional feature requirements}
-   Optional feature requirements apply in products or systems that include the specified feature and are denoted by the keyword Where.
-  \begin{lstlisting}[language=EARS]
- where <feature is included> the <system name> shall <system response>
-     \end{lstlisting}
-   \end{block}
-\end{frame}
-
-
-\begin{frame}[fragile]
- \frametitle{THE EARS Patterns - Optional feature requirements}
-  \begin{example}
-  \begin{itemize}
-   \item \earso{the car has a sunroof}{car}{have a sunroof control panel on the driver door}.
-   \item \earso{the kitchen system has a food freshness sensor}{kitchen system}{detect rotten foodstuffs}. 
-   \item \earso{a thesaurus is part of the software package}{installer}{prompt the user before installing the thesaurus}
-   \item \earso{hardware encryption is installed}{software}{encrypt data using the hardware instead of using a software algorithm}
-   \item \earso{a HDMI port is present}{software}{allow the user to select HD content for viewing}
-  \end{itemize}
-  \end{example}
-\end{frame}
-
-
-
-\begin{frame}[fragile]
- \frametitle{THE EARS Patterns - Unwanted behaviour requirements}
-  \begin{block}{Unwanted behaviour requirements}
-  These are used to specify the required system response to undesired situations and are denoted by the keywords If and Then.
-   \begin{lstlisting}[language=EARS]
-               if <unwanted trigger or event> then 
-             the <system name> shall <system response> 
-   \end{lstlisting}
-  \end{block}
-\end{frame}  
-
-
-\begin{frame}
-  \frametitle{THE EARS Patterns - Unwanted behaviour requirements}
-  \begin{example}
-   \begin{itemize}
-    \item \earsw{an invalid credit card number is entered}{website}{display "please re-enter credit card details"}
-    \item \earsw{a spoon is inserted to the input hatch}{kitchen system}{eject the spoon}
-    \item \earsw{the memory checksum is invalid}{software}{display an error message}
-    \item \earsw{the ATM card inserted is reported lost or stolen}{software}{confiscate the card}
-    \item \earsw{the measured and calculated speeds vary by more than
-10\%}{software}{use the measured speed}
-   \end{itemize}
-  \end{example}
-\end{frame}
-
-
-\begin{frame}[fragile]
-  \frametitle{EARS Patterns - Complex Requirement Pattern}
-  \begin{block}{Syntax of a complex EARS requirement}
-    Is the more general pattern of requirement that exists in EARS. It uses a combination of EARS keywords to allow for such complexity.
-    \begin{lstlisting}[language=EARS]
-    <multiple conditions> the <system name> shall <system response>  
-    \end{lstlisting}
-    such that {\tt multiple conditions} is a combination of:
-    \begin{itemize}
-      \item a pre-condition, using the {\bf \color{mygreen} while} keyword
-      \item a trigger, using the {\bf \color{mygreen} when} keyword
-      \item an unwanted condition, using the {\bf \color{mygreen} if} keyword
-      \item a specific feature, using the {\bf \color{mygreen} where} keyword
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}[fragile]
- \frametitle{THE EARS Patterns - Example of Complex Requirements}
-  \begin{example}
-  \begin{itemize}
-  \item \earsg{the aircraft is on ground}{reverse thrust is commanded}{engine control system}{enable reverse thrust}
-  \item \earsg{a second optical drive is installed}{the user selects to copy disks}{software}{display an option to copy directly from one optical drive to the other optical}
-  \item \earsg{in start up mode}{the software detects an external flash card}{software}{use the external
-flash card to store photos}
-  \item {\bf \color{mygreen}when} the landing gear button is depressed once \earsw{the software detects that the landing gear does not lock into position}{software}{sound an alarm}
-  \end{itemize}
-  \end{example}
-\end{frame}
-
-\section*{How to apply EARS patterns}
-
-\begin{slide}{THE EARS PATTERNS}
-  \begin{itemize}
-  \item Identify whether you are working with a requirement, or something else (e.g., note, example, remark, etc)
-  \item Identify compound requirements, i.e., whether the requirement needs to be split/decomposed 
-  \item Identify the acting system, person, or process
-  \item Analise the needed sentence type(s)
-  \item Identigy possible missing requirements
-  \item Analyse the translated requirements for ambiguity, conflict, and repetition
-  \item Review requirements if possible
-  \item Interate as required
-  \end{itemize}
-\end{slide}
+%\end{frame}
+%
+%%<<<<<<< HEAD
+%\begin{frame}[fragile]
+% \frametitle{THE EARS Patterns - Optional feature requirements}
+%  \begin{example}
+%  \begin{itemize}
+%   \item \earso{the car has a sunroof}{car}{have a sunroof control panel on the driver door}.
+%   \item \earso{the kitchen system has a food freshness sensor}{kitchen system}{detect rotten foodstuffs}. 
+%   \item \earso{a thesaurus is part of the software package}{installer}{prompt the user before installing the thesaurus}
+%   \item \earso{hardware encryption is installed}{software}{encrypt data using the hardware instead of using a software algorithm}
+%   \item \earso{a HDMI port is present}{software}{allow the user to select HD content for viewing}
+%
+%%<<<<<<< HEAD
+%\begin{frame}[fragile]
+% \frametitle{THE EARS Patterns - Unwanted behaviour requirements}
+%  \begin{block}{Unwanted behaviour requirements}
+%  These are used to specify the required system response to undesired situations and are denoted by the keywords If and Then.
+%   \begin{lstlisting}[language=EARS]
+%               if <unwanted trigger or event> then 
+%             the <system name> shall <system response> 
+%   \end{lstlisting}
+%  \end{block}
+%\end{frame}  
+%
+%
+%%\begin{frame}
+%%  \frametitle{THE EARS Patterns - Unwanted behaviour requirements}
+%%=======
+%
+%%%%% PRE-merge
+%% \begin{frame}[fragile]
+%%   \frametitle{THE EARS PATTERNS}
+%%   \begin{block}{State driven requirements}
+%%   State driven requirements are active as long as the specified state remains true.
+%%     \begin{center}
+%%       While {\color{orange}{$<$pre-condition(s)$>$}} the {\color{red}{$<$system name$>$}} shall {\color{blue}{$<$system response$>$}}
+%%     \end{center}  
+%%   \end{block}
+%
+%
+%
+%\begin{slide}{Event driven requirements}
+%  Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
+%    \begin{block}{}\centering
+%      \ewhen[<trigger>], 
+%        \ethe[<system name>]
+%         \eshall[<system response>]
+%    \end{block}
+%  
+%  \begin{example}
+%  \begin{itemize}
+%    \item When mute is selected, the laptop shall suppress all audio output.
+%    \item When the chef inserts potato to the input hatch, the kitchen system shall peel the potato.
+%  \end{itemize}
+%  \end{example}
+%\end{slide}
+%
+%
+%%%%% PRE-merge
+% \begin{frame}[fragile]
+%%   \frametitle{THE EARS Patterns}
+%%   \begin{block}{Event driven requirements}
+%%   Event driven requirements specify how a system must respond when a triggering event occurs and are denoted by the keyword When.
+%%     \begin{center}
+%%       When <trigger> the <system name> shall <system response>
+%%     \end{center}
+%%   \end{block}
+%
+%
+%%\begin{slide}{Optional feature requirements}
+%%  Optional feature requirements apply in products or systems that include the specified feature and are denoted by the keyword Where.
+%% <<<<<<< HEAD
+%%     \begin{center}
+%%       Where <feature is included>, 
+%%        the <system name> 
+%%         shall <system response>
+%%     \end{center}
+%%   \end{block}
+%% =======
+%%    \begin{block}{}\centering
+%%      \ewhere[<feature is included>],
+%%       \ethe[<system name>]
+%%        \eshall[<system response>]
+%%    \end{block}
+%%  
+%%>>>>>>> e18157a6455357ad0588caee54e2725f0281f550
+%  \begin{example}
+%   \begin{itemize}
+%    \item \earsw{an invalid credit card number is entered}{website}{display "please re-enter credit card details"}
+%    \item \earsw{a spoon is inserted to the input hatch}{kitchen system}{eject the spoon}
+%    \item \earsw{the memory checksum is invalid}{software}{display an error message}
+%    \item \earsw{the ATM card inserted is reported lost or stolen}{software}{confiscate the card}
+%    \item \earsw{the measured and calculated speeds vary by more than
+%10\%}{software}{use the measured speed}
+%   \end{itemize}
+%  \end{example}
+%\end{frame}
+%
+%
+%\begin{frame}[fragile]
+%  \frametitle{EARS Patterns - Complex Requirement Pattern}
+%  \begin{block}{Syntax of a complex EARS requirement}
+%    Is the more general pattern of requirement that exists in EARS. It uses a combination of EARS keywords to allow for such complexity.
+%    \begin{lstlisting}[language=EARS]
+%    <multiple conditions> the <system name> shall <system response>  
+%    \end{lstlisting}
+%    such that {\tt multiple conditions} is a combination of:
+%    \begin{itemize}
+%      \item a pre-condition, using the {\bf \color{mygreen} while} keyword
+%      \item a trigger, using the {\bf \color{mygreen} when} keyword
+%      \item an unwanted condition, using the {\bf \color{mygreen} if} keyword
+%      \item a specific feature, using the {\bf \color{mygreen} where} keyword
+%    \end{itemize}
+%  \end{block}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+% \frametitle{THE EARS Patterns - Example of Complex Requirements}
+%  \begin{example}
+%  \begin{itemize}
+%  \item \earsg{the aircraft is on ground}{reverse thrust is commanded}{engine control system}{enable reverse thrust}
+%  \item \earsg{a second optical drive is installed}{the user selects to copy disks}{software}{display an option to copy directly from one optical drive to the other optical}
+%  \item \earsg{in start up mode}{the software detects an external flash card}{software}{use the external
+%flash card to store photos}
+%  \item {\bf \color{mygreen}when} the landing gear button is depressed once \earsw{the software detects that the landing gear does not lock into position}{software}{sound an alarm}
+%  \end{itemize}
+%  \end{example}
+%\end{frame}
+%
+%
+%
+%\begin{slide}{Complex requirements}
+%  The simple building blocks of the EARS patterns described above can be combined to specify requirements for richer system behaviour. Requirements that include more than one EARS keyword are called Complex requirements.
+%    \begin{block}{}\centering
+%     \ewhile[<precondition(s)>],
+%      \ewhen[<trigger>],\\
+%       \ethe[<system name>]
+%       \eshall[<system response>]
+%    \end{block}
+%    Example: While the aircraft is on ground, when reverse thrust is commanded, the engine control system shall enable reverse thrust.
+%
+%Complex requirements for unwanted behaviour also include the If-Then keywords.
+%\end{slide}
+%
+%
+%%%%%%%%%%%%%%%
+%
+%%\begin{slide}{Formalise requirements}
+%%
+%%  \doExercise{Write the following using FOL}{
+%%    % \vspace*{-7mm}
+%%    Assume predicates \texttt{isMobile, hasMass, isKitchen, hasInputHatch}.
+%%    \begin{enumerate}
+%%      \item \ethe[mobile phone] \eshall[have a mass of less than XX grams.]
+%%      % exists ph,m . isMobile(ph) and hasMass(ph,m) and m<XX
+%%      \item \ethe[kitchen system] \eshall[have an input hatch.]
+%%      % exists k. isKitchen(k) and hasInputHatch(k)
+%%    \end{enumerate}
+%%  }
+%%
+%%  \doExercise{Write the following using Modal Logic}{
+%%    % \vspace*{-7mm}
+%%    Assume $MOD = 1$ (singleton) and $PROP = \{atmHasCard, atmAsksForCard, kitchenInMaintenance, kitchenRejInput\}$
+%%    \begin{enumerate}
+%%    \item \ewhile[there is no card in the ATM], \ethe[ATM] \eshall[display ``insert card to begin''].
+%%    % [] !hasCard -> askForCard
+%%    \item \ewhile[the kitchen system is in maintenance mode], \ethe[kitchen system] \eshall[reject all input].
+%%    % [] !hasCard -> askForCard
+%%    \end{enumerate}
+%%  }
+%%
+%%\end{slide}
+%
+%
+%%>>>>>>> e18157a6455357ad0588caee54e2725f0281f550
+%
+%\section*{How to apply EARS patterns}
+%
+%\begin{slide}{THE EARS PATTERNS}
+%  \begin{itemize}
+%  \item Identify whether you are working with a requirement, or something else (e.g., note, example, remark, etc)
+%  \item Identify compound requirements, i.e., whether the requirement needs to be split/decomposed 
+%  \item Identify the acting system, person, or process
+%  \item Analise the needed sentence type(s)
+%  \item Identigy possible missing requirements
+%  \item Analyse the translated requirements for ambiguity, conflict, and repetition
+%  \item Review requirements if possible
+%  \item Interate as required
+%  \end{itemize}
+%\end{slide}
 %
 %\section*{Troubleshooting EARS problems}
 %
@@ -350,50 +499,50 @@ flash card to store photos}
 %  \end{itemize}
 %  
 %\end{frame}
+%%
+%%\section*{The Doorstop Tool}
+%%
+%%
+%%\begin{frame}
+%%  \frametitle{What is Doorstop?}
+%%  \begin{block}{Motivations for Doorstop}
+%%  \begin{itemize}
+%%    \item Effectively managing the requirements and traceability in a complex software project can be a
+%%challenging task
+%%    \item Many tools exist to support the initial creation and management of changes to
+%%text-based requirements.
+%%    \item The most popular commercial solutions use a centralized server to host
+%%a database with a front-end desktop or web interface
+%%    \item {\bf }
+%%  \end{itemize}
+%%  
+%%  \end{block}
+%%
+%%   
+%%\end{frame}
+%%
+%%\begin{frame}
+%%  \frametitle{What is Doorstop?}
+%%  \begin{block}{In a Nutshell}
+%%  \begin{itemize}
+%%    \item Doorstop is both a Python tool and API that allows to write requirements in a text based manner and that uses version control. 
+%%    \item This solution allows a project to utilize its existing development tools to manage versions of the requirements using a lightweight, developer-friendly interface.
+%%  \end{itemize}
+%%  \end{block}
+%%  \begin{block}{How it works (high-level description)}
+%%  \begin{itemize}
+%%  \item When a project leverages this tool, each linkable item (requirement, test case, etc.) is stored as a YAML file in a designated directory. 
+%%  \item The items in each directory form a document.
+%%  \item The relationship between documents forms a tree hierarchy.
+%%  \item Doorstop provides mechanisms for modifying this tree, validating item traceability, and publishing documents in several formats.  
+%%  \end{itemize}
+%%
+%%       
+%%  \end{block}
+%%
+%%  
+%%\end{frame}
+%%
 %
-%\section*{The Doorstop Tool}
-%
-%
-%\begin{frame}
-%  \frametitle{What is Doorstop?}
-%  \begin{block}{Motivations for Doorstop}
-%  \begin{itemize}
-%    \item Effectively managing the requirements and traceability in a complex software project can be a
-%challenging task
-%    \item Many tools exist to support the initial creation and management of changes to
-%text-based requirements.
-%    \item The most popular commercial solutions use a centralized server to host
-%a database with a front-end desktop or web interface
-%    \item {\bf }
-%  \end{itemize}
-%  
-%  \end{block}
-%
-%   
-%\end{frame}
-%
-%\begin{frame}
-%  \frametitle{What is Doorstop?}
-%  \begin{block}{In a Nutshell}
-%  \begin{itemize}
-%    \item Doorstop is both a Python tool and API that allows to write requirements in a text based manner and that uses version control. 
-%    \item This solution allows a project to utilize its existing development tools to manage versions of the requirements using a lightweight, developer-friendly interface.
-%  \end{itemize}
-%  \end{block}
-%  \begin{block}{How it works (high-level description)}
-%  \begin{itemize}
-%  \item When a project leverages this tool, each linkable item (requirement, test case, etc.) is stored as a YAML file in a designated directory. 
-%  \item The items in each directory form a document.
-%  \item The relationship between documents forms a tree hierarchy.
-%  \item Doorstop provides mechanisms for modifying this tree, validating item traceability, and publishing documents in several formats.  
-%  \end{itemize}
-%
-%       
-%  \end{block}
-%
-%  
-%\end{frame}
-%
-
 
 \end{document}
