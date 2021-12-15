@@ -59,19 +59,20 @@
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Some history on the origins and motivations for proposing EARS}
-  \begin{block}{Main aspects}
-  \begin{itemize}
-    \item Alistair Mavin and colleagues faced a challenge when working at Rolls Royce and developing a XXX and (i) find the real requirements to the problem at hand, (ii) organize them, (iii) refine them, (iv) fill in the gaps 
-    \item moreover, the management required that the elicited should be clear, concise, testable, traceable, and correct
-    \item overall the objectives set where that (i) significantly reduce requirement errors when compared to previous projects, (ii) reducing those errors that became implementation errors, (iii) and minimize the error mitigation costs   
-  \end{itemize}
-  \end{block}
-\end{frame}
+%\begin{frame}
+%  \frametitle{Some history on the origins and motivations for proposing EARS}
+%  \begin{block}{Main aspects}
+%  \begin{itemize}
+%    \item Alistair Mavin and colleagues faced a challenge when working at Rolls Royce and (i) find the real requirements to the problem at hand, (ii) organize them, (iii) refine them, (iv) fill in the gaps 
+%    \item moreover, the management required that the elicited should be clear, concise, testable, traceable, and correct
+%    \item overall the objectives set where that (i) significantly reduce requirement errors when compared to previous projects, (ii) reducing those errors that became implementation errors, (iii) and minimize the error mitigation costs   
+%  \end{itemize}
+%  \end{block}
+%\end{frame}
 %
 \begin{frame}
- \begin{block}{EARS Building Blocks}
+ \frametitle{EARS Building Blocks}
+ \begin{block}{Building Blocks}
   \begin{itemize}
     \item There is a set syntax (structure), with an underlying ruleset. 
     \item A small number of keywords are used to denote the different clauses of an EARS requirement. 
@@ -121,6 +122,10 @@
     \item EARS has proved popular with practitioners because it is lightweight, there is little training overhead, no specialist tool is necessary, and the resultant requirements are easy to read.
   \end{itemize}
   \end{block} 
+  In the words of the author, \begin{alert}
+  {{\it {\bf "(...) because the EARS method imposes just a slight constraint on natural language while providing a simple, logical method for constructing clear, concise, unambiguous requirements."}}}
+  \end{alert}
+
 \end{frame}
 %
 \begin{frame}
@@ -130,7 +135,6 @@
     \item the EARS methodology was first presented to the 17th IEEE International Requirements Engineering Conference in 2009
     \item since then, it has been adopted by numerous organizations (Bosch, Honeywell, Intel, Rolls-Royce and Siemens) and included in the requirements engineering curricula of many universities (China, France, Sweden, UK, USA, and now Portugal {\Large\smiley{}}).  
   \end{itemize}
-  In the words of the author, {\it {\bf "(...) because the EARS method imposes just a slight constraint on natural language while providing a simple, logical method for constructing clear, concise, unambiguous requirements."}}
   \end{block} 
 \end{frame}
 %
@@ -152,6 +156,10 @@
       \item [\texttt{<feature>}] a feature of the system (zero or one)
     \end{description}
   \end{block}
+  \begin{block}{Specific keywords}
+  {\bf while, when, where, if, then, the, shall}... we will see in a moment when and where they are used.
+  \end{block}
+
 %  \begin{block}{Some remarks}
 %  \scriptsize
 %    \begin{itemize}
@@ -254,7 +262,6 @@
  \end{block}
   \pause
    \begin{block}{Simple translation exercise}
-   %\small
    \begin{description}
    \pause
      \item [Original req:] \textit{In the event of a fire, the security system shall Unlock the fire escape doors}
