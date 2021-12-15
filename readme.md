@@ -28,11 +28,13 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     * Syntax, semantics, and reasoning
   + First Order Logic
     * Syntax, semantics, and reasoning
+
 <!--
   * The Z3 automatic theorem prover
     * Rise4fun interface: get acquainted with the tool
     * Python API: automating search for solutions
 -->
+
 - Behavioural modelling
   + Single component
     * State diagrams and Flow charts
@@ -48,6 +50,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     * Verification of requirements
     * Formal modelling: modal logics
     * Tools: model checking with mCRL2
+- Requirement specification using natural language
+  + The Easy Approach to Requirements Specification (EARS)
+  + The Doorstop tool to manage and document requirements
+- An introduction to automatic theorem provers
+  + Support for the consistency and correctness of formalized requirements
 
 
 # Material
@@ -84,6 +91,8 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Logics for behaviour: Modal logics; Model-Checking (Lecture 9)
   </a></li><li><a href="slides/10-mcrl2.pdf">
     Modelling and verification in mCRL2 (Lecture 10)
+   </a></li><li><a href="slides/11-ears-doorstop.pdf">
+    Textual requirements: EARS and Doorstop (Lecture 11)
    </a></li>
    <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
@@ -102,7 +111,8 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     </ul>
   </li>
   <li><a href="assignments/a1-modelling.pdf">A1: Modelling Behaviour (group)</a></li>
-  <li><a href="assignments/a2-verification.pdf">A2: Analysing Behaviour I (group)</a></li>
+  <li><a href="assignments/a2-verification.pdf">A2: Analysing Behaviour (group)</a></li>
+  <li><a class="hide" href="assignments/a3-requirements.pdf">A3: Managing requirements (group)</a></li>
 </ul>
 
 
@@ -139,17 +149,18 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
 
 ### Evaluation
 
- * __Final mark__ = Homework (10%) + Individual Exercises (10%) + Assignments (50%) + Literature Review (30%)
+ * __Final mark__ = Homework (10%) + Individual Exercises (10%) + Assignments (80%)
 
 __Homework__ consists of exercises presented in the slides, partially done during the lessons, that should be submitted as a PDF file per week until the end of the following week. Marks reflect mainly the effort, i.e., bad resolutions are better than no resolutions.
 
 __Individual Exercises__ are to be developed individually, and submitted as a single PDF report, covering mainly logic deduction. Feedback will be given online on request, and marked at the end of the unit.
 
-__Assignments__ are to be developed by teams of 4 students. Each team has a dedicated `git` repository that will contain the software artefacts and a report for each assignment. Most work is expected to be done within the practical lessons. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
+__Assignments__ (3 in total) are to be developed by teams of 3-4 students. Each team has a dedicated `git` repository that will contain the software artefacts and a report for each assignment. Feedback will be provided within 2 weeks after each submission deadline, and marked only at the end of the unit.
 
+<!--
 __Literature Review__ is to be developed by the same groups of 4 students, and consists of a written _critical_ review of maximum 4 pages using a LaTeX template that will be made available.
 The review will be presented in an oral presentation, and the review will be partial evaluated by peers.
-
+ -->
 <!-- ### Evaluation
 
  * __Final mark__ = Group Project (70%) + Literature Review (30%)
@@ -174,8 +185,8 @@ The deadlines are summarised below, and may still suffer changes.
  - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37)
  - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
  - __19 Dec (Sun)@ 23:59__ - Slides of [Lecture 9](slides/9-modal-logic.pdf) (1-29)
- - __9 Jan (Sun)@ 23:59__ - Behaviour assignment, [Part I](assignments/a2-verification.pdf) and <div class="hide">Part II (to appear)</div>
-
+ - __9 Jan (Sun)@ 23:59__ - [Behaviour assignment](assignments/a2-verification.pdf)
+ - __9 Jan (Sun)@ 23:59__ - Requirements assignment (to appear)
 
 
 ### Lecturers
