@@ -587,6 +587,140 @@ remaining}{system}{shall display a warning message to switch to AC power}
   }
 \end{slide}
 
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 1}
+    The user can have \alert{tea} after having 2 consecutive \alert{coffees}
+  \end{block}
+  \begin{block}{Type}
+  State Driven 
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   \earss{the user drank less than 2 consecutive coffees}{vending machine}{not serve tea}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 2}
+    It is possible to do \alert{$a$} after 3 \alert{$b$}'s, but not more than 1 \alert{$a$}
+  \end{block}
+  \begin{block}{Type}
+  State Driven  
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   This requirement must be split in two before being written using EARS patterns:
+   \begin{itemize}
+   \item \earse{three \alert{$b$}'s are done}{system}{allow the user to do one \alert{$a$}}
+   \item \earse{three \alert{$b$}'s and one \alert{$a$} were done}{system}{not allow the user to do another \alert{$a$}}
+   \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 3}
+    It must be possible to do \alert{$a$} after [doing \alert{$a$} and then \alert{$b$}].
+  \end{block}
+  \begin{block}{Type}
+   State Driven
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   \earse{\alert{$a$} was done followed by a \alert{$b$}}{system}{allow the user to do another \alert{$a$}}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 4}
+    If a taxi is \alert{allocated} to a service, it must first \alert{collect} the passenger and then \alert{plan} the route.
+  \end{block}
+  \begin{block}{Type}
+   Complex
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   {\bf \color{mygreen} while} it is allocated to a service, \earse{it has collected the passenger}{taxi}{plan the route}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 5}
+    On detecting an \alert{emergency} the taxi becomes inactive.
+  \end{block}
+  \begin{block}{Type}
+   
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 6}
+    The user \structure{can only have} \alert{coffee} after the \alert{coffee button} is pressed.
+  \end{block}
+  \begin{block}{Type}
+   
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 7}
+    The used \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
+  \end{block}
+  \begin{block}{Type}
+   
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 8}
+    It is always possible to \alert{turn off} the coffee machine.
+  \end{block}
+  \begin{block}{Type}
+   
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 9}
+    It is always possible to reach a state where the coffee machine can be \alert{turned off}.
+  \end{block}
+  \begin{block}{Type}
+   
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions to the proposed exercises}
+  \begin{block}{Requirement 10}
+    It is never possible to \alert{add chocolate} right after pressing the \emph{latte button}
+  \end{block}
+  \begin{block}{Type}
+   
+  \end{block}
+  \begin{block}{Rewritten in EARS}
+   
+  \end{block}
+\end{frame}
+
 \section*{Applying and Troublshooting EARS}
 
 \begin{slide}{How to apply EARS}
