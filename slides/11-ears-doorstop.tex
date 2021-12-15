@@ -442,6 +442,100 @@ flash card to store photos}
   \end{itemize}
   \end{example}
 \end{frame}
+
+\section*{Rewriting Requirements Using EARS}
+
+\begin{frame}
+  \frametitle{Examples on how to use EARS for rewriting requirements}
+  \begin{block}{Original Requirement}
+    The installer software shall be available in Portuguese.
+  \end{block}
+  \begin{block}{Type of Requirement}
+  Ubiquitous  
+  \end{block}
+  \begin{block}{Requirement using EARS}
+    \earsu{installer software}{be available in Portuguese}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples on how to use EARS for rewriting requirements}
+  \begin{block}{Original Requirement}
+    The software shall display a count of the number of participants.
+  \end{block}
+  \begin{block}{Type of Requirement}
+  Event Driven 
+  \end{block}
+  \begin{block}{Requirement using EARS}
+    \earse{the user selects the caller count from the menu}{software}{display a count of the number of participants in the audio call in the user interface}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples on how to use EARS for rewriting requirements}
+  \begin{block}{Original Requirement}
+    The software shall phone the Alarm Company.
+  \end{block}
+  \begin{block}{Type of Requirement}
+  Unwanted Behavior 
+  \end{block}
+  \begin{block}{Requirement using EARS}
+    \earsw{the alarm software detects that a sensor has malfunctioned}{alarm software}{phone the Alarm Company to report the malfunction}   
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples on how to use EARS for rewriting requirements}
+  \begin{block}{Original Requirement}
+    The software shall mute the microphone.
+  \end{block}
+  \begin{block}{Type of Requirement}
+  State Driven 
+  \end{block}
+  \begin{block}{Requirement using EARS}
+    \earss{the mute button is depressed}{software}{mute the microphone}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples on how to use EARS for rewriting requirements}
+  \begin{block}{Original Requirement}
+    The software shall download the book without charge
+  \end{block}
+  \begin{block}{Type of Requirement}
+  Optional Feature Requirement 
+  \end{block}
+  \begin{block}{Requirement using EARS}
+    \earso{the book is available in digital format}{software}{allow the user to download the book without charge for a trial period of $n$ days}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples on how to use EARS for rewriting requirements}
+  \begin{block}{Original Requirement}
+    The software shall warn the user of low battery
+  \end{block}
+  \begin{block}{Type of Requirement}
+  Complex Requirement 
+  \end{block}
+  \begin{block}{Requirement using EARS}
+    {\bf \color{mygreen}while} on battery power \earsw{the battery charge falls below 10\%
+remaining}{system}{shall display a warning message to switch to AC power}
+  \end{block}
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Examples on how to use EARS for rewriting requirements}
+%  \begin{block}{Original Requirement}
+%    
+%  \end{block}
+%  \begin{block}{Requirement using EARS}
+%    
+%  \end{block}
+%\end{frame}
+
+
+
 %
 %
 %%\begin{slide}{Formalise requirements}
@@ -656,21 +750,21 @@ $ doorstop publish all ./dist/
 \end{frame}
 
 
-\begin{slide}{Validation warnings}
-
-\begin{block}{REQ00X: no text}
-...todo...
-\end{block}
-\begin{block}{REQ00X: no links from child document: CHILD}
-...todo...
-\end{block}
-\begin{block}{REQ00X: unreviewed changes}
-...todo...
-\end{block}
-\begin{block}{CHILD00X: no links to parent document: REQ}
-...todo...
-\end{block}
-\end{slide}
+%\begin{slide}{Validation warnings}
+%
+%\begin{block}{REQ00X: no text}
+%...todo...
+%\end{block}
+%\begin{block}{REQ00X: no links from child document: CHILD}
+%...todo...
+%\end{block}
+%\begin{block}{REQ00X: unreviewed changes}
+%...todo...
+%\end{block}
+%\begin{block}{CHILD00X: no links to parent document: REQ}
+%...todo...
+%\end{block}
+%\end{slide}
 
 
 \begin{frame}
