@@ -28,11 +28,13 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     * Syntax, semantics, and reasoning
   + First Order Logic
     * Syntax, semantics, and reasoning
+
 <!--
   * The Z3 automatic theorem prover
     * Rise4fun interface: get acquainted with the tool
     * Python API: automating search for solutions
 -->
+
 - Behavioural modelling
   + Single component
     * State diagrams and Flow charts
@@ -48,6 +50,11 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     * Verification of requirements
     * Formal modelling: modal logics
     * Tools: model checking with mCRL2
+- Requirement specification using natural language
+  + The Easy Approach to Requirements Specification (EARS)
+  + The Doorstop tool to manage and document requirements
+- An introduction to automatic theorem provers
+  + Support for the consistency and correctness of formalized requirements
 
 
 # Material
