@@ -176,8 +176,7 @@ The deadlines are summarised below, and may still suffer changes.
  - __12 Dec (Sun)@ 23:59__ - Slides of [Lecture 8](slides/8-equivalences.pdf) (11-37)
  - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
  - __19 Dec (Sun)@ 23:59__ - Slides of [Lecture 9](slides/9-modal-logic.pdf) (1-29)
- - __9 Jan (Sun)@ 23:59__ - Behaviour assignment, [Part I](assignments/a2-verification.pdf) and <div class="hide">Part II (to appear)</div>
-
+ - __9 Jan (Sun)@ 23:59__ - Behaviour assignment, [Part I](assignments/a2-verification.pdf) and Part II (to appear)
 
 
 ### Lecturers
