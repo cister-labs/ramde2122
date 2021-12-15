@@ -269,7 +269,8 @@
    \begin{itemize}
      \item \earse{mute is selected}{laptop}{suppress all audio output}.
      \item \earse{potato is inserted into the input hatch}{kitchen system}{peel the potato}.
-     \item \earse{continuous ignition is commanded by the aircraft}{control system}{switch oncontinuous ignition}
+     \item \earse{continuous ignition is commanded by the aircraft}{control system}{switch on
+continuous ignition}
      \item \earse{an unregistered device is plugged into a USB port}{OS}{tries to locate and load the driver for the device.}
      \item \earse{the water level falls below the Low Water Threshold}{software}{open the water valve
 to fill the tank to the High Water Threshold}
@@ -277,7 +278,9 @@ to fill the tank to the High Water Threshold}
    \end{example}
 \end{frame}
 %
-%%When Continuous_Ignition is commanded by the Aircraft, the Control_System shall switch on%%Continuous_Ignition.%%In the event of a fire, the Security_System shall Unlock the Fire_Escape_Doors.
+%%When Continuous_Ignition is commanded by the Aircraft, the Control_System shall switch on
+%%Continuous_Ignition.
+%%In the event of a fire, the Security_System shall Unlock the Fire_Escape_Doors.
 %
 \begin{frame}[fragile]
   \frametitle{THE EARS Patterns - Optional feature requirements}
@@ -637,17 +640,19 @@ $ doorstop publish all ./dist/
 \begin{frame}
   \frametitle{Training with EARS}
   \begin{block}{The problem}  
-  A farmer wants to transport a fox, a goose, and some beans across a river (from the left margin tothe right margin). Unfortunately, he can only carry one at a time. Furthermore, if the farmer is notpresent, the fox will eat the goose and the goose will eat the beans.  
+  A farmer wants to transport a fox, a goose, and some beans across a river (from the left margin to
+the right margin). Unfortunately, he can only carry one at a time. Furthermore, if the farmer is not
+present, the fox will eat the goose and the goose will eat the beans.  
   \end{block}
-  \begin{exercise}
+  \doExercise{Identify requirements}{
   The goal of this exercise is for you to identify the requirements for this problem, and classify and write them using the EARS patterns. If necessary, elicit other requirements that are not in the text but that should be present.  
-  \end{exercise}
+  }
 \end{frame}
 
 
 \begin{frame}
   \frametitle{More warm up exercises with EARS}  
-  \begin{block}{Consider another scenario that you've seen in the classes}
+  \doExercise{Another scenario that you've seen in the classes}{
   Lets consider a vending machine with 2 products, apples and bananas, costing 1eur and 2eur respectively. Its users have only 1eur and 2eur coins to interact with the machine. Now, write using EARS patterns the following requirements:
   \begin{itemize}
   \item The user must be able to get apples and bananas;
@@ -655,17 +660,22 @@ $ doorstop publish all ./dist/
   \item The machine must give change back when applicable;
   \item The machine can be powered off and powered on;
   \end{itemize}
-\end{block}
+  }
 \end{frame}
 
 \begin{frame}
   \frametitle{Now, a more complex scenario}
   \begin{block}{The problem}
-    I would like the vending machine to sell 3 items: apples, bananas, and chocolates. It shouldbe possible to buy chocolates for 2\euro~ and fruit for 1\euro~. Only 1\euro~ and 2\euro~ coins are accepted. The machine has a maximum capacity for 1\euro~ coins and for 2\euro~ coins. The machine doesnot accept coins if its capacity is full. The machine should give change back when buyingfruit after inserting 2\euro. If the machine has already 2\euro~ inserted, it refuses another coin. Ifthe machine has no 1\euro~ coins, it cannot not sell fruit with a 2\euro~ coin. The user can requestthe money back after inserting coins.
+    I would like the vending machine to sell 3 items: apples, bananas, and chocolates. It should
+be possible to buy chocolates for 2\euro~ and fruit for 1\euro~. Only 1\euro~ and 2\euro~ coins are accepted. The machine has a maximum capacity for 1\euro~ coins and for 2\euro~ coins. The machine does
+not accept coins if its capacity is full. The machine should give change back when buying
+fruit after inserting 2\euro. If the machine has already 2\euro~ inserted, it refuses another coin. If
+the machine has no 1\euro~ coins, it cannot not sell fruit with a 2\euro~ coin. The user can request
+the money back after inserting coins.
   \end{block}
-  \begin{exercise}
-Proceed with identifying requirements, classifying and writing them following the EARS patterns, and use the doorstop tool to produce the corresponding requirement specification requirements.
-  \end{exercise}
+  \doExercise{Identify requirements}{
+  Proceed with identifying requirements, classifying and writing them following the EARS patterns, and use the doorstop tool to produce the corresponding requirement specification requirements.
+  }
 \end{frame}
 
 
