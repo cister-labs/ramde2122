@@ -84,6 +84,8 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
     Logics for behaviour: Modal logics; Model-Checking (Lecture 9)
   </a></li><li><a href="slides/10-mcrl2.pdf">
     Modelling and verification in mCRL2 (Lecture 10)
+   </a></li><li><a href="slides/11-ears-doorstop.pdf">
+    Textual requirements: EARS and Doorstop (Lecture 11)
    </a></li>
    <!--<li><a class="hide" href="">
     Standards and use-cases in Critical Systems (Lecture 9-10)
