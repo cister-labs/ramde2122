@@ -748,11 +748,10 @@ remaining}{system}{shall display a warning message to switch to AC power}
 \begin{frame}
   \frametitle{What are the issues that can occur when using EARS?}
   \begin{itemize}
-  \item {\it No sentence type fits:} Maybe you are not translating a requirement?
+  \item {\it No sentence type fits:} are you actually trying to translate a requirement?
   \item {\it Can't identify the actor:} either use higher abstraction level until it makes sense, or get more information from the relevant stakeholder
   \item {\it There is no system response:}  typically the case with non-functional requirements; it can be expressed as "the system shall be ..."
   \item {\it There is no template for "shall not":} try using "shall be immune" or similar or, as last resort, use the "shall not" pattern
-  \item {\it EARS produces too many atomic requirements:} 
   \end{itemize}
   
 \end{frame}
@@ -874,6 +873,21 @@ linked item: TST001 (@/reqs/tests/TST001.yml) -> REQ001 (@/reqs/REQ001.yml)
    \end{verbatim}
    \end{block}
 \end{frame}
+
+%\begin{frame}
+%  \frametitle{Expected Tree Structure}
+%  \begin{center}
+%  {\bf \alert{The target document tree is as below}}\\\vspace{1cm}
+%  \begin{tikzpicture}
+%\node {REQ}
+%    child {node {REQ001}}
+%    child {node {TST}
+%    child {node {TST001}}}
+%    ;
+%\end{tikzpicture}
+%\end{center}
+%\end{frame}
+
 
 \begin{frame}[fragile]
   \frametitle{Doorstop - validating and publishing}
