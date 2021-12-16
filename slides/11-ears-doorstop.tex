@@ -596,7 +596,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
   State Driven 
   \end{block}
   \begin{block}{Rewritten in EARS}
-   \earss{the user drank less than 2 consecutive coffees}{vending machine}{not serve tea}
+   \earse{the user takes two consecutive coffees}{machine}{be able to serve tea to the user}
   \end{block}
 \end{frame}
 
@@ -606,7 +606,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
     It is possible to do \alert{$a$} after 3 \alert{$b$}'s, but not more than 1 \alert{$a$}
   \end{block}
   \begin{block}{Type}
-  State Driven  
+  Complex: split in two event driven requirements  
   \end{block}
   \begin{block}{Rewritten in EARS}
    This requirement must be split in two before being written using EARS patterns:
@@ -626,7 +626,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
    State Driven
   \end{block}
   \begin{block}{Rewritten in EARS}
-   \earse{\alert{$a$} was done followed by a \alert{$b$}}{system}{allow the user to do another \alert{$a$}}
+   \earse{\alert{$a$} was done followed by a \alert{$b$}}{system}{allow the user to do \alert{$a$}}
   \end{block}
 \end{frame}
 
@@ -636,10 +636,13 @@ remaining}{system}{shall display a warning message to switch to AC power}
     If a taxi is \alert{allocated} to a service, it must first \alert{collect} the passenger and then \alert{plan} the route.
   \end{block}
   \begin{block}{Type}
-   Complex
+   Complex: split in two requirements.
   \end{block}
   \begin{block}{Rewritten in EARS}
-   {\bf \color{mygreen} while} it is allocated to a service, \earse{it has collected the passenger}{taxi}{plan the route}
+  \begin{itemize}
+    \item \earse{allocated to a service}{taxi}{collect the associated passenger}
+    \item {\bf \color{mygreen} while} allocated to a service, \earse{it has collected the passenger}{taxi}{plan the route}
+  \end{itemize}
   \end{block}
 \end{frame}
 
@@ -649,10 +652,10 @@ remaining}{system}{shall display a warning message to switch to AC power}
     On detecting an \alert{emergency} the taxi becomes inactive.
   \end{block}
   \begin{block}{Type}
-   
+   Event Driven
   \end{block}
   \begin{block}{Rewritten in EARS}
-   
+   \earse{an emergency is detected}{taxi}{become inactive}
   \end{block}
 \end{frame}
 
@@ -662,22 +665,26 @@ remaining}{system}{shall display a warning message to switch to AC power}
     The user \structure{can only have} \alert{coffee} after the \alert{coffee button} is pressed.
   \end{block}
   \begin{block}{Type}
-   
+   Event Driven
   \end{block}
   \begin{block}{Rewritten in EARS}
-   
+   \earse{the coffee button is depressed}{coffee machine}{be able to serve coffee}
   \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{Solutions to the proposed exercises}
   \begin{block}{Requirement 7}
-    The used \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
+    The user \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
   \end{block}
   \begin{block}{Type}
-   
+   Complex, split into 2 requirements
   \end{block}
   \begin{block}{Rewritten in EARS}
+  \begin{itemize}
+    \item \earse{the coffee button is depressed}{coffee machine}{serve a coffee}
+    \item \earse{a coffee is served}{user}{drink that coffee}
+  \end{itemize}
    
   \end{block}
 \end{frame}
@@ -688,10 +695,10 @@ remaining}{system}{shall display a warning message to switch to AC power}
     It is always possible to \alert{turn off} the coffee machine.
   \end{block}
   \begin{block}{Type}
-   
+   Ubiquitous
   \end{block}
   \begin{block}{Rewritten in EARS}
-   
+   \earsu{coffee machine}{have a mechanism to shutdown at any time during operation}
   \end{block}
 \end{frame}
 
@@ -701,10 +708,10 @@ remaining}{system}{shall display a warning message to switch to AC power}
     It is always possible to reach a state where the coffee machine can be \alert{turned off}.
   \end{block}
   \begin{block}{Type}
-   
+   Ubiquitous
   \end{block}
   \begin{block}{Rewritten in EARS}
-   
+   \earsu{coffee machine}{always reach a state where it is possible to safely shutdown}
   \end{block}
 \end{frame}
 
@@ -714,10 +721,10 @@ remaining}{system}{shall display a warning message to switch to AC power}
     It is never possible to \alert{add chocolate} right after pressing the \emph{latte button}
   \end{block}
   \begin{block}{Type}
-   
+   Complex: state driven + unwanted behavior
   \end{block}
   \begin{block}{Rewritten in EARS}
-   
+   {\bf \color{mygreen} while} the machine is preparing a latte \earsw{chocolate button is pressed}{machine}{not add chocolate to the latte}
   \end{block}
 \end{frame}
 
