@@ -74,8 +74,8 @@
  \frametitle{EARS Building Blocks}
  \begin{block}{Building Blocks}
   \begin{itemize}
-    \item There is a set syntax (structure), with an underlying ruleset. 
-    \item A small number of keywords are used to denote the different clauses of an EARS requirement. 
+    \item There is a set syntax (structure), with an underlying set of rules. 
+    \item A small number of keywords are used to denote the different patterns of an EARS requirement. 
     \item The clauses are always in the same order, following temporal logic. 
     \item The syntax and the keywords closely match common usage of English and are therefore intuitive.
   \end{itemize}  
@@ -133,7 +133,7 @@
   \begin{block}{Who is using EARS?}
   \begin{itemize}
     \item the EARS methodology was first presented to the 17th IEEE International Requirements Engineering Conference in 2009
-    \item since then, it has been adopted by numerous organizations (Bosch, Honeywell, Intel, Rolls-Royce and Siemens) and included in the requirements engineering curricula of many universities (China, France, Sweden, UK, USA, and now Portugal {\Large\smiley{}}).  
+    \item since then, it has been adopted by numerous organizations (Bosch, Honeywell, Intel, Rolls-Royce and Siemens) and included in the requirements engineering curricula of many universities (China, France, Sweden, UK, USA, {\bf and now Portugal {\Large\smiley{}}}).  
   \end{itemize}
   \end{block} 
 \end{frame}
@@ -168,6 +168,26 @@
 %    \end{itemize}
 %  \end{block}
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{EARS cheat sheet}
+  \begin{center}
+  \begin{tabular}{|c|}\hline
+  {\bf Ubiquitous} \\\hline
+  \earsu{<system>}{<response>} \\\hline 
+  \textbf{State Driven} \\\hline
+  \earss{<pre(s)>}{<system>}{<action>} \\\hline
+  \textbf{Event Driven} \\\hline
+  \earse{<trigger>}{<system>}{<response>} \\\hline
+  \textbf{Unwanted Behaviour} \\\hline
+  \earsw{<trigger>}{<system>}{<response>} \\\hline
+  \textbf{Optional Feature} \\\hline
+  \earso{<feature>}{<system>}{<response>} \\\hline   
+  \end{tabular}
+  \end{center}
+\end{frame}
+
 %
 \begin{frame}[fragile]
   \frametitle{The EARS Patterns - Ubiquitous Requirements}
@@ -593,7 +613,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
     The user can have \alert{tea} after having 2 consecutive \alert{coffees}
   \end{block}
   \begin{block}{Type}
-  State Driven 
+  Event Driven 
   \end{block}
   \begin{block}{Rewritten in EARS}
    \earse{the user takes two consecutive coffees}{machine}{be able to serve tea to the user}
@@ -606,7 +626,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
     It is possible to do \alert{$a$} after 3 \alert{$b$}'s, but not more than 1 \alert{$a$}
   \end{block}
   \begin{block}{Type}
-  Complex: split in two event driven requirements  
+  Two event driven requirements  
   \end{block}
   \begin{block}{Rewritten in EARS}
    This requirement must be split in two before being written using EARS patterns:
@@ -623,7 +643,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
     It must be possible to do \alert{$a$} after [doing \alert{$a$} and then \alert{$b$}].
   \end{block}
   \begin{block}{Type}
-   State Driven
+   Event Driven
   \end{block}
   \begin{block}{Rewritten in EARS}
    \earse{\alert{$a$} was done followed by a \alert{$b$}}{system}{allow the user to do \alert{$a$}}
@@ -636,7 +656,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
     If a taxi is \alert{allocated} to a service, it must first \alert{collect} the passenger and then \alert{plan} the route.
   \end{block}
   \begin{block}{Type}
-   Complex: split in two requirements.
+   Two requirements: one Event Driven and one Complex
   \end{block}
   \begin{block}{Rewritten in EARS}
   \begin{itemize}
@@ -678,7 +698,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
     The user \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
   \end{block}
   \begin{block}{Type}
-   Complex, split into 2 requirements
+   Two event driven requirements
   \end{block}
   \begin{block}{Rewritten in EARS}
   \begin{itemize}
@@ -711,7 +731,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
    Ubiquitous
   \end{block}
   \begin{block}{Rewritten in EARS}
-   \earsu{coffee machine}{always reach a state where it is possible to safely shutdown}
+   \earsu{coffee machine}{always be able to reach a state where it is possible to safely shutdown}
   \end{block}
 \end{frame}
 
@@ -974,10 +994,10 @@ present, the fox will eat the goose and the goose will eat the beans.
 \begin{frame}
   \frametitle{More warm up exercises with EARS}  
   \doExercise{Another scenario that you've seen in the classes}{
-  Lets consider a vending machine with 2 products, apples and bananas, costing 1eur and 2eur respectively. Its users have only 1eur and 2eur coins to interact with the machine. Now, write using EARS patterns the following requirements:
+  Lets consider a vending machine with 2 products, apples and bananas, costing 1\euro~ and 2\euro~ respectively. Its users have only 1\euro~ and 2\euro~ coins to interact with the machine. Now, write using EARS patterns the following requirements:
   \begin{itemize}
   \item The user must be able to get apples and bananas;
-  \item The machine accepts up to 3eur, and not more than that;
+  \item The machine accepts up to 3\euro, and not more than that;
   \item The machine must give change back when applicable;
   \item The machine can be powered off and powered on;
   \end{itemize}
