@@ -112,7 +112,7 @@ This course teaches the basic principles of Model-Driven Engineering - MDE. Stud
   </li>
   <li><a href="assignments/a1-modelling.pdf">A1: Modelling Behaviour (group)</a></li>
   <li><a href="assignments/a2-verification.pdf">A2: Analysing Behaviour (group)</a></li>
-  <li><a class="hide" href="assignments/a3-requirements.pdf">A3: Managing requirements (group)</a></li>
+  <li><a href="assignments/a3-requirements.pdf">A3: Requirement analysis (group)</a></li>
 </ul>
 
 
@@ -186,7 +186,7 @@ The deadlines are summarised below, and may still suffer changes.
  - __12 Dec (Sun)@ 23:59__ - [Modelling assignment](assignments/a1-modelling.pdf)
  - __19 Dec (Sun)@ 23:59__ - Slides of [Lecture 9](slides/9-modal-logic.pdf) (1-29)
  - __9 Jan (Sun)@ 23:59__ - [Behaviour assignment](assignments/a2-verification.pdf)
- - __9 Jan (Sun)@ 23:59__ - Requirements assignment (to appear)
+ - __9 Jan (Sun)@ 23:59__ - [Requirements assignment](assignments/a3-requirements.pdf)
 
 
 ### Lecturers
