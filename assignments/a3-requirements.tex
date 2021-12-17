@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+
+
+\input{macros}
+\date{RAMDE -- 2021/2022}
+
+\usepackage[utf8x]{inputenc} % pt characters and eur sign (instead of latin1)
+
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Draft}
+% \SetWatermarkScale{1.4}
+
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{A3: Requirement analysis}
+% {\Large Crossing the river -- Part 2}}
+
+\author{David Pereira \& Jos\'{e} Proen\c{c}a \& Eduardo Tovar} 
+
+
+\maketitle
+
+\descrbox{To do}{
+ Produce a report as a PDF document including the answers to the exercises below.
+}
+
+\descrbox{What to submit}{
+ Submit in your group's git repository:
+ (1) the PDF report, (2) the Doorstop requirements requested in the exercises, and (3) the HTML documentation produced by Doorstop.
+}
+
+\descrbox{Deadline:}{
+  9 Jan 2022 @ 23:59 (Monday) -- together with Assignment 2
+}
+
+
+
+
+\section*{Requirements for a vending machine}
+
+
+\begin{myExercise} \label{ex:vm}
+Recall the vending machine from the last assignment.
+The informal assignments over the machine were given by the text below.
+
+\begin{quote}\it
+  I would like the vending machine to sell 3 items: apples, bananas, and chocolates.
+  It should be possible to buy chocolates for 2€ and fruit for 1€.
+  Only 1€ and 2€ coins are accepted.
+  The machine has a maximum capacity for 1€ coins and for 2€ coins. 
+  The machine does not accept coins if its capacity is full.
+  The machine should give change back when buying fruit after inserting 2€.
+  If the machine has already 2€ inserted, it refuses another coin.
+  If the machine has no 1€ coins, it cannot not sell fruit with a 2€ coin. 
+  The user can request the money back after inserting coins.
+\end{quote}
+
+
+\subex{\label{ex:vm1}
+   \textbf{Rewrite the requirements} above as a set of requirements following the EARS patterns.
+}
+
+\subex{\label{ex:vm2}
+   \textbf{Classify the requirements} from the previous exercise according to type of requirements of the EARS approach.
+}
+
+\subex{\label{ex:vm3}
+  \textbf{Use the Doorstop tool} to produce these requirements in the git repository, under the folder \bash{req/vending}.
+  Generate the \textbf{html documentation} based on these requirements.
+  \\[2mm]
+  Include both the Doorstop requirements and the html documentation in your group's git repository.
+}
+\end{myExercise}
+
+
+\section*{Requirements for the Farmer's problem}
+
+\begin{myExercise} \label{ex:farmer}
+
+ Recall the farmer's problem from the 2 previous assignments.
+
+\subex{\label{ex:f1}
+  \textbf{Create and classify} a set of requirements using the EARS patterns that capture there constraints and goals.
+}
+
+\subex{\label{ex:f2}
+  \textbf{Use the Doorstop tool} to produce these requirements in the git repository, under the folder \bash{req/farmer}.
+  Generate the \textbf{html documentation} together with the result from Exercise~\ref{ex:vm3}.
+  \\[2mm]
+  Include both the Doorstop requirements and the html documentation in your group's git repository.
+}
+
+
+\end{myExercise}
+
+
+% \section*{SysML project}
+% \begin{myExercise} 
+%   Recall the mCRL2 model that you specified in the last exercise of Part 1 of this assignment.
+%   \subex{\label{ex:s1}
+%     Specify 4 relevant and different properties in mCRL2 of the model that specified in the previous part.
+%     Include an informal description for each property, and obey the following restrictions:
+%     \begin{itemize}
+%       \item all properties should hold in your system
+%       \item at least one starts with \code{<...>}
+%       \item at least one starts with \code{[...]}
+%       \item at least one has a trace that gives evidence of the validity of the formula.
+%     \end{itemize}
+%   }
+
+%   \subex{\label{ex:s2}
+%     Specify 2 \textbf{useful} formulas that your system \textbf{does not} support, including an informal description for each formula.
+%     At least one formula should have a counter-example that proves the formula.
+%   }
+
+%   \subex{Show the evidence of \ref{ex:s1} and the counter-example of \ref{ex:s2}.}
+% \end{myExercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Self-peer-evaluation}
+\begin{myExercise}
+  In a scale from 0-5, where 5 is better than 0, give a mark to you and each of your team groups for each of the following criteria:
+  \begin{itemize}
+    \item \textbf{Effort} (time spent)
+    \item \textbf{Quality} (of the work produced)
+    \item \textbf{Collaboration} (how easy it was to meet and interact)
+  \end{itemize}
+  \textbf{Send this information individually} as before by email or Teams to David Pereira and Jos\'{e} Proen\c{c}a. No justification is needed -- e.g., \emph{``Group 3: Jo\~{a}o: Effort 5, Quality 4, Collaboration 5; Maria: ...''}.
+\end{myExercise}
+
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}
