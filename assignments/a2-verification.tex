@@ -130,7 +130,7 @@ Provide two variations of this system and include them in files \bash{vending1.m
 \begin{lstlisting}
 [true*.pay2eur.pay2eur] false
 [true*.pay2eur.pay1eur] false
-[true*.pay2eur]<(!pay1eur && !pay2eur)*.getApple
+[true*.pay2eur]<(!pay1eur && !pay2eur)*.getApple> true
 <true*.pay2eur.true*.getBanana> true \end{lstlisting}
 \textbf{Show your specification} and \textbf{show a screenshot of its LTS}.
 
